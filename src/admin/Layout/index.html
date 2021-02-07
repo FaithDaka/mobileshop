@@ -1,0 +1,1296 @@
+<div class="aiz-main-wrapper">
+    <div class="aiz-sidebar-wrap">
+       <div class="aiz-sidebar left c-scrollbar">
+          <div class="aiz-side-nav-logo-wrap">
+             <a href="https://demo.activeitzone.com/ecommerce/admin" class="d-block text-left">
+             <img class="mw-100" src="https://demo.activeitzone.com/ecommerce/public/uploads/all/nLBoBtHBqBvBJPn17WtMMNM8xlSeqETXjOWTUqR7.svg" alt="Active eCommerce CMS">
+             </a>
+          </div>
+          <div class="aiz-side-nav-wrap">
+             <div class="px-20px mb-3">
+                <input class="form-control bg-soft-secondary border-0 form-control-sm text-white" type="text" name="" placeholder="Search in menu" id="menu-search" onkeyup="menuSearch()">
+             </div>
+             <ul class="aiz-side-nav-list" id="search-menu">
+             </ul>
+             <ul class="aiz-side-nav-list metismenu" id="main-menu" data-toggle="aiz-side-menu">
+                <li class="aiz-side-nav-item mm-active">
+                   <a href="https://demo.activeitzone.com/ecommerce/admin" class="aiz-side-nav-link active" aria-expanded="true">
+                   <i class="las la-home aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">Dashboard</span>
+                   </a>
+                </li>
+                <!-- POS Addon-->
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="las la-tasks aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">POS System</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/pos" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">POS Manager</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/pos-activation" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">POS Configuration</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <!-- Product -->
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="las la-shopping-cart aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">Products</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <!--Submenu-->
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a class="aiz-side-nav-link" href="https://demo.activeitzone.com/ecommerce/admin/products/create">
+                         <span class="aiz-side-nav-text">Add New Product</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/products/all" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">All Products</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/products/admin" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">In House Products</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/products/seller" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Seller Products</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/digitalproducts" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Digital Products</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/product-bulk-upload/index" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Bulk Import</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/product-bulk-export" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Bulk Export</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/categories" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Category</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/brands" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Brand</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/attributes" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Attribute</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/reviews" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Product Reviews</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <!-- Sale -->
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="las la-money-bill aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">Sales</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <!--Submenu-->
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/all_orders" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">All Orders</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/inhouse-orders" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Inhouse orders</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/seller_orders" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Seller Orders</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/orders_by_pickup_point" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Pick-up Point Order</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <!-- Refund addon -->
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="las la-backward aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">Refunds</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/refund-request-all" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Refund Requests</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/paid-refund" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Approved Refund</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/refund-request-config" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Refund Configuration</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <!-- Customers -->
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="las la-user-friends aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">Customers</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/customers" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Customer list</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/classified_products" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Classified Products</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/customer_packages" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Classified Packages</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <!-- Sellers -->
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="las la-user aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">Sellers</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/sellers" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">All Seller</span>
+                         <span class="badge badge-info">1</span>                                 </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/seller/payments" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Payouts</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/withdraw_requests_all" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Payout Requests</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/vendor_commission" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Seller commission</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/seller_packages" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Seller Packages</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/verification/form" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Seller Verification Form</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <li class="aiz-side-nav-item">
+                   <a href="https://demo.activeitzone.com/ecommerce/admin/uploaded-files" class="aiz-side-nav-link ">
+                   <i class="las la-folder-open aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">Uploaded Files</span>
+                   </a>
+                </li>
+                <!-- Reports -->
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="las la-file-alt aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">Reports</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/in_house_sale_report" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">In House Product Sale</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/seller_sale_report" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Seller Products Sale</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/stock_report" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Products Stock</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/wish_report" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Products wishlist</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/user_search_report" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">User Searches</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <!-- marketing -->
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="las la-bullhorn aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">Marketing</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/flash_deals" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Flash deals</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/newsletter" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Newsletters</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/sms" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Bulk SMS</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/subscribers" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Subscribers</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/coupon" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Coupon</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <!-- Support -->
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="las la-link aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">Support</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/support_ticket" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Ticket</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/conversations" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Product Queries</span>
+                         <span class="badge badge-info">1</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <!-- Affiliate Addon -->
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="las la-link aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">Affiliate System</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/affiliate/configs" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Affiliate Registration Form</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/affiliate" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Affiliate Configurations</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/affiliate/users" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Affiliate Users</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/refferal/users" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Referral Users</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/affiliate/withdraw_requests" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Affiliate Withdraw Requests</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <!-- Offline Payment Addon-->
+                <!-- Paytm Addon -->
+                <!-- Club Point Addon-->
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="lab la-btc aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">Club Point System</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/club-points/configuration" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Club Point Configurations</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/set-club-points" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Set Product Point</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/club-points/index" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">User Points</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <!--OTP addon -->
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="las la-phone aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">OTP System</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/otp-configuration" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">OTP Configurations</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/otp-credentials-configuration" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Set OTP Credentials</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="las la-phone aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">African Payment Gateway Addon</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/african/configuration" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">African PG Configurations</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/african/credentials_index" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Set African PG Credentials</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <!-- Website Setup -->
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="las la-desktop aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">Website Setup</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/website/header" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Header</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/website/footer" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Footer</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/website/pages" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Pages</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/website/appearance" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Appearance</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <!-- Setup & Configurations -->
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="las la-dharmachakra aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">Setup &amp; Configurations</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/general-setting" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">General Settings</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/activation" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Features activation</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/languages" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Languages</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/currency" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Currency</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/pick_up_points" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Pickup point</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/smtp-settings" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">SMTP Settings</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/payment-method" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Payment Methods</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/file_system" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">File System Configuration</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/social-login" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Social media Logins</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/google-analytics" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Analytics Tools</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/facebook-chat" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Facebook Chat</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/google-recaptcha" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Google reCAPTCHA</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/shipping_configuration" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Shipping Configuration</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/countries" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Shipping Countries</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/cities" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Shipping Cities</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <!-- Staffs -->
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="las la-user-tie aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">Staffs</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/staffs" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">All staffs</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/roles" class="aiz-side-nav-link ">
+                         <span class="aiz-side-nav-text">Staff permissions</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <li class="aiz-side-nav-item">
+                   <a href="#" class="aiz-side-nav-link">
+                   <i class="las la-user-tie aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">System</span>
+                   <span class="aiz-side-nav-arrow"></span>
+                   </a>
+                   <ul class="aiz-side-nav-list level-2 mm-collapse">
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/system/update" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Update</span>
+                         </a>
+                      </li>
+                      <li class="aiz-side-nav-item">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/system/server-status" class="aiz-side-nav-link">
+                         <span class="aiz-side-nav-text">Server status</span>
+                         </a>
+                      </li>
+                   </ul>
+                </li>
+                <!-- Addon Manager -->
+                <li class="aiz-side-nav-item">
+                   <a href="https://demo.activeitzone.com/ecommerce/admin/addons" class="aiz-side-nav-link ">
+                   <i class="las la-wrench aiz-side-nav-icon"></i>
+                   <span class="aiz-side-nav-text">Addon Manager</span>
+                   </a>
+                </li>
+             </ul>
+             <!-- .aiz-side-nav -->
+          </div>
+          <!-- .aiz-side-nav-wrap -->
+       </div>
+       <!-- .aiz-sidebar -->
+       <div class="aiz-sidebar-overlay"></div>
+    </div>
+    <!-- .aiz-sidebar -->
+    <div class="aiz-content-wrapper">
+       <div class="aiz-topbar px-15px px-lg-25px d-flex align-items-stretch justify-content-between">
+          <div class="d-xl-none d-flex">
+             <div class="aiz-topbar-nav-toggler d-flex align-items-center justify-content-start mr-2 mr-md-3" data-toggle="aiz-mobile-nav">
+                <button class="aiz-mobile-toggler">
+                <span></span>
+                </button>
+             </div>
+             <div class="aiz-topbar-logo-wrap d-flex align-items-center justify-content-start">
+                <a href="https://demo.activeitzone.com/ecommerce/admin" class="d-block">
+                <img src="https://demo.activeitzone.com/ecommerce/public/uploads/all/nLBoBtHBqBvBJPn17WtMMNM8xlSeqETXjOWTUqR7.svg" class="brand-icon" alt="Active Eommerce CMS">
+                </a>
+             </div>
+          </div>
+          <div class="d-flex justify-content-between align-items-stretch flex-grow-xl-1">
+             <div class="d-none d-md-flex justify-content-around align-items-center align-items-stretch">
+                <div class="d-none d-md-flex justify-content-around align-items-center align-items-stretch">
+                   <div class="aiz-topbar-item">
+                      <div class="d-flex align-items-center">
+                         <a class="btn btn-icon btn-circle btn-light" href="https://demo.activeitzone.com/ecommerce" target="_blank" title="Browse Website">
+                         <i class="las la-globe"></i>
+                         </a>
+                      </div>
+                   </div>
+                </div>
+                <div class="d-none d-md-flex justify-content-around align-items-center align-items-stretch ml-3">
+                   <div class="aiz-topbar-item">
+                      <div class="d-flex align-items-center">
+                         <a class="btn btn-icon btn-circle btn-light" href="https://demo.activeitzone.com/ecommerce/admin/pos" target="_blank" title="POS">
+                         <i class="las la-print"></i>
+                         </a>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             <div class="d-flex justify-content-around align-items-center align-items-stretch">
+                <div class="aiz-topbar-item ml-2">
+                   <div class="align-items-stretch d-flex dropdown">
+                      <a class="dropdown-toggle no-arrow" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
+                      <span class="btn btn-icon p-1">
+                      <span class=" position-relative d-inline-block">
+                      <i class="las la-bell la-2x"></i>
+                      <span class="badge badge-dot badge-circle badge-primary position-absolute absolute-top-right"></span>
+                      </span>
+                      </span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-lg py-0">
+                         <div class="p-3 bg-light border-bottom">
+                            <h6 class="mb-0">Notifications</h6>
+                         </div>
+                         <ul class="list-group c-scrollbar-light overflow-auto" style="max-height:300px;">
+                            <li class="list-group-item">
+                               <a href="https://demo.activeitzone.com/ecommerce/admin/inhouse-orders" class="text-reset">
+                               <span class="ml-2">1101 new orders</span>
+                               </a>
+                            </li>
+                            <li class="list-group-item">
+                               <a href="https://demo.activeitzone.com/ecommerce/admin/sellers" class="text-reset">
+                               <span class="ml-2">New verification request(s)</span>
+                               </a>
+                            </li>
+                         </ul>
+                      </div>
+                   </div>
+                </div>
+                <div class="aiz-topbar-item ml-2">
+                   <div class="align-items-stretch d-flex dropdown " id="lang-change">
+                      <a class="dropdown-toggle no-arrow" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
+                      <span class="btn btn-icon">
+                      <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/en.png" height="11">
+                      </span>
+                      </a>
+                      <ul class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-xs">
+                         <li>
+                            <a href="javascript:void(0)" data-flag="en" class="dropdown-item  active ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/en.png" class="mr-2">
+                            <span class="language">English</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="bd" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/bd.png" class="mr-2">
+                            <span class="language">Bangla</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="sa" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/sa.png" class="mr-2">
+                            <span class="language">Arabic</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="es" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/es.png" class="mr-2">
+                            <span class="language">Spain</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="jp" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/jp.png" class="mr-2">
+                            <span class="language">Japan</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="fr" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/fr.png" class="mr-2">
+                            <span class="language">France</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="in" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/in.png" class="mr-2">
+                            <span class="language">India</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="nl" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/nl.png" class="mr-2">
+                            <span class="language">Netherland</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="af" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/af.png" class="mr-2">
+                            <span class="language">Afghanistan</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="eg" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/eg.png" class="mr-2">
+                            <span class="language">Egypt</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="za" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/za.png" class="mr-2">
+                            <span class="language">Africa</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="ie" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/ie.png" class="mr-2">
+                            <span class="language">Ireland</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="sg" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/sg.png" class="mr-2">
+                            <span class="language">Singapore</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="vn" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/vn.png" class="mr-2">
+                            <span class="language">Vietnam</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="ms" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/ms.png" class="mr-2">
+                            <span class="language">Malaysia</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="lk" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/lk.png" class="mr-2">
+                            <span class="language">Sri Lanka</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="ke" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/ke.png" class="mr-2">
+                            <span class="language">Kenya</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="th" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/th.png" class="mr-2">
+                            <span class="language">Bangkok</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="cn" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/cn.png" class="mr-2">
+                            <span class="language">China</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="zm" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/zm.png" class="mr-2">
+                            <span class="language">Zimbabwe</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="id" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/id.png" class="mr-2">
+                            <span class="language">Indonesia</span>
+                            </a>
+                         </li>
+                         <li>
+                            <a href="javascript:void(0)" data-flag="pk" class="dropdown-item ">
+                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/flags/pk.png" class="mr-2">
+                            <span class="language">Pakistan</span>
+                            </a>
+                         </li>
+                      </ul>
+                   </div>
+                </div>
+                <div class="aiz-topbar-item ml-2">
+                   <div class="align-items-stretch d-flex dropdown">
+                      <a class="dropdown-toggle no-arrow text-dark" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
+                      <span class="d-flex align-items-center">
+                      <span class="avatar avatar-sm mr-md-2">
+                      <img src="https://demo.activeitzone.com/ecommerce/public/uploads/1mMxQH4KIoCtVVpOBt7k7uYymbWNMQ3jJuTj7y3u.jpeg" onerror="this.onerror=null;this.src='https://demo.activeitzone.com/ecommerce/public/assets/img/avatar-place.png';">
+                      </span>
+                      <span class="d-none d-md-block">
+                      <span class="d-block fw-500">Admin</span>
+                      <span class="d-block small opacity-60">admin</span>
+                      </span>
+                      </span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-md">
+                         <a href="https://demo.activeitzone.com/ecommerce/admin/profile" class="dropdown-item">
+                         <i class="las la-user-circle"></i>
+                         <span>Profile</span>
+                         </a>
+                         <a href="https://demo.activeitzone.com/ecommerce/logout" class="dropdown-item">
+                         <i class="las la-sign-out-alt"></i>
+                         <span>Logout</span>
+                         </a>
+                      </div>
+                   </div>
+                </div>
+                <!-- .aiz-topbar-item -->
+             </div>
+          </div>
+       </div>
+       <!-- .aiz-topbar -->
+       <div class="aiz-main-content">
+          <div class="px-15px px-lg-25px">
+             <div class="">
+                <div class="alert alert-danger d-flex align-items-center">
+                   Please Configure SMTP Setting to work all email sending functionality,
+                   <a class="alert-link ml-2" href="https://demo.activeitzone.com/ecommerce/admin/smtp-settings">Configure Now</a>
+                </div>
+             </div>
+             <div class="row gutters-10">
+                <div class="col-lg-6">
+                   <div class="row gutters-10">
+                      <div class="col-6">
+                         <div class="bg-grad-2 text-white rounded-lg mb-4 overflow-hidden">
+                            <div class="px-3 pt-3">
+                               <div class="opacity-50">
+                                  <span class="fs-12 d-block">Total</span>
+                                  Customer
+                               </div>
+                               <div class="h3 fw-700 mb-3">284</div>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                               <path fill="rgba(255,255,255,0.3)" fill-opacity="1" d="M0,128L34.3,112C68.6,96,137,64,206,96C274.3,128,343,224,411,250.7C480,277,549,235,617,213.3C685.7,192,754,192,823,181.3C891.4,171,960,149,1029,117.3C1097.1,85,1166,43,1234,58.7C1302.9,75,1371,149,1406,186.7L1440,224L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
+                            </svg>
+                         </div>
+                      </div>
+                      <div class="col-6">
+                         <div class="bg-grad-3 text-white rounded-lg mb-4 overflow-hidden">
+                            <div class="px-3 pt-3">
+                               <div class="opacity-50">
+                                  <span class="fs-12 d-block">Total</span>
+                                  Order
+                               </div>
+                               <div class="h3 fw-700 mb-3">1119</div>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                               <path fill="rgba(255,255,255,0.3)" fill-opacity="1" d="M0,128L34.3,112C68.6,96,137,64,206,96C274.3,128,343,224,411,250.7C480,277,549,235,617,213.3C685.7,192,754,192,823,181.3C891.4,171,960,149,1029,117.3C1097.1,85,1166,43,1234,58.7C1302.9,75,1371,149,1406,186.7L1440,224L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
+                            </svg>
+                         </div>
+                      </div>
+                      <div class="col-6">
+                         <div class="bg-grad-1 text-white rounded-lg mb-4 overflow-hidden">
+                            <div class="px-3 pt-3">
+                               <div class="opacity-50">
+                                  <span class="fs-12 d-block">Total</span>
+                                  Product category
+                               </div>
+                               <div class="h3 fw-700 mb-3">241</div>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                               <path fill="rgba(255,255,255,0.3)" fill-opacity="1" d="M0,128L34.3,112C68.6,96,137,64,206,96C274.3,128,343,224,411,250.7C480,277,549,235,617,213.3C685.7,192,754,192,823,181.3C891.4,171,960,149,1029,117.3C1097.1,85,1166,43,1234,58.7C1302.9,75,1371,149,1406,186.7L1440,224L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
+                            </svg>
+                         </div>
+                      </div>
+                      <div class="col-6">
+                         <div class="bg-grad-4 text-white rounded-lg mb-4 overflow-hidden">
+                            <div class="px-3 pt-3">
+                               <div class="opacity-50">
+                                  <span class="fs-12 d-block">Total</span>
+                                  Product brand
+                               </div>
+                               <div class="h3 fw-700 mb-3">95</div>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                               <path fill="rgba(255,255,255,0.3)" fill-opacity="1" d="M0,128L34.3,112C68.6,96,137,64,206,96C274.3,128,343,224,411,250.7C480,277,549,235,617,213.3C685.7,192,754,192,823,181.3C891.4,171,960,149,1029,117.3C1097.1,85,1166,43,1234,58.7C1302.9,75,1371,149,1406,186.7L1440,224L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
+                            </svg>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-lg-6">
+                   <div class="row gutters-10">
+                      <div class="col-6">
+                         <div class="card">
+                            <div class="card-header">
+                               <h6 class="mb-0 fs-14">Products</h6>
+                            </div>
+                            <div class="card-body">
+                               <div class="chartjs-size-monitor">
+                                  <div class="chartjs-size-monitor-expand">
+                                     <div class=""></div>
+                                  </div>
+                                  <div class="chartjs-size-monitor-shrink">
+                                     <div class=""></div>
+                                  </div>
+                               </div>
+                               <canvas id="pie-1" class="w-100 chartjs-render-monitor" height="489" style="display: block; width: 103px; height: 163px;" width="309"></canvas>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="col-6">
+                         <div class="card">
+                            <div class="card-header">
+                               <h6 class="mb-0 fs-14">Sellers</h6>
+                            </div>
+                            <div class="card-body">
+                               <div class="chartjs-size-monitor">
+                                  <div class="chartjs-size-monitor-expand">
+                                     <div class=""></div>
+                                  </div>
+                                  <div class="chartjs-size-monitor-shrink">
+                                     <div class=""></div>
+                                  </div>
+                               </div>
+                               <canvas id="pie-2" class="w-100 chartjs-render-monitor" height="489" width="309" style="display: block; width: 103px; height: 163px;"></canvas>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             <div class="row gutters-10">
+                <div class="col-md-6">
+                   <div class="card">
+                      <div class="card-header">
+                         <h6 class="mb-0 fs-14">Category wise product sale</h6>
+                      </div>
+                      <div class="card-body">
+                         <div class="chartjs-size-monitor">
+                            <div class="chartjs-size-monitor-expand">
+                               <div class=""></div>
+                            </div>
+                            <div class="chartjs-size-monitor-shrink">
+                               <div class=""></div>
+                            </div>
+                         </div>
+                         <canvas id="graph-1" class="w-100 chartjs-render-monitor" height="912" width="834" style="display: block; width: 278px; height: 304px;"></canvas>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-6">
+                   <div class="card">
+                      <div class="card-header">
+                         <h6 class="mb-0 fs-14">Category wise product stock</h6>
+                      </div>
+                      <div class="card-body">
+                         <div class="chartjs-size-monitor">
+                            <div class="chartjs-size-monitor-expand">
+                               <div class=""></div>
+                            </div>
+                            <div class="chartjs-size-monitor-shrink">
+                               <div class=""></div>
+                            </div>
+                         </div>
+                         <canvas id="graph-2" class="w-100 chartjs-render-monitor" height="912" width="834" style="display: block; width: 278px; height: 304px;"></canvas>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             <div class="card">
+                <div class="card-header">
+                   <h6 class="mb-0">Top 12 Products</h6>
+                </div>
+                <div class="card-body">
+                   <div class="aiz-carousel gutters-10 half-outside-arrow slick-initialized slick-slider" data-items="6" data-xl-items="5" data-lg-items="4" data-md-items="3" data-sm-items="2" data-arrows="true">
+                      <button type="button" class="slick-prev slick-arrow slick-disabled" aria-disabled="true" style="display: inline-block;"><i class="las la-angle-left"></i></button>
+                      <div class="slick-list draggable">
+                         <div class="slick-track" style="opacity: 1; width: 1788px; transform: translate3d(0px, 0px, 0px);">
+                            <div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 149px;">
+                               <div>
+                                  <div class="carousel-box" style="width: 100%; display: inline-block;">
+                                     <div class="aiz-card-box border border-light rounded shadow-sm hov-shadow-md mb-2 has-transition bg-white">
+                                        <div class="position-relative">
+                                           <a href="https://demo.activeitzone.com/ecommerce/product/apple-macbook-pro-2018-six-core-intel-core-i7-22-41ghz-16gb-2400mhz-ddr4-5emap" class="d-block" tabindex="0">
+                                           <img class="img-fit mx-auto h-210px lazyloaded" src="https://demo.activeitzone.com/ecommerce/public/uploads/all/kQdd5XqAuLh1EmSsAP5Zih3CShYuwRub87L9sCiU.jpg" data-src="https://demo.activeitzone.com/ecommerce/public/uploads/all/kQdd5XqAuLh1EmSsAP5Zih3CShYuwRub87L9sCiU.jpg" alt="Apple Macbook Pro (2018) Six Core Intel Core i7 (2.2-4.1GHz, 16GB 2400MHz DDR4" onerror="this.onerror=null;this.src='https://demo.activeitzone.com/ecommerce/public/assets/img/placeholder.jpg';">
+                                           </a>
+                                        </div>
+                                        <div class="p-md-3 p-2 text-left">
+                                           <div class="fs-15">
+                                              <span class="fw-700 text-primary">$2,250.00</span>
+                                           </div>
+                                           <div class="rating rating-sm mt-1">
+                                              <i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i>
+                                           </div>
+                                           <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0">
+                                              <a href="https://demo.activeitzone.com/ecommerce/product/apple-macbook-pro-2018-six-core-intel-core-i7-22-41ghz-16gb-2400mhz-ddr4-5emap" class="d-block text-reset" tabindex="0">Apple Macbook Pro (2018) Six Core Intel Core i7 (2.2-4.1GHz, 16GB 2400MHz DDR4</a>
+                                           </h3>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="slick-slide slick-active" data-slick-index="1" aria-hidden="false" style="width: 149px;">
+                               <div>
+                                  <div class="carousel-box" style="width: 100%; display: inline-block;">
+                                     <div class="aiz-card-box border border-light rounded shadow-sm hov-shadow-md mb-2 has-transition bg-white">
+                                        <div class="position-relative">
+                                           <a href="https://demo.activeitzone.com/ecommerce/product/hp-spectre-x360-13-ae517tu-8th-gen-intel-core-i7-8550u-vma7u" class="d-block" tabindex="0">
+                                           <img class="img-fit mx-auto h-210px lazyloaded" src="https://demo.activeitzone.com/ecommerce/public/uploads/products/thumbnail/IS5KY5GN8l9VhTCUb64y5CrrJln7WLRmZDHorOLs.jpeg" data-src="https://demo.activeitzone.com/ecommerce/public/uploads/products/thumbnail/IS5KY5GN8l9VhTCUb64y5CrrJln7WLRmZDHorOLs.jpeg" alt="HP Spectre x360 13-AE517TU 8th Gen Intel Core i7 8550U" onerror="this.onerror=null;this.src='https://demo.activeitzone.com/ecommerce/public/assets/img/placeholder.jpg';">
+                                           </a>
+                                        </div>
+                                        <div class="p-md-3 p-2 text-left">
+                                           <div class="fs-15">
+                                              <span class="fw-700 text-primary">$1,550.00</span>
+                                           </div>
+                                           <div class="rating rating-sm mt-1">
+                                              <i class="las la-star active"></i><i class="las la-star active"></i><i class="las la-star active"></i><i class="las la-star active"></i><i class="las la-star active"></i>
+                                           </div>
+                                           <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0">
+                                              <a href="https://demo.activeitzone.com/ecommerce/product/hp-spectre-x360-13-ae517tu-8th-gen-intel-core-i7-8550u-vma7u" class="d-block text-reset" tabindex="0">HP Spectre x360 13-AE517TU 8th Gen Intel Core i7 8550U</a>
+                                           </h3>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="slick-slide" data-slick-index="2" aria-hidden="true" style="width: 149px;" tabindex="-1">
+                               <div>
+                                  <div class="carousel-box" style="width: 100%; display: inline-block;">
+                                     <div class="aiz-card-box border border-light rounded shadow-sm hov-shadow-md mb-2 has-transition bg-white">
+                                        <div class="position-relative">
+                                           <a href="https://demo.activeitzone.com/ecommerce/product/party-dancing-casual-dress-girl-christmas-pageant-djbe4" class="d-block" tabindex="-1">
+                                           <img class="img-fit mx-auto h-210px lazyloaded" src="https://demo.activeitzone.com/ecommerce/public/uploads/all/Zuf5CrutT9APN7ZTy1fAQfWxfF4mmjEYgqZ8vJ1J.jpeg" data-src="https://demo.activeitzone.com/ecommerce/public/uploads/all/Zuf5CrutT9APN7ZTy1fAQfWxfF4mmjEYgqZ8vJ1J.jpeg" alt="Party Dancing casual Dress Girl Christmas Pageant" onerror="this.onerror=null;this.src='https://demo.activeitzone.com/ecommerce/public/assets/img/placeholder.jpg';">
+                                           </a>
+                                        </div>
+                                        <div class="p-md-3 p-2 text-left">
+                                           <div class="fs-15">
+                                              <span class="fw-700 text-primary">$200.00</span>
+                                           </div>
+                                           <div class="rating rating-sm mt-1">
+                                              <i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i>
+                                           </div>
+                                           <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0">
+                                              <a href="https://demo.activeitzone.com/ecommerce/product/party-dancing-casual-dress-girl-christmas-pageant-djbe4" class="d-block text-reset" tabindex="-1">Party Dancing casual Dress Girl Christmas Pageant</a>
+                                           </h3>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="slick-slide" data-slick-index="3" aria-hidden="true" style="width: 149px;" tabindex="-1">
+                               <div>
+                                  <div class="carousel-box" style="width: 100%; display: inline-block;">
+                                     <div class="aiz-card-box border border-light rounded shadow-sm hov-shadow-md mb-2 has-transition bg-white">
+                                        <div class="position-relative">
+                                           <a href="https://demo.activeitzone.com/ecommerce/product/boys-navy-blue-slim-fit-suit-a7vqa" class="d-block" tabindex="-1">
+                                           <img class="img-fit mx-auto h-210px lazyloaded" src="https://demo.activeitzone.com/ecommerce/public/uploads/products/thumbnail/OBJlA65ZM5uL1NMLaoIv4dlZpW5KRyU6tpytYWDW.jpeg" data-src="https://demo.activeitzone.com/ecommerce/public/uploads/products/thumbnail/OBJlA65ZM5uL1NMLaoIv4dlZpW5KRyU6tpytYWDW.jpeg" alt="Boys Navy Blue Slim Fit Suit" onerror="this.onerror=null;this.src='https://demo.activeitzone.com/ecommerce/public/assets/img/placeholder.jpg';">
+                                           </a>
+                                        </div>
+                                        <div class="p-md-3 p-2 text-left">
+                                           <div class="fs-15">
+                                              <span class="fw-700 text-primary">$250.00</span>
+                                           </div>
+                                           <div class="rating rating-sm mt-1">
+                                              <i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i>
+                                           </div>
+                                           <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0">
+                                              <a href="https://demo.activeitzone.com/ecommerce/product/boys-navy-blue-slim-fit-suit-a7vqa" class="d-block text-reset" tabindex="-1">Boys Navy Blue Slim Fit Suit</a>
+                                           </h3>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="slick-slide" data-slick-index="4" aria-hidden="true" style="width: 149px;" tabindex="-1">
+                               <div>
+                                  <div class="carousel-box" style="width: 100%; display: inline-block;">
+                                     <div class="aiz-card-box border border-light rounded shadow-sm hov-shadow-md mb-2 has-transition bg-white">
+                                        <div class="position-relative">
+                                           <a href="https://demo.activeitzone.com/ecommerce/product/iphone-xr--64gb128gb256gb-1792-by-828-pixel-resolution-pbqfq" class="d-block" tabindex="-1">
+                                           <img class="img-fit mx-auto h-210px lazyloaded" src="https://demo.activeitzone.com/ecommerce/public/uploads/all/C2icOr7DlDxZgPt1qDhPKapR1LchH2Hbwu7CGD49.png" data-src="https://demo.activeitzone.com/ecommerce/public/uploads/all/C2icOr7DlDxZgPt1qDhPKapR1LchH2Hbwu7CGD49.png" alt="iphone XR  (64GB/128GB/256GB) 1792-by-828-pixel resolution" onerror="this.onerror=null;this.src='https://demo.activeitzone.com/ecommerce/public/assets/img/placeholder.jpg';">
+                                           </a>
+                                        </div>
+                                        <div class="p-md-3 p-2 text-left">
+                                           <div class="fs-15">
+                                              <span class="fw-700 text-primary">$749.00</span>
+                                           </div>
+                                           <div class="rating rating-sm mt-1">
+                                              <i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i>
+                                           </div>
+                                           <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0">
+                                              <a href="https://demo.activeitzone.com/ecommerce/product/iphone-xr--64gb128gb256gb-1792-by-828-pixel-resolution-pbqfq" class="d-block text-reset" tabindex="-1">iphone XR  (64GB/128GB/256GB) 1792-by-828-pixel resolution</a>
+                                           </h3>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="slick-slide" data-slick-index="5" aria-hidden="true" style="width: 149px;" tabindex="-1">
+                               <div>
+                                  <div class="carousel-box" style="width: 100%; display: inline-block;">
+                                     <div class="aiz-card-box border border-light rounded shadow-sm hov-shadow-md mb-2 has-transition bg-white">
+                                        <div class="position-relative">
+                                           <a href="https://demo.activeitzone.com/ecommerce/product/summer-rose-Party-Dancing-casual-Dress-Girl-Christmas-Pageant-OGRUm" class="d-block" tabindex="-1">
+                                           <img class="img-fit mx-auto h-210px lazyloaded" src="https://demo.activeitzone.com/ecommerce/public/uploads/products/thumbnail/AfIyhcGE9h307xGW44C5LOQcHgf4TzcZ2uPNL331.jpeg" data-src="https://demo.activeitzone.com/ecommerce/public/uploads/products/thumbnail/AfIyhcGE9h307xGW44C5LOQcHgf4TzcZ2uPNL331.jpeg" alt="summer rose Party Dancing casual Dress Girl Christmas Pageant" onerror="this.onerror=null;this.src='https://demo.activeitzone.com/ecommerce/public/assets/img/placeholder.jpg';">
+                                           </a>
+                                        </div>
+                                        <div class="p-md-3 p-2 text-left">
+                                           <div class="fs-15">
+                                              <del class="fw-600 opacity-50 mr-1">$15.30</del>
+                                              <span class="fw-700 text-primary">$13.26</span>
+                                           </div>
+                                           <div class="rating rating-sm mt-1">
+                                              <i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i>
+                                           </div>
+                                           <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0">
+                                              <a href="https://demo.activeitzone.com/ecommerce/product/summer-rose-Party-Dancing-casual-Dress-Girl-Christmas-Pageant-OGRUm" class="d-block text-reset" tabindex="-1">summer rose Party Dancing casual Dress Girl Christmas Pageant</a>
+                                           </h3>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="slick-slide" data-slick-index="6" aria-hidden="true" style="width: 149px;" tabindex="-1">
+                               <div>
+                                  <div class="carousel-box" style="width: 100%; display: inline-block;">
+                                     <div class="aiz-card-box border border-light rounded shadow-sm hov-shadow-md mb-2 has-transition bg-white">
+                                        <div class="position-relative">
+                                           <a href="https://demo.activeitzone.com/ecommerce/product/Party-Dancing-casual-Dress-Girl-Christmas-Pageant-mXXag" class="d-block" tabindex="-1">
+                                           <img class="img-fit mx-auto h-210px lazyloaded" src="https://demo.activeitzone.com/ecommerce/public/uploads/products/thumbnail/xVendIDnAG555gYYZMBwr2jNAs9NEz90xrxhlY64.jpeg" data-src="https://demo.activeitzone.com/ecommerce/public/uploads/products/thumbnail/xVendIDnAG555gYYZMBwr2jNAs9NEz90xrxhlY64.jpeg" alt="Party Dancing casual Dress Girl Christmas Pageant" onerror="this.onerror=null;this.src='https://demo.activeitzone.com/ecommerce/public/assets/img/placeholder.jpg';">
+                                           </a>
+                                        </div>
+                                        <div class="p-md-3 p-2 text-left">
+                                           <div class="fs-15">
+                                              <span class="fw-700 text-primary">$200.00</span>
+                                           </div>
+                                           <div class="rating rating-sm mt-1">
+                                              <i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i>
+                                           </div>
+                                           <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0">
+                                              <a href="https://demo.activeitzone.com/ecommerce/product/Party-Dancing-casual-Dress-Girl-Christmas-Pageant-mXXag" class="d-block text-reset" tabindex="-1">Party Dancing casual Dress Girl Christmas Pageant</a>
+                                           </h3>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="slick-slide" data-slick-index="7" aria-hidden="true" style="width: 149px;" tabindex="-1">
+                               <div>
+                                  <div class="carousel-box" style="width: 100%; display: inline-block;">
+                                     <div class="aiz-card-box border border-light rounded shadow-sm hov-shadow-md mb-2 has-transition bg-white">
+                                        <div class="position-relative">
+                                           <a href="https://demo.activeitzone.com/ecommerce/product/ZHENZU-Professional-Soccer-Football-Shoes--krampon-futbol-orjinal-Outdoor-s4r00" class="d-block" tabindex="-1">
+                                           <img class="img-fit mx-auto h-210px lazyloaded" src="https://demo.activeitzone.com/ecommerce/public/uploads/products/thumbnail/Or5yHwokWoW6cGdSxBnaMyGAPCUfJ27s8vlH4mIE.jpeg" data-src="https://demo.activeitzone.com/ecommerce/public/uploads/products/thumbnail/Or5yHwokWoW6cGdSxBnaMyGAPCUfJ27s8vlH4mIE.jpeg" alt="ZHENZU Professional Soccer Football Shoes  krampon futbol orjinal Outdoor" onerror="this.onerror=null;this.src='https://demo.activeitzone.com/ecommerce/public/assets/img/placeholder.jpg';">
+                                           </a>
+                                        </div>
+                                        <div class="p-md-3 p-2 text-left">
+                                           <div class="fs-15">
+                                              <span class="fw-700 text-primary">$210.00</span>
+                                           </div>
+                                           <div class="rating rating-sm mt-1">
+                                              <i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i>
+                                           </div>
+                                           <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0">
+                                              <a href="https://demo.activeitzone.com/ecommerce/product/ZHENZU-Professional-Soccer-Football-Shoes--krampon-futbol-orjinal-Outdoor-s4r00" class="d-block text-reset" tabindex="-1">ZHENZU Professional Soccer Football Shoes  krampon futbol orjinal Outdoor</a>
+                                           </h3>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="slick-slide" data-slick-index="8" aria-hidden="true" style="width: 149px;" tabindex="-1">
+                               <div>
+                                  <div class="carousel-box" style="width: 100%; display: inline-block;">
+                                     <div class="aiz-card-box border border-light rounded shadow-sm hov-shadow-md mb-2 has-transition bg-white">
+                                        <div class="position-relative">
+                                           <a href="https://demo.activeitzone.com/ecommerce/product/KUBEEN-mountain-bike-dual-disc-brakes-road-bikes-racing-bicycle-EP8qJ" class="d-block" tabindex="-1">
+                                           <img class="img-fit mx-auto h-210px lazyloaded" src="https://demo.activeitzone.com/ecommerce/public/uploads/products/thumbnail/Lqh1thzwhXsHAWCueiBP5d7Cb9aDqrQ6VImBS6tp.jpeg" data-src="https://demo.activeitzone.com/ecommerce/public/uploads/products/thumbnail/Lqh1thzwhXsHAWCueiBP5d7Cb9aDqrQ6VImBS6tp.jpeg" alt="KUBEEN mountain bike dual disc brakes road bikes racing bicycle" onerror="this.onerror=null;this.src='https://demo.activeitzone.com/ecommerce/public/assets/img/placeholder.jpg';">
+                                           </a>
+                                        </div>
+                                        <div class="p-md-3 p-2 text-left">
+                                           <div class="fs-15">
+                                              <span class="fw-700 text-primary">$230.00</span>
+                                           </div>
+                                           <div class="rating rating-sm mt-1">
+                                              <i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i>
+                                           </div>
+                                           <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0">
+                                              <a href="https://demo.activeitzone.com/ecommerce/product/KUBEEN-mountain-bike-dual-disc-brakes-road-bikes-racing-bicycle-EP8qJ" class="d-block text-reset" tabindex="-1">KUBEEN mountain bike dual disc brakes road bikes racing bicycle</a>
+                                           </h3>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="slick-slide" data-slick-index="9" aria-hidden="true" style="width: 149px;" tabindex="-1">
+                               <div>
+                                  <div class="carousel-box" style="width: 100%; display: inline-block;">
+                                     <div class="aiz-card-box border border-light rounded shadow-sm hov-shadow-md mb-2 has-transition bg-white">
+                                        <div class="position-relative">
+                                           <a href="https://demo.activeitzone.com/ecommerce/product/ZHENZU-Professional-Soccer-Cleats-Cheap-CiX3T" class="d-block" tabindex="-1">
+                                           <img class="img-fit lazyload mx-auto h-210px" src="https://demo.activeitzone.com/ecommerce/public/assets/img/placeholder.jpg" data-src="https://demo.activeitzone.com/ecommerce/public/uploads/products/thumbnail/sKJOaYlHCYRm1E5sp8RgiGfjMWRblXOXodSo6BQK.jpeg" alt="ZHENZU Professional Soccer Cleats Cheap" onerror="this.onerror=null;this.src='https://demo.activeitzone.com/ecommerce/public/assets/img/placeholder.jpg';">
+                                           </a>
+                                        </div>
+                                        <div class="p-md-3 p-2 text-left">
+                                           <div class="fs-15">
+                                              <del class="fw-600 opacity-50 mr-1">$604.00</del>
+                                              <span class="fw-700 text-primary">$599.00</span>
+                                           </div>
+                                           <div class="rating rating-sm mt-1">
+                                              <i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i>
+                                           </div>
+                                           <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0">
+                                              <a href="https://demo.activeitzone.com/ecommerce/product/ZHENZU-Professional-Soccer-Cleats-Cheap-CiX3T" class="d-block text-reset" tabindex="-1">ZHENZU Professional Soccer Cleats Cheap</a>
+                                           </h3>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="slick-slide" data-slick-index="10" aria-hidden="true" style="width: 149px;" tabindex="-1">
+                               <div>
+                                  <div class="carousel-box" style="width: 100%; display: inline-block;">
+                                     <div class="aiz-card-box border border-light rounded shadow-sm hov-shadow-md mb-2 has-transition bg-white">
+                                        <div class="position-relative">
+                                           <a href="https://demo.activeitzone.com/ecommerce/product/Samsung-Galaxy-S10-128GB-Prism-Blue---Fully-Unlocked-Renewed-q7a3L" class="d-block" tabindex="-1">
+                                           <img class="img-fit lazyload mx-auto h-210px" src="https://demo.activeitzone.com/ecommerce/public/assets/img/placeholder.jpg" data-src="https://demo.activeitzone.com/ecommerce/public/uploads/products/thumbnail/OvfJFM15EqksJ1DVWLVBnrEhGvVEU8BK7cbusd25.jpeg" alt="Samsung Galaxy S10, 128GB, Prism Blue - Fully Unlocked (Renewed)" onerror="this.onerror=null;this.src='https://demo.activeitzone.com/ecommerce/public/assets/img/placeholder.jpg';">
+                                           </a>
+                                        </div>
+                                        <div class="p-md-3 p-2 text-left">
+                                           <div class="fs-15">
+                                              <span class="fw-700 text-primary">$850.00</span>
+                                           </div>
+                                           <div class="rating rating-sm mt-1">
+                                              <i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i>
+                                           </div>
+                                           <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0">
+                                              <a href="https://demo.activeitzone.com/ecommerce/product/Samsung-Galaxy-S10-128GB-Prism-Blue---Fully-Unlocked-Renewed-q7a3L" class="d-block text-reset" tabindex="-1">Samsung Galaxy S10, 128GB, Prism Blue - Fully Unlocked (Renewed)</a>
+                                           </h3>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="slick-slide" data-slick-index="11" aria-hidden="true" style="width: 149px;" tabindex="-1">
+                               <div>
+                                  <div class="carousel-box" style="width: 100%; display: inline-block;">
+                                     <div class="aiz-card-box border border-light rounded shadow-sm hov-shadow-md mb-2 has-transition bg-white">
+                                        <div class="position-relative">
+                                           <a href="https://demo.activeitzone.com/ecommerce/product/Crystal-Chandelier-Lights-Lamp-For-Living-Room-Cristal-Lustre-Chandeliers-tYuf6" class="d-block" tabindex="-1">
+                                           <img class="img-fit lazyload mx-auto h-210px" src="https://demo.activeitzone.com/ecommerce/public/assets/img/placeholder.jpg" data-src="https://demo.activeitzone.com/ecommerce/public/uploads/products/thumbnail/SUKHBQvkh6IvzlDvHZzxtfRcsedZ6GhPNzZdSgk2.jpeg" alt="Crystal Chandelier Lights Lamp For Living Room Cristal Lustre Chandeliers" onerror="this.onerror=null;this.src='https://demo.activeitzone.com/ecommerce/public/assets/img/placeholder.jpg';">
+                                           </a>
+                                        </div>
+                                        <div class="p-md-3 p-2 text-left">
+                                           <div class="fs-15">
+                                              <span class="fw-700 text-primary">$38.00</span>
+                                           </div>
+                                           <div class="rating rating-sm mt-1">
+                                              <i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i><i class="las la-star"></i>
+                                           </div>
+                                           <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0">
+                                              <a href="https://demo.activeitzone.com/ecommerce/product/Crystal-Chandelier-Lights-Lamp-For-Living-Room-Cristal-Lustre-Chandeliers-tYuf6" class="d-block text-reset" tabindex="-1">Crystal Chandelier Lights Lamp For Living Room Cristal Lustre Chandeliers</a>
+                                           </h3>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                      <button type="button" class="slick-next slick-arrow" style="" aria-disabled="false"><i class="las la-angle-right"></i></button>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="bg-white text-center py-3 px-15px px-lg-25px mt-auto">
+             <p class="mb-0">© Active eCommerce CMS v3.9</p>
+          </div>
+       </div>
+       <!-- .aiz-main-content -->
+    </div>
+    <!-- .aiz-content-wrapper -->
+ </div>

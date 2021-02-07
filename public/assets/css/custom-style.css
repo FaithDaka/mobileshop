@@ -1,0 +1,48 @@
+/*your custom css goes here*/
+:root{
+    --primary: #f2a51f;
+    --hov-primary: #f2a51f;
+    --soft-primary: rgba(230,46,4,0.15);
+}
+
+html,
+body{
+    font-family: 'Mulish', sans-serif;
+    font-weight: 400;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.btn-product-cart {
+	height: 40px;
+	width: 170px;
+	/* box-shadow: -2px 6px 5px 6px #ffefce; */
+	border-radius: 5px;
+	margin-bottom: 5px;
+	background-color: #f90;
+	padding: 0 10px;
+	color: #fff;
+	text-transform: capitalize;
+}
+
+.btn-cart {
+    text-align: left;
+    font-weight: 700;
+}
+
+.btn-product-call {
+	width: 40px;
+	height: 40px;
+	box-shadow: 2px 2px 8px 1px #d3c9b2;
+	border-radius: 5px;
+	padding-top: 10px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+
+.btn-call{
+    position: absolute; 
+    top: 8px;
+    right: 8px;
+    font-weight: 700;
+}
