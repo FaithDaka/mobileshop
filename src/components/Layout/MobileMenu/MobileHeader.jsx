@@ -5,11 +5,13 @@ import './search.css';
 
 const MobileHeader = () => {
     const dispatch = useDispatch();
-    // const { search } = useSelector((state) => ({ ...state }));
-    // const { text } = search;
+    const { search } = useSelector((state) => ({ ...state }));
+    const { text } = search;
     const [showDrawer, setShowDrawer] = useState(false);
 
     const history = useHistory();
+
+    let { cart } = useSelector((state) => ({ ...state }));
 
     const handleChange = (e) => {
         dispatch({
@@ -38,7 +40,7 @@ const MobileHeader = () => {
                 </div>
                 <div className="ft-logo" style={{ paddingRight: '140px' }}>
                     <img
-                        src="images/logo.png"
+                        src={`${process.env.PUBLIC_URL}/images/logo.png`}
                         alt="Logo"
                         width={100}
                     />
@@ -46,7 +48,7 @@ const MobileHeader = () => {
                 <div className="pt-3 text-white">
                     <div className="d-lg-block ml-3 mr-0 ">
                         <i className="la la-shopping-cart la-3x opacity-80" />
-                        <span className="badge badge-circle badge-primary" style={{ position: 'absolute', top: '15px', right: '25px' }}>0</span>
+                        <span className="badge badge-circle badge-primary" style={{ position: 'absolute', top: '15px', right: '25px' }}>{cart.length}</span>
                     </div>
                 </div>
 

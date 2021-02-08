@@ -53,12 +53,12 @@ const TopHeader = () => {
                                 </div>
                                 <ul class="list-group c-scrollbar-light overflow-auto" style={{maxHeight:'300px'}}>
                                     <li class="list-group-item">
-                                        <a href="https://demo.activeitzone.com/ecommerce/admin/inhouse-orders" class="text-reset">
+                                        <a href="#" class="text-reset">
                                             <span class="ml-2">1101 new orders</span>
                                         </a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href="https://demo.activeitzone.com/ecommerce/admin/sellers" class="text-reset">
+                                        <a href="#" class="text-reset">
                                             <span class="ml-2">New verification request(s)</span>
                                         </a>
                                     </li>
@@ -80,11 +80,11 @@ const TopHeader = () => {
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-md">
-                                <a href="https://demo.activeitzone.com/ecommerce/admin/profile" class="dropdown-item">
+                                <a href="#" class="dropdown-item">
                                     <i class="las la-user-circle"></i>
                                     <span>Profile</span>
                                 </a>
-                                <a href="https://demo.activeitzone.com/ecommerce/logout" class="dropdown-item">
+                                <a href="#" class="dropdown-item">
                                     <i class="las la-sign-out-alt"></i>
                                     <span>Logout</span>
                                 </a>

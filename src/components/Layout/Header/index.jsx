@@ -1,8 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import { useSelector } from "react-redux";
 import MobileHeader from '../MobileMenu/MobileHeader'
 
-const Header = () => (
+const Header = () => {
+  let { cart } = useSelector((state) => ({ ...state }));
+
+  const getTotal = () => {
+    return cart.reduce((currentValue, nextValue) => {
+        return currentValue + nextValue.count * nextValue.price;
+    }, 0);
+};
+
+return(
   <>
   <header className="d-none d-lg-block sticky-top  z-1020 border-bottom shadow-sm" style={{background: '#101622'}}>
     <div className="position-relative logo-bar-area">
@@ -14,7 +24,7 @@ const Header = () => (
               href="#"
             >
               <img
-                src="images/logo.png"
+                src={`${process.env.PUBLIC_URL}/images/logo.png`}
                 alt="Logo"
                 width={80}
               />
@@ -134,7 +144,7 @@ const Header = () => (
                 <i className="la la-shopping-cart la-2x opacity-80" />
                 <span className="flex-grow-1 ml-1">
                   <span className="badge badge-primary badge-inline badge-pill">
-                    2
+                  {cart.length}
                   </span>
                   <span className="nav-box-text d-none d-xl-block opacity-70">
                     Cart
@@ -150,6 +160,6 @@ const Header = () => (
   </header>
   <MobileHeader />
   </>
-);
+)};
 
 export default Header;

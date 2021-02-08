@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import CurrencyFormat from 'react-currency-format';
 
-const Receipt = () => {
+const Receipt = ({ location }) => {
+    const orderInfo = location.state;
+    console.log('These are the created order receipt info', orderInfo);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <section class="py-4">
             <div class="container text-left">
@@ -11,8 +19,8 @@ const Receipt = () => {
                                 <div class="text-center py-4 mb-4">
                                     <i class="la la-check-circle la-3x text-success mb-3"></i>
                                     <h1 class="h3 mb-3 fw-600">Thank You for Your Order!</h1>
-                                    <h2 class="h5">Order Code: <span class="fw-700 text-primary">20210205-11125911</span></h2>
-                                    <p class="opacity-70 font-italic">A copy or your order summary has been sent to guest@gmail.com</p>
+                                    <h2 class="h5">Order Code: <span class="fw-700 text-primary">{orderInfo.state._id}</span></h2>
+                                    <p class="opacity-70 font-italic">A copy or your order summary has been sent to {orderInfo.state.email}</p>
                                 </div>
                                 <div class="mb-4">
                                     <h5 class="fw-600 mb-3 fs-17 pb-2">Order Summary</h5>
@@ -20,20 +28,20 @@ const Receipt = () => {
                                         <div class="col-md-6">
                                             <table class="table">
                                                 <tbody><tr>
-                                                    <td class="w-50 fw-600">Order Code:</td>
-                                                    <td>20210205-11125911</td>
+                                                    <td class="w-50 fw-600">Order:</td>
+                                                    <td>{orderInfo.state._id}</td>
                                                 </tr>
                                                     <tr>
                                                         <td class="w-50 fw-600">Name:</td>
-                                                        <td>Frank Mwesigwa</td>
+                                                        <td>{orderInfo.state.name}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="w-50 fw-600">Email:</td>
-                                                        <td>frank@gmail.com</td>
+                                                        <td>{orderInfo.state.email}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="w-50 fw-600">Shipping address:</td>
-                                                        <td>Bukasa Road, Kampala, Uganda</td>
+                                                        <td>{orderInfo.state.address}, Kampala, Uganda</td>
                                                     </tr>
                                                 </tbody></table>
                                         </div>
@@ -41,7 +49,7 @@ const Receipt = () => {
                                             <table class="table">
                                                 <tbody><tr>
                                                     <td class="w-50 fw-600">Order date:</td>
-                                                    <td>05-02-2021 11:12 AM</td>
+                                                    <td>{orderInfo.state.createdAt}</td>
                                                 </tr>
                                                     <tr>
                                                         <td class="w-50 fw-600">Order status:</td>
@@ -49,7 +57,14 @@ const Receipt = () => {
                                                     </tr>
                                                     <tr>
                                                         <td class="w-50 fw-600">Total order amount:</td>
-                                                        <td>UGX 1,500,000</td>
+                                                        <td>UGX
+                                                        <CurrencyFormat
+                                                                value={orderInfo.state.totalPrice}
+                                                                displayType="text"
+                                                                thousandSeparator
+                                                                style={{ fontWeight: '500' }}
+                                                            />
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td class="w-50 fw-600">Shipping:</td>
@@ -69,51 +84,34 @@ const Receipt = () => {
                                         <table class="table table-responsive-md">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
-                                                    <th width="30%">Product</th>
-                                                    <th>Variation</th>
-                                                    <th>Quantity</th>
-                                                    <th>Delivery Type</th>
-                                                    <th class="text-right">Price</th>
+                                                    <th>Product</th>
+                                                    <th>Price</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>
-                                                        <a href="https://demo.activeitzone.com/ecommerce/product/oneplus-8t-128gb256gb-storage-no-card-slot-tqezb" target="_blank" class="text-reset">
-                                                            OnePlus 8T (128GB/256GB storage, no card slot)
-                                                            </a>
-                                                    </td>
-                                                    <td>
-                                                        Aqua
-                                                    </td>
-                                                    <td>
-                                                        1
-                                                    </td>
-                                                    <td>
-                                                        Home Delivery
-                                                                                                            </td>
-                                                    <td class="text-right">$615.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>
-                                                        <a href="https://demo.activeitzone.com/ecommerce/product/AirPods-Max-w3wnf" target="_blank" class="text-reset">
-                                                            AirPods Max
-                                                            </a>
-                                                    </td>
-                                                    <td>
-                                                        LightPink
-                                                    </td>
-                                                    <td>
-                                                        1
-                                                    </td>
-                                                    <td>
-                                                        Home Delivery
-                                                                                                            </td>
-                                                    <td class="text-right">$660.00</td>
-                                                </tr>
+                                                {orderInfo.state.orderItems.map((product) => (
+                                                    <tr >
+                                                        <td>
+                                                            <img
+                                                                src={product.images && product.images.length ? product.images[0].url : ''}
+                                                                alt="product-img"
+                                                                width="100"
+                                                            />
+
+                                                            <td>{product.title}</td>
+                                                        </td>
+                                                        <td >
+                                                            UGX{' '}
+                                                            <CurrencyFormat
+                                                                value={product.price}
+                                                                displayType="text"
+                                                                thousandSeparator
+                                                                style={{ fontWeight: '500' }}
+                                                            />
+                                                        </td>
+                                                    </tr>
+
+                                                ))}
                                             </tbody>
                                         </table>
                                     </div>
@@ -124,31 +122,41 @@ const Receipt = () => {
                                                     <tr>
                                                         <th>Subtotal</th>
                                                         <td class="text-right">
-                                                            <span class="fw-600">$1,275.00</span>
+                                                            <span class="fw-600">UGX <CurrencyFormat
+                                                                value={orderInfo.state.totalPrice}
+                                                                displayType="text"
+                                                                thousandSeparator
+                                                                style={{ fontWeight: '700', color: "#ff9900" }}
+                                                            /></span>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th>Shipping</th>
                                                         <td class="text-right">
-                                                            <span class="font-italic">$0.00</span>
+                                                            <span class="font-italic">0.00</span>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th>Tax</th>
                                                         <td class="text-right">
-                                                            <span class="font-italic">$0.00</span>
+                                                            <span class="font-italic">0.00</span>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Coupon Discount</th>
+                                                        <th>Discount</th>
                                                         <td class="text-right">
-                                                            <span class="font-italic">$0.00</span>
+                                                            <span class="font-italic">0.00</span>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th><span class="fw-600">Total</span></th>
                                                         <td class="text-right">
-                                                            <strong><span>$1,275.00</span></strong>
+                                                            <strong><span>UGX <CurrencyFormat
+                                                                value={orderInfo.state.totalPrice}
+                                                                displayType="text"
+                                                                thousandSeparator
+                                                                style={{ fontWeight: '700', color: "#ff9900" }}
+                                                            /></span></strong>
                                                         </td>
                                                     </tr>
                                                 </tbody>

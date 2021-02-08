@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import CurrencyFormat from 'react-currency-format';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-const CartDetails = () => {
+const CartDetails = ({ cart, total }) => {
     return (
         <section class="mb-4" id="cart-summary">
             <div class="container">
@@ -18,104 +20,98 @@ const CartDetails = () => {
                                     <div class="col-auto fw-600">Remove</div>
                                 </div>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item px-0 px-lg-3">
-                                        <div class="row gutters-5">
-                                            <div class="col-lg-5 d-flex">
-                                                <span class="mr-2 ml-0">
-                                                    <img src="images/phones/1612434188404-apple-12-a.jpeg" class="size-60px rounded" alt="OnePlus 8T (128GB/256GB storage, no card slot)" />
-                                                </span>
-                                                <span class="fs-14 opacity-60">OnePlus 8T (128GB/256GB storage, no card slot) - Aqua</span>
-                                            </div>
 
-                                            <div class="col-lg col-4 order-1 order-lg-0 my-3 my-lg-0">
-                                                <span class="opacity-60 fs-12 d-block d-lg-none">Price</span>
-                                                <span class="fw-600 fs-16">2,000,000</span>
-                                            </div>
-                                            <div class="col-lg col-4 order-2 order-lg-0 my-3 my-lg-0">
-                                                <span class="opacity-60 fs-12 d-block d-lg-none">Discount</span>
-                                                <span class="fw-600 fs-16">10%</span>
-                                            </div>
+                                    {
+                                        cart.map((item) =>
+                                            <li class="list-group-item px-0 px-lg-3">
+                                                <div class="row gutters-5">
+                                                    <div class="col-lg-5 d-flex">
+                                                        <span class="mr-2 ml-0">
+                                                            {
+                                                                item.images && item.images.length ?
+                                                                    <LazyLoadImage src={item.images[0].url} alt="cart images"
+                                                                        width="60"
+                                                                    /> : ''
+                                                            }
+                                                        </span>
+                                                        <span class="fs-14 opacity-60">
+                                                            {item.title}
+                                                        </span>
+                                                    </div>
 
-                                            <div class="col-lg col-6 order-4 order-lg-0">
-                                                <div class="row no-gutters align-items-center aiz-plus-minus mr-2 ml-0">
-                                                    <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="minus" data-field="quantity[0]">
-                                                        <i class="las la-minus"></i>
-                                                    </button>
-                                                    <input type="text" name="quantity[0]" class="col border-0 text-center flex-grow-1 fs-16 input-number" placeholder="1" value="1" min="1" max="10" readonly="" onchange="updateQuantity(0, this)" />
-                                                    <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="plus" data-field="quantity[0]">
-                                                        <i class="las la-plus"></i>
-                                                    </button>
+                                                    <div class="col-lg col-4 order-1 order-lg-0 my-3 my-lg-0">
+                                                        <span class="opacity-60 fs-12 d-block d-lg-none">Price</span>
+                                                        <span class="fw-600 fs-16">
+                                                            {item.discount ? <CurrencyFormat
+                                                                value={item.discountprice}
+                                                                displayType="text"
+                                                                thousandSeparator
+                                                            /> : <CurrencyFormat
+                                                                    value={item.price}
+                                                                    displayType="text"
+                                                                    thousandSeparator
+                                                                />}</span>
+                                                    </div>
+                                                    <div class="col-lg col-4 order-2 order-lg-0 my-3 my-lg-0">
+                                                        <span class="opacity-60 fs-12 d-block d-lg-none">Discount</span>
+                                                        <span class="fw-600 fs-16">{item.discount ? item.discount : 0} %</span>
+                                                    </div>
+
+                                                    <div class="col-lg col-6 order-4 order-lg-0">
+                                                        <div class="row no-gutters align-items-center aiz-plus-minus mr-2 ml-0">
+                                                            <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="minus" data-field="quantity[0]">
+                                                                <i class="las la-minus"></i>
+                                                            </button>
+                                                            <input type="text" name="quantity[0]" class="col border-0 text-center flex-grow-1 fs-16 input-number" placeholder="1" value="1" min="1" max="10" readonly="" onchange="updateQuantity(0, this)" />
+                                                            <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="plus" data-field="quantity[0]">
+                                                                <i class="las la-plus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg col-4 order-3 order-lg-0 my-3 my-lg-0">
+                                                        <span class="opacity-60 fs-12 d-block d-lg-none">Total</span>
+                                                        <span class="fw-600 fs-16 text-primary">{item.discount ? <CurrencyFormat
+                                                            value={item.discountprice}
+                                                            displayType="text"
+                                                            thousandSeparator
+                                                        /> : <CurrencyFormat
+                                                                value={item.price}
+                                                                displayType="text"
+                                                                thousandSeparator
+                                                            />}</span>
+                                                    </div>
+                                                    <div class="col-lg-auto col-6 order-5 order-lg-0 text-right">
+                                                        <a href="#" class="btn btn-icon btn-sm btn-soft-primary btn-circle">
+                                                            <i class="las la-trash"></i>
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg col-4 order-3 order-lg-0 my-3 my-lg-0">
-                                                <span class="opacity-60 fs-12 d-block d-lg-none">Total</span>
-                                                <span class="fw-600 fs-16 text-primary">2,000,000</span>
-                                            </div>
-                                            <div class="col-lg-auto col-6 order-5 order-lg-0 text-right">
-                                                <a href="#"  class="btn btn-icon btn-sm btn-soft-primary btn-circle">
-                                                    <i class="las la-trash"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item px-0 px-lg-3">
-                                        <div class="row gutters-5">
-                                            <div class="col-lg-5 d-flex">
-                                                <span class="mr-2 ml-0">
-                                                    <img src="images/phones/1612431654138-apple4.jpeg" class="size-60px rounded" alt="AirPods Max" />
-                                                </span>
-                                                <span class="fs-14 opacity-60">AirPods Max - LightPink</span>
-                                            </div>
+                                            </li>
 
-                                            <div class="col-lg col-4 order-1 order-lg-0 my-3 my-lg-0">
-                                                <span class="opacity-60 fs-12 d-block d-lg-none">Price</span>
-                                                <span class="fw-600 fs-16">800,000</span>
-                                            </div>
-                                            <div class="col-lg col-4 order-2 order-lg-0 my-3 my-lg-0">
-                                                <span class="opacity-60 fs-12 d-block d-lg-none">Discount</span>
-                                                <span class="fw-600 fs-16">5%</span>
-                                            </div>
-
-                                            <div class="col-lg col-6 order-4 order-lg-0">
-                                                <div class="row no-gutters align-items-center aiz-plus-minus mr-2 ml-0">
-                                                    <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="minus" data-field="quantity[1]">
-                                                        <i class="las la-minus"></i>
-                                                    </button>
-                                                    <input type="text" name="quantity[1]" class="col border-0 text-center flex-grow-1 fs-16 input-number" placeholder="1" value="1" min="1" max="10" readonly="" onchange="updateQuantity(1, this)" />
-                                                    <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="plus" data-field="quantity[1]">
-                                                        <i class="las la-plus"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg col-4 order-3 order-lg-0 my-3 my-lg-0">
-                                                <span class="opacity-60 fs-12 d-block d-lg-none">Total</span>
-                                                <span class="fw-600 fs-16 text-primary">800,000</span>
-                                            </div>
-                                            <div class="col-lg-auto col-6 order-5 order-lg-0 text-right">
-                                                <a href="#"  class="btn btn-icon btn-sm btn-soft-primary btn-circle">
-                                                    <i class="las la-trash"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
+                                        )
+                                    }
                                 </ul>
                             </div>
 
                             <div class="px-3 py-2 mb-4 border-top d-flex justify-content-between">
                                 <span class="opacity-60 fs-15">Subtotal</span>
-                                <span class="fw-600 fs-17">UGX 2,800,000</span>
+                                <span class="fw-600 fs-17">UGX <CurrencyFormat
+                                    value={total}
+                                    displayType="text"
+                                    thousandSeparator
+                                /></span>
                             </div>
                             <div class="row align-items-center">
                                 <div class="col-md-6 text-center text-md-left order-1 order-md-0">
-                                    <a href="https://demo.activeitzone.com/ecommerce" class="btn btn-link">
+                                    <Link to="/" class="btn btn-link">
                                         <i class="las la-arrow-left"></i>
                                     Return to shop
-                                </a>
+                                </Link>
                                 </div>
                                 <Link to="/checkout">
-                                <div class="col-md-6 text-center text-md-right">
-                                    <button class="btn btn-primary fw-600" onclick="showCheckoutModal()">Continue to Shipping</button>
-                                </div>
+                                    <div class="col-md-6 text-center text-md-right">
+                                        <button class="btn btn-primary fw-600">Continue to Shipping</button>
+                                    </div>
                                 </Link>
                             </div>
                         </div>

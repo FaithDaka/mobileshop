@@ -1,37 +1,69 @@
-/* eslint-disable react/jsx-no-target-blank */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/button-has-type */
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable max-len */
-/* eslint-disable react/style-prop-object */
-import React from "react";
+import React, { useEffect, useState } from "react";
+import _ from "lodash";
 import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
 import ProductSpecs from "./ProductSpecs";
 import Thumbnails from "./thumbnails";
 
-const ProductDetails = () => (
+import { getProduct, getRelated } from "../../functions/products";
+import LoadSpinner from '../../components/Spinner';
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+const ProductDetails = ({ match, history }) => {
+    let productId = match.params.id;
+
+    const [product, setProduct] = useState({});
+    const [related, setRelated] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [pricestorage, setPriceStorage] = useState();
+    
+    const SelectPrice = (e) => {
+        setPriceStorage(e.target.value)
+    }
+
+    const loadSingleProduct = () => {
+        setLoading(true)
+        getProduct(productId).then((res) => {
+            setProduct(res.data)
+            getRelated(res.data._id).then((res) => setRelated(res.data));
+            setLoading(false);
+        })
+    }
+
+
+    useEffect(() => {
+        loadSingleProduct();
+    }, [productId]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+    console.log("product details", product)
+    console.log("related details", related)
+    return(
     <>
         <section class="mb-4 pt-3">
             <div class="container">
+            {loading && <LoadSpinner />}
                 <div class="bg-white shadow-sm rounded p-3">
                     <div class="row">
                         <div class="col-xl-5 col-lg-6 mb-4">
-                            <ProductImage />
-                            <Thumbnails />
+                            <ProductImage product={product} />
+                            <Thumbnails product={product} />
                         </div>
 
                         <div class="col-xl-7 col-lg-6">
-                            <ProductInfo />
+                            <ProductInfo product={product} />
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <ProductSpecs />
+        <ProductSpecs product={product} related={related} />
     </>
-);
+)}
 
 export default ProductDetails;

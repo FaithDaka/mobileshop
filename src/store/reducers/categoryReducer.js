@@ -1,7 +1,3 @@
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable default-case */
-/* eslint-disable import/no-anonymous-default-export */
 import { categoryConstansts } from "../actions/constants";
 
 const initState = {

@@ -1,12 +1,12 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/anchor-has-content */
-/* eslint-disable max-len */
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from "react-redux";
 import './styles.css'
 
-const BottomMenu = ({open}) => (
+const BottomMenu = ({open}) => {
+  let { cart } = useSelector((state) => ({ ...state }));
+
+  return(
   <div className="d-block d-lg-none bottom__menu">
       <div className="navigation--list">
         <div className="navigation__content">
@@ -45,7 +45,7 @@ const BottomMenu = ({open}) => (
                     marginLeft: '-2.5px', color: '#f2f2f2', fontSize: '12px', fontWeight: '800'
                   }}
                 >
-                  {/* {cart.length} */}
+                 {cart.length}
                 </span>
               </div>
                 <span style={{ color: '#bbb' }}>Cart</span>
@@ -55,6 +55,6 @@ const BottomMenu = ({open}) => (
         </div>
       </div>
     </div>
-    )
+    )};
 
 export default BottomMenu

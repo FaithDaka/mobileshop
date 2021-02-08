@@ -37,7 +37,7 @@ const Product = ({ product }) => {
   };
 
   return (
-    <div className="col mb-2">
+    <div className="pr-1">
       <div className="aiz-card-box border border-light rounded shadow-sm hov-shadow-md h-100 has-transition bg-white">
         {showAlert && (
           <SweetAlert
