@@ -16,7 +16,7 @@ const Categories = () => (
             </a>
           </div>
         </div>
-        <div className="col-xl col-md-6">
+        <div className="d-none d-lg-block col-xl col-md-6">
           <div className="mb-3 mb-lg-0">
             <a href="#" className="d-block text-reset">
               <img src={pic2} alt="Active eCommerce CMS promo" className="img-fluid lazyloaded" />
@@ -24,7 +24,7 @@ const Categories = () => (
             
           </div>
         </div>
-        <div className="col-xl col-md-6">
+        <div className="d-none d-lg-block col-xl col-md-6">
           <div className="mb-3 mb-lg-0">
             <a href="#" className="d-block text-reset">
               <img src={pic3} alt="Active eCommerce CMS promo" className="img-fluid lazyloaded" />

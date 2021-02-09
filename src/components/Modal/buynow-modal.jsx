@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import axios from "axios";
-import { toast } from "react-toastify";
-import { withRouter } from 'react-router-dom'
-import { useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
 import Modal from 'react-modal';
-import { setAuthToken } from '../../functions/setAuthToken';
 import LoadSpinner from "../../components/Spinner"
+import { loginBuynow } from "../../store/actions/auth"
 import './verify.css';
 import './tel.css';
 
@@ -22,34 +21,20 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-const BuyNowModal = ({ modalIsOpen, close, history }) => {
+const BuyNowModal = ({ modalIsOpen, close }) => {
 
     const [phone, setPhone] = useState('')
+    const [role, setRole] = useState('user')
     const [hash, setHash] = useState('')
     const [otp, setOTP] = useState('')
     const [loading, setLoading] = useState(false)
-    const [otploading, setOTPLoading] = useState(false)
 
     let dispatch = useDispatch();
+    const history = useHistory();
+    const auth = useSelector(state => state.auth);
     
     const number = parseInt(phone, 10)
     const phonenumber = `+256${number}`
-
-    const loadUser = async () => {
-        if (localStorage.token) {
-            setAuthToken(localStorage.token)
-        }
-
-        try {
-            const res = await axios.get(`${process.env.REACT_APP_API}/otp/user`)
-            dispatch({
-                type: "USER_LOADED",
-                payload: res.data
-            })
-        } catch (err) {
-            dispatch({ type: "LOGOUT_SUCCESS" })
-        }
-    }
 
     const sendOTP = (e) => {
         setLoading(true)
@@ -63,34 +48,13 @@ const BuyNowModal = ({ modalIsOpen, close, history }) => {
     }
 
     const confirmOTP = (e) => {
-        setOTPLoading(true)
         e.preventDefault()
-        axios.post(`${process.env.REACT_APP_API}/otp/verifyOTP`, { phonenumber, hash, otp })
-            .then(res => {
-                setOTPLoading(false)
-                toast.success(`${res.data.message}`);
-                close()
-                history.push("/shop/buynow");
-                //create verifed user in the database
-                axios.post(`${process.env.REACT_APP_API}/auth`, { phonenumber })
-                    .then(user => {
-                        dispatch({
-                            type: "LOGIN_SUCCESS",
-                            payload: {
-                                phonenumber: res.data.phonenumber,
-                                token: res.data.token,
-                                role: user.data.role
-                            },
-                        });
-                        loadUser();
-                    })
-                    .catch(error => {
-                        dispatch({ type: "LOGIN_FAILED" })
-                    })
-            })
-            .catch((error) => {
-                console.error(error.message)
-            })
+
+        const user = {
+            phonenumber, hash, otp, role
+        }
+
+        dispatch(loginBuynow(user, history));
     }
 
     return (
@@ -185,7 +149,7 @@ const BuyNowModal = ({ modalIsOpen, close, history }) => {
                                     <span class="a-button a-spacing-medium a-button-span12 a-button-primary" id="a-autoid-0"><span class="a-button-inner">
                                         <input id="auth-verify-button" name="pvSubmit" class="a-button-input" type="submit" aria-labelledby="a-autoid-1-announce" />
                                         <span class="a-button-text" aria-hidden="true" id="a-autoid-1-announce">
-                                            {otploading ? <LoadSpinner /> : <span>Login into your account</span>}
+                                            {auth.authenticating ? <LoadSpinner /> : <span>Login into your account</span>}
                                         </span></span></span>
                                     <div class="a-section a-spacing-base">
                                         <div id="legalTextRow" class="a-row a-spacing-top-medium a-size-small">
@@ -205,4 +169,4 @@ const BuyNowModal = ({ modalIsOpen, close, history }) => {
 }
 
 
-export default withRouter(BuyNowModal);
+export default BuyNowModal;

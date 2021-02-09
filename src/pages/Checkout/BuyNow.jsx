@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
 import SweetAlert from 'react-bootstrap-sweetalert';
 import CurrencyFormat from 'react-currency-format';
 import CartHeader from '../Cart/CartHeader'
 import Spinner from '../../components/Spinner'
 
-const Checkout = ({ history }) => {
+const BuyNow = ({ history }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
@@ -15,15 +14,7 @@ const Checkout = ({ history }) => {
     const [showAlert, setShowAlert] = useState(false);
 
     const hideAlert = () => setShowAlert(false);
-
-    const dispatch = useDispatch();
-    const { cart } = useSelector((state) => ({ ...state }));
-
-    const getTotal = () => {
-        return cart.reduce((currentValue, nextValue) => {
-            return nextValue.discount ? currentValue + nextValue.count * nextValue.discountprice : currentValue + nextValue.count * nextValue.price
-        }, 0);
-    };
+    const cart = JSON.parse(localStorage.getItem("buynow"));
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -42,7 +33,7 @@ const Checkout = ({ history }) => {
                 paymentMethod: 'cash',
                 shippingPrice: 0,
                 taxPrice: 0,
-                totalPrice: getTotal()
+                totalPrice: cart.discount ? cart.discountprice : cart.price
             }
 
             const res = await axios.post(`${process.env.REACT_APP_API}/orders`, orderData);
@@ -50,11 +41,7 @@ const Checkout = ({ history }) => {
 
             setLoading(false)
             setShowAlert(true);
-            if (typeof window !== "undefined") localStorage.removeItem("cart");
-            dispatch({
-                type: "ADD_TO_CART",
-                payload: [],
-            });
+            if (typeof window !== "undefined") localStorage.removeItem("buynow");
 
             history.push('/receipt', {
                 state: res.data
@@ -158,7 +145,7 @@ const Checkout = ({ history }) => {
                                 <div class="card-header">
                                     <h3 class="fs-16 fw-600 mb-0">Summary</h3>
                                     <div class="text-right">
-                                        <span class="badge badge-inline badge-primary">{cart.length} Items</span>
+                                        <span class="badge badge-inline badge-primary">1 Item</span>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -170,20 +157,19 @@ const Checkout = ({ history }) => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {cart.map((item, index) =>
-                                                <tr key={index}>
-                                                    <td>{item.title}</td>
-                                                    <td class="text-right">UGX {item.discount ? <CurrencyFormat
-                                                        value={item.discountprice}
+                                            <tr>
+                                                <td>{cart.title}</td>
+                                                <td class="text-right">UGX {cart.discount ? <CurrencyFormat
+                                                    value={cart.discountprice}
+                                                    displayType="text"
+                                                    thousandSeparator
+                                                /> : <CurrencyFormat
+                                                        value={cart.price}
                                                         displayType="text"
                                                         thousandSeparator
-                                                    /> : <CurrencyFormat
-                                                            value={item.price}
-                                                            displayType="text"
-                                                            thousandSeparator
-                                                        />}</td>
-                                                </tr>
-                                            )}
+                                                    />}</td>
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                     <table class="table">
@@ -191,11 +177,16 @@ const Checkout = ({ history }) => {
                                             <tr class="cart-subtotal">
                                                 <th>Subtotal</th>
                                                 <td class="text-right">
-                                                    <span class="fw-600">UGX <CurrencyFormat
-                                                        value={getTotal()}
-                                                        displayType="text"
-                                                        thousandSeparator
-                                                    /></span>
+                                                    <span class="fw-600">UGX
+                                                        {cart.discount ? <CurrencyFormat
+                                                            value={cart.discountprice}
+                                                            displayType="text"
+                                                            thousandSeparator
+                                                        /> : <CurrencyFormat
+                                                                value={cart.price}
+                                                                displayType="text"
+                                                                thousandSeparator
+                                                            />}</span>
                                                 </td>
                                             </tr>
                                             <tr class="cart-shipping">
@@ -213,11 +204,16 @@ const Checkout = ({ history }) => {
                                             <tr class="cart-total">
                                                 <th><span class="strong-600">Total</span></th>
                                                 <td class="text-right">
-                                                    <strong><span>UGX <CurrencyFormat
-                                                        value={getTotal()}
-                                                        displayType="text"
-                                                        thousandSeparator
-                                                    /></span></strong>
+                                                    <strong><span>UGX
+                                                        {cart.discount ? <CurrencyFormat
+                                                            value={cart.discountprice}
+                                                            displayType="text"
+                                                            thousandSeparator
+                                                        /> : <CurrencyFormat
+                                                                value={cart.price}
+                                                                displayType="text"
+                                                                thousandSeparator
+                                                            />}</span></strong>
                                                 </td>
                                             </tr>
                                         </tfoot>
@@ -258,4 +254,4 @@ const Checkout = ({ history }) => {
     )
 }
 
-export default Checkout
+export default BuyNow

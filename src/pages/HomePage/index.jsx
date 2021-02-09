@@ -29,7 +29,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Banner />
+      {/* <Banner /> */}
       <Promos />
       <ProductGroup products={products} loading={loading} />
     </>

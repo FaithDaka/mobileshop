@@ -3,7 +3,6 @@ import CurrencyFormat from 'react-currency-format';
 
 const Receipt = ({ location }) => {
     const orderInfo = location.state;
-    console.log('These are the created order receipt info', orderInfo);
 
     useEffect(() => {
         window.scrollTo(0, 0)

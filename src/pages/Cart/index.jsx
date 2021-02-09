@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 import { useSelector } from "react-redux";
-// import LoginModal from "../../components/Modal/login-modal";
+import { useHistory } from 'react-router-dom'
 import CartHeader from './CartHeader'
 import CartDetails from './CartDetails'
+import LoginModal from "../../components/Modal/login-modal";
 
-const Cart = (props) => {
+const Cart = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
 
     const openModal = () => setIsOpen(true);
     const closeModal = () => setIsOpen(false);
 
-    const { cart, user } = useSelector((state) => ({ ...state }));
+    const history = useHistory();
+    const { cart } = useSelector((state) => ({ ...state }));
+    const auth = useSelector(state => state.auth);
 
     const getTotal = () => {
         return cart.reduce((currentValue, nextValue) => {
@@ -24,10 +25,10 @@ const Cart = (props) => {
 
     const goToCheckout = (e) => {
         e.preventDefault()
-        if (!user.isAuthenticated) {
-            openModal()
+        if (auth.authenticate) {
+            history.push("/checkout");
         } else {
-            props.history.push("/shop/checkout");
+            openModal()
         }
     };
 
@@ -37,9 +38,9 @@ const Cart = (props) => {
 
     return (
         <>
-        {/* <LoginModal modalIsOpen={modalIsOpen} close={closeModal} /> */}
             <CartHeader />
-            <CartDetails cart={cart} total={getTotal()} />
+            <CartDetails cart={cart} total={getTotal()} checkout={goToCheckout} />
+            <LoginModal modalIsOpen={modalIsOpen} close={closeModal} />
         </>
     )
 }

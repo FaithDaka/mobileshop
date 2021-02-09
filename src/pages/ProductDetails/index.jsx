@@ -40,9 +40,7 @@ const ProductDetails = ({ match, history }) => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-
-    console.log("product details", product)
-    console.log("related details", related)
+    
     return(
     <>
         <section class="mb-4 pt-3">

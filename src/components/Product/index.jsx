@@ -6,6 +6,7 @@ import Truncate from 'react-truncate';
 import CurrencyFormat from 'react-currency-format';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import './styles.css'
 
 const Product = ({ product }) => {
   const [showAlert, setShowAlert] = useState(false);
@@ -50,7 +51,6 @@ const Product = ({ product }) => {
         )}
         <div className="position-relative">
           <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`} className="d-block text-center pt-3">
-            {/* <img className="mx-auto h-160px h-sm-200px h-md-220px h-xl-270px lazyloaded" src={props.image} alt="productpicture" /> */}
             <LazyLoadImage
               alt="product"
               src={product.images && product.images.length ? product.images[0].url : ''}
@@ -64,7 +64,7 @@ const Product = ({ product }) => {
         </div>
         <div className="p-md-3 p-2 text-left">
           <div className="fs-15">
-            <div className="fw-600 text-reset" style={{color:'blue'}}>{product.subs ? product.subs.name : ''}</div>
+            <div className="fw-600 ms-brand" style={{color:'blue'}}>{product.subs ? product.subs.name : ''}</div>
             {
               product.discountprice ?
                 <>
@@ -76,15 +76,17 @@ const Product = ({ product }) => {
                       thousandSeparator
                     />
                   </span>
+                  <div className="s-prc-w">
                   <del className="d-block opacity-70">
                     <CurrencyFormat
-                      prefix={"UGX "}
+                      // prefix={"UGX "}
                       value={product.price}
                       displayType="text"
                       thousandSeparator
                     />
-                    <div class="tag _dsct _sm">-{product.discount}%</div>
                   </del>
+                  <div class="tag _dsct _sm">-{product.discount}%</div>
+                  </div>
                 </> :
 
                 <span className="fw-600 text-reset">

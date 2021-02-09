@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import CurrencyFormat from 'react-currency-format';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-const CartDetails = ({ cart, total }) => {
+const CartDetails = ({ cart, total, checkout }) => {
     return (
         <section class="mb-4" id="cart-summary">
             <div class="container">
@@ -108,11 +108,9 @@ const CartDetails = ({ cart, total }) => {
                                     Return to shop
                                 </Link>
                                 </div>
-                                <Link to="/checkout">
                                     <div class="col-md-6 text-center text-md-right">
-                                        <button class="btn btn-primary fw-600">Continue to Shipping</button>
+                                        <button class="btn btn-primary fw-600" onClick={checkout}>Continue to Shipping</button>
                                     </div>
-                                </Link>
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => (
   <section className="bg-dark py-5 text-light d-none d-lg-block">
@@ -7,21 +8,13 @@ const Footer = () => (
       <div className="row">
         <div className="col-lg-5 col-xl-4 text-center text-md-left">
           <div className="mt-4">
-            <a href="https://demo.activeitzone.com/ecommerce" className="d-block">
+            <Link to="/" className="d-block">
               <img className=" ls-is-cached lazyloaded" src="images/logo.png" alt="MobileShop Logo" height="44" />
-            </a>
+            </Link>
             <div className="my-3">
               <span className="ld-fh-txt">MobileShopUg is an African e-commerce company currently operating in Uganda. Our head office is located in the capital city of Kampala - Uganda on kampala road plaza.</span>                    
             </div>
             <div className="d-inline-block d-md-block">
-              {/* <form class="form-inline" method="POST" action="https://demo.activeitzone.com/ecommerce/subscribers">
-                            <input type="hidden" name="_token" value="vbe0XjyB2Y0iwfSdZKC7OF33baVmgFU288VfaOks"/>                            <div class="form-group mb-0"/>
-                                <input type="email" class="form-control" placeholder="Your Email Address" name="email" required=""/>
-                            </div>
-                            <button type="submit" class="btn btn-primary">
-                                Subscribe
-                            </button>
-                        </form> */}
             </div>
           </div>
         </div>
@@ -42,7 +35,7 @@ const Footer = () => (
               <li className="mb-2">
                 <span className="d-block opacity-30">Email:</span>
                 <span className="d-block opacity-70">
-                  <a href="mailto:demo@example.com" className="text-reset">demo@example.com</a>
+                  <a href="mailto:info@mobileshop.ug" className="text-reset">info@mobileshop.ug</a>
                 </span>
               </li>
             </ul>
@@ -55,18 +48,18 @@ const Footer = () => (
             </h4>
             <ul className="list-unstyled">
               <li className="mb-2">
-                <a href="https://nyc.com" className="opacity-50 hov-opacity-100 text-reset">
-                  NY Office
+                <a href="#" className="opacity-50 hov-opacity-100 text-reset">
+                  Kampala Office
                 </a>
               </li>
               <li className="mb-2">
-                <a href="https://london.com" className="opacity-50 hov-opacity-100 text-reset">
-                  London Office
+                <a href="#" className="opacity-50 hov-opacity-100 text-reset">
+                  Mbarara Office
                 </a>
               </li>
               <li className="mb-2">
-                <a href="https://sydney.com" className="opacity-50 hov-opacity-100 text-reset">
-                  Sydney Office
+                <a href="#" className="opacity-50 hov-opacity-100 text-reset">
+                  Jinja Office
                 </a>
               </li>
             </ul>
@@ -80,27 +73,27 @@ const Footer = () => (
             </h4>
             <ul className="list-unstyled">
               <li className="mb-2">
-                <a className="opacity-50 hov-opacity-100 text-reset" href="https://demo.activeitzone.com/ecommerce/users/login">
+                <a className="opacity-50 hov-opacity-100 text-reset" href="#">
                   Login
                 </a>
               </li>
               <li className="mb-2">
-                <a className="opacity-50 hov-opacity-100 text-reset" href="https://demo.activeitzone.com/ecommerce/purchase_history">
+                <a className="opacity-50 hov-opacity-100 text-reset" href="#">
                   Order History
                 </a>
               </li>
               <li className="mb-2">
-                <a className="opacity-50 hov-opacity-100 text-reset" href="https://demo.activeitzone.com/ecommerce/wishlists">
+                <a className="opacity-50 hov-opacity-100 text-reset" href="#">
                   My Wishlist
                 </a>
               </li>
               <li className="mb-2">
-                <a className="opacity-50 hov-opacity-100 text-reset" href="https://demo.activeitzone.com/ecommerce/track_your_order">
+                <a className="opacity-50 hov-opacity-100 text-reset" href="#">
                   Track Order
                 </a>
               </li>
               <li className="mb-2">
-                <a className="opacity-50 hov-opacity-100 text-light" href="https://demo.activeitzone.com/ecommerce/affiliate">Be an affiliate partner</a>
+                <a className="opacity-50 hov-opacity-100 text-light" href="#">Be an affiliate partner</a>
               </li>
             </ul>
           </div>

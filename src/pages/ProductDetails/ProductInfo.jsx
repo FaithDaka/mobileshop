@@ -1,21 +1,28 @@
 import React, { useState } from "react";
 import _ from "lodash";
-import { Link } from 'react-router-dom'
-import { useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
 import CurrencyFormat from 'react-currency-format';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import BuyNowModal from "../../components/Modal/buynow-modal";
 
-const ProductInfo = ({ product, history }) => {
+const ProductInfo = ({ product }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
   const hideAlert = () => setShowAlert(false);
 
+  const history = useHistory();
+  const auth = useSelector(state => state.auth);
+
   const openModal = () => {
-    setIsOpen(true);
-    //history.push("/shop/buynow");
-    localStorage.setItem("buynow", JSON.stringify(product));
+    if (auth.authenticate) {
+      localStorage.setItem("buynow", JSON.stringify(product));
+      history.push("/buynow");
+    } else {
+      setIsOpen(true);
+      localStorage.setItem("buynow", JSON.stringify(product));
+    }
   };
 
   const closeModal = () => setIsOpen(false);
@@ -77,18 +84,15 @@ const ProductInfo = ({ product, history }) => {
         </div>
       </div>
       <hr />
-      <div class="row align-items-center">
+      {/* <div class="row align-items-center">
         <div class="col-auto">
           <small class="mr-2 opacity-50">Brand: </small>
         </div>
-        {/* <div class="col-auto">
-                        <button class="btn btn-sm btn-soft-primary" onclick="show_chat_modal()">Message Seller</button>
-                     </div> */}
         <div class="col-auto">
           <img src="https://demo.activeitzone.com/ecommerce/public/uploads/brands/4O6dOeaRludravngfvPPE0IEJukftaQZEt2uQVQ9.jpeg" alt="Apple" height="30" />
         </div>
       </div>
-      <hr />
+      <hr /> */}
       <div class="row no-gutters mt-3">
         <div class="col-sm-2">
           <div class="opacity-50 my-2">Price:</div>
@@ -108,7 +112,7 @@ const ProductInfo = ({ product, history }) => {
           </div>
         </div>
       </div>
-      <div class="row no-gutters mt-4">
+      <div class="row no-gutters">
         <div class="col-sm-2">
           <div class="opacity-50 my-2">Description:</div>
         </div>
@@ -243,12 +247,10 @@ const ProductInfo = ({ product, history }) => {
 
       </form>
       <div class="mt-3">
-        {/* <Link to="/cart"> */}
-          <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
-            <i class="las la-shopping-bag"></i>
-            <span class="d-md-inline-block"> Add to cart</span>
-          </button>
-        {/* </Link> */}
+        <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
+          <i class="las la-shopping-bag"></i>
+          <span class="d-md-inline-block"> Add to cart</span>
+        </button>
         <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
           <i class="la la-shopping-cart"></i> Buy Now
                      </button>
