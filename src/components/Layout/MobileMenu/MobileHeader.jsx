@@ -55,20 +55,22 @@ const MobileHeader = () => {
                     </i>
                 </div>
                 <div className="ft-logo">
+                    <Link to="/">
                     <img
                         src={`${process.env.PUBLIC_URL}/images/logo.png`}
                         alt="Logo"
                         width={100}
                     />
+                    </Link>
                 </div>
                 <div class="aiz-topbar-item ml-2 text-white">
                     <div class="align-items-stretch d-flex dropdown">
-                        {!auth.authenticate ? <a class="dropdown-toggle no-arrow text-dark" 
-                        onClick={openModal}><span class="text-white">
-                            <span class="avatar avatar-sm mr-md-2">
-                                <i class="las la-user-check" style={{ fontSize: '32px' }}></i>
-                            </span>
-                        </span></a> : <a class="dropdown-toggle no-arrow text-dark" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
+                        {!auth.authenticate ? <a class="dropdown-toggle no-arrow text-dark"
+                            onClick={openModal}><span class="text-white">
+                                <span class="avatar avatar-sm mr-md-2">
+                                    <i class="las la-user-check" style={{ fontSize: '32px' }}></i>
+                                </span>
+                            </span></a> : <a class="dropdown-toggle no-arrow text-dark" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
                                 <span class="text-white">
                                     <span class="avatar avatar-sm mr-md-2">
                                         <i class="las la-user-check" style={{ fontSize: '32px' }}></i>
@@ -84,6 +86,10 @@ const MobileHeader = () => {
                                             <i class="las la-user" style={{ fontSize: '24px' }}></i>
                                             <span>{auth.phonenumber}</span>
                                         </a>
+                                        {auth.role === 'admin' ? <Link to="/admin/dashboard" class="dropdown-item">
+                                            <i class="las la-cog" style={{ fontSize: '24px' }}></i>
+                                            <span>Admin DashBoard</span>
+                                        </Link> : ''}
                                         <Link to="#" class="dropdown-item" onClick={logout}>
                                             <i class="las la-sign-out-alt" style={{ fontSize: '24px' }}></i>
                                             <span>Logout</span>
@@ -103,7 +109,7 @@ const MobileHeader = () => {
                 <div className="pt-3 text-white">
                     <div className="d-lg-block ml-3 mr-0 ">
                         <i className="la la-shopping-cart la-3x opacity-80" />
-                        <span className="badge badge-circle badge-primary" style={{ position: 'absolute', top: '15px', right: '25px' }}>{cart.cartItems.length}</span>
+                        <span className="badge badge-circle badge-primary" style={{ position: 'absolute', top: '15px', right: '25px' }}>{cart.length}</span>
                     </div>
                 </div>
 

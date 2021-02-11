@@ -54,7 +54,7 @@ const LoginModal = ({ modalIsOpen, close }) => {
             phonenumber, hash, otp, role
         }
 
-        dispatch(login(user, history));
+        dispatch(login(user, history, close));
     }
 
     return (

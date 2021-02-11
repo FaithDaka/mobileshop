@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const loginBuynow = (user, history) => {
+export const loginBuynow = (user, history, close) => {
   return async (dispatch) => {
     dispatch({ type: "LOGIN_REQUEST" });
     const res = await axios.post(`${process.env.REACT_APP_API}/otp/verifyOTP`, {
@@ -28,6 +28,7 @@ export const loginBuynow = (user, history) => {
       });
 
       history.push("/buynow");
+      close()
 
     } else {
       if (res.status === 400) {
@@ -39,7 +40,7 @@ export const loginBuynow = (user, history) => {
   };
 };
 
-export const login = (user, history) => {
+export const login = (user, history,close) => {
     return async (dispatch) => {
       dispatch({ type: "LOGIN_REQUEST" });
       const res = await axios.post(`${process.env.REACT_APP_API}/otp/verifyOTP`, {
@@ -66,7 +67,8 @@ export const login = (user, history) => {
           payload: { token, phonenumber, role },
         });
   
-        history.push("/checkout");
+        history.push("/");
+        close();
   
       } else {
         if (res.status === 400) {

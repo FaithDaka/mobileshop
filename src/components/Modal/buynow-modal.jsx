@@ -54,7 +54,7 @@ const BuyNowModal = ({ modalIsOpen, close }) => {
             phonenumber, hash, otp, role
         }
 
-        dispatch(loginBuynow(user, history));
+        dispatch(loginBuynow(user, history, close));
     }
 
     return (

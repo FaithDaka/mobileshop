@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import SweetAlert from 'react-bootstrap-sweetalert';
 import CurrencyFormat from 'react-currency-format';
 import CartHeader from '../Cart/CartHeader'
@@ -16,14 +16,15 @@ const Checkout = ({ history }) => {
 
     const hideAlert = () => setShowAlert(false);
 
+    const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart)
+    const auth = useSelector(state => state.auth);
 
     const getTotal = () => {
-        return cart.cartItems.reduce((currentValue, nextValue) => {
+        return cart.reduce((currentValue, nextValue) => {
             return nextValue.discount ? currentValue + nextValue.count * nextValue.discountprice : currentValue + nextValue.count * nextValue.price
         }, 0);
     };
-
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -35,7 +36,7 @@ const Checkout = ({ history }) => {
 
         try {
             const orderData = {
-                orderItems: cart.cartItems,
+                orderItems: cart,
                 name: name,
                 email: email,
                 address: address,
@@ -45,12 +46,23 @@ const Checkout = ({ history }) => {
                 totalPrice: getTotal()
             }
 
-            const res = await axios.post(`${process.env.REACT_APP_API}/orders`, orderData);
+            const config = {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${auth.token}`,
+                },
+            }
+
+            const res = await axios.post(`${process.env.REACT_APP_API}/orders`, orderData, config);
             console.log("Order Data", res);
 
             setLoading(false)
             setShowAlert(true);
-            localStorage.removeItem('cartItems')
+            localStorage.removeItem('cart')
+            dispatch({
+                type: "ADD_TO_CART",
+                payload: [],
+              });
 
             history.push('/receipt', {
                 state: res.data
@@ -166,7 +178,7 @@ const Checkout = ({ history }) => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {cart.cartItems.map((item, index) =>
+                                            {cart.map((item, index) =>
                                                 <tr key={index}>
                                                     <td>{item.title}</td>
                                                     <td class="text-right">UGX {item.discount ? <CurrencyFormat

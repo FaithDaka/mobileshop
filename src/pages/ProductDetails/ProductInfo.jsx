@@ -46,16 +46,24 @@ const ProductInfo = ({ product }) => {
   // }
 
   const handleAddToCart = () => {
-
     let cart = [];
     if (typeof window !== "undefined") {
       if (localStorage.getItem("cart")) {
         cart = JSON.parse(localStorage.getItem("cart"));
       }
-      cart.push({
-        ...product,
+      
+      const cartItems = {
+        id: product._id,
+        title: product.title,
+        images: product.images[0].url,
+        price: product.price,
+        discount: product.discount,
+        discountprice: product.discountprice,
+        countInStock: product.countInStock,
         count: 1,
-      });
+      }
+
+      cart.push(cartItems);
 
       let unique = _.uniqWith(cart, _.isEqual);
       localStorage.setItem("cart", JSON.stringify(unique));

@@ -35,7 +35,7 @@ const BottomMenu = ({open}) => {
             <span style={{ color: '#bbb' }}> WhatsApp</span>
           </a>
 
-          <Link to={`${process.env.PUBLIC_URL}/shop/cart`}>
+          <Link to={`${process.env.PUBLIC_URL}/cart`}>
             <a className="navigation__item">
               <div className="icon row" style={{ justifyContent: 'center' }}>
               <i className="las la-shopping-cart la-2x" />
@@ -45,7 +45,7 @@ const BottomMenu = ({open}) => {
                     marginLeft: '-2.5px', color: '#f2f2f2', fontSize: '12px', fontWeight: '800'
                   }}
                 >
-                 {cart.cartItems.length}
+                 {cart.length}
                 </span>
               </div>
                 <span style={{ color: '#bbb' }}>Cart</span>

@@ -32,16 +32,13 @@ const CartDetails = ({ cart, total, checkout }) => {
                                 <ul class="list-group list-group-flush">
 
                                     {
-                                        cart.cartItems.map((item) =>
+                                        cart.map((item) =>
                                             <li class="list-group-item px-0 px-lg-3">
                                                 <div class="row gutters-5">
                                                     <div class="col-lg-5 d-flex">
                                                         <span class="mr-2 ml-0">
                                                             {
-                                                                item.images && item.images.length ?
-                                                                    <LazyLoadImage src={item.images[0].url} alt="cart images"
-                                                                        width="60"
-                                                                    /> : ''
+                                                            <LazyLoadImage src={item.images} alt="cart images"width="60"/> 
                                                             }
                                                         </span>
                                                         <span class="fs-14 opacity-60">

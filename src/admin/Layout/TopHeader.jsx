@@ -18,15 +18,15 @@ const TopHeader = () => {
 
 
     return (
-        <div class="aiz-topbar px-15px px-lg-25px d-flex align-items-stretch justify-content-between">
+        <div class="aiz-topbar px-15px px-lg-25px d-flex align-items-stretch justify-content-between" style={{ background: '#101622'}}>
             <div class="d-xl-none d-flex">
-                <div class="aiz-topbar-nav-toggler d-flex align-items-center justify-content-start mr-2 mr-md-3" data-toggle="aiz-mobile-nav">
-                    <button class="aiz-mobile-toggler">
-                        <span></span>
-                    </button>
+                <div class="aiz-topbar-nav-toggler d-flex align-items-center justify-content-start mr-2 mr-md-3 text-white" data-toggle="aiz-mobile-nav">
+                    
                 </div>
                 <div class="">
+                <Link to="/">
                     <img src={logo} class="brand-icon" alt="Mobile Shop Admin" width="100"/>
+                </Link>
                 </div>
             </div>
             <div class="d-flex justify-content-between align-items-stretch flex-grow-xl-1">
@@ -56,7 +56,7 @@ const TopHeader = () => {
                             <a class="dropdown-toggle no-arrow" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
                                 <span class="btn btn-icon p-1">
                                     <span class=" position-relative d-inline-block">
-                                        <i class="las la-bell la-2x"></i>
+                                        <i class="las la-bell la-2x text-white"></i>
                                         <span class="badge badge-dot badge-circle badge-primary position-absolute absolute-top-right"></span>
                                     </span>
                                 </span>
@@ -85,7 +85,7 @@ const TopHeader = () => {
                             <a class="dropdown-toggle no-arrow text-dark" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
                                 <span class="d-flex align-items-center">
                                     <span class="avatar avatar-sm mr-md-2">
-                                        <i class="las la-user-circle" style={{fontSize: '48px'}}></i>
+                                        <i class="las la-user-circle text-white" style={{fontSize: '48px'}}></i>
                                     </span>
                                     <span class="d-none d-md-block">
                                         <span class="d-block fw-500">Admin</span>

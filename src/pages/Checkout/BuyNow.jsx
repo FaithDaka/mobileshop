@@ -44,7 +44,7 @@ const BuyNow = ({ history }) => {
                   'Content-Type': 'application/json',
                   'Authorization': `Bearer ${auth.token}`,
                 },
-              }
+            }
 
             const res = await axios.post(`${process.env.REACT_APP_API}/orders`, orderData, config);
             console.log("Order Data", res);

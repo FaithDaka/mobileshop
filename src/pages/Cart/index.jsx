@@ -16,7 +16,7 @@ const Cart = () => {
     const auth = useSelector(state => state.auth);
 
     const getTotal = () => {
-        return cart.cartItems.reduce((currentValue, nextValue) => {
+        return cart.reduce((currentValue, nextValue) => {
             return nextValue.discount ? currentValue + nextValue.count * nextValue.discountprice : currentValue + nextValue.count * nextValue.price
         }, 0);
     };
