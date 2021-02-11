@@ -21,7 +21,7 @@ const MobileHeader = () => {
 
     const history = useHistory();
 
-    let { cart } = useSelector((state) => ({ ...state }));
+    const cart = useSelector((state) => state.cart)
     const auth = useSelector(state => state.auth);
 
     const logout = () => {
@@ -103,7 +103,7 @@ const MobileHeader = () => {
                 <div className="pt-3 text-white">
                     <div className="d-lg-block ml-3 mr-0 ">
                         <i className="la la-shopping-cart la-3x opacity-80" />
-                        <span className="badge badge-circle badge-primary" style={{ position: 'absolute', top: '15px', right: '25px' }}>{cart.length}</span>
+                        <span className="badge badge-circle badge-primary" style={{ position: 'absolute', top: '15px', right: '25px' }}>{cart.cartItems.length}</span>
                     </div>
                 </div>
 

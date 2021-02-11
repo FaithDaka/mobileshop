@@ -2,7 +2,6 @@ import React from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const Thumbnails = ({ product }) => {
-  console.log("Thumbnails Images", product)
   return(
   <div class="col-12 col-md-auto w-md-80px order-2 order-md-1 mt-3 mt-md-0">
     <div class="aiz-carousel product-gallery-thumb slick-initialized slick-slider" data-items="5" data-nav-for=".product-gallery" data-vertical="true" data-vertical-sm="false" data-focus-select="true" data-arrows="true">

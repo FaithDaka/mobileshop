@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 
 import Layout from '../components/Layout';
 import HomePage from '../pages/HomePage';
@@ -10,18 +9,8 @@ import BuyNow from '../pages/Checkout/BuyNow'
 import Receipt from '../pages/Checkout/Receipt'
 import ProductDetails from '../pages/ProductDetails';
 import Search from '../pages/Search'
-import { isUserLoggedIn } from '../store/actions/auth';
 
 const HomeRoute = () => {
-  const dispatch  = useDispatch();
-  const auth = useSelector(state => state.auth);
-
-  useEffect(() => {
-    if(!auth.authenticate){
-      dispatch(isUserLoggedIn());
-    }
-
-  }, [auth.authenticate]);
 
   return(
   <Switch>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import SweetAlert from 'react-bootstrap-sweetalert';
 import CurrencyFormat from 'react-currency-format';
 import CartHeader from '../Cart/CartHeader'
@@ -16,14 +16,14 @@ const Checkout = ({ history }) => {
 
     const hideAlert = () => setShowAlert(false);
 
-    const dispatch = useDispatch();
-    const { cart } = useSelector((state) => ({ ...state }));
+    const cart = useSelector((state) => state.cart)
 
     const getTotal = () => {
-        return cart.reduce((currentValue, nextValue) => {
+        return cart.cartItems.reduce((currentValue, nextValue) => {
             return nextValue.discount ? currentValue + nextValue.count * nextValue.discountprice : currentValue + nextValue.count * nextValue.price
         }, 0);
     };
+
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -35,7 +35,7 @@ const Checkout = ({ history }) => {
 
         try {
             const orderData = {
-                orderItems: cart,
+                orderItems: cart.cartItems,
                 name: name,
                 email: email,
                 address: address,
@@ -50,11 +50,7 @@ const Checkout = ({ history }) => {
 
             setLoading(false)
             setShowAlert(true);
-            if (typeof window !== "undefined") localStorage.removeItem("cart");
-            dispatch({
-                type: "ADD_TO_CART",
-                payload: [],
-            });
+            localStorage.removeItem('cartItems')
 
             history.push('/receipt', {
                 state: res.data
@@ -170,7 +166,7 @@ const Checkout = ({ history }) => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {cart.map((item, index) =>
+                                            {cart.cartItems.map((item, index) =>
                                                 <tr key={index}>
                                                     <td>{item.title}</td>
                                                     <td class="text-right">UGX {item.discount ? <CurrencyFormat

@@ -1,7 +1,11 @@
 import axios from "axios";
 
-export const createProduct = async (product) =>
-  await axios.post(`${process.env.REACT_APP_API}/product`, product);
+export const createProduct = async (product, token) =>
+  await axios.post(`${process.env.REACT_APP_API}/product`, product, {
+    headers: {
+      'Authorization': `Bearer ${token}` 
+  }
+  });
 
 export const getProductsByCount = async (count) =>
   await axios.get(`${process.env.REACT_APP_API}/product/${count}`);

@@ -39,14 +39,14 @@ const SideBar = () => {
                     </li>
 
                     <li class="aiz-side-nav-item">
-                        <Link to="/admin/listproduct" class="aiz-side-nav-link ">
+                        <Link to="/admin/listorders" class="aiz-side-nav-link ">
                             <i class="las la-money-bill aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">All Orders</span>
                         </Link>
                     </li>
 
                     <li class="aiz-side-nav-item">
-                        <Link to="/admin/listproduct" class="aiz-side-nav-link ">
+                        <Link to="/admin/customers" class="aiz-side-nav-link ">
                             <i class="las la-user-friends aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">Customers</span>
                         </Link>

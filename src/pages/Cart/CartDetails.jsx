@@ -1,9 +1,19 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch } from "react-redux";
 import CurrencyFormat from 'react-currency-format';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { removeFromCart } from '../../store/actions/cartActions';
 
 const CartDetails = ({ cart, total, checkout }) => {
+
+    const dispatch = useDispatch()
+
+    const removeCart = (id) => {
+        dispatch(removeFromCart(id))
+    }
+
     return (
         <section class="mb-4" id="cart-summary">
             <div class="container">
@@ -22,7 +32,7 @@ const CartDetails = ({ cart, total, checkout }) => {
                                 <ul class="list-group list-group-flush">
 
                                     {
-                                        cart.map((item) =>
+                                        cart.cartItems.map((item) =>
                                             <li class="list-group-item px-0 px-lg-3">
                                                 <div class="row gutters-5">
                                                     <div class="col-lg-5 d-flex">
@@ -81,7 +91,7 @@ const CartDetails = ({ cart, total, checkout }) => {
                                                             />}</span>
                                                     </div>
                                                     <div class="col-lg-auto col-6 order-5 order-lg-0 text-right">
-                                                        <a href="#" class="btn btn-icon btn-sm btn-soft-primary btn-circle">
+                                                        <a href="#" class="btn btn-icon btn-sm btn-soft-primary btn-circle" onClick={() => removeCart(item.id)}>
                                                             <i class="las la-trash"></i>
                                                         </a>
                                                     </div>
@@ -108,9 +118,9 @@ const CartDetails = ({ cart, total, checkout }) => {
                                     Return to shop
                                 </Link>
                                 </div>
-                                    <div class="col-md-6 text-center text-md-right">
-                                        <button class="btn btn-primary fw-600" onClick={checkout}>Continue to Shipping</button>
-                                    </div>
+                                <div class="col-md-6 text-center text-md-right">
+                                    <button class="btn btn-primary fw-600" onClick={checkout}>Continue to Shipping</button>
+                                </div>
                             </div>
                         </div>
                     </div>

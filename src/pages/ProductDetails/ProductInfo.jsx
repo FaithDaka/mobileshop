@@ -16,12 +16,23 @@ const ProductInfo = ({ product }) => {
   const auth = useSelector(state => state.auth);
 
   const openModal = () => {
+
+    const data =  {
+      id: product._id,
+      title: product.title,
+      images: product.images[0].url,
+      price: product.price,
+      discount: product.discount,
+      discountprice: product.discountprice,
+      countInStock: product.countInStock
+    }
+
     if (auth.authenticate) {
-      localStorage.setItem("buynow", JSON.stringify(product));
+      localStorage.setItem("buynow", JSON.stringify(data));
       history.push("/buynow");
     } else {
       setIsOpen(true);
-      localStorage.setItem("buynow", JSON.stringify(product));
+      localStorage.setItem("buynow", JSON.stringify(data));
     }
   };
 

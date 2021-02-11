@@ -12,16 +12,14 @@ const Cart = () => {
     const closeModal = () => setIsOpen(false);
 
     const history = useHistory();
-    const { cart } = useSelector((state) => ({ ...state }));
+    const cart = useSelector((state) => state.cart)
     const auth = useSelector(state => state.auth);
 
     const getTotal = () => {
-        return cart.reduce((currentValue, nextValue) => {
+        return cart.cartItems.reduce((currentValue, nextValue) => {
             return nextValue.discount ? currentValue + nextValue.count * nextValue.discountprice : currentValue + nextValue.count * nextValue.price
         }, 0);
     };
-
-    const removeFromCart = () => { };
 
     const goToCheckout = (e) => {
         e.preventDefault()

@@ -1,8 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
+import { signout } from '../../store/actions/auth';
 import logo from './SideBar/logo.png'
 
 const TopHeader = () => {
+
+    const auth = useSelector(state => state.auth);
+
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const logout = () => {
+        dispatch(signout(history));
+    }
+
+
     return (
         <div class="aiz-topbar px-15px px-lg-25px d-flex align-items-stretch justify-content-between">
             <div class="d-xl-none d-flex">
@@ -80,14 +94,19 @@ const TopHeader = () => {
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-md">
-                                <a href="#" class="dropdown-item">
-                                    <i class="las la-user-circle"></i>
-                                    <span>Profile</span>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <i class="las la-sign-out-alt"></i>
-                                    <span>Logout</span>
-                                </a>
+                                    {
+                                auth.authenticate ? (
+                                    <>
+                                        <a href="#" class="dropdown-item">
+                                            <i class="las la-user" style={{ fontSize: '24px' }}></i>
+                                            <span>{auth.phonenumber}</span>
+                                        </a>
+                                        <Link to="#" class="dropdown-item" onClick={logout}>
+                                            <i class="las la-sign-out-alt" style={{ fontSize: '24px' }}></i>
+                                            <span>Logout</span>
+                                        </Link>
+                                    </>) : ''
+                            }
                             </div>
                         </div>
                     </div>

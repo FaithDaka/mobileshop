@@ -40,6 +40,8 @@ const ProductDetails = ({ match, history }) => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
+
+    console.log("product details", product);
     
     return(
     <>

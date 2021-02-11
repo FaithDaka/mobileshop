@@ -24,7 +24,7 @@ Modal.setAppElement('#root');
 const BuyNowModal = ({ modalIsOpen, close }) => {
 
     const [phone, setPhone] = useState('')
-    const [role, setRole] = useState('user')
+    const [role, setRole] = useState('admin')
     const [hash, setHash] = useState('')
     const [otp, setOTP] = useState('')
     const [loading, setLoading] = useState(false)

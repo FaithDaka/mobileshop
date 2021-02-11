@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 import SweetAlert from 'react-bootstrap-sweetalert';
 import CurrencyFormat from 'react-currency-format';
 import CartHeader from '../Cart/CartHeader'
@@ -15,6 +16,8 @@ const BuyNow = ({ history }) => {
 
     const hideAlert = () => setShowAlert(false);
     const cart = JSON.parse(localStorage.getItem("buynow"));
+
+    const auth = useSelector(state => state.auth);
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -36,7 +39,14 @@ const BuyNow = ({ history }) => {
                 totalPrice: cart.discount ? cart.discountprice : cart.price
             }
 
-            const res = await axios.post(`${process.env.REACT_APP_API}/orders`, orderData);
+            const config = {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${auth.token}`,
+                },
+              }
+
+            const res = await axios.post(`${process.env.REACT_APP_API}/orders`, orderData, config);
             console.log("Order Data", res);
 
             setLoading(false)

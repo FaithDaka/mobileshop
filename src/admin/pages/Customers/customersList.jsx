@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 import LoadSpinner from '../../../components/Spinner';
-import { getProductsByCount, removeProduct } from "../../../functions/products";
+import { getUsers } from "../../../functions/users";
 
-const ProductsList = () => {
+const CustomerList = () => {
 
-    const [products, setProducts] = useState([]);
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const loadAllProducts = () => {
+  const auth = useSelector(state => state.auth);
+
+  const loadUsers = () => {
     setLoading(true);
-    getProductsByCount(100)
+    getUsers(auth.token)
       .then((res) => {
-        setProducts(res.data);
+        setUsers(res.data);
         setLoading(false);
       })
       .catch((err) => {
@@ -22,43 +24,27 @@ const ProductsList = () => {
       });
   };
 
-  const handleRemove = (slug) => {
-    // let answer = window.confirm("Delete?");
-    if (window.confirm("Delete?")) {
-      // console.log("send delete request", slug);
-      removeProduct(slug)
-        .then((res) => {
-          loadAllProducts();
-          toast.error(`${res.data.title} is deleted`);
-        })
-        .catch((err) => {
-          if (err.response.status === 400) toast.error(err.response.data);
-          console.log(err);
-        });
-    }
-  };
-
   useEffect(() => {
-    loadAllProducts();
+    loadUsers();
   }, []);
+
+  console.log("Users List", users)
 
     return (
         <>
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h1 class="h3">All Products</h1>
+                    <h4 class="h3">All Customers</h4>
                 </div>
                 <div class="col-md-6 text-md-right">
-                    <Link to="/admin/addproduct" class="btn btn-primary">
-                        <span>Add New Product</span>
-                    </Link>
+                    
                 </div>
             </div>
 
             <div class="card">
             {loading && <LoadSpinner />}
                 <div class="card-header">
-                    <h5 class="mb-0 h6">Products</h5>
+                    <h5 class="mb-0 h6">Customers</h5>
                     <div class="pull-right clearfix">
                         <form class="" id="sort_categories" action="" method="GET">
                             <div class="box-inline pad-rgt pull-left">
@@ -75,27 +61,23 @@ const ProductsList = () => {
                     <table class="table aiz-table mb-0 footable footable-1 breakpoint-lg">
                         <thead>
                             <tr class="footable-header">
-                                <th style={{ display: 'table-cell' }}>Name</th>
-                                <th style={{ display: 'table-cell' }}>Category</th>
-                                <th sstyle={{ display: 'table-cell' }}>Brand</th>
-                                <th style={{ display: 'table-cell' }}>Price</th>
-                                <th style={{ display: 'table-cell' }}>Condition</th>
-                                <th width="10%" class="text-right footable-last-visible" style={{ display: 'table-cell' }}>Options</th>
+                                <th style={{ display: 'table-cell' }}>Phone Number</th>
+                                <th sstyle={{ display: 'table-cell' }}>Role</th>
+                                <th style={{ display: 'table-cell' }}>isAdmin</th>
+                                <th style={{ display: 'table-cell' }}>Option</th>
                             </tr>
                         </thead>
                         <tbody>
-                        {products.map((product) => (
+                        {users.map((user) => (
                             <tr>
-                                <td style={{ display: 'table-cell' }}>{product.title}</td>
-                                <td style={{ display: 'table-cell' }}>{product.title}</td>
-                                <td style={{ display: 'table-cell' }}>{product.title}</td>
-                                <td style={{ display: 'table-cell' }}>{product.price}</td>
-                                <td style={{ display: 'table-cell' }}>{product.condition}</td>
-                                <td class="text-right footable-last-visible" style={{ display: 'table-cell' }}>
-                                    <Link class="btn btn-soft-primary btn-icon btn-circle btn-sm" to={`/admin/update/${product._id}`} title="Edit">
+                                <td style={{ display: 'table-cell' }}>{user.phonenumber}</td>
+                                <td style={{ display: 'table-cell' }}>{user.role}</td>
+                                <td style={{ display: 'table-cell' }}>{user.isAdmin}</td>
+                                <td style={{ display: 'table-cell' }}>
+                                    <Link class="btn btn-soft-primary btn-icon btn-circle btn-sm" to={`/admin/user/${user._id}`} title="Edit">
                                         <i class="las la-edit"></i>
                                     </Link>
-                                    <span class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" onClick={() => handleRemove(product.slug)}title="Delete">
+                                    <span class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" title="Delete">
                                         <i class="las la-trash"></i>
                                     </span>
                                 </td>
@@ -128,4 +110,4 @@ const ProductsList = () => {
     )
 }
 
-export default ProductsList
+export default CustomerList

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import Resizer from "react-image-file-resizer";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import Resizer from "react-image-file-resizer";
 import { storage } from '../../../firebase';
 import { getSubs } from "../../../functions/sub";
 import Spinner from '../../../components/Spinner'
@@ -9,6 +10,9 @@ import { createProduct } from "../../../functions/products";
 import { getCategories } from "../../../functions/category";
 
 const AddProducts = ({ history }) => {
+
+    const auth = useSelector(state => state.auth);
+
     const [storagePrice, setStoragePrice] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -132,7 +136,7 @@ const AddProducts = ({ history }) => {
             onetb: onetb
              }
 
-        createProduct(data)
+        createProduct(data, auth.token)
             .then((res) => {
                 console.log(res);
                 history.push('/admin/listproduct')

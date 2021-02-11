@@ -4,6 +4,8 @@ import CurrencyFormat from 'react-currency-format';
 const Receipt = ({ location }) => {
     const orderInfo = location.state;
 
+    console.log("Order Info", orderInfo)
+
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -58,7 +60,7 @@ const Receipt = ({ location }) => {
                                                         <td class="w-50 fw-600">Total order amount:</td>
                                                         <td>UGX
                                                         <CurrencyFormat
-                                                                value={orderInfo.state.totalPrice}
+                                                                value={orderInfo.state.totalPrice && orderInfo.state.totalPrice}
                                                                 displayType="text"
                                                                 thousandSeparator
                                                                 style={{ fontWeight: '500' }}
@@ -92,14 +94,14 @@ const Receipt = ({ location }) => {
                                                     <tr >
                                                         <td>
                                                             <img
-                                                                src={product.images && product.images.length ? product.images[0].url : ''}
+                                                                src={product.images}
                                                                 alt="product-img"
-                                                                width="100"
+                                                                width="50"
                                                             />
 
                                                             <td>{product.title}</td>
                                                         </td>
-                                                        <td >
+                                                        <td class="text-right">
                                                             UGX{' '}
                                                             <CurrencyFormat
                                                                 value={product.price}
@@ -122,7 +124,7 @@ const Receipt = ({ location }) => {
                                                         <th>Subtotal</th>
                                                         <td class="text-right">
                                                             <span class="fw-600">UGX <CurrencyFormat
-                                                                value={orderInfo.state.totalPrice}
+                                                                value={orderInfo.state.totalPrice && orderInfo.state.totalPrice}
                                                                 displayType="text"
                                                                 thousandSeparator
                                                                 style={{ fontWeight: '700', color: "#ff9900" }}
@@ -151,7 +153,7 @@ const Receipt = ({ location }) => {
                                                         <th><span class="fw-600">Total</span></th>
                                                         <td class="text-right">
                                                             <strong><span>UGX <CurrencyFormat
-                                                                value={orderInfo.state.totalPrice}
+                                                                value={orderInfo.state.totalPrice && orderInfo.state.totalPrice}
                                                                 displayType="text"
                                                                 thousandSeparator
                                                                 style={{ fontWeight: '700', color: "#ff9900" }}

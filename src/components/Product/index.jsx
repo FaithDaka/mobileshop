@@ -6,35 +6,18 @@ import Truncate from 'react-truncate';
 import CurrencyFormat from 'react-currency-format';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { addToCart } from '../../store/actions/cartActions'
 import './styles.css'
 
 const Product = ({ product }) => {
   const [showAlert, setShowAlert] = useState(false);
 
   const hideAlert = () => setShowAlert(false);
-
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-
-    let cart = [];
-    if (typeof window !== "undefined") {
-      if (localStorage.getItem("cart")) {
-        cart = JSON.parse(localStorage.getItem("cart"));
-      }
-      cart.push({
-        ...product,
-        count: 1,
-      });
-      let unique = _.uniqWith(cart, _.isEqual);
-      localStorage.setItem("cart", JSON.stringify(unique));
-
-      dispatch({
-        type: "ADD_TO_CART",
-        payload: unique,
-      });
-      setShowAlert(true);
-    }
+    dispatch(addToCart(product))
+    setShowAlert(true);
   };
 
   return (
