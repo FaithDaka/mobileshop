@@ -15,7 +15,7 @@ const ProductGroup = ({ products, loading }) => {
         <Tabs>
           <TabList>
             <div className="bg-white shadow-sm rounded">
-              <div className="nav border-bottom aiz-nav-tabs">
+              <div className="nav border-bottom aiz-nav-tabs d-flex align-items-stretch justify-content-around">
                 <Tab className="p-2 fs-16 fw-600 text-reset show active">Brand New</Tab>
                 <Tab className="p-2 fs-16 fw-600 text-reset">UK Used</Tab>
                 <Tab className="p-2 fs-16 fw-600 text-reset">Accessories</Tab>

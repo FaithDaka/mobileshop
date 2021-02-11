@@ -29,8 +29,8 @@ const HomePage = () => {
 
   return (
     <>
-      {/* <Banner /> */}
-      <Promos />
+      <Banner />
+      {/* <Promos /> */}
       <ProductGroup products={products} loading={loading} />
     </>
   )

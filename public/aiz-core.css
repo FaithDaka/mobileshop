@@ -746,8 +746,8 @@ fixed-bottom 1030*/
 }
 .gutters-5 > .col,
 .gutters-5 > [class*="col-"] {
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-right: 2px;
+    padding-left: 2px;
 }
 .gutters-10 {
     margin-right: -10px;
@@ -6718,7 +6718,7 @@ ul.social.colored [class*="linkedin"] {
 /*slider mobile auto height*/
 @media (max-width: 767.98px) {
     .mobile-img-auto-height img{
-        height: 20%;
+        height: 5%;
     }
 }
 

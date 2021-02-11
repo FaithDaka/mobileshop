@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { useSelector } from "react-redux";
-import MobileHeader from '../MobileMenu/MobileHeader'
 
 const Header = () => {
   let { cart } = useSelector((state) => ({ ...state }));
@@ -158,7 +157,7 @@ return(
       </div>
     </div>
   </header>
-  <MobileHeader />
+  
   </>
 )};
 

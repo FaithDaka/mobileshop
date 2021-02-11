@@ -8,9 +8,8 @@ import { signout } from '../../../store/actions/auth';
 import LoginModal from "../../../components/Modal/login-modal";
 import './search.css';
 
-const MobileHeader = () => {
+const MobileHeader = ({open}) => {
     const [modalIsOpen, setIsOpen] = useState(false);
-    const [showDrawer, setShowDrawer] = useState(false);
 
     const openModal = () => setIsOpen(true);
     const closeModal = () => setIsOpen(false);
@@ -35,22 +34,21 @@ const MobileHeader = () => {
         });
     };
 
-    const openDrawer = () => setShowDrawer(true);
-    const closeDrawer = () => setShowDrawer(false);
-
     // const handleSubmit = (e) => {
     //     e.preventDefault();
     //     history.push(`/search?${text}`);
     // };
 
     return (
-        <header className="d-xl-none d-lg-block sticky-top  z-1020 border-bottom shadow-sm" style={{ background: '#101622' }}>
-            <LoginModal modalIsOpen={modalIsOpen} close={closeModal} />
-            <div className="d-flex px-2">
+        <>
+        <LoginModal modalIsOpen={modalIsOpen} close={closeModal} />
+        <div className="d-xl-none d-lg-block z-1020 shadow-sm fixed-top" style={{ background: '#101622' }}>
+            <div className="px-2 d-flex justify-content-between">
+                <div className="d-flex justify-content-start mr-2">
                 <div className="pt-3">
                     <i className="las la-bars"
-                        style={{ fontSize: '25px', color: '#fff', paddingRight: '14px' }}
-                        onClick={openDrawer}
+                        style={{ fontSize: '25px', color: '#fff'}}
+                        onClick={open}
                     >
                     </i>
                 </div>
@@ -63,17 +61,29 @@ const MobileHeader = () => {
                     />
                     </Link>
                 </div>
-                <div class="aiz-topbar-item ml-2 text-white">
-                    <div class="align-items-stretch d-flex dropdown">
+                </div>
+                <div className="d-flex justify-content-around align-items-center align-items-stretch">
+                <div className="pt-2 text-white">
+                    <div className="d-lg-block ml-3 mr-0">
+                        <span class="btn btn-icon p-1">
+                                    <span class=" position-relative d-inline-block">
+                                        <i class="la la-shopping-cart la-2x text-white"></i>
+                                        <span class="badge badge-circle badge-primary position-absolute absolute-top-right">{cart.length}</span>
+                                    </span>
+                                </span>
+                    </div>
+                </div>
+                <div class="aiz-topbar-item text-white">
+                    <div class="align-items-center d-flex dropdown">
                         {!auth.authenticate ? <a class="dropdown-toggle no-arrow text-dark"
                             onClick={openModal}><span class="text-white">
                                 <span class="avatar avatar-sm mr-md-2">
-                                    <i class="las la-user-check" style={{ fontSize: '32px' }}></i>
+                                    <i class="las la-user" style={{ fontSize: '32px' }}></i>
                                 </span>
                             </span></a> : <a class="dropdown-toggle no-arrow text-dark" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
                                 <span class="text-white">
                                     <span class="avatar avatar-sm mr-md-2">
-                                        <i class="las la-user-check" style={{ fontSize: '32px' }}></i>
+                                        <i class="las la-user" style={{ fontSize: '32px' }}></i>
                                     </span>
                                 </span>
                             </a>}
@@ -106,11 +116,7 @@ const MobileHeader = () => {
                     </div>
                 </div>
 
-                <div className="pt-3 text-white">
-                    <div className="d-lg-block ml-3 mr-0 ">
-                        <i className="la la-shopping-cart la-3x opacity-80" />
-                        <span className="badge badge-circle badge-primary" style={{ position: 'absolute', top: '15px', right: '25px' }}>{cart.length}</span>
-                    </div>
+                
                 </div>
 
             </div>
@@ -131,7 +137,9 @@ const MobileHeader = () => {
                     </div>
                 </form>
             </div>
-        </header>
+        </div>
+        <div className="bottom-space"/>
+        </>
     )
 }
 

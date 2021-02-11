@@ -7,9 +7,9 @@ const Banner = () => (
   <div className="home-banner-area mb-4 pt-3">
     <div className="container">
       <div className="row gutters-10 position-relative">
-        <CategoriesNav />
+        {/* <CategoriesNav /> */}
         <BannerSlidder />
-        <TopDeals />
+        {/* <TopDeals /> */}
       </div>
     </div>
   </div>

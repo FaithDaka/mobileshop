@@ -9,7 +9,7 @@ const BannerSlidder = () => {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
     draggable: false,
     fade: true
   };
@@ -19,42 +19,30 @@ const BannerSlidder = () => {
       <div className="mobile-img-auto-height">
         <div className="slick-list draggable">
           <Slider {...settings}>
-            <div className="slick-slide"
-              style={{ width: '640px' }}>
-              <div className="carousel-box"
-                style={{ width: '100%', display: 'inline-block' }}
-              >
+            <div className="slick-slide">
+              <div className="carousel-box">
                 <img
-                  className="d-block mw-100 rounded shadow-sm lazyloaded"
-                  src="images/slidder1.png"
+                  className="d-block rounded shadow-sm lazyloaded responsive"
+                  src="images/Banner1.jpeg"
                   alt="Slidder Banner"
-                  height="315"
                 />
               </div>
             </div>
-            <div className="slick-slide"
-              style={{ width: '640px' }}>
-              <div className="carousel-box"
-                style={{ width: '100%', display: 'inline-block' }}
-              >
+            <div className="slick-slide">
+              <div className="carousel-box">
                 <img
-                  className="d-block mw-100 rounded shadow-sm lazyloaded"
-                  src="images/slidder2.png"
+                  className="d-block rounded shadow-sm lazyloaded responsive"
+                  src="images/Banner2.jpeg"
                   alt="Slidder Banner"
-                  height="315"
                 />
               </div>
             </div>
-            <div className="slick-slide"
-              style={{ width: '640px' }}>
-              <div className="carousel-box"
-                style={{ width: '100%', display: 'inline-block' }}
-              >
+            <div className="slick-slide">
+              <div className="carousel-box">
                 <img
-                  className="d-block mw-100 rounded shadow-sm lazyloaded"
-                  src="images/slidder3.jpg"
+                  className="d-block rounded shadow-sm lazyloaded responsive"
+                  src="images/Banner3.jpeg"
                   alt="Slidder Banner"
-                  height="315"
                 />
               </div>
             </div>

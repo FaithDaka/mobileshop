@@ -13,6 +13,20 @@ body{
     overflow-x: hidden;
 }
 
+.container {
+    width: 100%;
+    padding-right: 8px;
+    padding-left: 8px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.responsive {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  }
+
 .btn-product-cart {
 	height: 40px;
 	width: 170px;
@@ -45,4 +59,16 @@ body{
     top: 8px;
     right: 8px;
     font-weight: 700;
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+	
+}
+.bottom-space{
+	margin-top: 105px;
 }

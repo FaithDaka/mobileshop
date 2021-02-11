@@ -76,7 +76,7 @@ const Product = ({ product }) => {
             {
               product.discountprice ?
                 <>
-                  <span className="fw-600 text-reset">
+                  <span className="fw-700 text-reset">
                     <CurrencyFormat
                       prefix={"UGX "}
                       value={product.discountprice}
@@ -85,7 +85,7 @@ const Product = ({ product }) => {
                     />
                   </span>
                   <div className="s-prc-w">
-                  <del className="d-block opacity-70">
+                  <del className="d-block fw-500 opacity-70">
                     <CurrencyFormat
                       // prefix={"UGX "}
                       value={product.price}
