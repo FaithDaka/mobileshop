@@ -17,7 +17,7 @@ export const getProduct = async (id) =>
   await axios.get(`${process.env.REACT_APP_API}/product/prod/${id}`);
 
   export const getProductBrands = async (slug) =>
-  await axios.get(`${process.env.REACT_APP_API}/product/brands/${slug}`);
+  await axios.get(`${process.env.REACT_APP_API}/product/${slug}`);
 
 export const updateProduct = async (id, product) =>
   await axios.put(`${process.env.REACT_APP_API}/product/${id}`, product);

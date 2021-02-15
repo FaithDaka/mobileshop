@@ -18,19 +18,19 @@ const Filters = () => {
                              <div class="p-3">
                                 <ul class="list-unstyled">
                                    <li class="mb-2">
-                                      <a class="text-reset fs-14 fw-600" href="https://demo.activeitzone.com/ecommerce/search">
+                                      <a class="text-reset fs-14 fw-600" href="#">
                                       <i class="las la-angle-left"></i>
                                       All Categories
                                       </a>
                                    </li>
                                    <li class="mb-2">
-                                      <a class="text-reset fs-14 fw-600" href="https://demo.activeitzone.com/ecommerce/category/Computer-Accessories">
+                                      <a class="text-reset fs-14 fw-600" href="#">
                                       <i class="las la-angle-left"></i>
                                       Computer &amp; Accessories
                                       </a>
                                    </li>
                                    <li class="ml-4 mb-2">
-                                      <a class="text-reset fs-14" href="https://demo.activeitzone.com/ecommerce/category/Laptop-&amp;-Accessories">Laptop &amp; Accessories</a>
+                                      <a class="text-reset fs-14" href="#">Laptop &amp; Accessories</a>
                                    </li>
                                    <li class="ml-4 mb-2">
                                       <a class="text-reset fs-14" href="https://demo.activeitzone.com/ecommerce/category/Gaming-pc">Gaming pc</a>

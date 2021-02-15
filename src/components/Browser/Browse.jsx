@@ -9,12 +9,7 @@ const Browse = () => {
 
     return (
         <div class="d-flex align-items-center">
-            {showDrawer && (<MobileFilter close={closeDrawer} />)}
-        <div>
-           <h1 class="h6 fw-600 text-body">
-              Computer &amp; Accessories
-           </h1>
-        </div>
+            {/* {showDrawer && (<MobileFilter close={closeDrawer} />)} */}
         <div class="form-group ml-auto mr-0 w-200px d-none d-xl-block">
            <label class="mb-0 opacity-50">Brands</label>
            <div class="dropdown bootstrap-select form-control form-control-sm aiz-">
@@ -66,7 +61,7 @@ const Browse = () => {
            </div>
         </div>
         <div class="d-xl-none ml-auto ml-xl-3 mr-0 form-group align-self-end">
-           <button type="button" class="btn btn-icon p-0" data-toggle="class-toggle" onClick={openDrawer}>
+           <button type="button" class="btn btn-icon p-0" data-toggle="class-toggle">
            <i class="la la-filter la-2x"></i>
            </button>
         </div>

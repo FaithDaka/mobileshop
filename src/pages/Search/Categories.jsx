@@ -1,34 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import Product from '../../components/Product';
 import LoadSpinner from '../../components/Spinner';
 import Browse from '../../components/Browser/Browse'
-import Filters from '../../components/Browser/Filters'
 import Pagination from '../../components/Pagination'
-import { fetchProductsByFilter } from "../../functions/products";
+import { getProductBrands } from "../../functions/products";
 
-const SearchFilters = () => {
+const Categories = ({match}) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    let { search } = useSelector((state) => ({ ...state }));
-    const { text } = search;
-
-    const fetchProducts = (arg) => {
-        setLoading(true)
-        fetchProductsByFilter(arg).then((res) => {
-            setProducts(res.data);
-            setLoading(false)
-        });
-    };
+    const { slug } = match.params;
 
     useEffect(() => {
-        const delayed = setTimeout(() => {
-            fetchProducts({ query: text });
-        }, 300);
-        return () => clearTimeout(delayed);
-    }, [text]);
+        setLoading(true);
+        getProductBrands(slug).then((res) => {
+          setProducts(res.data);
+          setLoading(false);
+        });
+      }, [slug]);
+
+   
 
     return (
         <section class="mb-4 pt-3">
@@ -55,9 +47,9 @@ const SearchFilters = () => {
                             <input type="hidden" name="max_price" value="" />
 
                             <div class="row gutters-5 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
-                                {products.map(item => (
+                                {products && products.length > 0 ? products.map(item => (
                                     <Product product={item} />
-                                ))}
+                                )): 'No Products in this Category Yet ??'}
                             </div>
                             <Pagination />
                         </div>
@@ -68,4 +60,4 @@ const SearchFilters = () => {
     )
 }
 
-export default SearchFilters
+export default Categories

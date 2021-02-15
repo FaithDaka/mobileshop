@@ -34,10 +34,10 @@ const MobileHeader = ({open}) => {
         });
     };
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     history.push(`/search?${text}`);
-    // };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        history.push(`/search?${text}`);
+    };
 
     return (
         <>
@@ -125,13 +125,13 @@ const MobileHeader = ({open}) => {
                     <div class="nav-fill">
                         <div class="nav-search-field">
                             <input type="text" class="nav-input nav-progressive-attribute" placeholder="Search MobileShop" data-aria-clear-label="Clear search keywords" name="k" autocomplete="off" autocorrect="off" autocapitalize="off" dir="auto" id="nav-search-keywords"
-                                // value={text}
+                                value={text}
                                 onChange={handleChange} />
                         </div>
                     </div>
                     <div class="nav-right">
                         <div class="nav-search-submit">
-                            <input type="submit" class="nav-input" />
+                            <input type="submit" class="nav-input" onClick={handleSubmit} />
                             <i class="nav-icon nav-sprite"></i>
                         </div>
                     </div>

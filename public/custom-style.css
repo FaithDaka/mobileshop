@@ -72,3 +72,23 @@ body{
 .bottom-space{
 	margin-top: 105px;
 }
+
+.dropdown-toggle {
+    background-color: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+.dropdown-menu{
+    background-color: #000;
+    border: none;
+    padding-left: 40px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.dropdown a{
+    color: #fff;
+  }

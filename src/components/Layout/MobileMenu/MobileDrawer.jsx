@@ -3,19 +3,13 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link } from "react-router-dom";
 import { getCategories } from "../../../functions/category";
 import { getSubs } from "../../../functions/sub";
+import LoadSpinner from '../../Spinner';
 
 const MobileDrawer = ({ close }) => {
 
     const [categories, setCategories] = useState([]);
     const [subs, setSubs] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [open, setOpen] = useState(false);
-    const [phones, setPhones] = useState(false);
-    const [tvs, setTVs] = useState(false);
-    const [computer, setComputer] = useState(false);
-    const [gaming, setGaming] = useState(false);
-    const [fridges, setFridges] = useState(false);
-    const [sound, setSound] = useState(false);
 
     const node = useRef();
 
@@ -42,19 +36,24 @@ const MobileDrawer = ({ close }) => {
     }, []);
 
     const showCategories = () => categories.map((c) => (
-        <div class="sidenav" key={c._id}>
-            <Link to={`${process.env.PUBLIC_URL}/`} className="dropdown-btn" onClick={() => setOpen(!open)}>{c.name}<i class="fa fa-caret-down"></i></Link>
-            {open ?
-                <div class="dropdown-container">
+        <li class="aiz-side-nav-item">
+            <Link to="#" class="dropdown aiz-side-nav-link">
+                <Link to="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="las la-tasks aiz-side-nav-icon"></i>
+                    <span class="aiz-side-nav-text">{c.name}</span>
+                </Link>
+                <ul class="dropdown-menu aiz-side-nav-list">
                     {subs.map((cat) => cat.parent === c._id && (
-                        <li style={{ textTransform: 'capitalize' }}>
-                            <Link to={`/products/${cat.slug}`}>{cat.name}</Link>
-                        </li>
+                        <li class="aiz-side-nav-item">
+                        <Link to={`/products/${cat.slug}`} class="aiz-side-nav-link ">
+                        <i class="las la-tasks aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">{cat.name}</span>
+                        </Link>
+                    </li>
                     ))}
-
-                </div>
-                : ''}
-        </div>
+                </ul>
+            </Link>
+        </li>
     ));
 
     const handleClick = e => {
@@ -90,197 +89,12 @@ const MobileDrawer = ({ close }) => {
                                 <span class="aiz-side-nav-text">Categories</span>
                             </a>
                         </li>
-                        <li class="aiz-side-nav-item">
-                            <a href="#" class="aiz-side-nav-link" aria-expanded="false" onClick={() => setPhones(!phones)}>
-                                <i class="las la-tasks aiz-side-nav-icon"></i>
-                                <span class="aiz-side-nav-text">Mobile Phones</span>
-                                <span class="aiz-side-nav-arrow"></span>
-                            </a>
-                            {phones ?
-                                <ul class="aiz-side-nav-list">
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link ">
-                                            <span class="aiz-side-nav-text">iPhones</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link">
-                                            <span class="aiz-side-nav-text">Samsung</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link ">
-                                            <span class="aiz-side-nav-text">iPhones</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link">
-                                            <span class="aiz-side-nav-text">Infinix</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link ">
-                                            <span class="aiz-side-nav-text">Oppo</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link">
-                                            <span class="aiz-side-nav-text">Huawei</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                : ''}
-                        </li>
-                        <li class="aiz-side-nav-item">
-                            <a href="#" class="aiz-side-nav-link" aria-expanded="false" onClick={() => setTVs(!tvs)}>
-                                <i class="las la-tasks aiz-side-nav-icon"></i>
-                                <span class="aiz-side-nav-text">Televisions</span>
-                                <span class="aiz-side-nav-arrow"></span>
-                            </a>
-                            {tvs ?
-                                <ul class="aiz-side-nav-list">
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link ">
-                                            <span class="aiz-side-nav-text">Android Tvs</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link">
-                                            <span class="aiz-side-nav-text">Curved Tvs</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link ">
-                                            <span class="aiz-side-nav-text">Smart Tvs</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                : ''}
-                        </li>
-                        <li class="aiz-side-nav-item">
-                            <a href="#" class="aiz-side-nav-link" aria-expanded="false" onClick={() => setComputer(!computer)}>
-                                <i class="las la-tasks aiz-side-nav-icon"></i>
-                                <span class="aiz-side-nav-text">Computers</span>
-                                <span class="aiz-side-nav-arrow"></span>
-                            </a>
-                            {computer ?
-                                <ul class="aiz-side-nav-list">
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link ">
-                                            <span class="aiz-side-nav-text">Ultra Books</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link">
-                                            <span class="aiz-side-nav-text">Mac Books</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link ">
-                                            <span class="aiz-side-nav-text">Laptops</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                : ''}
-                        </li>
-                        <li class="aiz-side-nav-item">
-                            <a href="#" class="aiz-side-nav-link" aria-expanded="false" onClick={() => setGaming(!gaming)}>
-                                <i class="las la-tasks aiz-side-nav-icon"></i>
-                                <span class="aiz-side-nav-text">Gaming</span>
-                                <span class="aiz-side-nav-arrow"></span>
-                            </a>
-                            {gaming ?
-                                <ul class="aiz-side-nav-list">
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link ">
-                                            <span class="aiz-side-nav-text">PS4</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link">
-                                            <span class="aiz-side-nav-text">Gaming Consoles</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link ">
-                                            <span class="aiz-side-nav-text">XBox</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link ">
-                                            <span class="aiz-side-nav-text">Gaming Mouse</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                : ''}
-                        </li>
-                        <li class="aiz-side-nav-item">
-                            <a href="#" class="aiz-side-nav-link" aria-expanded="false" onClick={() => setFridges(!fridges)}>
-                                <i class="las la-tasks aiz-side-nav-icon"></i>
-                                <span class="aiz-side-nav-text">Fridges</span>
-                                <span class="aiz-side-nav-arrow"></span>
-                            </a>
-                            {fridges ?
-                                <ul class="aiz-side-nav-list">
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link ">
-                                            <span class="aiz-side-nav-text">LG</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link">
-                                            <span class="aiz-side-nav-text">Samsung</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link ">
-                                            <span class="aiz-side-nav-text">ADH</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link ">
-                                            <span class="aiz-side-nav-text">Hisense</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                : ''}
-                        </li>
-                        <li class="aiz-side-nav-item">
-                            <a href="#" class="aiz-side-nav-link" aria-expanded="false" onClick={() => setSound(!sound)}>
-                                <i class="las la-tasks aiz-side-nav-icon"></i>
-                                <span class="aiz-side-nav-text">Sound Systems</span>
-                                <span class="aiz-side-nav-arrow"></span>
-                            </a>
-                            {sound ?
-                                <ul class="aiz-side-nav-list">
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link ">
-                                            <span class="aiz-side-nav-text">Home Theaters</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link">
-                                            <span class="aiz-side-nav-text">Sound Bars</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link ">
-                                            <span class="aiz-side-nav-text">Portable Speakers</span>
-                                        </a>
-                                    </li>
-                                    <li class="aiz-side-nav-item">
-                                        <a href="#" class="aiz-side-nav-link ">
-                                            <span class="aiz-side-nav-text">JBL Speakers</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                : ''}
-                        </li>
-
+                        {loading && <LoadSpinner /> }
+                        {showCategories()}
                     </ul>
                 </div>
             </div>
-            <div class="aiz-sidebar-overlay"></div>
+            {/* <div class="aiz-sidebar-overlay"></div> */}
         </section>
     );
 }
