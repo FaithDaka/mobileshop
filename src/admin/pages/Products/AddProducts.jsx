@@ -3,7 +3,6 @@ import axios from 'axios';
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import Resizer from "react-image-file-resizer";
-import { storage } from '../../../firebase';
 import { getSubs } from "../../../functions/sub";
 import Spinner from '../../../components/Spinner'
 import { createProduct } from "../../../functions/products";
@@ -24,7 +23,7 @@ const AddProducts = ({ history }) => {
     const [images, setImages] = useState([]);
     const [subs, setSubs] = useState([]);
     const [color, setColor] = useState('');
-    const [Storage, setStorage] = useState('');
+    const [storageChecked, setStorageChecked] = useState(false)
     const [memory, setMemory] = useState('');
     const [condition, setCondition] = useState([]);
     const [performance, setPerformance] = useState('');
@@ -117,7 +116,7 @@ const AddProducts = ({ history }) => {
             quantity: quantity,
             color: color,
             memory: memory,
-            storage: Storage,
+            storageChecked: storageChecked,
             images: images,
             category: category,
             subs: subs,
@@ -134,7 +133,7 @@ const AddProducts = ({ history }) => {
             twofiftysix: twofiftysix,
             fivetwelve: fivetwelve,
             onetb: onetb
-             }
+        }
 
         createProduct(data, auth.token)
             .then((res) => {
@@ -275,25 +274,7 @@ const AddProducts = ({ history }) => {
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-md-4">
-                                    <label>Storage</label>
-                                    <select name="storage"
-                                        className="form-control"
-                                        value={storage}
-                                        onChange={(e) => setStorage(e.target.value)}>
-                                        <option selected>Select Storage</option>
-                                        <option value="8GB">8GB</option>
-                                        <option value="16GB">16GB</option>
-                                        <option value="32GB">32GB</option>
-                                        <option value="64GB">64GB</option>
-                                        <option value="128GB">128GB</option>
-                                        <option value="256GB">256GB</option>
-                                        <option value="512GB">512GB</option>
-                                        <option value="1TB">1TB</option>
-
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <label>Color</label>
                                     <select name="color"
                                         className="form-control"
@@ -307,7 +288,7 @@ const AddProducts = ({ history }) => {
 
                                     </select>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <label>Memory</label>
                                     <select name="memory"
                                         className="form-control"
@@ -343,7 +324,7 @@ const AddProducts = ({ history }) => {
                                     </label>
 
                                     <div class="">
-                                        {loading && <Spinner /> }
+                                        {loading && <Spinner />}
                                         {images && images.map((image, i) => (
                                             <>
                                                 <img key={i} src={image.url} alt="uplaodimage" />
@@ -401,6 +382,12 @@ const AddProducts = ({ history }) => {
                     <div class="card">
                         <div class="card-header">
                             <h5 class="mb-0 h6">Product Storage Prices</h5>
+                                    <label class="aiz-checkbox">
+                                        <input type="checkbox" checked={storageChecked} onChange={(e) => setStorageChecked(e.target.checked)} />
+                                        <span class="opacity-60">Select if you want to add storage prices</span>
+                                        <span class="aiz-square-check"></span>
+                                    </label>
+                                    {storageChecked}
                         </div>
                         <div class="card-body">
                             <div className="form-group row">

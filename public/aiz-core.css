@@ -3701,6 +3701,7 @@ input[type="number"] {
     max-width: 200px;
     overflow-y: auto;
     opacity:0.9;
+    /* visibility: hidden; */
     z-index: 1040;
     background-color: #141423;
     width: 265px;

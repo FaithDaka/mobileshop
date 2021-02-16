@@ -10,7 +10,7 @@ const AdminRoute = ({
 
   const auth = useSelector(state => state.auth);
 
-  return auth.authenticate && auth.role ==='admin' ? (
+  return auth.authenticate && auth.isAdmin ? (
     <Route exact path={path} component={component} {...rest} />
   ) : (
       <Redirect to={"/"} />

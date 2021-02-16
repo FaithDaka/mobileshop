@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch } from "react-router-dom";
 import Spinner from '../components/Spinner';
 import { isUserLoggedIn } from '../store/actions/auth';
+import 'react-toastify/dist/ReactToastify.css';
 
 const HomePage = React.lazy(() => import("./home-route"));
 const ShopPages = React.lazy(() => import("./shop-route.js"));
@@ -23,7 +24,7 @@ const AppRoot = () => {
 
   return (
     <React.Suspense fallback={<div><Spinner /></div>}>
-      <ToastContainer />
+      <ToastContainer position="bottom-center" />
       <Switch>
         <Route path="/shop" component={ShopPages} />
         <Route path="/admin" component={AdminPages} />

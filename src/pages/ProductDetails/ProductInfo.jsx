@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import _ from "lodash";
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
@@ -9,22 +9,30 @@ import BuyNowModal from "../../components/Modal/buynow-modal";
 const ProductInfo = ({ product }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [storageSize, setStorageSize] = useState('8GB');
+  const [color, setColor] = useState('Black');
+  const [storagePrice, setStoragePrice] = useState(product.storageprice && product.storageprice.eight);
 
   const hideAlert = () => setShowAlert(false);
+  const changeColor = (e) => setColor(e.target.value);
+  const handleOptionChange = (e) => setStorageSize(e.target.value);
 
   const history = useHistory();
   const auth = useSelector(state => state.auth);
 
   const openModal = () => {
 
-    const data =  {
+    const data = {
       id: product._id,
       title: product.title,
       images: product.images[0].url,
       price: product.price,
       discount: product.discount,
       discountprice: product.discountprice,
-      countInStock: product.countInStock
+      countInStock: product.countInStock,
+      storageSize,
+      storagePrice,
+      color
     }
 
     if (auth.authenticate) {
@@ -39,19 +47,13 @@ const ProductInfo = ({ product }) => {
   const closeModal = () => setIsOpen(false);
   const dispatch = useDispatch();
 
-  //product.price = pricestorage
-
-  // const SelectPrice = (e) => {
-  //   setPriceStorage(e.target.value)
-  // }
-
   const handleAddToCart = () => {
     let cart = [];
     if (typeof window !== "undefined") {
       if (localStorage.getItem("cart")) {
         cart = JSON.parse(localStorage.getItem("cart"));
       }
-      
+
       const cartItems = {
         id: product._id,
         title: product.title,
@@ -61,6 +63,9 @@ const ProductInfo = ({ product }) => {
         discountprice: product.discountprice,
         countInStock: product.countInStock,
         count: 1,
+        storageSize,
+        storagePrice,
+        color
       }
 
       cart.push(cartItems);
@@ -75,6 +80,31 @@ const ProductInfo = ({ product }) => {
       setShowAlert(true);
     }
   };
+
+  useEffect(() => {
+    if (storageSize === '8GB') {
+      setStoragePrice(product.storageprice && product.storageprice.eight)
+    } else if (storageSize === '16GB') {
+      setStoragePrice(product.storageprice && product.storageprice.sixteen)
+    } else if (storageSize === '32GB') {
+      setStoragePrice(product.storageprice && product.storageprice.thirtytwo)
+    }
+    else if (storageSize === '64GB') {
+      setStoragePrice(product.storageprice && product.storageprice.sixtyfour)
+    } else if (storageSize === '128GB') {
+      setStoragePrice(product.storageprice && product.storageprice.onetwentyeight)
+    }
+    else if (storageSize === '256GB') {
+      setStoragePrice(product.storageprice && product.storageprice.twofiftysix)
+    }
+    else if (storageSize === '512GB') {
+      setStoragePrice(product.storageprice && product.storageprice.fivetwelve)
+    }
+    else if (storageSize === '1TB') {
+      setStoragePrice(product.storageprice && product.storageprice.onetb)
+    }
+
+  }, [storageSize])
 
   return (
     <div class="text-left">
@@ -103,15 +133,6 @@ const ProductInfo = ({ product }) => {
         </div>
       </div>
       <hr />
-      {/* <div class="row align-items-center">
-        <div class="col-auto">
-          <small class="mr-2 opacity-50">Brand: </small>
-        </div>
-        <div class="col-auto">
-          <img src="https://demo.activeitzone.com/ecommerce/public/uploads/brands/4O6dOeaRludravngfvPPE0IEJukftaQZEt2uQVQ9.jpeg" alt="Apple" height="30" />
-        </div>
-      </div>
-      <hr /> */}
       <div class="row no-gutters mt-3">
         <div class="col-sm-2">
           <div class="opacity-50 my-2">Price:</div>
@@ -119,13 +140,23 @@ const ProductInfo = ({ product }) => {
         <div class="col-sm-10">
           <div class="">
             <strong class="h2 fw-700 text-primary">
-              <CurrencyFormat
-                prefix={"UGX "}
-                value={product.price}
-                // value={pricestorage}
+              {product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                value={product.discountprice}
                 displayType="text"
                 thousandSeparator
-              />
+              /></strong>}
+              {!product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                value={product.price}
+                displayType="text"
+                thousandSeparator
+              /></strong>}
+              {storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                value={storagePrice}
+                displayType="text"
+                thousandSeparator
+              /></strong>}
+              {/* {!storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">Storage Capacity out of Stock!!</strong> } */}
+
             </strong>
             <span class="opacity-70"></span>
           </div>
@@ -143,90 +174,106 @@ const ProductInfo = ({ product }) => {
       </div>
       <hr />
       <form id="option-choice-form">
-        <input type="hidden" name="_token" value="vbe0XjyB2Y0iwfSdZKC7OF33baVmgFU288VfaOks" />
-        {' '}
-        <input type="hidden" name="id" value="11" />
-
-
-        <div className="row no-gutters">
-          <div className="col-sm-2">
-            <div className="opacity-50 my-2">Storage Capacity:</div>
+        {product.storageChecked ? <div class="row no-gutters">
+          <div class="col-sm-2">
+            <div class="my-2">Storage Capacity: {storageSize}</div>
           </div>
-          <div className="col-sm-10">
-            <div className="aiz-radio-inline">
-              <label className="aiz-megabox pl-0 mr-2">
-                <input type="radio" name="attribute_id_3" value="64GB" checked="" />
-                <span className="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+          <div class="col-sm-10">
+            <div class="aiz-radio-inline">
+              <label class="aiz-megabox pl-0 mr-2">
+                <input type="radio" name="storage" value="8GB" onChange={handleOptionChange} />
+                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                  8GB
+         </span>
+              </label>
+              <label class="aiz-megabox pl-0 mr-2">
+                <input type="radio" name="storage" value="16GB" onChange={handleOptionChange} />
+                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                  16GB
+         </span>
+              </label>
+              <label class="aiz-megabox pl-0 mr-2">
+                <input type="radio" name="storage" value="32GB" onChange={handleOptionChange} />
+                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                  32GB
+         </span>
+              </label>
+              <label class="aiz-megabox pl-0 mr-2">
+                <input type="radio" name="storage" value="64GB" onChange={handleOptionChange} />
+                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
                   64GB
-              </span>
+         </span>
               </label>
-              <label className="aiz-megabox pl-0 mr-2">
-                <input type="radio" name="attribute_id_3" value="128GB" />
-                <span className="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+              <label class="aiz-megabox pl-0 mr-2">
+                <input type="radio" name="storage" value="128GB" onChange={handleOptionChange} />
+                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
                   128GB
-              </span>
+         </span>
               </label>
-              <label className="aiz-megabox pl-0 mr-2">
-                <input type="radio" name="attribute_id_3" value="256GB" />
-                <span className="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+              <label class="aiz-megabox pl-0 mr-2">
+                <input type="radio" name="storage" value="256GB" onChange={handleOptionChange} />
+                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
                   256GB
-              </span>
+         </span>
               </label>
+              <label class="aiz-megabox pl-0 mr-2">
+                <input type="radio" name="storage" value="512GB" onChange={handleOptionChange} />
+                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                  512GB
+         </span>
+              </label>
+              <label class="aiz-megabox pl-0 mr-2">
+                <input type="radio" name="storage" value="1TB" onChange={handleOptionChange} />
+                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                  1TB
+         </span>
+              </label>
+
             </div>
           </div>
-        </div>
-
-
-        <div className="row no-gutters">
-          <div className="col-sm-2">
-            <div className="opacity-50 my-2">Color:</div>
-          </div>
-          <div className="col-sm-10">
-            <div className="aiz-radio-inline">
-              <label className="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="Black">
-                <input type="radio" name="color" value="#000000" checked="" />
-                <span className="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                  <span className="size-30px d-inline-block rounded" style={{ background: '#000000' }} />
-                </span>
-              </label>
-              <label className="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="Blue">
-                <input type="radio" name="color" value="#0000FF" />
-                <span className="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                  <span className="size-30px d-inline-block rounded" style={{ background: '#0000FF' }} />
-                </span>
-              </label>
-              <label className="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="Coral">
-                <input type="radio" name="color" value="#FF7F50" />
-                <span className="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                  <span className="size-30px d-inline-block rounded" style={{ background: '#FF7F50' }} />
-                </span>
-              </label>
-              <label className="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="Red">
-                <input type="radio" name="color" value="#FF0000" />
-                <span className="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                  <span className="size-30px d-inline-block rounded" style={{ background: '#FF0000' }} />
-                </span>
-              </label>
-              <label className="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="White">
-                <input type="radio" name="color" value="#FFFFFF" />
-                <span className="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                  <span className="size-30px d-inline-block rounded" style={{ background: '#FFFFFF' }} />
-                </span>
-              </label>
-              <label className="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="Yellow">
-                <input type="radio" name="color" value="#FFFF00" />
-                <span className="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                  <span className="size-30px d-inline-block rounded" style={{ background: '#FFFF00' }} />
-                </span>
-              </label>
-            </div>
-          </div>
-        </div>
+        </div> : ''}
 
         <hr />
 
+        <div class="row no-gutters">
+          <div class="col-sm-2">
+            <div class="my-2">Color: {color}</div>
+          </div>
+          <div class="col-sm-10">
+            <div class="aiz-radio-inline">
+              <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="Black">
+                <input type="radio" name="color" value="Black" onChange={changeColor} />
+                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
+                  <span class="size-30px d-inline-block rounded" style={{ background: '#000000' }}></span>
+                </span>
+              </label>
+              <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="Coral">
+                <input type="radio" name="color" value="Silver" onChange={changeColor} />
+                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
+                  <span class="size-30px d-inline-block rounded" style={{ background: '#FF7F50' }}></span>
+                </span>
+              </label>
+              <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="Red">
+                <input type="radio" name="color" value="Red" onChange={changeColor} />
+                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
+                  <span class="size-30px d-inline-block rounded" style={{ background: '#FF0000' }}></span>
+                </span>
+              </label>
+              <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="White">
+                <input type="radio" name="color" value="White" onChange={changeColor} />
+                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
+                  <span class="size-30px d-inline-block rounded" style={{ background: '#FFFFFF' }}></span>
+                </span>
+              </label>
 
-        <div className="row no-gutters">
+            </div>
+          </div>
+        </div>
+
+
+
+
+        {/* <div className="row no-gutters">
           <div className="col-sm-2">
             <div className="opacity-50 my-2">Quantity:</div>
           </div>
@@ -249,10 +296,10 @@ const ProductInfo = ({ product }) => {
             </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <hr />
-
+        {/* 
         <div className="row no-gutters pb-3" id="chosen_price_div">
           <div className="col-sm-2">
             <div className="opacity-50 my-2">Total Price:</div>
@@ -262,7 +309,7 @@ const ProductInfo = ({ product }) => {
               <strong id="chosen_price" className="h4 fw-700 text-primary">UGX 2,500,000</strong>
             </div>
           </div>
-        </div>
+        </div> */}
 
       </form>
       <div class="mt-3">

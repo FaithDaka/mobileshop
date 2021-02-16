@@ -2,7 +2,7 @@
 const initState = {
     token: null,
     phonenumber: null,
-    role: null,
+    isAdmin: false,
     authenticate: false,
     authenticating: false,
     loading: false,
@@ -22,7 +22,7 @@ const authReducer = (state = initState, action) => {
             return {
                 ...state,
                 phonenumber: action.payload.phonenumber,
-                role: action.payload.role,
+                isAdmin: action.payload.isAdmin,
                 token: action.payload.token,
                 authenticate: true,
                 authenticating: false

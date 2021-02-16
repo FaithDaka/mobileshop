@@ -24,7 +24,6 @@ Modal.setAppElement('#root');
 const LoginModal = ({ modalIsOpen, close }) => {
 
     const [phone, setPhone] = useState('')
-    const [role, setRole] = useState('admin')
     const [hash, setHash] = useState('')
     const [otp, setOTP] = useState('')
     const [loading, setLoading] = useState(false)
@@ -51,7 +50,7 @@ const LoginModal = ({ modalIsOpen, close }) => {
         e.preventDefault()
 
         const user = {
-            phonenumber, hash, otp, role
+            phonenumber, hash, otp, 
         }
 
         dispatch(login(user, history, close));
