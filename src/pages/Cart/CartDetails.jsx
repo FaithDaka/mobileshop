@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from "react-redux";
 import CurrencyFormat from 'react-currency-format';
@@ -13,6 +13,54 @@ const CartDetails = ({ cart, total, checkout }) => {
     const removeCart = (id) => {
         dispatch(removeFromCart(id))
     }
+
+    const [quantity, setQuantity] = useState(1)
+
+    const increaseQuantity = (e, id) => {
+        setQuantity(quantity + 1)
+
+        const cart = JSON.parse(localStorage.getItem('cart'))
+
+        const one = cart.map(one => one.id);
+        let index = one.findIndex(id => id == id);
+        cart[index].count = quantity + 1
+        cart[index].price = cart[index].price * quantity
+        console.log(cart[index].count)
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+    }
+
+    const decreaseQuantity = (e, id) => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1)
+            const cart = JSON.parse(localStorage.getItem('cart'))
+
+            const one = cart.map(one => one.id);
+            let index = one.findIndex(id => id == id);
+            cart[index].count = quantity - 1
+            cart[index].price = cart[index].price * quantity
+            console.log(cart[index].count)
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+        else {
+            return;
+        }
+    }
+
+    const removeItem = (e, ido) => {
+        const cart = JSON.parse(localStorage.getItem('cart'))
+        console.log(cart)
+        console.log(ido)
+
+        const one = cart.map(one => one.id);
+        let index = one.findIndex(id => id == ido);
+        console.log(index)
+
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+    }
+
 
     return (
         <section class="mb-4" id="cart-summary">
@@ -32,13 +80,13 @@ const CartDetails = ({ cart, total, checkout }) => {
                                 <ul class="list-group list-group-flush">
 
                                     {
-                                        cart.map((item) =>
+                                        cart.map((item, i) =>
                                             <li class="list-group-item px-0 px-lg-3">
                                                 <div class="row gutters-5">
                                                     <div class="col-lg-5 d-flex">
                                                         <span class="mr-2 ml-0">
                                                             {
-                                                            <LazyLoadImage src={item.images} alt="cart images"width="60"/> 
+                                                                <LazyLoadImage src={item.images} alt="cart images" width="60" />
                                                             }
                                                         </span>
                                                         <span class="fs-14 opacity-60">
@@ -66,11 +114,11 @@ const CartDetails = ({ cart, total, checkout }) => {
 
                                                     <div class="col-lg col-6 order-4 order-lg-0">
                                                         <div class="row no-gutters align-items-center aiz-plus-minus mr-2 ml-0">
-                                                            <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="minus" data-field="quantity[0]">
+                                                            <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="minus" data-field="quantity[0]" key={item.id} onClick={((e) => decreaseQuantity(e, item.id))}>
                                                                 <i class="las la-minus"></i>
                                                             </button>
-                                                            <input type="text" name="quantity[0]" class="col border-0 text-center flex-grow-1 fs-16 input-number" placeholder="1" value="1" min="1" max="10" readonly="" onchange="updateQuantity(0, this)" />
-                                                            <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="plus" data-field="quantity[0]">
+                                                            <label>{quantity}</label>
+                                                            <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="plus" data-field="quantity[0]" key={item.id} onClick={((e) => increaseQuantity(e, item.id))}>
                                                                 <i class="las la-plus"></i>
                                                             </button>
                                                         </div>
@@ -78,17 +126,17 @@ const CartDetails = ({ cart, total, checkout }) => {
                                                     <div class="col-lg col-4 order-3 order-lg-0 my-3 my-lg-0">
                                                         <span class="opacity-60 fs-12 d-block d-lg-none">Total</span>
                                                         <span class="fw-600 fs-16 text-primary">{item.discount ? <CurrencyFormat
-                                                            value={item.discountprice}
+                                                            value={item.discountprice * quantity}
                                                             displayType="text"
                                                             thousandSeparator
                                                         /> : <CurrencyFormat
-                                                                value={item.price}
+                                                                value={item.price * quantity}
                                                                 displayType="text"
                                                                 thousandSeparator
                                                             />}</span>
                                                     </div>
                                                     <div class="col-lg-auto col-6 order-5 order-lg-0 text-right">
-                                                        <a href="#" class="btn btn-icon btn-sm btn-soft-primary btn-circle" onClick={() => removeCart(item.id)}>
+                                                        <a href="#" class="btn btn-icon btn-sm btn-soft-primary btn-circle" key={item.id} onClick={((e) => removeItem(e, item.id))}>
                                                             <i class="las la-trash"></i>
                                                         </a>
                                                     </div>
