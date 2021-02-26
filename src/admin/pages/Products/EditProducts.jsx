@@ -6,10 +6,10 @@ import Resizer from "react-image-file-resizer";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { getSubs } from "../../../functions/sub";
 import Spinner from '../../../components/Spinner'
-import { createProduct } from "../../../functions/products";
+import { getProduct, updateProduct } from "../../../functions/products";
 import { getCategories } from "../../../functions/category";
 
-const AddProducts = ({ history }) => {
+const EditProducts = ({ history, match }) => {
 
     const auth = useSelector(state => state.auth);
 
@@ -46,6 +46,40 @@ const AddProducts = ({ history }) => {
 
     const toggle = () => setStoragePrice(!storagePrice);
 
+    const { id } = match.params;
+
+    const loadProduct = () => {
+        getProduct(id).then((p) => {
+            console.log("product Details", p)
+            setTitle(p.data.title)
+            setPrice(p.data.price)
+            setStoragePrice(p.data.storagePrice);
+            setDiscount(p.data.discount);
+            setQuantity(p.data.quantity);
+            setDescription(p.data.description);
+            setImages(p.data.images);
+            setSubs(p.data.subs);
+            setColor(p.data.colors);
+            setStorageChecked(p.data.storageChecked)
+            setMemory(p.data.memory);
+            setCondition(p.data.condition);
+            setPerformance(p.data.performance);
+            setDisplay(p.data.display);
+            setBattery(p.data.battery);
+            setCamera(p.data.camera);
+            setEight(p.data.eight);
+            setSixteen(p.data.sixteen);
+            setThirtyTwo(p.data.thirtytwo);
+            setSixtyFour(p.data.sixtyfour);
+            setOneTwentyEight(p.data.setOneTwentyEight);
+            setTwoFiftySix(p.data.setTwoFiftySix);
+            setFiveTwelve(p.data.fivetwelve);
+            setOneTb(p.data.onetb);
+            setCategory(p.data.category);
+
+        });
+    };
+
     const loadCategories = () => {
         setLoading(true);
         getCategories().then((c) => {
@@ -64,6 +98,7 @@ const AddProducts = ({ history }) => {
 
     useEffect(() => {
         loadCategories();
+        loadProduct();
         loadSubs();
     }, []);
 
@@ -91,8 +126,6 @@ const AddProducts = ({ history }) => {
                             .then((res) => {
                                 setLoading(false);
                                 allUploadedFiles.push(res.data);
-
-                                // setValues({ ...values, images: allUploadedFiles });
                                 setImages(allUploadedFiles)
                             })
                             .catch((err) => {
@@ -137,14 +170,15 @@ const AddProducts = ({ history }) => {
             onetb: onetb
         }
 
-        createProduct(data, auth.token)
+            updateProduct(id, data)
             .then((res) => {
-                console.log(res);
-                history.push('/admin/listproduct')
-                toast.success(res.data.message);
+                setLoading(false);
+                toast.success(`"${res.data.title}" Updated Succesfully`);
+                history.push("/admin/listproduct");
             })
             .catch((err) => {
                 console.log(err);
+                setLoading(false);
                 toast.error(err.response.data);
             });
     };
@@ -152,9 +186,10 @@ const AddProducts = ({ history }) => {
     return (
         <>
             <div class="aiz-titlebar text-left mt-2 mb-3">
-                <h5 class="mb-0 h6">Add New Product</h5>
+                <h5 class="mb-0 h6">Edit Product</h5>
             </div>
             <div class="col-md-10 mx-auto">
+            {loading && <Spinner />}
                 <form class="form form-horizontal mar-top" onSubmit={handleSubmit}>
                     <div class="card">
                         <div class="card-header">
@@ -326,16 +361,13 @@ const AddProducts = ({ history }) => {
                                     </label>
 
                                     <div class="img-container">
-                                        {loading && <Spinner />}
                                         {images && images.map((image, i) => (
                                             <>
                                                 <LazyLoadImage key={i} src={image.url} alt="uplaodimage" class="img-admin" />
                                                 <div class="remove"><button class="btn btn-sm btn-link remove-attachment" type="button"><i class="la la-close"></i></button></div>
                                             </>
                                         ))}
-
                                     </div>
-                                    <small class="text-muted">These images are visible in product details page gallery. Use 600x600 sizes images.</small>
                                 </div>
                             </div>
 
@@ -384,12 +416,12 @@ const AddProducts = ({ history }) => {
                     <div class="card">
                         <div class="card-header">
                             <h5 class="mb-0 h6">Product Storage Prices</h5>
-                                    <label class="aiz-checkbox">
-                                        <input type="checkbox" checked={storageChecked} onChange={(e) => setStorageChecked(e.target.checked)} />
-                                        <span class="opacity-60">Select if you want to add storage prices</span>
-                                        <span class="aiz-square-check"></span>
-                                    </label>
-                                    {storageChecked}
+                            <label class="aiz-checkbox">
+                                <input type="checkbox" checked={storageChecked} onChange={(e) => setStorageChecked(e.target.checked)} />
+                                <span class="opacity-60">Select if you want to add storage prices</span>
+                                <span class="aiz-square-check"></span>
+                            </label>
+                            {storageChecked}
                         </div>
                         <div class="card-body">
                             <div className="form-group row">
@@ -475,7 +507,7 @@ const AddProducts = ({ history }) => {
                         </div>
                     </div>
                     <div class="mb-3 text-right">
-                        <button type="submit" name="button" class="btn btn-primary">Save Product</button>
+                        <button type="submit" name="button" class="btn btn-primary">Update Product</button>
                     </div>
                 </form>
             </div>
@@ -483,4 +515,4 @@ const AddProducts = ({ history }) => {
     )
 }
 
-export default AddProducts
+export default EditProducts

@@ -19,8 +19,8 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 const StorageModal = ({ modalIsOpen, close, product }) => {
-    const [storageSize, setStorageSize] = useState('8GB');
-    const [storagePrice, setStoragePrice] = useState(product.storageprice && product.storageprice.eight);
+    const [storageSize, setStorageSize] = useState('64GB');
+    const [storagePrice, setStoragePrice] = useState(product.storageprice && product.storageprice.sixtyfour);
     const [color, setColor] = useState('Black');
 
     const handleOptionChange = (e) => {
@@ -34,14 +34,7 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (storageSize === '8GB') {
-            setStoragePrice(product.storageprice && product.storageprice.eight)
-        } else if (storageSize === '16GB') {
-            setStoragePrice(product.storageprice && product.storageprice.sixteen)
-        } else if (storageSize === '32GB') {
-            setStoragePrice(product.storageprice && product.storageprice.thirtytwo)
-        }
-        else if (storageSize === '64GB') {
+        if (storageSize === '64GB') {
             setStoragePrice(product.storageprice && product.storageprice.sixtyfour)
         } else if (storageSize === '128GB') {
             setStoragePrice(product.storageprice && product.storageprice.onetwentyeight)
@@ -51,9 +44,6 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
         }
         else if (storageSize === '512GB') {
             setStoragePrice(product.storageprice && product.storageprice.fivetwelve)
-        }
-        else if (storageSize === '1TB') {
-            setStoragePrice(product.storageprice && product.storageprice.onetb)
         }
 
     }, [storageSize])
@@ -119,24 +109,6 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
                         <div class="col-sm-10">
                             <div class="aiz-radio-inline">
                                 <label class="aiz-megabox pl-0 mr-2">
-                                    <input type="radio" name="storage" value="8GB" onChange={handleOptionChange} />
-                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                                        8GB
-         </span>
-                                </label>
-                                <label class="aiz-megabox pl-0 mr-2">
-                                    <input type="radio" name="storage" value="16GB" onChange={handleOptionChange} />
-                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                                        16GB
-         </span>
-                                </label>
-                                <label class="aiz-megabox pl-0 mr-2">
-                                    <input type="radio" name="storage" value="32GB" onChange={handleOptionChange} />
-                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                                        32GB
-         </span>
-                                </label>
-                                <label class="aiz-megabox pl-0 mr-2">
                                     <input type="radio" name="storage" value="64GB" onChange={handleOptionChange} />
                                     <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
                                         64GB
@@ -160,12 +132,6 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
                                         512GB
          </span>
                                 </label>
-                                <label class="aiz-megabox pl-0 mr-2">
-                                    <input type="radio" name="storage" value="1TB" onChange={handleOptionChange} />
-                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                                        1TB
-         </span>
-                                </label>
                             </div>
                         </div>
                     </div>
@@ -174,13 +140,13 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
                         </div>
                         <div class="col-sm-10">
                             <div class="product-price">
-                                
+
                                 {storagePrice ? <strong id="chosen_price" class="h4 fw-600 text-primary">{storageSize} : UGX  <CurrencyFormat
                                     value={storagePrice}
                                     displayType="text"
                                     thousandSeparator
-                                /></strong>: <strong id="chosen_price" class="h4 fw-600 text-primary">
-                                    Storage Capacity Out of Stock !!
+                                /></strong> : <strong id="chosen_price" class="h4 fw-600 text-primary">
+                                        Storage Capacity Out of Stock !!
                                     </strong>}
                             </div>
                         </div>
@@ -210,13 +176,6 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
                                         <span class="size-30px d-inline-block rounded" style={{ background: '#FF0000' }}></span>
                                     </span>
                                 </label>
-                                <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="White">
-                                    <input type="radio" name="color" value="White" onChange={changeColor} />
-                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                                        <span class="size-30px d-inline-block rounded" style={{ background: '#FFFFFF' }}></span>
-                                    </span>
-                                </label>
-
                             </div>
                         </div>
                     </div>

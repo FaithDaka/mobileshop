@@ -86,7 +86,13 @@ const Product = ({ product }) => {
         </div>
         <div className="p-md-3 p-2 text-left">
           <div className="fs-15">
-            <div className="fw-600 ms-brand" style={{ color: 'blue' }}>{product.subs ? product.subs.name : ''}</div>
+            <div className="fw-600 ms-brand">{product.subs ? <span className="badge badge-inline badge-soft-secondary">{product.subs.name}</span> : ''}
+            </div>
+            <h3 className="fw-600 fs-13 text-truncate-2 lh-1-4 mb-2">
+            <Truncate lines={2} ellipsis={<span>... <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`}></Link></span>}>
+              {product.title}
+            </Truncate>
+          </h3>
             {
               product.discountprice ?
                 <>
@@ -111,7 +117,7 @@ const Product = ({ product }) => {
                   </div>
                 </> :
 
-                <span className="fw-600 text-reset">
+                <span className="fw-700 text-reset">
                   <CurrencyFormat
                     prefix={"UGX "}
                     value={product.price}
@@ -127,12 +133,7 @@ const Product = ({ product }) => {
             <i className="las la-star active" />
             <i className="las la-star active" />
           </div>
-          <h3 className="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0">
-            {/* <a href="#" className="d-block text-reset fw-500">Apple iPhone 12</a> */}
-            <Truncate lines={2} ellipsis={<span>... <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`}></Link></span>}>
-              {product.title}
-            </Truncate>
-          </h3>
+          
           <div className="mt-3" style={{
             display: "flex", position: "relative",
             alignItems: "center",

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import SweetAlert from 'react-bootstrap-sweetalert';
@@ -13,6 +14,11 @@ const BuyNow = ({ history }) => {
     const [address, setAddress] = useState('');
     const [loading, setLoading] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
+    const [termsCheck, setTermChecked] = useState(false)
+
+    const [fullNameErrors, setFullNameErrors] = useState({});
+    const [addressErrors, setaddressErrors] = useState({});
+    const [termsErrors, settermsErrors] = useState({});
 
     const hideAlert = () => setShowAlert(false);
     const cart = JSON.parse(localStorage.getItem("buynow"));
@@ -23,42 +29,76 @@ const BuyNow = ({ history }) => {
         window.scrollTo(0, 0)
     }, [])
 
+    const formValidation = () => {
+        const fullNameErrors = {};
+        const addressErrors = {};
+        const termsErrors = {};
+        let isValid = true;
+
+        if (!name) {
+            fullNameErrors.invalidName = '** Customer name is required';
+            isValid = false;
+        }
+        if (!address) {
+            addressErrors.invalidAddress = '*** Delivery address is required';
+            isValid = false;
+        }
+        if (!address) {
+            addressErrors.invalidAddress = '*** Delivery address is required';
+            isValid = false;
+        }
+        if (termsCheck === false) {
+            termsErrors.invalidTerms = '*** Terms and conditions must be accepted';
+            isValid = false;
+        }
+
+        setFullNameErrors(fullNameErrors);
+        setaddressErrors(addressErrors);
+        settermsErrors(termsErrors);
+        return isValid;
+    };
+
     const placeOrder = async (e) => {
         e.preventDefault();
-        setLoading(true)
+        const isValid = formValidation();
+        if (isValid) {
+            setLoading(true)
 
-        try {
-            const orderData = {
-                orderItems: cart,
-                name: name,
-                email: email,
-                address: address,
-                paymentMethod: 'cash',
-                shippingPrice: 0,
-                taxPrice: 0,
-                totalPrice: cart.discount ? cart.discountprice : cart.price
+            try {
+                const orderData = {
+                    orderItems: cart,
+                    name: name,
+                    email: email,
+                    address: address,
+                    paymentMethod: 'cash',
+                    shippingPrice: 0,
+                    taxPrice: 0,
+                    totalPrice: cart.discount ? cart.discountprice : cart.price
+                }
+
+                const config = {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${auth.token}`,
+                    },
+                }
+
+                const res = await axios.post(`${process.env.REACT_APP_API}/orders`, orderData, config);
+                console.log("Order Data", res);
+
+                setLoading(false)
+                setShowAlert(true);
+                if (typeof window !== "undefined") localStorage.removeItem("buynow");
+
+                history.push('/receipt', {
+                    state: res.data
+                });
+
+            } catch {
+                setLoading(false);
             }
-
-            const config = {
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${auth.token}`,
-                },
-            }
-
-            const res = await axios.post(`${process.env.REACT_APP_API}/orders`, orderData, config);
-            console.log("Order Data", res);
-
-            setLoading(false)
-            setShowAlert(true);
-            if (typeof window !== "undefined") localStorage.removeItem("buynow");
-
-            history.push('/receipt', {
-                state: res.data
-            });
-
-        } catch {
-            setLoading(false);
+        } else {
+            toast.error("Name or Delivery address or terms is required");
         }
     };
 
@@ -88,6 +128,7 @@ const BuyNow = ({ history }) => {
                                     <label class="control-label">Name</label>
                                     <input type="text" class="form-control" name="name" placeholder="Name" value={name}
                                         onChange={(e) => setName(e.target.value)} />
+                                    {Object.keys(fullNameErrors).map((key) => <div style={{ color: 'red' }}>{fullNameErrors[key]}</div>)}
                                 </div>
 
                                 <div class="form-group">
@@ -100,6 +141,7 @@ const BuyNow = ({ history }) => {
                                     <label class="control-label">Delivery Address</label>
                                     <input type="text" class="form-control" name="address" placeholder="Address" value={address}
                                         onChange={(e) => setAddress(e.target.value)} />
+                                    {Object.keys(addressErrors).map((key) => <div style={{ color: 'red' }}>{addressErrors[key]}</div>)}
                                 </div>
                             </div>
 
@@ -111,7 +153,7 @@ const BuyNow = ({ history }) => {
             <section class="mb-4">
                 <div class="container text-left">
                     <div class="row">
-                        <div class="col-lg-8">
+                        {/* <div class="col-lg-8">
                             <div class="card shadow-sm border-0 rounded" />
                             <div class="card-header p-3">
                                 <h3 class="fs-16 fw-600 mb-0">
@@ -149,7 +191,7 @@ const BuyNow = ({ history }) => {
                                 </div>
                             </div>
 
-                        </div>
+                        </div> */}
                         <div class="col-lg-4 mt-4 mt-lg-0">
                             <div class="card border-0 shadow-sm rounded">
                                 <div class="card-header">
@@ -231,31 +273,35 @@ const BuyNow = ({ history }) => {
                                 </div>
                             </div>
                         </div>
-                        <div class="container">
-                            <div class="pt-3">
-                                <label class="aiz-checkbox">
-                                    <input type="checkbox" required="" id="agree_checkbox" />
-                                    <span class="aiz-square-check"></span>
-                                    <span>I agree to the{' '} </span>
-                                </label>
-                                <a href="#">terms and conditions</a>
-                            </div>
-                            <div class="row align-items-center pt-3">
-                                <div class="col-6">
-                                    <Link to="/" class="link link--style-3">
-                                        <i class="las la-arrow-left"></i>
+                    </div>
+                </div>
+            </section>
+
+            <section className="mb-3">
+                <div className="container">
+                    <div class="pl-2">
+                        <label class="aiz-checkbox">
+                            <input type="checkbox" id="agree_checkbox" checked={termsCheck} onChange={(e) => setTermChecked(e.target.checked)} name="terms" />
+                            <span class="aiz-square-check"></span>
+                            <span className="fw-700">I agree to the terms and conditions</span>
+                        </label>
+                        {Object.keys(termsErrors).map((key) => <div style={{ color: 'red' }}>{termsErrors[key]}</div>)}
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-6">
+                            <Link to="/" class="link link--style-3">
+                                <i class="las la-arrow-left"></i>
                      Return to shop
                      </Link>
-                                </div>
-
-                                <div class="col-6 text-right">
-                                    <Link to="/receipt">
-                                        <button onClick={placeOrder} type="button" class="btn btn-primary fw-600">Complete Order</button>
-                                    </Link>
-                                </div>
-
-                            </div>
                         </div>
+                        <div class="col-6 pr-2">
+                            <Link to="/receipt">
+                                <button onClick={placeOrder} type="button" class="btn btn-primary fw-600">
+                                    {loading ? <Spinner /> : <span>Complete Order</span>}
+                                </button>
+                            </Link>
+                        </div>
+
                     </div>
                 </div>
             </section>

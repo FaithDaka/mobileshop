@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom'
 import CartHeader from './CartHeader'
 import CartDetails from './CartDetails'
-import LoginModal from "../../components/Modal/login-modal";
+import LoginModal from "../../components/Modal/cart-modal";
 
 const Cart = () => {
     const [modalIsOpen, setIsOpen] = useState(false);

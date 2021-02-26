@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import _ from "lodash";
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import CurrencyFormat from 'react-currency-format';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import BuyNowModal from "../../components/Modal/buynow-modal";
+import HelmentData from '../../components/Helment'
+import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon } from "react-share";
 
 const ProductInfo = ({ product }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [storageSize, setStorageSize] = useState('8GB');
+  const [storageSize, setStorageSize] = useState('64GB');
   const [color, setColor] = useState('Black');
-  const [storagePrice, setStoragePrice] = useState(product.storageprice && product.storageprice.eight);
+  const [storagePrice, setStoragePrice] = useState(product.storageprice && product.storageprice.sixtyfour);
 
   const hideAlert = () => setShowAlert(false);
   const changeColor = (e) => setColor(e.target.value);
@@ -19,6 +21,9 @@ const ProductInfo = ({ product }) => {
 
   const history = useHistory();
   const auth = useSelector(state => state.auth);
+
+  let location = useLocation();
+  let currentUrl = "https://mobileshop.ug" + location.pathname;
 
   const openModal = () => {
 
@@ -82,14 +87,7 @@ const ProductInfo = ({ product }) => {
   };
 
   useEffect(() => {
-    if (storageSize === '8GB') {
-      setStoragePrice(product.storageprice && product.storageprice.eight)
-    } else if (storageSize === '16GB') {
-      setStoragePrice(product.storageprice && product.storageprice.sixteen)
-    } else if (storageSize === '32GB') {
-      setStoragePrice(product.storageprice && product.storageprice.thirtytwo)
-    }
-    else if (storageSize === '64GB') {
+    if (storageSize === '64GB') {
       setStoragePrice(product.storageprice && product.storageprice.sixtyfour)
     } else if (storageSize === '128GB') {
       setStoragePrice(product.storageprice && product.storageprice.onetwentyeight)
@@ -100,14 +98,15 @@ const ProductInfo = ({ product }) => {
     else if (storageSize === '512GB') {
       setStoragePrice(product.storageprice && product.storageprice.fivetwelve)
     }
-    else if (storageSize === '1TB') {
-      setStoragePrice(product.storageprice && product.storageprice.onetb)
-    }
 
   }, [storageSize])
 
   return (
     <div class="text-left">
+      {/* <HelmentData title={product.title}
+        description={product.description}
+        image={product.images && product.images.length ? product.images[0].url : ''}
+      ></HelmentData> */}
       {showAlert && (
         <SweetAlert
           success
@@ -118,7 +117,7 @@ const ProductInfo = ({ product }) => {
         />
       )}
       <BuyNowModal modalIsOpen={modalIsOpen} close={closeModal} />
-      <h1 class="mb-2 fs-20 fw-600">
+      <h1 class="mb-2 fs-20 fw-600 text-justify">
         {product.title}
       </h1>
       <div class="row align-items-center">
@@ -155,7 +154,7 @@ const ProductInfo = ({ product }) => {
                 displayType="text"
                 thousandSeparator
               /></strong>}
-              {/* {!storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">Storage Capacity out of Stock!!</strong> } */}
+
 
             </strong>
             <span class="opacity-70"></span>
@@ -181,24 +180,6 @@ const ProductInfo = ({ product }) => {
           <div class="col-sm-10">
             <div class="aiz-radio-inline">
               <label class="aiz-megabox pl-0 mr-2">
-                <input type="radio" name="storage" value="8GB" onChange={handleOptionChange} />
-                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                  8GB
-         </span>
-              </label>
-              <label class="aiz-megabox pl-0 mr-2">
-                <input type="radio" name="storage" value="16GB" onChange={handleOptionChange} />
-                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                  16GB
-         </span>
-              </label>
-              <label class="aiz-megabox pl-0 mr-2">
-                <input type="radio" name="storage" value="32GB" onChange={handleOptionChange} />
-                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                  32GB
-         </span>
-              </label>
-              <label class="aiz-megabox pl-0 mr-2">
                 <input type="radio" name="storage" value="64GB" onChange={handleOptionChange} />
                 <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
                   64GB
@@ -222,20 +203,11 @@ const ProductInfo = ({ product }) => {
                   512GB
          </span>
               </label>
-              <label class="aiz-megabox pl-0 mr-2">
-                <input type="radio" name="storage" value="1TB" onChange={handleOptionChange} />
-                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                  1TB
-         </span>
-              </label>
-
             </div>
           </div>
         </div> : ''}
 
-        <hr />
-
-        <div class="row no-gutters">
+        {product.condition === 'Brand New' && <div class="row no-gutters">
           <div class="col-sm-2">
             <div class="my-2">Color: {color}</div>
           </div>
@@ -259,18 +231,9 @@ const ProductInfo = ({ product }) => {
                   <span class="size-30px d-inline-block rounded" style={{ background: '#FF0000' }}></span>
                 </span>
               </label>
-              <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="White">
-                <input type="radio" name="color" value="White" onChange={changeColor} />
-                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                  <span class="size-30px d-inline-block rounded" style={{ background: '#FFFFFF' }}></span>
-                </span>
-              </label>
-
             </div>
           </div>
-        </div>
-
-
+        </div> }
 
 
         {/* <div className="row no-gutters">
@@ -312,14 +275,24 @@ const ProductInfo = ({ product }) => {
         </div> */}
 
       </form>
-      <div class="mt-3">
+      <div class="mt-3" style={{
+        display: "flex",
+        position: "relative",
+        alignItems: "center",
+        transition: "all .35s ease",
+      }}>
         <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
           <i class="las la-shopping-bag"></i>
           <span class="d-md-inline-block"> Add to cart</span>
         </button>
         <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
           <i class="la la-shopping-cart"></i> Buy Now
-                     </button>
+        </button>
+        <button type="button" className=" btn btn-product-call">
+          <a href="tel:0751290264">
+            <i class="las la-phone la-2x btn-call-details"></i>
+          </a>
+        </button>
       </div>
       <div class="row no-gutters mt-4">
         <div class="col-sm-2">
@@ -328,10 +301,33 @@ const ProductInfo = ({ product }) => {
         <div class="col-sm-10">
           <div class="aiz-share jssocials">
             <div class="jssocials-shares">
-              <div class="jssocials-share jssocials-share-twitter"><a target="_blank" href="https://twitter.com/share?url=https%3A%2F%2Fdemo" class="jssocials-share-link"><i class="lab la-twitter jssocials-share-logo"></i></a></div>
-              <div class="jssocials-share jssocials-share-facebook"><a target="_blank" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemo" class="jssocials-share-link"><i class="lab la-facebook-f jssocials-share-logo"></i></a></div>
-              <div class="jssocials-share jssocials-share-linkedin"><a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fdemo" class="jssocials-share-link"><i class="lab la-linkedin-in jssocials-share-logo"></i></a></div>
-              <div class="jssocials-share jssocials-share-whatsapp"><a target="_self" href="whatsapp://send?text=https%3A%2F%2Fdemo." class="jssocials-share-link"><i class="lab la-whatsapp jssocials-share-logo"></i></a></div>
+              <FacebookShareButton
+                url={currentUrl}
+                quote={product.description}
+                title={product.title}
+                hashtag="#mobileshopug"
+                image={product.images && product.images.length ? product.images[0].url : ''}
+                className="jssocials-share jssocials-share-facebook">
+                <FacebookIcon size={36} />
+              </FacebookShareButton>
+              <TwitterShareButton
+                url={currentUrl}
+                title={product.title}
+                hashtag="#mobileshopug"
+                class="jssocials-share jssocials-share-twitter"
+              >
+                <TwitterIcon size={36} />
+              </TwitterShareButton>
+              <WhatsappShareButton
+                url={currentUrl}
+                quote={product.description}
+                title={product.title}
+                image={product.images && product.images.length ? product.images[0].url : ''}
+                separator=":: "
+                class="jssocials-share jssocials-share-whatsapp"
+              >
+                <WhatsappIcon size={36} />
+              </WhatsappShareButton>
             </div>
           </div>
         </div>

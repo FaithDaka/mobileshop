@@ -75,14 +75,14 @@ form {
     overflow-x: hidden;
 }
 
-.a-input-text, input[type=text], input[type=number], input[type=tel], input[type=password], input[type=date], input[type=email], input[type=search] {
+/* .a-input-text, input[type=text], input[type=number], input[type=tel], input[type=password], input[type=date], input[type=email], input[type=search] {
     background-color: #fff;
     height: 3.1rem;
     padding: .3rem .7rem;
     line-height: normal;
-}
+} */
 
-.a-input-text-wrapper input {
+/* .a-input-text-wrapper input {
     line-height: 1;
     border: 0;
     float: none;
@@ -94,13 +94,13 @@ form {
     -webkit-appearance: none;
     -webkit-tap-highlight-color: transparent;
     box-shadow: none;
-}
+} */
 
-.a-input-text, input[type=text], input[type=number], input[type=tel], input[type=password], input[type=search] {
+/* .a-input-text, input[type=text], input[type=number], input[type=tel], input[type=password], input[type=search] {
     height: 4.3rem;
     padding: 0 1.1rem;
     line-height: normal;
-}
+} */
 
 .a-button {
     background: #e7e9ec;
@@ -166,11 +166,6 @@ form {
     outline: 0;
     overflow: visible;
     z-index: 20;
-}
-
-button, input[type=button], input[type=reset], input[type=submit] {
-    cursor: pointer;
-    -webkit-appearance: button;
 }
 
 .a-button-text {

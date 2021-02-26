@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from "react-toastify";
 import LoadSpinner from '../../../components/Spinner';
-import { getProductsByCount, removeProduct } from "../../../functions/products";
+import { getProducts, removeProduct } from "../../../functions/products";
 
 const ProductsList = () => {
 
-    const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
 
   const loadAllProducts = () => {
     setLoading(true);
-    getProductsByCount(100)
+    getProducts("createdAt", "desc", page)
       .then((res) => {
         setProducts(res.data);
         setLoading(false);
@@ -41,6 +42,8 @@ const ProductsList = () => {
   useEffect(() => {
     loadAllProducts();
   }, []);
+
+  console.log("products", products)
 
     return (
         <>
@@ -87,8 +90,8 @@ const ProductsList = () => {
                         {products.map((product) => (
                             <tr>
                                 <td style={{ display: 'table-cell' }}>{product.title}</td>
-                                <td style={{ display: 'table-cell' }}>{product.title}</td>
-                                <td style={{ display: 'table-cell' }}>{product.title}</td>
+                                <td style={{ display: 'table-cell' }}>{product.category.name}</td>
+                                <td style={{ display: 'table-cell' }}>{product.subs.name}</td>
                                 <td style={{ display: 'table-cell' }}>{product.price}</td>
                                 <td style={{ display: 'table-cell' }}>{product.condition}</td>
                                 <td class="text-right footable-last-visible" style={{ display: 'table-cell' }}>

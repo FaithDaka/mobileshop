@@ -15,7 +15,7 @@ const BannerSlidder = () => {
   };
 
   return (
-    <div className=" col-lg-7 ">
+    <div className="d-xl-none d-lg-block col-lg-7 ">
       <div className="mobile-img-auto-height">
         <div className="slick-list draggable">
           <Slider {...settings}>
@@ -32,7 +32,7 @@ const BannerSlidder = () => {
               <div className="carousel-box">
                 <img
                   className="d-block rounded shadow-sm lazyloaded responsive"
-                  src="images/Banner2.jpeg"
+                  src="images/banner-new.jpeg"
                   alt="Slidder Banner"
                 />
               </div>
@@ -41,7 +41,7 @@ const BannerSlidder = () => {
               <div className="carousel-box">
                 <img
                   className="d-block rounded shadow-sm lazyloaded responsive"
-                  src="images/Banner3.jpeg"
+                  src="images/banner-new-1.jpeg"
                   alt="Slidder Banner"
                 />
               </div>

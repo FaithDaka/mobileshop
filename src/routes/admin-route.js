@@ -5,6 +5,7 @@ import AdminRoute from './AdminRoute'
 import Layout from '../admin/Layout';
 import Dashboard from '../admin/pages/Dashboard'
 import AddProduct from '../admin/pages/Products/AddProducts'
+import EditProduct from '../admin/pages/Products/EditProducts'
 import ListProduct from '../admin/pages/Products/ProductsList.jsx'
 import ListOrders from '../admin/pages/Orders/OrdersList'
 import OrderDetails from '../admin/pages/Orders/OrderDetails'
@@ -15,6 +16,7 @@ const AdminRoutes = () => (
     <Layout>
       <AdminRoute exact path="/admin/dashboard" component={Dashboard} />
       <AdminRoute exact path="/admin/addproduct" component={AddProduct} />
+      <AdminRoute exact path="/admin/update/:id" component={EditProduct} />
       <AdminRoute exact path="/admin/listproduct" component={ListProduct} />
       <AdminRoute exact path="/admin/customers" component={ListCustomers} />  
       <AdminRoute exact path="/admin/listorders" component={ListOrders} /> 

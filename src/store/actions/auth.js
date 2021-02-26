@@ -8,27 +8,53 @@ export const loginBuynow = (user, history, close) => {
     });
 
     if (res.status === 200) {
-      const { token, phonenumber } = res.data;
+      const token = res.data.token
+      const phonenumber = res.data.profile.phonenumber
+      const isAdmin = res.data.profile.isAdmin
+
       localStorage.setItem("token", token);
+      localStorage.setItem("phonenumber", phonenumber);
+      localStorage.setItem("isAdmin", isAdmin);
 
-      axios
-        .post(`${process.env.REACT_APP_API}/auth`, { phonenumber })
-        .then((user) => {
-          const { phonenumber, isAdmin } = user.data;
-          localStorage.setItem("phonenumber", phonenumber);
-          localStorage.setItem("isAdmin", isAdmin);
-          console.log("DB user saved", user);
-
-          dispatch({
-            type: "LOGIN_SUCCESS",
-            payload: { token, phonenumber, isAdmin },
-          });
-        })
-        .catch((error) => {
-          console.log("DB User Failed", error);
+      dispatch({
+        type: "LOGIN_SUCCESS",
+        payload: { token, phonenumber, isAdmin },
         });
 
-      history.push("/buynow");
+      history.push("/checkout");
+      close();
+    } else {
+      if (res.status === 400) {
+        dispatch({
+          type: "LOGOUT_SUCCESS",
+        });
+      }
+    }
+  };
+};
+
+export const loginCheckout = (user, history, close) => {
+  return async (dispatch) => {
+    dispatch({ type: "LOGIN_REQUEST" });
+    const res = await axios.post(`${process.env.REACT_APP_API}/otp/verifyOTP`, {
+      ...user,
+    });
+
+    if (res.status === 200) {
+      const token = res.data.token
+      const phonenumber = res.data.profile.phonenumber
+      const isAdmin = res.data.profile.isAdmin
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("phonenumber", phonenumber);
+      localStorage.setItem("isAdmin", isAdmin);
+
+      dispatch({
+        type: "LOGIN_SUCCESS",
+        payload: { token, phonenumber, isAdmin },
+        });
+
+      history.push("/checkout");
       close();
     } else {
       if (res.status === 400) {
@@ -48,24 +74,17 @@ export const login = (user, history, close) => {
     });
 
     if (res.status === 200) {
-      const { token, phonenumber } = res.data;
+      const token = res.data.token
+      const phonenumber = res.data.profile.phonenumber
+      const isAdmin = res.data.profile.isAdmin
+
       localStorage.setItem("token", token);
+      localStorage.setItem("phonenumber", phonenumber);
+      localStorage.setItem("isAdmin", isAdmin);
 
-      axios
-        .post(`${process.env.REACT_APP_API}/auth`, { phonenumber })
-        .then((user) => {
-          const { phonenumber, isAdmin } = user.data;
-          localStorage.setItem("phonenumber", phonenumber);
-          localStorage.setItem("isAdmin", isAdmin);
-          console.log("DB user saved", user);
-
-          dispatch({
-            type: "LOGIN_SUCCESS",
-            payload: { token, phonenumber, isAdmin },
-          });
-        })
-        .catch((error) => {
-          console.log("DB User Failed", error);
+      dispatch({
+        type: "LOGIN_SUCCESS",
+        payload: { token, phonenumber, isAdmin },
         });
 
       history.push("/");

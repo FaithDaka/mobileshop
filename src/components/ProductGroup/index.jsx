@@ -1,56 +1,62 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 
-import React from 'react'
-import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
-import 'react-tabs/style/react-tabs.css';
-import Product from '../Product'
+import React, { useState } from 'react'
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+
+import BrandNew from './brand-new';
+import UkUsed from './uk-used';
+import Accessories from './accessories';
+import Televisions from './televisons';
+import Gaming from './gaming';
+import Laptop from './laptops';
 import LoadSpinner from '../../components/Spinner';
 
+import './styles.css';
+
 const ProductGroup = ({ products, loading }) => {
+  const [currentTab, setCurrentTab] = useState('brandnew');
+
+  const renderView = () => {
+    if (currentTab === 'brandnew') {
+      return <BrandNew products={products} />;
+    }
+    if (currentTab === 'ukused') {
+      return <UkUsed products={products} />;
+    }
+    if (currentTab === 'accessories') {
+      return <Accessories products={products} />;
+    }
+    if (currentTab === 'televisions') {
+      return <Televisions products={products} />;
+    }
+    if (currentTab === 'laptops') {
+      return <Laptop products={products} />;
+    }
+    if (currentTab === 'gaming') {
+      return <Gaming products={products} />;
+    }
+  };
 
   return (
-    <section className="mb-4">
+    <section className="d-xl-none d-lg-block mb-4">
       {loading && <LoadSpinner />}
       <div className="container">
+        <OwlCarousel items={3} className="owl-them mb-3" loop autoplay dots={false} autoplayTimeout={3000}>
+          <a href="#" className={currentTab === 'brandnew' ? 'selected' : 'tab-text'}
+            onClick={() => setCurrentTab('brandnew')}>Brand New</a>
+          <a href="#" className={currentTab === 'ukused' ? 'selected' : 'tab-text'} onClick={() => setCurrentTab('ukused')}>UK Used</a>
+          <a href="#" className={currentTab === 'accessories' ? 'selected' : 'tab-text'} onClick={() => setCurrentTab('accessories')}>Accessories</a>
+          <a href="#" className={currentTab === 'televisions' ? 'selected' : 'tab-text'} onClick={() => setCurrentTab('televisions')}>Televisions</a>
+          <a href="#" className={currentTab === 'laptops' ? 'selected' : 'tab-text'} onClick={() => setCurrentTab('laptops')}>Laptops</a>
+          <a href="#" className={currentTab === 'gaming' ? 'selected' : 'tab-text'} onClick={() => setCurrentTab('gaming')}>Gaming</a>
+        </OwlCarousel>
 
-        <Tabs>
-          <TabList>
-            <div className="bg-white shadow-sm rounded">
-              <div className="nav border-bottom aiz-nav-tabs d-flex align-items-stretch justify-content-around">
-                <Tab className="p-2 fs-16 fw-600 text-reset show active">Brand New</Tab>
-                <Tab className="p-2 fs-16 fw-600 text-reset">UK Used</Tab>
-                <Tab className="p-2 fs-16 fw-600 text-reset">Accessories</Tab>
-              </div>
-            </div>
-          </TabList>
+        <div className="">
+          {renderView()}
+        </div>
 
-          <TabPanel>
-            <div className="row gutters-5 row-cols-xxl-5 row-cols-lg-5 row-cols-md-3 row-cols-2">
-              {products.filter(product =>
-                product.condition === 'Brand New').map(filteredProducts => (
-                  <Product product={filteredProducts} />
-                ))}
-            </div>
-            <div className="aiz-pagination aiz-pagination-center mb-4" />
-          </TabPanel>
-          <TabPanel>
-            <div className="row gutters-5 row-cols-xxl-5 row-cols-lg-5 row-cols-md-3 row-cols-2">
-              {products.filter(product =>
-                product.condition === 'Uk Used').map(filteredProducts => (
-                  <Product product={filteredProducts} />
-                ))}
-            </div>
-            <div className="aiz-pagination aiz-pagination-center mb-4" />
-          </TabPanel>
-          <TabPanel>
-            <div className="row gutters-5 row-cols-xxl-5 row-cols-lg-5 row-cols-md-3 row-cols-2">
-              {products.filter(product =>
-                product.condition === 'Accessories').map(filteredProducts => (
-                  <Product product={filteredProducts} />
-                ))}
-            </div>
-            <div className="aiz-pagination aiz-pagination-center mb-4" />
-          </TabPanel>
-        </Tabs>
       </div>
     </section>
   )

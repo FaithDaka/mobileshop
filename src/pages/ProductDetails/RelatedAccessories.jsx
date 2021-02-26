@@ -2,7 +2,7 @@ import React from 'react'
 
 const RelatedAccessories = () => {
   return (
-    <div className="bg-white rounded shadow-sm mb-3">
+    <div className="d-xl-none d-none d-lg-block bg-white rounded shadow-sm mb-3">
       <div className="p-3 border-bottom fs-16 fw-600">
         Related Accessories
             </div>

@@ -35,24 +35,24 @@
     border-radius: 0\9;
 }
 
-button, input, select, textarea {
+/* button, input, select, textarea {
     margin: 0;
     font-size: 100%;
     vertical-align: middle;
-}
+} */
 
-.a-input-text, input[type=text], input[type=search], input[type=number], input[type=tel], input[type=password], input[type=date], input[type=email] {
+/* .a-input-text, input[type=text], input[type=search], input[type=number], input[type=tel], input[type=password], input[type=date], input[type=email] {
     background-color: #fff;
     height: 3.1rem;
     padding: .3rem .7rem;
     line-height: normal;
-}
+} */
 
-.a-input-text, input[type=text], input[type=search], input[type=number], input[type=tel], input[type=password] {
+/* .a-input-text, input[type=text], input[type=search], input[type=number], input[type=tel], input[type=password] {
     height: 4.3rem;
     padding: 0 1.1rem;
     line-height: normal;
-}
+} */
 
 .nav-search-field .nav-input {
     position: absolute;
@@ -131,23 +131,23 @@ button, input, select, textarea {
     border-radius: 0\9;
 }
 
-button, input, select, textarea {
+/* button, input, select, textarea {
     margin: 0;
     font-size: 100%;
     vertical-align: middle;
-}
+} */
 
-input, select, textarea {
+/* input, select, textarea {
     -webkit-transition: all .1s linear;
     transition: all .1s linear;
     line-height: 1.35;
     color: #0F1111;
-}
+} */
 
-button, input[type=button], input[type=reset], input[type=submit] {
+/* button, input[type=button], input[type=reset], input[type=submit] {
     cursor: pointer;
     -webkit-appearance: button;
-}
+} */
 
 .nav-search-submit .nav-input {
     position: absolute;

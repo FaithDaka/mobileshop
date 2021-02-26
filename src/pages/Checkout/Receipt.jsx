@@ -4,8 +4,6 @@ import CurrencyFormat from 'react-currency-format';
 const Receipt = ({ location }) => {
     const orderInfo = location.state;
 
-    console.log("Order Info", orderInfo)
-
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -54,7 +52,7 @@ const Receipt = ({ location }) => {
                                                 </tr>
                                                     <tr>
                                                         <td class="w-50 fw-600">Order status:</td>
-                                                        <td>Pending</td>
+                                                        <td>Processing</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="w-50 fw-600">Total order amount:</td>
@@ -66,10 +64,6 @@ const Receipt = ({ location }) => {
                                                                 style={{ fontWeight: '500' }}
                                                             />
                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="w-50 fw-600">Shipping:</td>
-                                                        <td>Flat shipping rate</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="w-50 fw-600">Payment Method:</td>

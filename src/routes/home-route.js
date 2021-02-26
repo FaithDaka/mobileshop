@@ -10,6 +10,9 @@ import BuyNow from '../pages/Checkout/BuyNow';
 import Receipt from '../pages/Checkout/Receipt';
 import Categories from '../pages/Search/Categories';
 import ProductDetails from '../pages/ProductDetails';
+import Aboutus from '../pages/Links/about-us';
+import FAQS from '../pages/Links/faqs';
+import Terms from '../pages/Links/terms';
 
 const HomeRoute = () => {
 
@@ -23,6 +26,9 @@ const HomeRoute = () => {
       <Route exact path="/checkout" component={Checkout} />
       <Route exact path="/receipt" component={Receipt} />
       <Route exact path="/search" component={Search} /> 
+      <Route exact path="/aboutus" component={Aboutus} /> 
+      <Route exact path="/faqs" component={FAQS} /> 
+      <Route exact path="/terms" component={Terms} /> 
       <Route exact path="/products/:slug" component={ Categories } />      
     </Layout>
   </Switch>

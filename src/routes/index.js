@@ -24,7 +24,7 @@ const AppRoot = () => {
 
   return (
     <React.Suspense fallback={<div><Spinner /></div>}>
-      <ToastContainer position="bottom-center" />
+      <ToastContainer />
       <Switch>
         <Route path="/shop" component={ShopPages} />
         <Route path="/admin" component={AdminPages} />

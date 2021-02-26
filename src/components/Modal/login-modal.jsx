@@ -70,96 +70,85 @@ const LoginModal = ({ modalIsOpen, close }) => {
                         <span aria-hidden="true"><i className="icon-close"></i></span>
                     </button>
                     {!hash && (
-                        <div class="a-container">
-                            <div class="a-section a-spacing-none" />
-                            <div class="a-section a-spacing-none auth-pagelet-mobile-container" />
-                            <div class="a-section auth-pagelet-mobile-container">
-                                <div class="a-section auth-pagelet-container">
-                                    <h1>
-                                        Log In with Phone number
-               </h1>
-                                    <p>
-                                    </p>
-                                    <p>
-                                        Please make sure you fill in a valid phone number so we can reach you during delivery.
-               </p>
-                                    <form id="auth-pv-form" onSubmit={sendOTP}>
-                                        <div class="iti iti--allow-dropdown">
-                                            <div class="iti__flag-container">
-                                                <div class="iti__selected-flag" role="combobox" aria-controls="iti-0__country-listbox" aria-owns="iti-0__country-listbox" aria-expanded="false" tabindex="0" title="Uganda: +256" aria-activedescendant="iti-0__item-ug">
-                                                    <div class="iti__flag iti__ug">
-                                                        <img src={`${process.env.PUBLIC_URL}/images/flag.png`} alt="flag"  width="30"/>
-                                                    </div>
-                                                    <div class="iti__arrow"></div>
+                        <section class="gry-bg py-2">
+                        <div class="profile">
+                           <div class="container">
+                              <div class="row">
+                                 <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-8 mx-auto">
+                                    <div class="card">
+                                       <div class="text-center pt-4">
+                                          <h1 class="h4 fw-600">
+                                          Create Account.
+                                          </h1>
+                                          <span class="opacity-60">Please make sure you fill in a valid phone number so we can reach you during delivery.</span>
+                                       </div>
+                                       <div class="px-4 py-3 py-lg-4">
+                                          <div class="">
+                                             <form id="reg-form" onSubmit={sendOTP}>                                       
+                                                <div class="form-group">
+                                                   <input type="tel" id="phone" class="form-control"  
+                                                   name="phone"
+                                                   value={phone}
+                                                   onChange={(e) => setPhone(e.target.value)}
+                                                   placeholder="0779XXXXXX" />
                                                 </div>
-                                            </div>
-                                            <input type="tel" id="phone" class="form-control" autocomplete="off" data-intl-tel-input-id="0" 
-                                            name="phone"
-                                            value={phone}
-                                            onChange={(e) => setPhone(e.target.value)}
-                                            placeholder="0779XXXXXX" />
-                                        </div>
-
-                                        <span class="a-button a-spacing-medium a-button-span12 a-button-primary" id="a-autoid-0" style={{marginTop: '15px'}}><span class="a-button-inner">
-                                            <input id="auth-verify-button" name="pvSubmit" class="a-button-input" type="submit" aria-labelledby="a-autoid-0-announce" />
-                                            <span class="a-button-text" aria-hidden="true" id="a-autoid-0-announce">
-                                                {loading ? <LoadSpinner /> : <span>Verify Mobile Number</span>}
-                                            </span></span></span>
-                                        <div class="a-section a-spacing-base">
-                                            <div id="legalTextRow" class="a-row a-spacing-top-medium a-size-small">
-                                                By continuing, you agree to MobileShop's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice</a>.
-                     </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                                                
+                                                <div class="mb-3">
+                                                   <span class="opacity-60">By continuing you agree to <a href="#">Terms of Use</a> and {' '}
+                                                   <a href="#">Privacy Notice</a></span>
+                                                   <span class="aiz-square-check"></span>
+                                                </div>
+                                                <div class="mb-3">
+                                                   <button type="submit" class="btn btn-primary btn-block fw-600">{loading ? <LoadSpinner /> : <span>Verify Mobile Number</span>}</button>
+                                                </div>
+                                             </form>
+                                          </div>
+                                          
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
+                     </section>
 
                     )}
 
                     {hash && (
-                        <div class="a-container">
-                            <div class="a-section a-spacing-none" />
-                            <div class="a-section a-spacing-none auth-pagelet-mobile-container" />
-                            <div class="a-section auth-pagelet-mobile-container">
-                                <div class="a-section auth-pagelet-container">
-                                    <h1>
-                                        Verify Mobile Number
-               </h1>
-                                    <p>
-                                    </p>
-                                    <div class="a-row">
-                                        <span id="auth-pv-phone-number-text" class="a-text-bold">
-                                            UG {phonenumber} ( <a class="a-link-normal" href="#"> Change </a> )
-                  </span>
+                        <section class="gry-bg py-2">
+                        <div class="profile">
+                           <div class="container">
+                              <div class="row">
+                                 <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-8 mx-auto">
+                                    <div class="card">
+                                       <div class="text-center pt-4">
+                                          <h1 class="h4 fw-600">
+                                          Verify Mobile Number
+                                          </h1>
+                                          <span class="opacity-60">A text with a One Time Password (OTP) has been sent to the number above.</span>
+                                       </div>
+                                       <div class="px-4 py-3 py-lg-4">
+                                          <div class="">
+                                             <form id="reg-form" onSubmit={confirmOTP}>                                       
+                                                <div class="form-group">
+                                                   <input type="number" class="form-control"  
+                                                   placeholder="Enter OTP Code" name="otp"
+                                                   value={otp}
+                                                   onChange={(e) => setOTP(e.target.value)}/>
+                                                </div>
+                                                
+                                                <div class="mb-3">
+                                                   <button type="submit" class="btn btn-primary btn-block fw-600">{auth.authenticating ?  <LoadSpinner /> : <span>Login into your account</span>}</button>
+                                                </div>
+                                             </form>
+                                          </div>
+                                       </div>
                                     </div>
-                                    <p></p>
-                                    <p>
-                                        A text with a One Time Password (OTP) has been sent to the number above.
-               </p>
-                                    <form id="auth-pv-form" onSubmit={confirmOTP}>
-                                        <label for="auth-pv-enter-code" class="a-form-label auth-mobile-label"></label>
-                                        <div class="a-input-text-wrapper a-spacing-medium auth-autofocus auth-required-field">
-                                            <input type="number" maxlength="6" autocomplete="off" placeholder="Enter OTP Code" name="otp" autocorrect="off"
-                                                value={otp}
-                                                onChange={(e) => setOTP(e.target.value)}
-                                            />
-                                        </div>
-                                        <span class="a-button a-spacing-medium a-button-span12 a-button-primary" id="a-autoid-0"><span class="a-button-inner">
-                                            <input id="auth-verify-button" name="pvSubmit" class="a-button-input" type="submit" aria-labelledby="a-autoid-1-announce" />
-                                            <span class="a-button-text" aria-hidden="true" id="a-autoid-1-announce">
-                                                {auth.authenticating ?  <LoadSpinner /> : <span>Login into your account</span>}
-                                            </span></span></span>
-                                        <div class="a-section a-spacing-base">
-                                            <div id="legalTextRow" class="a-row a-spacing-top-medium a-size-small">
-                                                By creating an account, you agree to MobileShop's <a href="/#">Conditions of Use</a> and <a href="#">Privacy Notice</a>.
-                     </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-
+                                 </div>
+                              </div>
+                           </div>
                         </div>
+                     </section>
                     )}
                 </div>
             </div>

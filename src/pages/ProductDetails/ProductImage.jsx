@@ -1,24 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-const ProductImage = ({product}) => (
-  <div class="z-3 row gutters-10">
-    <div class="col order-1 order-md-2">
-      <div class="aiz-carousel product-gallery slick-initialized slick-slider" data-nav-for=".product-gallery-thumb" data-fade="true">
-        <div class="slick-list draggable">
-          <div class="slick-track text-center" style={{ opacity: '1', width: '894px' }}>
-            <div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style={{ width: '298px', position: 'relative', left: '0px', top: '0px', zIndex: '999', opacity: '1' }}>
-              <div>
-                <div class="carousel-box img-zoom rounded" style={{ width: '30%', display: 'inline-block' }}>
-                  <LazyLoadImage class="img-fluid lazyloaded"  src={product.images && product.images.length ? product.images[0].url : ''} alt='singleimage' />
-                </div>
+const ProductImage = ({ product }) => {
+  const [currentImage, setCurrentImage] = useState("");
+
+  const renderImage = () => {
+    return (
+      <LazyLoadImage
+        class="responsive-img"
+        src={currentImage ? currentImage : product.images && product.images.length ? product.images[0].url : ''}
+        alt="image-details"
+      />
+    );
+  };
+
+  return (
+    <div className="row">
+      <div className="col-3">
+        <div class="thumbnail-container">
+          {product.images && product.images.length ? product.images.map((thumb, index) =>
+            <Link to="#" key={thumb.id}
+              onClick={() =>
+                setCurrentImage(
+                  index === 0 ? product.images.url : thumb.url
+                )
+              }>
+              <div class="border p-1 rounded thumbnail-box">
+                <LazyLoadImage
+                  class="thumbnail-img"
+                  src={index === 0 ? product.images[0].url : thumb.url}
+                  alt="thumbnail"
+                />
               </div>
-            </div>
-          </div>
+            </Link>
+          ) : ''
+          }
+        </div>
+
+      </div>
+      <div className="col-9">
+        <div className="img-box">
+          {renderImage()}
         </div>
       </div>
     </div>
-  </div>
-)
+  )
+}
 
-export default ProductImage
+export default ProductImage;

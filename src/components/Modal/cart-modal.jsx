@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import Modal from 'react-modal';
 import LoadSpinner from "../../components/Spinner"
-import { loginBuynow } from "../../store/actions/auth"
+import { loginCheckout } from "../../store/actions/auth"
 import './verify.css';
 import './tel.css';
 
@@ -21,7 +21,7 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-const BuyNowModal = ({ modalIsOpen, close }) => {
+const CartModal = ({ modalIsOpen, close }) => {
 
     const [phone, setPhone] = useState('')
     const [hash, setHash] = useState('')
@@ -31,7 +31,7 @@ const BuyNowModal = ({ modalIsOpen, close }) => {
     let dispatch = useDispatch();
     const history = useHistory();
     const auth = useSelector(state => state.auth);
-    
+
     const number = parseInt(phone, 10)
     const phonenumber = `+256${number}`
 
@@ -50,10 +50,10 @@ const BuyNowModal = ({ modalIsOpen, close }) => {
         e.preventDefault()
 
         const user = {
-            phonenumber, hash, otp
+            phonenumber, hash, otp, 
         }
 
-        dispatch(loginBuynow(user, history, close));
+        dispatch(loginCheckout(user, history, close));
     }
 
     return (
@@ -157,4 +157,4 @@ const BuyNowModal = ({ modalIsOpen, close }) => {
 }
 
 
-export default BuyNowModal;
+export default CartModal;

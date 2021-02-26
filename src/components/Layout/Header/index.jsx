@@ -13,7 +13,7 @@ const Header = () => {
 
 return(
   <>
-  <header className="d-none d-lg-block sticky-top  z-1020 border-bottom shadow-sm" style={{background: '#101622'}}>
+  <header className="d-xl-none d-none d-lg-block sticky-top  z-1020 border-bottom shadow-sm" style={{background: '#101622'}}>
     <div className="position-relative logo-bar-area">
       <div className="container">
         <div className="d-flex align-items-center">

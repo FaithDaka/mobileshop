@@ -1,11 +1,8 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable max-len */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom'
 
 const BottomFooter = () => (
-  <footer className="pt-3 pb-7 pb-xl-3 text-light" style={{backgroundColor: '#131821'}}>
+  <footer className="d-xl-none d-lg-block pt-3 pb-7 pb-xl-3 text-light" style={{backgroundColor: '#131821'}}>
     <div className="container">
       <div className="row align-items-center">
         <div className="col-lg-4">
@@ -31,6 +28,19 @@ const BottomFooter = () => (
             </li>
             <li className="list-inline-item">
               <a href="#" target="_blank" className="linkedin"><i className="lab la-linkedin-in" /></a>
+            </li>
+          </ul>
+        </div>
+        <div className="col-lg-4">
+          <ul className="list-inline text-center">
+            <li className="list-inline-item">
+              <Link to="/aboutus">About us</Link>
+            </li>
+            <li className="list-inline-item">
+              <Link to="/faqs">FAQs</Link>
+            </li>
+            <li className="list-inline-item">
+              <Link to="/terms">Terms and Conditions</Link>
             </li>
           </ul>
         </div>

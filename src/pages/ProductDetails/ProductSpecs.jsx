@@ -11,7 +11,7 @@ const ProductSpecs = ({product, related}) => (
           <RelatedAccessories product={product} />
         </div>
         <div className="col-xl-9 order-0 order-xl-1">
-          <Specs product={product} />
+            {product.condition === 'Brand New' ? <Specs product={product} /> : ''}
           <RelatedProducts related={related} />
         </div>
       </div>
