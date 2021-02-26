@@ -19,8 +19,8 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 const StorageModal = ({ modalIsOpen, close, product }) => {
-    const [storageSize, setStorageSize] = useState('64GB');
-    const [storagePrice, setStoragePrice] = useState(product.storageprice && product.storageprice.sixtyfour);
+    const [storageSize, setStorageSize] = useState('');
+    const [storagePrice, setStoragePrice] = useState('');
     const [color, setColor] = useState('Black');
 
     const handleOptionChange = (e) => {
@@ -34,7 +34,10 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (storageSize === '64GB') {
+        if (storageSize === '32GB') {
+            setStoragePrice(product.storageprice && product.storageprice.thirtytwo)
+        } else if
+            (storageSize === '64GB') {
             setStoragePrice(product.storageprice && product.storageprice.sixtyfour)
         } else if (storageSize === '128GB') {
             setStoragePrice(product.storageprice && product.storageprice.onetwentyeight)
@@ -84,7 +87,6 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
 
     }
 
-
     return (
         <Modal
             isOpen={modalIsOpen}
@@ -108,29 +110,46 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
                         </div>
                         <div class="col-sm-10">
                             <div class="aiz-radio-inline">
-                                <label class="aiz-megabox pl-0 mr-2">
-                                    <input type="radio" name="storage" value="64GB" onChange={handleOptionChange} />
-                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                                        64GB
-         </span>
+                            <label class="aiz-megabox pl-0 mr-2">
+                                    {product.storageprice.thirtytwo && <><input type="radio" name="storage" value="32GB" onChange={handleOptionChange} />
+                                        <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                                            32GB
+                                        </span></>
+                                    }
                                 </label>
                                 <label class="aiz-megabox pl-0 mr-2">
-                                    <input type="radio" name="storage" value="128GB" onChange={handleOptionChange} />
-                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                                        128GB
-         </span>
+                                    {product.storageprice.sixtyfour && <><input type="radio" name="storage" value="64GB" onChange={handleOptionChange} />
+                                        <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                                            64GB
+                                        </span></>
+                                    }
                                 </label>
                                 <label class="aiz-megabox pl-0 mr-2">
-                                    <input type="radio" name="storage" value="256GB" onChange={handleOptionChange} />
-                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                                        256GB
-         </span>
+                                    {product.storageprice.onetwentyeight && <>
+                                        <input type="radio" name="storage" value="128GB" onChange={handleOptionChange} />
+                                        <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                                            128GB
+                                        </span>
+                                    </>
+                                    }
                                 </label>
                                 <label class="aiz-megabox pl-0 mr-2">
-                                    <input type="radio" name="storage" value="512GB" onChange={handleOptionChange} />
-                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                                        512GB
-         </span>
+                                    {product.storageprice.twofiftysix && <>
+                                        <input type="radio" name="storage" value="256GB" onChange={handleOptionChange} />
+                                        <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                                            256GB
+                                        </span>
+                                    </>
+                                    }
+                                </label>
+                                <label class="aiz-megabox pl-0 mr-2">
+                                    {product.storageprice.fivetwelve && <>
+                                        <input type="radio" name="storage" value="512GB" onChange={handleOptionChange} />
+                                        <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                                            512GB
+                                        </span>
+                                    </>
+                                    }
                                 </label>
                             </div>
                         </div>
@@ -141,13 +160,12 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
                         <div class="col-sm-10">
                             <div class="product-price">
 
-                                {storagePrice ? <strong id="chosen_price" class="h4 fw-600 text-primary">{storageSize} : UGX  <CurrencyFormat
+                                {storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">{storageSize} : UGX  <CurrencyFormat
                                     value={storagePrice}
                                     displayType="text"
                                     thousandSeparator
-                                /></strong> : <strong id="chosen_price" class="h4 fw-600 text-primary">
-                                        Storage Capacity Out of Stock !!
-                                    </strong>}
+                                /></strong>
+                                }
                             </div>
                         </div>
                     </div>
