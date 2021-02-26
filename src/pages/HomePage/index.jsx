@@ -49,7 +49,8 @@ console.log(renderedProducts)
           renderedProducts?
           <ProductGroup products={products} loading={loading} />
           :
-          <p>NULL</p>
+          <p>NULL</p
+          >
 
         }
           
