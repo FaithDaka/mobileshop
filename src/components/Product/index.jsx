@@ -7,47 +7,33 @@ import CurrencyFormat from 'react-currency-format';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import StorageModal from "../../components/Modal/storage-modal";
+import { addToCart } from '../../store/actions/cartActions';
 import './styles.css'
 
 const Product = ({ product }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
+    const dispatch = useDispatch();
+
   const hideAlert = () => setShowAlert(false);
-  const dispatch = useDispatch();
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
   const handleAddToCart = () => {
-    let cart = [];
-    if (typeof window !== "undefined") {
-      if (localStorage.getItem("cart")) {
-        cart = JSON.parse(localStorage.getItem("cart"));
-      }
-
-      const cartItems = {
+      const cat = {
         id: product._id,
         title: product.title,
         images: product.images[0].url,
         price: product.price,
         discount: product.discount,
         discountprice: product.discountprice,
-        countInStock: product.countInStock,
-        count: 1
+        quantity: 1
       }
 
-      cart.push(cartItems);
-
-      let unique = _.uniqWith(cart, _.isEqual);
-      localStorage.setItem("cart", JSON.stringify(unique));
-
-      dispatch({
-        type: "ADD_TO_CART",
-        payload: unique,
-      });
+      dispatch(addToCart(cat))
       setShowAlert(true);
-    }
   };
 
   const checkStorage = () => {

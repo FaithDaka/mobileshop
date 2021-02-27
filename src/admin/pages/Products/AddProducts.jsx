@@ -32,14 +32,12 @@ const AddProducts = ({ history }) => {
     const [battery, setBattery] = useState('');
     const [camera, setCamera] = useState('');
     const [tv, setTV] = useState('');
-    const [eight, setEight] = useState('');
     const [sixteen, setSixteen] = useState('');
     const [thirtytwo, setThirtyTwo] = useState('');
     const [sixtyfour, setSixtyFour] = useState('');
     const [onetwentyeight, setOneTwentyEight] = useState('');
     const [twofiftysix, setTwoFiftySix] = useState('');
     const [fivetwelve, setFiveTwelve] = useState('');
-    const [onetb, setOneTb] = useState('');
 
     const [subOptions, setSubOptions] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -127,14 +125,12 @@ const AddProducts = ({ history }) => {
             battery: battery,
             camera: camera,
             tv: tv,
-            eight: eight,
             sixteen: sixteen,
             thirtytwo: thirtytwo,
             sixtyfour: sixtyfour,
             onetwentyeight: onetwentyeight,
             twofiftysix: twofiftysix,
-            fivetwelve: fivetwelve,
-            onetb: onetb
+            fivetwelve: fivetwelve
         }
 
         createProduct(data, auth.token)
@@ -145,7 +141,7 @@ const AddProducts = ({ history }) => {
             })
             .catch((err) => {
                 console.log(err);
-                toast.error(err.response.data);
+                toast.error("Error while creating product");
             });
     };
 
@@ -452,7 +448,9 @@ const AddProducts = ({ history }) => {
                         </div>
                     </div>
                     <div class="mb-3 text-right">
-                        <button type="submit" name="button" class="btn btn-primary">Save Product</button>
+                        <button type="submit" name="button" class="btn btn-primary">
+                        {loading ? <Spinner /> : 'Add Product'}
+                        </button>
                     </div>
                 </form>
             </div>

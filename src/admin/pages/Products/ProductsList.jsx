@@ -87,8 +87,8 @@ const ProductsList = () => {
                         {products.map((product) => (
                             <tr>
                                 <td style={{ display: 'table-cell' }}>{product.title}</td>
-                                <td style={{ display: 'table-cell' }}>{product.category.name}</td>
-                                <td style={{ display: 'table-cell' }}>{product.subs.name}</td>
+                                <td style={{ display: 'table-cell' }}>{product.category && product.category.name}</td>
+                                <td style={{ display: 'table-cell' }}>{product.sub && product.subs.name}</td>
                                 <td style={{ display: 'table-cell' }}>{product.price}</td>
                                 <td style={{ display: 'table-cell' }}>{product.condition}</td>
                                 <td class="text-right footable-last-visible" style={{ display: 'table-cell' }}>

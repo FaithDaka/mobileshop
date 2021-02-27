@@ -32,14 +32,12 @@ const EditProducts = ({ history, match }) => {
     const [battery, setBattery] = useState('');
     const [camera, setCamera] = useState('');
     const [tv, setTV] = useState('');
-    const [eight, setEight] = useState('');
     const [sixteen, setSixteen] = useState('');
     const [thirtytwo, setThirtyTwo] = useState('');
     const [sixtyfour, setSixtyFour] = useState('');
     const [onetwentyeight, setOneTwentyEight] = useState('');
     const [twofiftysix, setTwoFiftySix] = useState('');
     const [fivetwelve, setFiveTwelve] = useState('');
-    const [onetb, setOneTb] = useState('');
 
     const [subOptions, setSubOptions] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -49,7 +47,7 @@ const EditProducts = ({ history, match }) => {
 
     const loadProduct = () => {
         getProduct(id).then((p) => {
-            console.log("Storage price", p)
+            console.log("product --", p)
             setTitle(p.data.title)
             setPrice(p.data.price)
             setStoragePrice(p.data.storagePrice);
@@ -57,7 +55,8 @@ const EditProducts = ({ history, match }) => {
             setQuantity(p.data.quantity);
             setDescription(p.data.description);
             setImages(p.data.images);
-            setSubs(p.data.subs.slug);
+            setCategory(p.data.category.name);
+            setSubs(p.data.subs.name);
             setColor(p.data.colors);
             setStorageChecked(p.data.storageChecked)
             setMemory(p.data.memory);
@@ -67,15 +66,12 @@ const EditProducts = ({ history, match }) => {
             setBattery(p.data.battery);
             setCamera(p.data.camera);
             setTV(p.data.tv);
-            setEight(p.data.storageprice.eight);
-            setSixteen(p.data.storageprice.sixteen);
-            setThirtyTwo(p.data.storageprice.thirtytwo);
-            setSixtyFour(p.data.storageprice.sixtyfour);
-            setOneTwentyEight(p.data.storageprice.setOneTwentyEight);
-            setTwoFiftySix(p.data.storageprice.setTwoFiftySix);
-            setFiveTwelve(p.data.storageprice.fivetwelve);
-            setOneTb(p.data.storageprice.onetb);
-            setCategory(p.data.category.slug);
+            setSixteen(p.data.storageprice && p.data.storageprice.sixteen);
+            setThirtyTwo(p.data.storageprice && p.data.storageprice.thirtytwo);
+            setSixtyFour(p.data.storageprice && p.data.storageprice.sixtyfour);
+            setOneTwentyEight(p.data.storageprice && p.data.storageprice.setOneTwentyEight);
+            setTwoFiftySix(p.data.storageprice && p.data.storageprice.setTwoFiftySix);
+            setFiveTwelve(p.data.storageprice && p.data.storageprice.fivetwelve);
 
         });
     };
@@ -161,14 +157,12 @@ const EditProducts = ({ history, match }) => {
             battery: battery,
             camera: camera,
             tv: tv,
-            eight: eight,
             sixteen: sixteen,
             thirtytwo: thirtytwo,
             sixtyfour: sixtyfour,
             onetwentyeight: onetwentyeight,
             twofiftysix: twofiftysix,
-            fivetwelve: fivetwelve,
-            onetb: onetb
+            fivetwelve: fivetwelve
         }
 
             updateProduct(id, data)
@@ -178,9 +172,8 @@ const EditProducts = ({ history, match }) => {
                 history.push("/admin/listproduct");
             })
             .catch((err) => {
-                console.log(err);
                 setLoading(false);
-                toast.error(err.response.data);
+                toast.error("Error while updating product");
             });
     };
 
@@ -190,7 +183,6 @@ const EditProducts = ({ history, match }) => {
                 <h5 class="mb-0 h6">Edit Product</h5>
             </div>
             <div class="col-md-10 mx-auto">
-            {loading && <Spinner />}
                 <form class="form form-horizontal mar-top" onSubmit={handleSubmit}>
                     <div class="card">
                         <div class="card-header">
@@ -483,7 +475,9 @@ const EditProducts = ({ history, match }) => {
                         </div>
                     </div>
                     <div class="mb-3 text-right">
-                        <button type="submit" name="button" class="btn btn-primary">Update Product</button>
+                        <button type="submit" name="button" class="btn btn-primary">
+                        {loading ? <Spinner /> : 'Update Product'}
+                        </button>
                     </div>
                 </form>
             </div>

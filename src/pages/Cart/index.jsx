@@ -12,12 +12,12 @@ const Cart = () => {
     const closeModal = () => setIsOpen(false);
 
     const history = useHistory();
-    const cart = useSelector((state) => state.cart)
+    const {cartItems } = useSelector(state => state.cart);
     const auth = useSelector(state => state.auth);
 
     const getTotal = () => {
-        return cart.reduce((currentValue, nextValue) => {
-            return nextValue.discount ? currentValue + nextValue.count * nextValue.discountprice : currentValue + nextValue.count * nextValue.price
+        return cartItems.reduce((currentValue, nextValue) => {
+            return nextValue.discount ? currentValue + nextValue.quantity * nextValue.discountprice : currentValue + nextValue.quantity * nextValue.price
         }, 0);
     };
 
@@ -37,7 +37,7 @@ const Cart = () => {
     return (
         <>
             <CartHeader />
-            <CartDetails cart={cart} total={getTotal()} checkout={goToCheckout} />
+            <CartDetails cart={cartItems} total={getTotal()} checkout={goToCheckout} />
             <LoginModal modalIsOpen={modalIsOpen} close={closeModal} />
         </>
     )

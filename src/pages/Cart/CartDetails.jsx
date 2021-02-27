@@ -1,55 +1,20 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
 import CurrencyFormat from 'react-currency-format';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { removeFromCart } from '../../store/actions/cartActions'
 
 const CartDetails = ({ cart, total, checkout }) => {
 
-    const [quantity, setQuantity] = useState(1)
+    const dispatch = useDispatch();
 
-    const increaseQuantity = (e, id) => {
-        setQuantity(quantity + 1)
-
-        const one = cart.map(one => one.id);
-        let index = one.findIndex(id => id == id);
-        cart[index].count = quantity + 1
-        cart[index].price = cart[index].price * quantity
-        console.log(cart[index].count)
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-    }
-
-    const decreaseQuantity = (e, id) => {
-        if (quantity > 1) {
-            setQuantity(quantity - 1)
-
-            const one = cart.map(one => one.id);
-            let index = one.findIndex(id => id == id);
-            cart[index].count = quantity - 1
-            cart[index].price = cart[index].price * quantity
-            console.log(cart[index].count)
-            localStorage.setItem('cart', JSON.stringify(cart));
-        }
-        else {
-            return;
-        }
-    }
-
-    const removeItem = (e, ido) => {
-        console.log(cart)
-        console.log(ido)
-
-        const one = cart.map(one => one.id);
-        let index = one.findIndex(id => id == ido);
-        console.log(index)
-
-        cart.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        toast.success("product successfuly removed from cart");
-
-    }
+    const removeFromCartHandler = (id) => {
+        dispatch(removeFromCart(id))
+        toast.success("Product successfuly removed from cart");
+      }
 
     return (
         <section class="mb-4" id="cart-summary">
@@ -97,17 +62,17 @@ const CartDetails = ({ cart, total, checkout }) => {
                                                                 />}</span>
                                                     </div>
                                                     <div class="col-lg col-4 order-2 order-lg-0 my-3 my-lg-0">
-                                                        <span class="opacity-60 fs-12 d-block d-lg-none">Discount</span>
-                                                        <span class="fw-600 fs-16">{item.discount ? item.discount : 0} %</span>
+                                                        <span class="opacity-60 fs-12 d-block d-lg-none">Quantity</span>
+                                                        <span class="fw-600 fs-16">{item.quantity}</span>
                                                     </div>
 
                                                     <div class="col-lg col-6 order-4 order-lg-0">
                                                         <div class="row no-gutters align-items-center aiz-plus-minus mr-2 ml-0">
-                                                            <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="minus" data-field="quantity[0]" key={item.id} onClick={((e) => decreaseQuantity(e, item.id))}>
+                                                            <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="minus" onClick={() => dispatch({ type: 'DECREMENT', payload: item.id })}>
                                                                 <i class="las la-minus"></i>
                                                             </button>
-                                                            <label>{quantity}</label>
-                                                            <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="plus" data-field="quantity[0]" key={item.id} onClick={((e) => increaseQuantity(e, item.id))}>
+                                                            <label>{item.quantity}</label>
+                                                            <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="plus" onClick={() => dispatch({ type: 'INCREMENT', payload: item.id })}>
                                                                 <i class="las la-plus"></i>
                                                             </button>
                                                         </div>
@@ -115,17 +80,19 @@ const CartDetails = ({ cart, total, checkout }) => {
                                                     <div class="col-lg col-4 order-3 order-lg-0 my-3 my-lg-0">
                                                         <span class="opacity-60 fs-12 d-block d-lg-none">Total</span>
                                                         <span class="fw-600 fs-16 text-primary">{item.discount ? <CurrencyFormat
-                                                            value={item.discountprice * quantity}
+                                                            value={item.discountprice * item.quantity}
                                                             displayType="text"
                                                             thousandSeparator
                                                         /> : <CurrencyFormat
-                                                                value={item.price * quantity}
+                                                                value={item.price * item.quantity}
                                                                 displayType="text"
                                                                 thousandSeparator
                                                             />}</span>
                                                     </div>
                                                     <div class="col-lg-auto col-6 order-5 order-lg-0 text-right">
-                                                        <a href="#" class="btn btn-icon btn-sm btn-soft-primary btn-circle" key={item.id} onClick={((e) => removeItem(e, item.id))}>
+                                                        <a href="#" class="btn btn-icon btn-sm btn-soft-primary btn-circle" 
+                                                        onClick={() => removeFromCartHandler(item.id)}
+                                                        >
                                                             <i class="las la-trash"></i>
                                                         </a>
                                                     </div>
