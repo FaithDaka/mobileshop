@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/role-supports-aria-props */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react'
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom'
@@ -14,7 +12,7 @@ const OrdersList = () => {
 
     const loadOrders = () => {
         setLoading(true);
-        getOrders(auth.token).then((c) => {
+        getOrders().then((c) => {
             setOrders(c.data)
             setLoading(false);
         });
@@ -23,6 +21,8 @@ const OrdersList = () => {
     useEffect(() => {
         loadOrders();
     }, []);
+
+    console.log("Orders", orders);
 
     return (
         <div class="card">
@@ -98,7 +98,6 @@ const OrdersList = () => {
                     <table class="table aiz-table mb-0 footable footable-1 breakpoint-lg" >
                         <thead>
                             <tr class="footable-header">
-                                <th style={{ display: 'table-cell' }}>Order Code</th>
                                 <th data-breakpoints="md" style={{ display: 'table-cell' }}>Customer</th>
                                 <th data-breakpoints="md" style={{ display: 'table-cell' }}>Date</th>
                                 <th data-breakpoints="md" style={{ display: 'table-cell' }}>Delivery Status</th>
@@ -110,9 +109,6 @@ const OrdersList = () => {
                         <tbody>
                             {orders.map((order) => (
                                 <tr>
-                                    <td style={{ display: 'table-cell' }}>
-                                        {order._id}
-                </td>
                                     <td style={{ display: 'table-cell' }}>
                                         {order.orderedBy}
                 </td>
@@ -135,12 +131,6 @@ const OrdersList = () => {
                                         <Link to={`/admin/order/${order._id}`}class="btn btn-soft-primary btn-icon btn-circle btn-sm" title="View">
                                             <i class="las la-eye"></i>
                                         </Link>
-                                        <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="#" title="Download Invoice">
-                                            <i class="las la-download"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="#" title="Delete">
-                                            <i class="las la-trash"></i>
-                                        </a>
                                     </td>
                                 </tr>
                             ))}

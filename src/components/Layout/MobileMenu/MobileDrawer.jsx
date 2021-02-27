@@ -73,7 +73,7 @@ const MobileDrawer = ({ close }) => {
 
     return (
         <section ref={node} className="">
-            <div class="aiz-sidebar left c-scrollbar">
+            <div class="sidebar-mobile c-scrollbar">
                 <div class="">
                     <a href="#" class="d-block text-left">
                         <img src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="side bar" width={100} />

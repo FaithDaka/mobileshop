@@ -13,8 +13,4 @@ export const updateSub = async (slug, sub) =>
   await axios.put(`${process.env.REACT_APP_API}/subs/${slug}`, sub);
 
 export const createSub = async (sub, authtoken) =>
-  await axios.post(`${process.env.REACT_APP_API}/subs`, sub, {
-    headers: {
-      authtoken,
-    },
-  });
+  await axios.post(`${process.env.REACT_APP_API}/subs`, sub);
