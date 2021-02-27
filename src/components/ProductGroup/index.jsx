@@ -32,8 +32,8 @@ const ProductGroup = ({ products, loading }) => {
   }
 
   const divstyle = {
-    // display: "flex",
-    // justifyContent: "center",
+    display: "flex",
+    justifyContent: "center",
     borderRadius: "50%",
     width: "30px",
     height: "30px",
