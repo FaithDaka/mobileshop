@@ -1,18 +1,21 @@
 import React from 'react'
 import Product from '../../components/Product'
 
-const laptops = ({ products }) => {
-    const laptops = products.filter(product => product.condition === 'Laptops')
+const Fridges = ({products}) => {
+    const fridges = products.filter(product => product.condition === 'Fridges')
     return (
         <>
             {
-                laptops ?
+                fridges ?
                     <div className="row gutters-5 row-cols-xxl-5 row-cols-lg-5 row-cols-md-3 row-cols-2">
-                        {laptops.map(filteredProducts => (
+                        {fridges.map(filteredProducts => (
                             <Product product={filteredProducts} />
                         ))}
                     </div> :
-                    <p>No laptops yet</p>
+                    <div>
+<p>No fridges yet</p>
+                    </div>
+                    
             }
         </>
 
@@ -20,4 +23,4 @@ const laptops = ({ products }) => {
     )
 }
 
-export default laptops
+export default Fridges
