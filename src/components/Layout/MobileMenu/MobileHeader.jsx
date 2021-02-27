@@ -124,7 +124,7 @@ const MobileHeader = ({open}) => {
                 <form class="nav-searchbar search-big" accept-charset="utf-8">
                     <div class="nav-fill">
                         <div class="nav-search-field">
-                            <input type="text" class="nav-input nav-progressive-attribute" placeholder="Search MobileShop" data-aria-clear-label="Clear search keywords" name="k" autocomplete="off" autocorrect="off" autocapitalize="off" dir="auto" id="nav-search-keywords"
+                            <input type="text" class="nav-input nav-progressive-attribute" placeholder="Search mobilephones, TVs, laptops"
                                 value={text}
                                 onChange={handleChange} />
                         </div>

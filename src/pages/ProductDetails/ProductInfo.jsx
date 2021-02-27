@@ -87,7 +87,10 @@ const ProductInfo = ({ product }) => {
   };
 
   useEffect(() => {
-    if (storageSize === '64GB') {
+    if (storageSize === '32GB') {
+      setStoragePrice(product.storageprice && product.storageprice.thirtytwo)
+    } else if
+      (storageSize === '64GB') {
       setStoragePrice(product.storageprice && product.storageprice.sixtyfour)
     } else if (storageSize === '128GB') {
       setStoragePrice(product.storageprice && product.storageprice.onetwentyeight)
@@ -117,7 +120,7 @@ const ProductInfo = ({ product }) => {
         />
       )}
       <BuyNowModal modalIsOpen={modalIsOpen} close={closeModal} />
-      <h1 class="mb-2 fs-20 fw-600 text-justify">
+      <h1 class="mb-2 fs-20 fw-600">
         {product.title}
       </h1>
       <div class="row align-items-center">
@@ -180,28 +183,45 @@ const ProductInfo = ({ product }) => {
           <div class="col-sm-10">
             <div class="aiz-radio-inline">
               <label class="aiz-megabox pl-0 mr-2">
-                <input type="radio" name="storage" value="64GB" onChange={handleOptionChange} />
-                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                  64GB
-         </span>
+                {product.storageprice.thirtytwo && <><input type="radio" name="storage" value="32GB" onChange={handleOptionChange} />
+                  <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                    32GB
+                                        </span></>
+                }
               </label>
               <label class="aiz-megabox pl-0 mr-2">
-                <input type="radio" name="storage" value="128GB" onChange={handleOptionChange} />
-                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                  128GB
-         </span>
+                {product.storageprice.sixtyfour && <><input type="radio" name="storage" value="64GB" onChange={handleOptionChange} />
+                  <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                    64GB
+                                        </span></>
+                }
               </label>
               <label class="aiz-megabox pl-0 mr-2">
-                <input type="radio" name="storage" value="256GB" onChange={handleOptionChange} />
-                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                  256GB
-         </span>
+                {product.storageprice.onetwentyeight && <>
+                  <input type="radio" name="storage" value="128GB" onChange={handleOptionChange} />
+                  <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                    128GB
+                                        </span>
+                </>
+                }
               </label>
               <label class="aiz-megabox pl-0 mr-2">
-                <input type="radio" name="storage" value="512GB" onChange={handleOptionChange} />
-                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                  512GB
-         </span>
+                {product.storageprice.twofiftysix && <>
+                  <input type="radio" name="storage" value="256GB" onChange={handleOptionChange} />
+                  <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                    256GB
+                                        </span>
+                </>
+                }
+              </label>
+              <label class="aiz-megabox pl-0 mr-2">
+                {product.storageprice.fivetwelve && <>
+                  <input type="radio" name="storage" value="512GB" onChange={handleOptionChange} />
+                  <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                    512GB
+                                        </span>
+                </>
+                }
               </label>
             </div>
           </div>
@@ -233,7 +253,7 @@ const ProductInfo = ({ product }) => {
               </label>
             </div>
           </div>
-        </div> }
+        </div>}
 
 
         {/* <div className="row no-gutters">
@@ -275,24 +295,24 @@ const ProductInfo = ({ product }) => {
         </div> */}
 
       </form>
+      <div className="float">
       <div class="mt-3" style={{
         display: "flex",
         position: "relative",
-        alignItems: "center",
         transition: "all .35s ease",
       }}>
         <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
-          <i class="las la-shopping-bag"></i>
           <span class="d-md-inline-block"> Add to cart</span>
         </button>
         <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
-          <i class="la la-shopping-cart"></i> Buy Now
+          Buy Now
         </button>
         <button type="button" className=" btn btn-product-call">
           <a href="tel:0751290264">
             <i class="las la-phone la-2x btn-call-details"></i>
           </a>
         </button>
+      </div>
       </div>
       <div class="row no-gutters mt-4">
         <div class="col-sm-2">

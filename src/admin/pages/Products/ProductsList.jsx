@@ -8,11 +8,10 @@ const ProductsList = () => {
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(1);
 
   const loadAllProducts = () => {
     setLoading(true);
-    getProducts("createdAt", "desc", page)
+    getProducts()
       .then((res) => {
         setProducts(res.data);
         setLoading(false);
@@ -42,8 +41,6 @@ const ProductsList = () => {
   useEffect(() => {
     loadAllProducts();
   }, []);
-
-  console.log("products", products)
 
     return (
         <>

@@ -59,7 +59,7 @@ const Product = ({ product }) => {
   }
 
   return (
-    <div className="col mb-2">
+    <div className="col mb-1">
       <div className="aiz-card-box border border-light rounded shadow-sm hov-shadow-md h-100 has-transition bg-white">
         {showAlert && (
           <SweetAlert
@@ -72,12 +72,13 @@ const Product = ({ product }) => {
         )}
         <StorageModal modalIsOpen={modalIsOpen} close={closeModal} product={product} />
         <div className="position-relative">
-          <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`} className="d-block text-center pt-3">
+          <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`} 
+          className="d-block text-center pt-3 product-img-box">
             <LazyLoadImage
               alt="product"
               src={product.images && product.images.length ? product.images[0].url : ''}
-              style={{ height: "150px", objectFit: "cover" }}
               threshold={100}
+              className="product-img"
             />
           </Link>
           <div className="absolute-top-left pt-2 pl-2">

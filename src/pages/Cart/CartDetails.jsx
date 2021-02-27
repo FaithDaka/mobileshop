@@ -1,25 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import CurrencyFormat from 'react-currency-format';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { removeFromCart } from '../../store/actions/cartActions';
 
 const CartDetails = ({ cart, total, checkout }) => {
-
-    const dispatch = useDispatch()
-
-    const removeCart = (id) => {
-        dispatch(removeFromCart(id))
-    }
 
     const [quantity, setQuantity] = useState(1)
 
     const increaseQuantity = (e, id) => {
         setQuantity(quantity + 1)
-
-        const cart = JSON.parse(localStorage.getItem('cart'))
 
         const one = cart.map(one => one.id);
         let index = one.findIndex(id => id == id);
@@ -33,7 +24,6 @@ const CartDetails = ({ cart, total, checkout }) => {
     const decreaseQuantity = (e, id) => {
         if (quantity > 1) {
             setQuantity(quantity - 1)
-            const cart = JSON.parse(localStorage.getItem('cart'))
 
             const one = cart.map(one => one.id);
             let index = one.findIndex(id => id == id);
@@ -48,8 +38,8 @@ const CartDetails = ({ cart, total, checkout }) => {
     }
 
     const removeItem = (e, ido) => {
-        const cart = JSON.parse(localStorage.getItem('cart'))
-
+        console.log(cart)
+        console.log(ido)
 
         const one = cart.map(one => one.id);
         let index = one.findIndex(id => id == ido);
@@ -57,9 +47,9 @@ const CartDetails = ({ cart, total, checkout }) => {
 
         cart.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify(cart));
+        toast.success("product successfuly removed from cart");
 
     }
-
 
     return (
         <section class="mb-4" id="cart-summary">

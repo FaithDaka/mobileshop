@@ -52,25 +52,21 @@ const SideBar = () => {
                         </Link>
                     </li>
 
-
                     <li class="aiz-side-nav-item">
-                        <a href="#" class="aiz-side-nav-link ">
+                        <Link to="/admin/categories" class="aiz-side-nav-link ">
                             <i class="las la-folder-open aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">Categories</span>
-                        </a>
+                        </Link>
                     </li>
-
 
                     <li class="aiz-side-nav-item">
-                        <a href="#" class="aiz-side-nav-link ">
+                        <Link to="/admin/brands" class="aiz-side-nav-link ">
                             <i class="las la-wrench aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">Brands</span>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
-
             </div>
-
         </div>
     )
 }
