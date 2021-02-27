@@ -126,7 +126,11 @@ body{
 .btn-call-details{
     /* position: absolute;
     top: 8px;
+<<<<<<< HEAD
     right: 35px; */
+=======
+    right: 35px;
+>>>>>>> 5fbfc7e58ce925842aab1feeae56882da035d637
     font-weight: 700;
 }
 /* .float{
