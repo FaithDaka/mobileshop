@@ -75,11 +75,7 @@ const ProductGroup = ({ products, loading }) => {
   };
 
   return (
-<<<<<<< HEAD
     <section className="d-xl-none d-lg-block mb-3" >
-=======
-    <section className="d-xl-none d-lg-block mb-3">
->>>>>>> 5fbfc7e58ce925842aab1feeae56882da035d637
       {loading && <LoadSpinner />}
       <div className=" shadow p-3 mb-5 bg-white rounded container">
         <div className="row">
