@@ -3,12 +3,24 @@
     font-weight: 600;
     font-size: 16px;
     padding-bottom: 16px;
+    color: black;
+}
+.tabtext{
+    font-weight: 600;
+    font-size: 16px;
+    padding-bottom: 16px;
+    
 }
 
 .selected {
+    font-weight: 800;
+    font-size: 16px;
+    color: #f90;
+
+}
+.select {
     font-weight: 600;
     font-size: 16px;
     border-bottom: 3px solid black;
-    color: #150000;
+  
 }
-

@@ -109,9 +109,11 @@ body{
 	height: 40px;
 	box-shadow: 2px 2px 8px 1px #d3c9b2;
 	border-radius: 5px;
-	padding-top: 10px;
+	padding-top: 5px;
 	margin-bottom: 5px;
 	margin-left: 5px;
+    display: flex;
+    justify-content: center;
 }
 
 .btn-call{
@@ -122,12 +124,19 @@ body{
 }
 
 .btn-call-details{
-    position: absolute;
+    /* position: absolute;
     top: 8px;
-    right: 35px;
+    right: 35px; */
     font-weight: 700;
 }
-
+/* .float{
+	position:fixed;
+    width:60px;
+	height:60px;
+	bottom:500px;
+	right:10px;
+	box-shadow: 2px 2px 3px #999;
+} */
 .fixed-top {
     position: fixed;
     top: 0;

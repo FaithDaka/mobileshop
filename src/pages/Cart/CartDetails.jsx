@@ -15,7 +15,7 @@ const CartDetails = ({ cart, total, checkout }) => {
         const one = cart.map(one => one.id);
         let index = one.findIndex(id => id == id);
         cart[index].count = quantity + 1
-        cart[index].price = cart[index].price * quantity
+        cart[index].price = cart[index].price * cart[index].count
         console.log(cart[index].count)
         localStorage.setItem('cart', JSON.stringify(cart));
 
@@ -28,7 +28,7 @@ const CartDetails = ({ cart, total, checkout }) => {
             const one = cart.map(one => one.id);
             let index = one.findIndex(id => id == id);
             cart[index].count = quantity - 1
-            cart[index].price = cart[index].price * quantity
+            cart[index].price = cart[index].price * cart[index].count
             console.log(cart[index].count)
             localStorage.setItem('cart', JSON.stringify(cart));
         }

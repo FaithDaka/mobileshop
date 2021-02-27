@@ -295,6 +295,7 @@ const ProductInfo = ({ product }) => {
         </div> */}
 
       </form>
+      <div className="float">
       <div class="mt-3" style={{
         display: "flex",
         position: "relative",
@@ -311,6 +312,7 @@ const ProductInfo = ({ product }) => {
             <i class="las la-phone la-2x btn-call-details"></i>
           </a>
         </button>
+      </div>
       </div>
       <div class="row no-gutters mt-4">
         <div class="col-sm-2">
