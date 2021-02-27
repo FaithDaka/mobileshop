@@ -40,7 +40,7 @@ const ProductGroup = ({ products, loading }) => {
   };
 
   return (
-    <section className="d-xl-none d-lg-block mb-4">
+    <section className="d-xl-none d-lg-block mb-3">
       {loading && <LoadSpinner />}
       <div className="container">
         <OwlCarousel items={3} className="owl-them mb-3" loop autoplay dots={false} autoplayTimeout={3000}>

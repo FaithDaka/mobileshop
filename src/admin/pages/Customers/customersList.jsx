@@ -62,7 +62,6 @@ const CustomerList = () => {
                         <thead>
                             <tr class="footable-header">
                                 <th style={{ display: 'table-cell' }}>Phone Number</th>
-                                <th sstyle={{ display: 'table-cell' }}>Role</th>
                                 <th style={{ display: 'table-cell' }}>isAdmin</th>
                                 <th style={{ display: 'table-cell' }}>Option</th>
                             </tr>
@@ -71,10 +70,9 @@ const CustomerList = () => {
                         {users.map((user) => (
                             <tr>
                                 <td style={{ display: 'table-cell' }}>{user.phonenumber}</td>
-                                <td style={{ display: 'table-cell' }}>{user.role}</td>
                                 <td style={{ display: 'table-cell' }}>{user.isAdmin}</td>
                                 <td style={{ display: 'table-cell' }}>
-                                    <Link class="btn btn-soft-primary btn-icon btn-circle btn-sm" to={`/admin/user/${user._id}`} title="Edit">
+                                    <Link class="btn btn-soft-primary btn-icon btn-circle btn-sm" title="Edit">
                                         <i class="las la-edit"></i>
                                     </Link>
                                     <span class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" title="Delete">

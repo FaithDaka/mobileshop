@@ -31,6 +31,7 @@ const AddProducts = ({ history }) => {
     const [display, setDisplay] = useState('');
     const [battery, setBattery] = useState('');
     const [camera, setCamera] = useState('');
+    const [tv, setTV] = useState('');
     const [eight, setEight] = useState('');
     const [sixteen, setSixteen] = useState('');
     const [thirtytwo, setThirtyTwo] = useState('');
@@ -43,8 +44,6 @@ const AddProducts = ({ history }) => {
     const [subOptions, setSubOptions] = useState([]);
     const [categories, setCategories] = useState([]);
     const [category, setCategory] = useState('');
-
-    const toggle = () => setStoragePrice(!storagePrice);
 
     const loadCategories = () => {
         setLoading(true);
@@ -127,6 +126,7 @@ const AddProducts = ({ history }) => {
             display: display,
             battery: battery,
             camera: camera,
+            tv: tv,
             eight: eight,
             sixteen: sixteen,
             thirtytwo: thirtytwo,
@@ -181,6 +181,8 @@ const AddProducts = ({ history }) => {
                                         <option value="Brand New">Brand New</option>
                                         <option value="Uk Used">Uk Used</option>
                                         <option value="Accessories">Accessories</option>
+                                        <option value="Accessories">Televisions</option>
+                                        <option value="Accessories">Speakers</option>
                                     </select>
                                 </div>
                             </div>
@@ -276,21 +278,16 @@ const AddProducts = ({ history }) => {
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-md-6">
-                                    <label>Color</label>
-                                    <select name="color"
+                                <div class="col-md-12">
+                                <label>TV Specs</label>
+                                    <textarea
+                                        rows="3"
+                                        name="tv"
                                         className="form-control"
-                                        value={color}
-                                        onChange={(e) => setColor(e.target.value)}>
-                                        <option selected>Select Color</option>
-                                        <option value="Black">Black</option>
-                                        <option value="Silver">Silver</option>
-                                        <option value="Navy">Navy</option>
-                                        <option value="Red">Red</option>
-
-                                    </select>
+                                        value={tv}
+                                        onChange={(e) => setTV(e.target.value)} />
                                 </div>
-                                <div class="col-md-6">
+                                {/* <div class="col-md-6">
                                     <label>Memory</label>
                                     <select name="memory"
                                         className="form-control"
@@ -306,7 +303,7 @@ const AddProducts = ({ history }) => {
                                         <option value="10GB">10GB</option>
                                         <option value="12GB">12GB</option>
                                     </select>
-                                </div>
+                                </div> */}
                             </div>
 
                         </div>
@@ -393,16 +390,7 @@ const AddProducts = ({ history }) => {
                         </div>
                         <div class="card-body">
                             <div className="form-group row">
-                                <div className="col-sm-6">
-                                    <label>8 GB Price</label>
-                                    <input type="number"
-                                        name="eight"
-                                        className="form-control"
-                                        value={eight}
-                                        onChange={(e) => setEight(e.target.value)} />
-                                </div>
-
-                                <div className="col-sm-6">
+                            <div className="col-sm-6">
                                     <label>16 GB Price</label>
                                     <input type="number"
                                         name="sixteen"
@@ -410,9 +398,7 @@ const AddProducts = ({ history }) => {
                                         value={sixteen}
                                         onChange={(e) => setSixteen(e.target.value)} />
                                 </div>
-                            </div>
 
-                            <div className="form-group row">
                                 <div className="col-sm-6">
                                     <label>32 GB Price</label>
                                     <input type="number"
@@ -421,8 +407,10 @@ const AddProducts = ({ history }) => {
                                         value={thirtytwo}
                                         onChange={(e) => setThirtyTwo(e.target.value)} />
                                 </div>
+                            </div>
 
-                                <div className="col-sm-6">
+                            <div className="form-group row">
+                            <div className="col-sm-6">
                                     <label>64 GB Price</label>
                                     <input type="number"
                                         name="sixtyfour"
@@ -430,9 +418,7 @@ const AddProducts = ({ history }) => {
                                         value={sixtyfour}
                                         onChange={(e) => setSixtyFour(e.target.value)} />
                                 </div>
-                            </div>
 
-                            <div className="form-group row">
                                 <div className="col-sm-6">
                                     <label>128 GB Price</label>
                                     <input type="number"
@@ -441,8 +427,10 @@ const AddProducts = ({ history }) => {
                                         value={onetwentyeight}
                                         onChange={(e) => setOneTwentyEight(e.target.value)} />
                                 </div>
+                            </div>
 
-                                <div className="col-sm-6">
+                            <div className="form-group row">
+                            <div className="col-sm-6">
                                     <label>256 GB Price</label>
                                     <input type="number"
                                         name="twofiftysix"
@@ -450,9 +438,7 @@ const AddProducts = ({ history }) => {
                                         value={twofiftysix}
                                         onChange={(e) => setTwoFiftySix(e.target.value)} />
                                 </div>
-                            </div>
 
-                            <div className="form-group row">
                                 <div className="col-sm-6">
                                     <label>512 GB Price</label>
                                     <input type="number"
@@ -460,15 +446,6 @@ const AddProducts = ({ history }) => {
                                         className="form-control"
                                         value={fivetwelve}
                                         onChange={(e) => setFiveTwelve(e.target.value)} />
-                                </div>
-
-                                <div className="col-sm-6">
-                                    <label>1 TB Price</label>
-                                    <input type="number"
-                                        name="onetb"
-                                        className="form-control"
-                                        value={onetb}
-                                        onChange={(e) => setOneTb(e.target.value)} />
                                 </div>
                             </div>
 
