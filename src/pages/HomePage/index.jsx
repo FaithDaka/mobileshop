@@ -3,17 +3,15 @@ import React, { useEffect, useState } from "react";
 import Banner from './Banner'
 import Promos from './Promos'
 import ProductGroup from '../../components/ProductGroup'
-import { getProducts, getProductsCount } from "../../functions/products";
+import { getProducts } from "../../functions/products";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [productsCount, setProductsCount] = useState(0);
-  const [page, setPage] = useState(1);
 
   const loadAllProducts = () => {
     setLoading(true);
-    getProducts("createdAt", "desc", page).then((res) => {
+    getProducts().then((res) => {
       setProducts(res.data);
       setLoading(false);
     });
@@ -21,10 +19,6 @@ const HomePage = () => {
 
   useEffect(() => {
     loadAllProducts();
-  }, [page]);
-
-  useEffect(() => {
-    getProductsCount().then((res) => setProductsCount(res.data));
   }, []);
 
   return (
