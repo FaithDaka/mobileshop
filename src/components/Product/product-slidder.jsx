@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import _ from "lodash";
 import { Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
@@ -37,6 +37,10 @@ const Product = ({ product }) => {
     }
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [product._id]);
+
   return (
     <div className="pr-1">
       <div className="aiz-card-box border border-light rounded shadow-sm hov-shadow-md h-100 has-transition bg-white">
@@ -64,13 +68,13 @@ const Product = ({ product }) => {
         </div>
         <div className="p-md-3 p-2 text-left">
           <div className="fs-15">
-          <div className="fw-600 ms-brand">{product.subs ? <span className="badge badge-inline badge-soft-secondary">{product.subs.name}</span> : ''}
+            <div className="fw-600 ms-brand">{product.subs ? <span className="badge badge-inline badge-soft-secondary">{product.subs.name}</span> : ''}
             </div>
             <h3 className="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0">
-            <Truncate lines={2} ellipsis={<span>... <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`}></Link></span>}>
-              {product.title}
-            </Truncate>
-          </h3>
+              <Truncate lines={2} ellipsis={<span>... <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`}></Link></span>}>
+                {product.title}
+              </Truncate>
+            </h3>
             {
               product.discountprice ?
                 <>
@@ -83,15 +87,15 @@ const Product = ({ product }) => {
                     />
                   </span>
                   <div className="s-prc-w">
-                  <del className="d-block opacity-70">
-                    <CurrencyFormat
-                      // prefix={"UGX "}
-                      value={product.price}
-                      displayType="text"
-                      thousandSeparator
-                    />
-                  </del>
-                  <div class="tag _dsct _sm">-{product.discount}%</div>
+                    <del className="d-block opacity-70">
+                      <CurrencyFormat
+                        // prefix={"UGX "}
+                        value={product.price}
+                        displayType="text"
+                        thousandSeparator
+                      />
+                    </del>
+                    <div class="tag _dsct _sm">-{product.discount}%</div>
                   </div>
                 </> :
 
