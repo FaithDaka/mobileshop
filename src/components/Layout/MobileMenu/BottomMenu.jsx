@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import './styles.css'
 
 const BottomMenu = ({open}) => {
-  const cart = useSelector((state) => state.cart)
+  const {cartItems} = useSelector((state) => state.cart)
 
   return(
   <div className="d-block d-lg-none bottom__menu">
@@ -45,7 +45,7 @@ const BottomMenu = ({open}) => {
                     marginLeft: '-2.5px', color: '#f2f2f2', fontSize: '12px', fontWeight: '800'
                   }}
                 >
-                 {cart.length}
+                 {cartItems.length}
                 </span>
               </div>
                 <span style={{ color: '#bbb' }}>Cart</span>

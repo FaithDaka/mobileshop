@@ -7,6 +7,7 @@ import SweetAlert from 'react-bootstrap-sweetalert';
 import CurrencyFormat from 'react-currency-format';
 import CartHeader from '../Cart/CartHeader'
 import Spinner from '../../components/Spinner'
+import { removeCart } from '../../store/actions/cartActions'
 
 const Checkout = ({ history }) => {
     const [name, setName] = useState('');
@@ -23,12 +24,12 @@ const Checkout = ({ history }) => {
     const hideAlert = () => setShowAlert(false);
 
     const dispatch = useDispatch();
-    const cart = useSelector((state) => state.cart)
+    const {cartItems, totalQuantities } = useSelector((state) => state.cart)
     const auth = useSelector(state => state.auth);
 
     const getTotal = () => {
-        return cart.reduce((currentValue, nextValue) => {
-            return nextValue.discount ? currentValue + nextValue.count * nextValue.discountprice : currentValue + nextValue.count * nextValue.price
+        return cartItems.reduce((currentValue, nextValue) => {
+            return nextValue.discount ? currentValue + nextValue.quantity * nextValue.discountprice : currentValue + nextValue.quantity * nextValue.price
         }, 0);
     };
 
@@ -69,7 +70,7 @@ const Checkout = ({ history }) => {
 
             try {
                 const orderData = {
-                    orderItems: cart,
+                    orderItems: cartItems,
                     name: name,
                     email: email,
                     address: address,
@@ -91,11 +92,8 @@ const Checkout = ({ history }) => {
 
                 setLoading(false)
                 setShowAlert(true);
-                localStorage.removeItem('cart')
-                dispatch({
-                    type: "ADD_TO_CART",
-                    payload: [],
-                });
+                localStorage.removeItem('cartItems')
+                dispatch(removeCart(cartItems))
 
                 history.push('/receipt', {
                     state: res.data
@@ -125,7 +123,7 @@ const Checkout = ({ history }) => {
                     Order Created Successfully
                 </SweetAlert>
             )}
-            <section class="mb-2 gry-bg">
+            <section class="gry-bg">
                 <div class="container">
                     <div class="row cols-xs-space cols-sm-space cols-md-space">
                         <div class="col-xxl-8 col-xl-10 mx-auto">
@@ -157,7 +155,7 @@ const Checkout = ({ history }) => {
                 </div>
             </section>
 
-            <section class="mb-4">
+            <section class="">
                 <div class="container text-left">
                     <div class="row">
                         {/* <div class="col-lg-8">
@@ -204,7 +202,7 @@ const Checkout = ({ history }) => {
                                 <div class="card-header">
                                     <h3 class="fs-16 fw-600 mb-0">Summary</h3>
                                     <div class="text-right">
-                                        <span class="badge badge-inline badge-primary">{cart.length} Items</span>
+                                        <span class="badge badge-inline badge-primary">{totalQuantities} Items</span>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -216,18 +214,29 @@ const Checkout = ({ history }) => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {cart.map((item, index) =>
+                                            {cartItems.map((item, index) =>
                                                 <tr key={index}>
                                                     <td>{item.title}</td>
-                                                    <td class="text-right">UGX {item.discount ? <CurrencyFormat
+                                                    <td class="text-right">
+                                                    {
+                                                        item.discount ? 
+                                                    <> 
+                                                    <CurrencyFormat
                                                         value={item.discountprice}
                                                         displayType="text"
                                                         thousandSeparator
-                                                    /> : <CurrencyFormat
+                                                    />{' '} x {item.quantity}</>
+                                                    : 
+                                                    <>
+                                                    <CurrencyFormat
                                                             value={item.price}
                                                             displayType="text"
                                                             thousandSeparator
-                                                        />}</td>
+                                                        />{' '}
+                                                        x {item.quantity}
+                                                        </>
+                                                    }
+                                                        </td>
                                                 </tr>
                                             )}
                                         </tbody>
@@ -245,9 +254,9 @@ const Checkout = ({ history }) => {
                                                 </td>
                                             </tr>
                                             <tr class="cart-shipping">
-                                                <th>Tax</th>
+                                                <th>Number of Items</th>
                                                 <td class="text-right">
-                                                    <span class="font-italic">0.00</span>
+                                                    <span class="font-italic">{totalQuantities}</span>
                                                 </td>
                                             </tr>
                                             <tr class="cart-shipping">
@@ -275,7 +284,7 @@ const Checkout = ({ history }) => {
                 </div>
             </section>
 
-            <section className="mb-3">
+            <section className="mb-1">
                 <div className="container">
                 <div class="pl-2">
                         <label class="aiz-checkbox">

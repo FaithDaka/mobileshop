@@ -51,7 +51,7 @@ const Categories = ({match}) => {
                                     <Product product={item} />
                                 )): 'No Products in this Category Yet ??'}
                             </div>
-                            <Pagination />
+                           
                         </div>
                     </div>
                 </form>

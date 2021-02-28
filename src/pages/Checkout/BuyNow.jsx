@@ -118,7 +118,7 @@ const BuyNow = ({ history }) => {
                     Order Created Successfully
                 </SweetAlert>
             )}
-            <section class="mb-4 gry-bg">
+            <section class=" gry-bg">
                 <div class="container">
                     <div class="row cols-xs-space cols-sm-space cols-md-space">
                         <div class="col-xxl-8 col-xl-10 mx-auto">
@@ -150,7 +150,7 @@ const BuyNow = ({ history }) => {
                 </div>
             </section>
 
-            <section class="mb-4">
+            <section class="mb-1">
                 <div class="container text-left">
                     <div class="row">
                         {/* <div class="col-lg-8">
@@ -192,12 +192,12 @@ const BuyNow = ({ history }) => {
                             </div>
 
                         </div> */}
-                        <div class="col-lg-4 mt-4 mt-lg-0">
+                        <div class="col-lg-4">
                             <div class="card border-0 shadow-sm rounded">
                                 <div class="card-header">
                                     <h3 class="fs-16 fw-600 mb-0">Summary</h3>
                                     <div class="text-right">
-                                        <span class="badge badge-inline badge-primary">1 Item</span>
+                                        <span class="badge badge-inline badge-primary">{cart.quantity}Item</span>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -242,9 +242,9 @@ const BuyNow = ({ history }) => {
                                                 </td>
                                             </tr>
                                             <tr class="cart-shipping">
-                                                <th>Tax</th>
+                                                <th>Number of Items</th>
                                                 <td class="text-right">
-                                                    <span class="font-italic">0.00</span>
+                                                    <span class="font-italic">{cart.quantity}</span>
                                                 </td>
                                             </tr>
                                             <tr class="cart-shipping">
@@ -257,15 +257,11 @@ const BuyNow = ({ history }) => {
                                                 <th><span class="strong-600">Total</span></th>
                                                 <td class="text-right">
                                                     <strong><span>UGX
-                                                        {cart.discount ? <CurrencyFormat
-                                                            value={cart.discountprice}
-                                                            displayType="text"
-                                                            thousandSeparator
-                                                        /> : <CurrencyFormat
-                                                                value={cart.price}
+                                                        <CurrencyFormat
+                                                                value={cart.totalprice}
                                                                 displayType="text"
                                                                 thousandSeparator
-                                                            />}</span></strong>
+                                                            /></span></strong>
                                                 </td>
                                             </tr>
                                         </tfoot>

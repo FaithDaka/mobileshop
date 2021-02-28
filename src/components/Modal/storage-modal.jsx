@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import CurrencyFormat from 'react-currency-format';
+import { addToCart } from '../../store/actions/cartActions';
 
 const customStyles = {
     content: {
@@ -51,15 +52,8 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
 
     }, [storageSize])
 
-    const addToCart = () => {
-        let cart = [];
-
-        if (typeof window !== "undefined") {
-            if (localStorage.getItem("cart")) {
-                cart = JSON.parse(localStorage.getItem("cart"));
-            }
-
-            const cartItems = {
+    const addToCartHandler = () => {
+            const cat = {
                 id: product._id,
                 title: product.title,
                 images: product.images[0].url,
@@ -67,24 +61,15 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
                 discount: product.discount,
                 discountprice: product.discountprice,
                 countInStock: product.countInStock,
+                quantity: 1,
                 storageSize,
                 storagePrice,
                 color
             }
 
-            cart.push(cartItems);
-
-            let unique = _.uniqWith(cart, _.isEqual);
-            localStorage.setItem("cart", JSON.stringify(unique));
-
-            dispatch({
-                type: "ADD_TO_CART",
-                payload: unique,
-            });
-            toast("Product Added To Cart Successfully");
+            dispatch(addToCart(cat))
+            toast.success("Product Added To Cart Successfully");
             close();
-        }
-
     }
 
     return (
@@ -200,7 +185,7 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
 
                     <div class="text-center">
                         <button class="btn btn-outline-primary mb-3 mb-sm-0 mr-3" onClick={close}>Cancel</button>
-                        <button class="btn btn-primary mb-3 mb-sm-0" onClick={addToCart}>Add To Cart</button>
+                        <button class="btn btn-primary mb-3 mb-sm-0" onClick={addToCartHandler}>Add To Cart</button>
                     </div>
 
                 </div>

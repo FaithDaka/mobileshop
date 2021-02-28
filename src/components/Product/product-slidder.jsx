@@ -6,6 +6,7 @@ import Truncate from 'react-truncate';
 import CurrencyFormat from 'react-currency-format';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import Spinner  from '../../components/Spinner'
 import './styles.css'
 
 const Product = ({ product }) => {
