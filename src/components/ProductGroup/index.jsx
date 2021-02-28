@@ -1,9 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React, { useState } from 'react'
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 import Systems from './systems';
 import Phones from './phones';
@@ -13,11 +10,10 @@ import Televisions from './televisons';
 import Fridges from './fridges';
 import Gaming from './gaming';
 import Laptop from './laptops';
-import LoadSpinner from '../../components/Spinner';
 
 import './styles.css';
 
-const ProductGroup = ({ products, loading }) => {
+const ProductGroup = () => {
   const [currentTab, setCurrentTab] = useState('phones');
   
   const divstyles = {
@@ -41,35 +37,35 @@ const ProductGroup = ({ products, loading }) => {
 
   const renderView = () => {
     if (currentTab === 'systems') {
-      return <Systems products={products} />;
+      return <Systems />;
     }
     if (currentTab === 'phones') {
-      return <Phones products={products} />;
+      return <Phones />;
     }
     if (currentTab === 'accessories') {
-      return <Accessories products={products} />;
+      return <Accessories />;
     }
     if (currentTab === 'televisions') {
-      return <Televisions products={products} />;
+      return <Televisions />;
     }
     if (currentTab === 'laptops') {
-      return <Laptop products={products} />;
+      return <Laptop />;
     }
     if (currentTab === 'fridges') {
-      return <Fridges products={products} />;
+      return <Fridges />;
     }
     if (currentTab === 'gaming') {
-      return <Gaming products={products} />;
+      return <Gaming />;
     }
-    if (currentTab === 'tablets') {
-      return <Tablet products={products} />;
+    if (currentTab === 'tablet') {
+      return <Tablet />;
     }
 
   };
 
   return (
     <section className="d-xl-none d-lg-block mb-3" >
-      {loading && <LoadSpinner />}
+      
       <div className=" shadow p-3 mb-5 bg-white rounded container">
         <div className="row">
           <div className="col-12 col-md-6 col-lg-6" style={{ paddingBottom: "2%" }}>

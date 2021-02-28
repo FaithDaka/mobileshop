@@ -7,6 +7,36 @@ export const createProduct = async (product, token) =>
   }
   });
 
+export const getProducts = async () =>
+  await axios.get(`${process.env.REACT_APP_API}/product`);
+
+export const getBrandNew = async (pageNumber) =>
+  await axios.get(`${process.env.REACT_APP_API}/product/brandnew?page=${pageNumber}`);
+
+export const getUkUsed = async (pageNumber) =>
+  await axios.get(`${process.env.REACT_APP_API}/product/ukused?page=${pageNumber}`);
+
+export const getAccessories = async (pageNumber) =>
+  await axios.get(`${process.env.REACT_APP_API}/product/accessories?page=${pageNumber}`);
+
+export const getTelevisions = async (pageNumber) =>
+  await axios.get(`${process.env.REACT_APP_API}/product/tvs?page=${pageNumber}`);
+
+export const getFridges = async (pageNumber) =>
+  await axios.get(`${process.env.REACT_APP_API}/product/fridges?page=${pageNumber}`);
+
+export const getGaming = async (pageNumber) =>
+  await axios.get(`${process.env.REACT_APP_API}/product/gaming?page=${pageNumber}`);
+
+export const getSound = async (pageNumber) =>
+  await axios.get(`${process.env.REACT_APP_API}/product/sound?page=${pageNumber}`);
+
+export const getTablets = async (pageNumber) =>
+  await axios.get(`${process.env.REACT_APP_API}/product/tablets?page=${pageNumber}`);
+
+export const getLaptops = async (pageNumber) =>
+  await axios.get(`${process.env.REACT_APP_API}/product/laptops?page=${pageNumber}`);
+
 export const getProductsByCount = async (count) =>
   await axios.get(`${process.env.REACT_APP_API}/product/${count}`);
 
@@ -21,9 +51,6 @@ export const getProduct = async (id) =>
 
 export const updateProduct = async (id, product) =>
   await axios.put(`${process.env.REACT_APP_API}/product/${id}`, product);
-
-export const getProducts = async () =>
-  await axios.get(`${process.env.REACT_APP_API}/product`);
 
 export const getProductsCount = async () =>
   await axios.get(`${process.env.REACT_APP_API}/product/total`);

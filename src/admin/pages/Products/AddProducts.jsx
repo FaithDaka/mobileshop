@@ -106,6 +106,7 @@ const AddProducts = ({ history }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoading(true);
 
         const data = {
             title: title,
@@ -135,7 +136,7 @@ const AddProducts = ({ history }) => {
 
         createProduct(data, auth.token)
             .then((res) => {
-                console.log(res);
+                setLoading(false);
                 history.push('/admin/listproduct')
                 toast.success(res.data.message);
             })
@@ -177,8 +178,8 @@ const AddProducts = ({ history }) => {
                                         <option value="Brand New">Brand New</option>
                                         <option value="Uk Used">Uk Used</option>
                                         <option value="Accessories">Accessories</option>
-                                        <option value="Accessories">Televisions</option>
-                                        <option value="Accessories">Speakers</option>
+                                        <option value="Televisions">Televisions</option>
+                                        <option value="Speakers">Speakers</option>
                                     </select>
                                 </div>
                             </div>

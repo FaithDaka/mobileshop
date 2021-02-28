@@ -208,7 +208,10 @@ const EditProducts = ({ history, match }) => {
                                         <option selected>Select Condition</option>
                                         <option value="Brand New">Brand New</option>
                                         <option value="Uk Used">Uk Used</option>
+                                        <option value="Used">Used</option>
                                         <option value="Accessories">Accessories</option>
+                                        <option value="Televisions">Televisions</option>
+                                        <option value="Speakers">Speakers</option>
                                     </select>
                                 </div>
                             </div>
