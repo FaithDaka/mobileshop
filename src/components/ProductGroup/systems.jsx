@@ -4,27 +4,37 @@ import LoadSpinner from '../../components/Spinner'
 import { getSound } from "../../functions/products";
 
 const SoundSytems = () => {
-    const [pageNumber, setPageNumber] = useState(1);
+    const [pageNumber, setPageNumber] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
+    const [total, setTotal] = useState(0);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const pages = new Array(totalPages).fill(null).map((v, i) => i);
 
-    const goToPrevious = () => setPageNumber(Math.max(0, pageNumber - 1))
-    const goToNext = () => setPageNumber(Math.min(totalPages - 1, pageNumber + 1))
+    const goToPrevious = () => {
+        setPageNumber(Math.max(0, pageNumber - 1))
+        window.scrollTo(0, 0)
+    }
+
+    const goToNext = () => {
+        setPageNumber(Math.min(totalPages - 1, pageNumber + 1))
+        window.scrollTo(0, 0)
+    }
 
     const loadUkUsed = () => {
         setLoading(true);
         getSound(pageNumber).then((res) => {
             setProducts(res.data.products);
             setTotalPages(res.data.totalPages)
+            setTotal(res.data.total)
             setLoading(false);
         });
     };
 
     useEffect(() => {
         loadUkUsed();
+        window.scrollTo(0, 0)
     }, [pageNumber]);
 
     return (
@@ -40,12 +50,25 @@ const SoundSytems = () => {
                     <p>Sound Sytems Currently Out of Stock</p>
             }
 
-            <button onClick={goToPrevious}>Previous</button>
-            {pages.map((pageIndex) => (
-                <button key={pageIndex} onClick={() => setPageNumber(pageIndex)}>{pageIndex + 1}</button>
-            ))}
-            <button onClick={goToNext}>Next</button>
-            <h3>Page of {pageNumber + 1}</h3>
+            <div class="aiz-pagination">
+                <nav className="text-center">
+                    <span>Showing 1- 20 of {total} results</span>
+                    <ul class="pagination d-flex justify-content-center">
+                        <li class="page-item disabled" aria-label="« Previous" onClick={goToPrevious}>
+                            <span class="page-link" aria-hidden="true">‹</span>
+                        </li>
+                        <li class="page-item d-flex">
+                            {pages.map((pageIndex) => (
+                                <a key={pageIndex} class="page-link" onClick={() => setPageNumber(pageIndex)}>{pageIndex + 1}</a>
+                            ))}
+
+                        </li>
+                        <li class="page-item" onClick={goToNext}>
+                            <span class="page-link" aria-hidden="true">›</span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     )
 }

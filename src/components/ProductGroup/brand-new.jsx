@@ -1,14 +1,26 @@
-import React, { useState } from 'react'
+/* eslint-disable jsx-a11y/role-supports-aria-props */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useEffect } from 'react'
 import Product from '../../components/Product'
 import LoadSpinner from '../../components/Spinner'
 
-const BrandNew = ({products, loading, total}) => {
-  const [pageNumber, setPageNumber] = useState(1);
+const BrandNew = ({ products, loading, total, pageNumber, count, totalnew, firstProduct, currentProducts }) => {
 
   const pages = new Array(total).fill(null).map((v, i) => i);
 
-  const goToPrevious = () => setPageNumber(Math.max(0, pageNumber - 1))
-  const goToNext = () => setPageNumber(Math.min(total - 1, pageNumber + 1))
+  const goToPrevious = () => {
+    count(Math.max(0, pageNumber - 1))
+    window.scrollTo(0, 0)
+  }
+
+  const goToNext = () => {
+    count(Math.min(total - 1, pageNumber + 1))
+    window.scrollTo(0, 0)
+  }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pageNumber]);
 
   return (
     <div>
@@ -23,14 +35,27 @@ const BrandNew = ({products, loading, total}) => {
           <p>No brand new phones yet</p>
       }
 
-      <button onClick={goToPrevious}>Previous</button>
-      {pages.map((pageIndex) => (
-        <button key={pageIndex} onClick={() => setPageNumber(pageIndex)}>{pageIndex + 1}</button>
-      ))}
-      <button onClick={goToNext}>Next</button>
-      <h3>Page of {pageNumber + 1}</h3>
-    </div>
+      
+      <div class="aiz-pagination">
+        <nav className="text-center">
+        <span>Showing {firstProduct + 1} - {firstProduct + currentProducts.length} of {totalnew} results</span>
+          <ul class="pagination d-flex justify-content-center">
+            <li class="page-item disabled" aria-label="« Previous" onClick={goToPrevious}>
+              <span class="page-link" aria-hidden="true">‹</span>
+            </li>
+            <li class="page-item d-flex">
+              {pages.map((pageIndex) => (
+                <a key={pageIndex} class="page-link" onClick={() => count(pageIndex)}>{pageIndex + 1}</a>
+              ))}
 
+            </li>
+            <li class="page-item" onClick={goToNext}>
+              <span class="page-link" aria-hidden="true">›</span>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
 
   )
 }
