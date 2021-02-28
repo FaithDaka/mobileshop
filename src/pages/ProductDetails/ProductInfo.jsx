@@ -7,6 +7,7 @@ import SweetAlert from 'react-bootstrap-sweetalert';
 import BuyNowModal from "../../components/Modal/buynow-modal";
 import HelmentData from '../../components/Helment'
 import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon } from "react-share";
+import { addToCart } from '../../store/actions/cartActions';
 
 const ProductInfo = ({ product }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -14,10 +15,17 @@ const ProductInfo = ({ product }) => {
   const [storageSize, setStorageSize] = useState('64GB');
   const [color, setColor] = useState('Black');
   const [storagePrice, setStoragePrice] = useState(product.storageprice && product.storageprice.sixtyfour);
+  const [quantity, setQuantity] = useState(1);
 
   const hideAlert = () => setShowAlert(false);
   const changeColor = (e) => setColor(e.target.value);
   const handleOptionChange = (e) => setStorageSize(e.target.value);
+
+  const decQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1)
+    }
+  }
 
   const history = useHistory();
   const auth = useSelector(state => state.auth);
@@ -35,6 +43,8 @@ const ProductInfo = ({ product }) => {
       discount: product.discount,
       discountprice: product.discountprice,
       countInStock: product.countInStock,
+      quantity: quantity,
+      totalprice: product.discount ? product.discountprice * quantity : product.price * quantity,
       storageSize,
       storagePrice,
       color
@@ -53,37 +63,21 @@ const ProductInfo = ({ product }) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    let cart = [];
-    if (typeof window !== "undefined") {
-      if (localStorage.getItem("cart")) {
-        cart = JSON.parse(localStorage.getItem("cart"));
-      }
-
-      const cartItems = {
+      const cat = {
         id: product._id,
         title: product.title,
         images: product.images[0].url,
         price: product.price,
         discount: product.discount,
         discountprice: product.discountprice,
-        countInStock: product.countInStock,
-        count: 1,
+        quantity: quantity,
         storageSize,
         storagePrice,
         color
       }
 
-      cart.push(cartItems);
-
-      let unique = _.uniqWith(cart, _.isEqual);
-      localStorage.setItem("cart", JSON.stringify(unique));
-
-      dispatch({
-        type: "ADD_TO_CART",
-        payload: unique,
-      });
+      dispatch(addToCart(cat))
       setShowAlert(true);
-    }
   };
 
   useEffect(() => {
@@ -135,10 +129,7 @@ const ProductInfo = ({ product }) => {
         </div>
       </div>
       <hr />
-      <div class="row no-gutters mt-3">
-        <div class="col-sm-2">
-          <div class="opacity-50 my-2">Price:</div>
-        </div>
+      <div class="row no-gutters mt-2">
         <div class="col-sm-10">
           <div class="">
             <strong class="h2 fw-700 text-primary">
@@ -256,65 +247,67 @@ const ProductInfo = ({ product }) => {
         </div>}
 
 
-        {/* <div className="row no-gutters">
+        <div className="row no-gutters">
           <div className="col-sm-2">
             <div className="opacity-50 my-2">Quantity:</div>
           </div>
           <div className="col-sm-10">
             <div className="product-quantity d-flex align-items-center">
               <div className="row no-gutters align-items-center aiz-plus-minus mr-3" style={{ width: '130px' }}>
-                <button className="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="minus" data-field="quantity" disabled="">
+                <button className="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="minus" data-field="quantity" onClick={decQuantity}>
                   <i className="las la-minus" />
                 </button>
-                <input type="text" name="quantity" className="col border-0 text-center flex-grow-1 fs-16 input-number" placeholder="1" value="1" min="1" max="0" readOnly="" />
-                <button className="btn  col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="plus" data-field="quantity">
+                <input type="text" name="quantity" className="col border-0 text-center flex-grow-1 fs-16 input-number" placeholder="1" value={quantity} min="1" max="0" />
+                <button className="btn  col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="plus" data-field="quantity" onClick={() => setQuantity(quantity + 1)}>
                   <i className="las la-plus" />
                 </button>
               </div>
-              <div className="avialable-amount opacity-60">
-                (
-              <span id="available-quantity">0</span>
-                {' '}
-              available)
-            </div>
             </div>
           </div>
-        </div> */}
+        </div>
 
         <hr />
-        {/* 
-        <div className="row no-gutters pb-3" id="chosen_price_div">
+
+        <div className="row no-gutters" id="chosen_price_div">
           <div className="col-sm-2">
-            <div className="opacity-50 my-2">Total Price:</div>
+            <div className="opacity-50 my-2">Total Quantity Price:</div>
           </div>
           <div className="col-sm-10">
             <div className="product-price">
-              <strong id="chosen_price" className="h4 fw-700 text-primary">UGX 2,500,000</strong>
+              <strong id="chosen_price" className="h4 fw-700 text-primary">UGX {product.discount ? <CurrencyFormat
+                value={product.discountprice * quantity}
+                displayType="text"
+                thousandSeparator
+              /> : <CurrencyFormat
+                  value={product.price * quantity}
+                  displayType="text"
+                  thousandSeparator
+                />}</strong>
             </div>
           </div>
-        </div> */}
+        </div>
 
       </form>
       <div className="float">
-      <div class="mt-3" style={{
-        display: "flex",
-        position: "relative",
-        transition: "all .35s ease",
-      }}>
-        <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
-          <span class="d-md-inline-block"> Add to cart</span>
+        <div class="mt-2" style={{
+          display: "flex",
+          position: "relative",
+          transition: "all .35s ease",
+        }}>
+          <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
+            <span class="d-md-inline-block"> Add to cart</span>
+          </button>
+          <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
+            Buy Now
         </button>
-        <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
-          Buy Now
-        </button>
-        <button type="button" className=" btn btn-product-call">
-          <a href="tel:0751290264">
-            <i class="las la-phone la-2x btn-call-details"></i>
-          </a>
-        </button>
+          <button type="button" className=" btn btn-product-call">
+            <a href="tel:0751290264">
+              <i class="las la-phone la-2x btn-call-details"></i>
+            </a>
+          </button>
+        </div>
       </div>
-      </div>
-      <div class="row no-gutters mt-4">
+      <div class="row no-gutters">
         <div class="col-sm-2">
           <div class="opacity-50 my-2">Share:</div>
         </div>
@@ -327,7 +320,7 @@ const ProductInfo = ({ product }) => {
                 title={product.title}
                 hashtag="#mobileshopug"
                 image={product.images && product.images.length ? product.images[0].url : ''}
-                className="jssocials-share jssocials-share-facebook">
+                className="">
                 <FacebookIcon size={36} />
               </FacebookShareButton>
               <TwitterShareButton

@@ -14,7 +14,7 @@ const CartDetails = ({ cart, total, checkout }) => {
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
         toast.success("Product successfuly removed from cart");
-      }
+    }
 
     return (
         <section class="mb-4" id="cart-summary">
@@ -40,7 +40,7 @@ const CartDetails = ({ cart, total, checkout }) => {
                                                     <div class="col-lg-5 d-flex">
                                                         <span class="mr-2 ml-0">
                                                             {
-                                                                <LazyLoadImage src={item.images} alt="cart images" width="60" />
+                                                                <LazyLoadImage src={item.images} alt="cart images" width="40" />
                                                             }
                                                         </span>
                                                         <span class="fs-14 opacity-60">
@@ -67,16 +67,22 @@ const CartDetails = ({ cart, total, checkout }) => {
                                                     </div>
 
                                                     <div class="col-lg col-6 order-4 order-lg-0">
-                                                        <div class="row no-gutters align-items-center aiz-plus-minus mr-2 ml-0">
-                                                            <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="minus" onClick={() => dispatch({ type: 'DECREMENT', payload: item.id })}>
-                                                                <i class="las la-minus"></i>
-                                                            </button>
-                                                            <label>{item.quantity}</label>
-                                                            <button class="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="plus" onClick={() => dispatch({ type: 'INCREMENT', payload: item.id })}>
-                                                                <i class="las la-plus"></i>
-                                                            </button>
+
+                                                        <div className="">
+                                                            <div className="product-quantity d-flex align-items-center">
+                                                                <div className="row no-gutters align-items-center aiz-plus-minus mr-3" style={{ width: '90px' }}>
+                                                                    <button className="btn col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="minus" data-field="quantity" onClick={() => dispatch({ type: 'DECREMENT', payload: item.id })}>
+                                                                        <i className="las la-minus" />
+                                                                    </button>
+                                                                    <input type="text" name="quantity" className="col border-0 text-center flex-grow-1 fs-16 input-number" placeholder="1" value={item.quantity} min="1" max="0" />
+                                                                    <button className="btn  col-auto btn-icon btn-sm btn-circle btn-light" type="button" data-type="plus" data-field="quantity" onClick={() => dispatch({ type: 'INCREMENT', payload: item.id })}>
+                                                                        <i className="las la-plus" />
+                                                                    </button>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
+
                                                     <div class="col-lg col-4 order-3 order-lg-0 my-3 my-lg-0">
                                                         <span class="opacity-60 fs-12 d-block d-lg-none">Total</span>
                                                         <span class="fw-600 fs-16 text-primary">{item.discount ? <CurrencyFormat
@@ -90,8 +96,8 @@ const CartDetails = ({ cart, total, checkout }) => {
                                                             />}</span>
                                                     </div>
                                                     <div class="col-lg-auto col-6 order-5 order-lg-0 text-right">
-                                                        <a href="#" class="btn btn-icon btn-sm btn-soft-primary btn-circle" 
-                                                        onClick={() => removeFromCartHandler(item.id)}
+                                                        <a href="#" class="btn btn-icon btn-sm btn-soft-primary btn-circle"
+                                                            onClick={() => removeFromCartHandler(item.id)}
                                                         >
                                                             <i class="las la-trash"></i>
                                                         </a>

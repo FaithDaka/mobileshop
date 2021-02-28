@@ -1,5 +1,6 @@
 const initState = {
-  cartItems: JSON.parse(localStorage.getItem("cartItems") || "[]")
+  cartItems: JSON.parse(localStorage.getItem("cartItems") || "[]"),
+  totalQuantities: 0
 }
 
 const cartReducer = (state = initState, action)=> {
@@ -12,9 +13,11 @@ const cartReducer = (state = initState, action)=> {
       if(check){
           return state;
       } else {
-          // product.quantity = quantity;
+        const Tquantities = state.totalQuantities + product.quantity;
           return {
-              ...state, cartItems: [...state.cartItems, product]
+              ...state, 
+              cartItems: [...state.cartItems, product],
+              totalQuantities: Tquantities
           }
 
       }
@@ -25,7 +28,7 @@ const cartReducer = (state = initState, action)=> {
         state.cartItems[index] = findPro;
         return {
             ...state,
-            totalPrice: state.totalPrice + findPro.price, totalQuantities: state.totalQuantities+1
+            totalQuantities: state.totalQuantities+1
         }
       case "DECREMENT":
       findPro = state.cartItems.find(product => product.id === action.payload);
@@ -35,7 +38,7 @@ const cartReducer = (state = initState, action)=> {
          state.cartItems[index] = findPro;
          return {
              ...state,
-             totalPrice: state.totalPrice - findPro.price, totalQuantities: state.totalQuantities - 1
+             totalQuantities: state.totalQuantities - 1
          }
       } else {
           return state;
@@ -46,6 +49,12 @@ const cartReducer = (state = initState, action)=> {
       return {
           ...state,
           cartItems: filtered
+      }
+      case 'REMOVECART':
+      return {
+          ...state,
+          cartItems: [],
+          totalQuantities: 0
       }
     default:
       return state;

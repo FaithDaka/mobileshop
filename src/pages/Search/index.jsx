@@ -59,7 +59,7 @@ const SearchFilters = () => {
                                     <Product product={item} />
                                 ))}
                             </div>
-                            <Pagination />
+                            
                         </div>
                     </div>
                 </form>
