@@ -23,31 +23,40 @@ const Phones = () => {
 
   const renderView = () => {
     if (currentTab === 'brandnew') {
-      return <BrandNew 
-                products={brandnew} 
-                loading={loading} 
-                total={newtotalPages} 
-                pageNumber={pageNumberNew}
-                count={setPageNumberNew}
-                totalnew={totalNew}
-                firstProduct={firstProduct}
-                currentProducts={currentProducts}
-                />;
+      return <BrandNew
+        products={brandnew}
+        loading={loading}
+        total={newtotalPages}
+        pageNumber={pageNumberNew}
+        count={setPageNumberNew}
+        totalnew={totalNew}
+        firstProduct={firstProduct}
+        currentProducts={currentProducts}
+      />;
     }
     if (currentTab === 'ukused') {
-      return <UkUsed 
-                products={ukused} 
-                loading={loading} 
-                total={usedtotalPages}
-                pageNumber={pageNumberUsed}
-                count={setPageNumberUsed}
-                totalused={totalUsed}
-                />;
+      return <UkUsed
+        products={ukused}
+        loading={loading}
+        total={usedtotalPages}
+        pageNumber={pageNumberUsed}
+        count={setPageNumberUsed}
+        totalused={totalUsed}
+      />;
     }
   }
 
   const textstyle = {
-    fontSize: "12px",
+    fontSize: "15px",
+  }
+  const containerstyle = {
+    borderBottom: "gray-solid",
+    borderRight: "gray-solid",
+    borderWidth: "thin",
+  }
+  const containerstyles = {
+    borderBottom: "gray-solid",
+    borderWidth: "thin",
   }
 
   const loadBrandNew = () => {
@@ -80,18 +89,24 @@ const Phones = () => {
 
   return (
     <>
-      <div>
+      <div className="container" style={{paddingTop:"2%"}} >
         <div className="row">
-          <div className="col-6 col-md-6 col-lg-6">
-            <a href="#" className={currentTab === 'brandnew' ? 'select' : 'tabtext'}
-              onClick={() => setCurrentTab('brandnew')} style={textstyle}>Brand New</a>
+          <div className={`col-6 col-md-6 col-lg-6 ${currentTab === 'brandnew' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('brandnew')}>
+            <div className="">
+              <a href="#" data-toggle="tab" className="p-3 fs-16 fw-600 text-reset show " style={{color:"red"}}>Brand New</a>
+            </div>
+
           </div>
-          <div className="col-6 col-md-6 col-lg-6">
-            <a href="#" className={currentTab === 'ukused' ? 'select' : 'tabtext'} onClick={() => setCurrentTab('ukused')} style={textstyle}>UK Used</a>
+          <div className={`col-6 col-md-6 col-lg-6 ${currentTab === 'ukused' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('ukused')}>
+            <div className="">
+              <a href="#" data-toggle="tab" className="p-3 fs-16 fw-600 text-reset show " style={{color:"red"}}>Uk Used</a>
+            </div>
+
           </div>
         </div>
       </div>
-      <div className="">
+
+      <div className="" style={{paddingTop:"1%"}}>
         {renderView()}
       </div>
     </>

@@ -17,15 +17,15 @@ const ProductGroup = () => {
   const [currentTab, setCurrentTab] = useState('phones');
   
   const divstyles = {
-    fontSize: "10px"
+    fontSize: "13px"
   }
 
   const divstyle = {
     display: "flex",
     justifyContent: "center",
     borderRadius: "50%",
-    width: "30px",
-    height: "30px",
+    width: "50px",
+    height: "50px",
     overflow: "hidden"
   }
   const imagestyle = {
@@ -65,7 +65,7 @@ const ProductGroup = () => {
 
   return (
     <section className="d-xl-none d-lg-block mb-3" >
-      
+      <div className="container">
       <div className=" shadow p-3 mb-5 bg-white rounded container">
         <div className="row">
           <div className="col-12 col-md-6 col-lg-6" style={{ paddingBottom: "2%" }}>
@@ -131,7 +131,7 @@ const ProductGroup = () => {
           </div>
         </div>
         </div>
-
+        </div>
       </div>
       <div className="" style={{ marginTop: "-10%" }}>
         {renderView()}

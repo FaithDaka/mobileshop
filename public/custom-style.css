@@ -30,6 +30,7 @@ body{
 .img-box {
     width: 220px;     
     height: 180px;
+    margin-left: -12%;
 }
 
 .responsive-img {
