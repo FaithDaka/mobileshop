@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Product from '../../components/Product'
 import LoadSpinner from '../../components/Spinner'
-import { getSound } from "../../functions/products";
+import { getSpeakers } from "../../functions/products";
 
 const SoundSytems = () => {
     const [pageNumber, setPageNumber] = useState(0);
@@ -24,7 +24,7 @@ const SoundSytems = () => {
 
     const loadUkUsed = () => {
         setLoading(true);
-        getSound(pageNumber).then((res) => {
+        getSpeakers(pageNumber).then((res) => {
             setProducts(res.data.products);
             setTotalPages(res.data.totalPages)
             setTotal(res.data.total)

@@ -4,7 +4,7 @@ import CategoriesNav from "./CategoriesNav";
 import TopDeals from "./TopDeals";
 
 const Banner = () => (
-  <div className="home-banner-area mb-4 pt-3">
+  <div className="home-banner-area mb-2 pt-3">
     <div className="container">
       <div className="row gutters-10 position-relative">
         {/* <CategoriesNav /> */}
