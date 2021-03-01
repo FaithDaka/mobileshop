@@ -288,7 +288,7 @@ const BuyNow = ({ history }) => {
                         <div class="col-6">
                             <Link to="/" class="link link--style-3">
                                 <i class="las la-arrow-left"></i>
-                     Return to shop
+                     <span className="fw-800 fs-16">Return to shop</span>
                      </Link>
                         </div>
                         <div class="col-6 pr-2">

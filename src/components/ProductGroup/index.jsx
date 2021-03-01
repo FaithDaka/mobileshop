@@ -66,7 +66,7 @@ const ProductGroup = () => {
   return (
     <section className="d-xl-none d-lg-block mb-3" >
       <div className="container">
-      <div className=" shadow p-3 mb-5 bg-white rounded container">
+      <div className=" shadow p-3 mb-5 bg-white rounded">
         <div className="row">
           <div className="col-12 col-md-6 col-lg-6" style={{ paddingBottom: "2%" }}>
             <div className="row">
@@ -133,7 +133,7 @@ const ProductGroup = () => {
         </div>
         </div>
       </div>
-      <div className="" style={{ marginTop: "-10%" }}>
+      <div className="container" style={{ marginTop: "-10%" }}>
         {renderView()}
       </div>
     </section>

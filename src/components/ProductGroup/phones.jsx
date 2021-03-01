@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import BrandNew from './brand-new';
 import UkUsed from './uk-used';
 import { getBrandNew, getUkUsed } from "../../functions/products";
@@ -46,19 +47,6 @@ const Phones = () => {
     }
   }
 
-  const textstyle = {
-    fontSize: "15px",
-  }
-  const containerstyle = {
-    borderBottom: "gray-solid",
-    borderRight: "gray-solid",
-    borderWidth: "thin",
-  }
-  const containerstyles = {
-    borderBottom: "gray-solid",
-    borderWidth: "thin",
-  }
-
   const loadBrandNew = () => {
     setLoading(true);
     getBrandNew(pageNumberNew).then((res) => {
@@ -89,17 +77,17 @@ const Phones = () => {
 
   return (
     <>
-      <div className="container" style={{paddingTop:"2%"}} >
+      <div className="container">
         <div className="row">
           <div className={`col-6 col-md-6 col-lg-6 ${currentTab === 'brandnew' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('brandnew')}>
             <div className="">
-              <a href="#" data-toggle="tab" className="p-3 fs-16 fw-600 text-reset show " style={{color:"red"}}>Brand New</a>
+              <Link to="#" data-toggle="tab" className="p-3 text-reset show ">Brand New</Link>
             </div>
 
           </div>
           <div className={`col-6 col-md-6 col-lg-6 ${currentTab === 'ukused' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('ukused')}>
             <div className="">
-              <a href="#" data-toggle="tab" className="p-3 fs-16 fw-600 text-reset show " style={{color:"red"}}>Uk Used</a>
+              <Link to="#" data-toggle="tab" className="p-3 text-reset show ">Uk Used</Link>
             </div>
 
           </div>
