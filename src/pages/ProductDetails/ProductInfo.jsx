@@ -143,26 +143,27 @@ const ProductInfo = ({ product }) => {
             <span class="badge badge-md badge-inline badge-pill badge-success">{product.condition}</span>
           </div>
         </div>
-        <hr />
-        <div class="row no-gutters mt-2">
-          <div class="col-sm-10">
-            <div class="">
-              <strong class="h2 fw-700 text-primary">
-                {product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
-                  value={product.discountprice}
-                  displayType="text"
-                  thousandSeparator
-                /></strong>}
-                {!product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
-                  value={product.price}
-                  displayType="text"
-                  thousandSeparator
-                /></strong>}
-                {storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
-                  value={storagePrice}
-                  displayType="text"
-                  thousandSeparator
-                /></strong>}
+        
+      <hr />
+      <div class="row no-gutters mt-2">
+        <div class="col-sm-10">
+          <div class="">
+            <strong class="h2 fw-700 text-primary">
+              {product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                value={product.discountprice * quantity}
+                displayType="text"
+                thousandSeparator
+              /></strong>}
+              {!product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                value={product.price * quantity}
+                displayType="text"
+                thousandSeparator
+              /></strong>}
+              {storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                value={storagePrice * quantity}
+                displayType="text"
+                thousandSeparator
+              /></strong>}
 
 
               </strong>
