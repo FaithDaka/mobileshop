@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import _ from "lodash";
 import { Link } from 'react-router-dom';
 import ProductImage from "./ProductImage";
@@ -6,6 +7,8 @@ import ProductInfo from "./ProductInfo";
 import ProductSpecs from "./ProductSpecs";
 import LoadSpinner from '../../components/Spinner';
 import { getProduct, getRelated } from "../../functions/products";
+import './sticky.css';
+import SomeRandomText from './srt'
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -26,6 +29,7 @@ const ProductDetails = ({ match }) => {
         })
     }
 
+
     useEffect(() => {
         loadSingleProduct();
     }, [productId]);
@@ -34,9 +38,12 @@ const ProductDetails = ({ match }) => {
         window.scrollTo(0, 0)
     }, [])
 
+
     return (
         <>
-            <section class="mb-4 pt-3">
+
+            <section class="mb-4 pt-3" >
+
                 <div class="container">
                     {loading && <LoadSpinner />}
                     <div class="col">
@@ -65,6 +72,7 @@ const ProductDetails = ({ match }) => {
                     </div>
                 </div>
             </section>
+
             <ProductSpecs product={product} related={related} />
         </>
     )

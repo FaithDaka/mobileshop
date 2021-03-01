@@ -1,0 +1,7 @@
+.scroll{
+    position:fixed;
+	z-index: 1000;
+	bottom:230px;
+	left:10;
+	color:#FFF;
+}

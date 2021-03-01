@@ -15,13 +15,13 @@ const BottomFooter = () => (
         <div className="col-lg-4">
           <ul className="list-inline my-3 my-md-0 social colored text-center">
             <li className="list-inline-item">
-              <a href="#" target="_blank" className="facebook"><i className="lab la-facebook-f" /></a>
+              <a href="fb.me/mobileshop.ug" target="_blank" className="facebook"><i className="lab la-facebook-f" /></a>
             </li>
             <li className="list-inline-item">
-              <a href="#" target="_blank" className="twitter"><i className="lab la-twitter" /></a>
+              <a href="https://twitter.com/mobileshopug?s=09" target="_blank" className="twitter"><i className="lab la-twitter" /></a>
             </li>
             <li className="list-inline-item">
-              <a href="#" target="_blank" className="instagram"><i className="lab la-instagram" /></a>
+              <a href="https://instagram.com/mobileshop.ug?igshid=1aj8702pmna3c" target="_blank" className="instagram"><i className="lab la-instagram" /></a>
             </li>
             <li className="list-inline-item">
               <a href="#" target="_blank" className="youtube"><i className="lab la-youtube" /></a>
