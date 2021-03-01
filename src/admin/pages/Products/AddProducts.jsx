@@ -194,7 +194,7 @@ const AddProducts = ({ history }) => {
                                         <option value="Uk Used">Uk Used</option>
                                         <option value="Accessories">Accessories</option>
                                         <option value="Televisions">Televisions</option>
-                                        <option value="Systems">Sound Systems</option>
+                                        <option value="Speakers">Sound Systems</option>
                                         <option value="Tablets">Tablets & Ipads</option>
                                         <option value="Gaming">Gaming</option>
                                         <option value="Fridges">Fridges</option>
