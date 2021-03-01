@@ -5,7 +5,7 @@ import Specs from './Specs';
 import TvSpecs from './TVSpecs';
 
 const ProductSpecs = ({product, related}) => {
-  console.log("Product cccc", product)
+  const relate = related.filter((prod) => prod.subs.name === product.subs.name);
   return(
   <section className="mb-4">
     <div className="container">
@@ -17,7 +17,7 @@ const ProductSpecs = ({product, related}) => {
             {product.condition === 'Brand New' && product.category.name !== 'Televisions' && <Specs product={product} />}
             {product.condition === 'Uk Used' && product.category.name !== 'Televisions'&& <Specs product={product} /> }
             {product.category && product.category.name === 'Televisions' && product.category.name !== 'MobilePhones' && <TvSpecs product={product} /> }
-          <RelatedProducts related={related} />
+          <RelatedProducts related={relate} />
         </div>
       </div>
     </div>
