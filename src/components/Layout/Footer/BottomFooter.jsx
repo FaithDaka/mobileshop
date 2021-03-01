@@ -8,8 +8,9 @@ const BottomFooter = () => (
         <div className="col-lg-4">
           <div className="text-center text-md-left">
             <span style={{fontSize:'125%',lineHeight:'1em'}}>©</span>
-            2020 MobileShop Uganda
-            <br />                
+            Kampala Road, Church House First Floor
+            <br />  
+            Suite CH - 001              
           </div>
         </div>
         <div className="col-lg-4">
@@ -32,17 +33,17 @@ const BottomFooter = () => (
           </ul>
         </div>
         <div className="col-lg-4">
-          <ul className="list-inline text-center">
-            <li className="list-inline-item">
-              <Link to="/aboutus">About us</Link>
-            </li>
-            <li className="list-inline-item">
-              <Link to="/faqs">FAQs</Link>
-            </li>
-            <li className="list-inline-item">
-              <Link to="/terms">Terms and Conditions</Link>
-            </li>
-          </ul>
+          <ul class="breadcrumb bg-transparent p-0">
+                                <li class="breadcrumb-item">
+                                <Link to="/aboutus">About us</Link>
+                                </li>
+                                <li class="breadcrumb-item">
+                                <Link to="/faqs">FAQs</Link>
+                                </li>
+                                <li class="breadcrumb-item">
+                                <Link to="/terms">Terms and Conditions</Link>
+                                </li>
+                            </ul>
         </div>
         <div className="col-lg-4 d-none d-lg-block">
           <div className="text-center text-md-right">

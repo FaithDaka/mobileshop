@@ -15,6 +15,7 @@ const AddProducts = ({ history }) => {
 
     const [storagePrice, setStoragePrice] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [imgloading, setImgLoading] = useState(false);
 
     const [title, setTitle] = useState('');
     const [discount, setDiscount] = useState('');
@@ -69,7 +70,7 @@ const AddProducts = ({ history }) => {
         let allUploadedFiles = images;
 
         if (files) {
-            setLoading(true);
+            setImgLoading(true);
             for (let i = 0; i < files.length; i++) {
                 Resizer.imageFileResizer(
                     files[i],
@@ -86,15 +87,12 @@ const AddProducts = ({ history }) => {
                                 { image: uri }
                             )
                             .then((res) => {
-                                setLoading(false);
+                                setImgLoading(false);
                                 allUploadedFiles.push(res.data);
-
-                                // setValues({ ...values, images: allUploadedFiles });
                                 setImages(allUploadedFiles)
                             })
                             .catch((err) => {
-                                setLoading(false);
-                                console.log("CLOUDINARY UPLOAD ERR", err);
+                                setImgLoading(false);
                                 toast.error("error upload Failure");
                             });
                     },
@@ -146,6 +144,23 @@ const AddProducts = ({ history }) => {
             });
     };
 
+    const handleImageRemove = (public_id) => {
+        setImgLoading(true);
+        axios
+          .post(
+            `${process.env.REACT_APP_API}/upload/remove`, { public_id }
+          )
+          .then((res) => {
+            setImgLoading(false);
+            const filteredImages = images.filter((item) => item.public_id !== public_id);
+            setImages(filteredImages)
+          })
+          .catch((err) => {
+            console.log(err);
+            setImgLoading(false);
+          });
+      };
+
     return (
         <>
             <div class="aiz-titlebar text-left mt-2 mb-3">
@@ -169,17 +184,21 @@ const AddProducts = ({ history }) => {
                                         onChange={(e) => setTitle(e.target.value)} />
                                 </div>
                                 <div className="col-md-6">
-                                    <label>Condition</label>
+                                    <label>Type</label>
                                     <select name="condition"
                                         className="form-control"
                                         value={condition}
                                         onChange={(e) => setCondition(e.target.value)}>
-                                        <option selected>Select Condition</option>
+                                        <option selected>Select Product Type</option>
                                         <option value="Brand New">Brand New</option>
                                         <option value="Uk Used">Uk Used</option>
                                         <option value="Accessories">Accessories</option>
                                         <option value="Televisions">Televisions</option>
-                                        <option value="Speakers">Speakers</option>
+                                        <option value="Systems">Sound Systems</option>
+                                        <option value="Tablets">Tablets & Ipads</option>
+                                        <option value="Gaming">Gaming</option>
+                                        <option value="Fridges">Fridges</option>
+                                        <option value="Laptops">Laptops</option>
                                     </select>
                                 </div>
                             </div>
@@ -320,11 +339,11 @@ const AddProducts = ({ history }) => {
                                     </label>
 
                                     <div class="img-container">
-                                        {loading && <Spinner />}
+                                        {imgloading && <Spinner />}
                                         {images && images.map((image, i) => (
                                             <>
                                                 <LazyLoadImage key={i} src={image.url} alt="uplaodimage" class="img-admin" />
-                                                <div class="remove"><button class="btn btn-sm btn-link remove-attachment" type="button"><i class="la la-close"></i></button></div>
+                                                <div class="remove"><button class="btn btn-sm btn-link remove-attachment" type="button" onClick={() => handleImageRemove(image.public_id)}><i class="la la-close"></i></button></div>
                                             </>
                                         ))}
 

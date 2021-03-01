@@ -23,9 +23,7 @@ const ProductsList = () => {
   };
 
   const handleRemove = (slug) => {
-    // let answer = window.confirm("Delete?");
     if (window.confirm("Delete?")) {
-      // console.log("send delete request", slug);
       removeProduct(slug)
         .then((res) => {
           loadAllProducts();
@@ -79,7 +77,7 @@ const ProductsList = () => {
                                 <th style={{ display: 'table-cell' }}>Category</th>
                                 <th sstyle={{ display: 'table-cell' }}>Brand</th>
                                 <th style={{ display: 'table-cell' }}>Price</th>
-                                <th style={{ display: 'table-cell' }}>Condition</th>
+                                <th style={{ display: 'table-cell' }}>Type</th>
                                 <th width="10%" class="text-right footable-last-visible" style={{ display: 'table-cell' }}>Options</th>
                             </tr>
                         </thead>
