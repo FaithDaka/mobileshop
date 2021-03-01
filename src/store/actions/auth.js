@@ -21,7 +21,7 @@ export const loginBuynow = (user, history, close) => {
         payload: { token, phonenumber, isAdmin },
         });
 
-      history.push("/checkout");
+        history.push("/buynow");
       close();
     } else {
       if (res.status === 400) {

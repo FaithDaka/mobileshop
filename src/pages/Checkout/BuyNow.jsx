@@ -211,15 +211,20 @@ const BuyNow = ({ history }) => {
                                         <tbody>
                                             <tr>
                                                 <td>{cart.title}</td>
-                                                <td class="text-right">UGX {cart.discount ? <CurrencyFormat
+                                                <td class="text-right">{cart.discount ? <>
+                                                <CurrencyFormat
                                                     value={cart.discountprice}
                                                     displayType="text"
                                                     thousandSeparator
-                                                /> : <CurrencyFormat
+                                                /> x {cart.quantity}
+                                                </> : <>
+                                                <CurrencyFormat
                                                         value={cart.price}
                                                         displayType="text"
                                                         thousandSeparator
-                                                    />}</td>
+                                                    /> x {cart.quantity}
+                                                    </>
+                                                    }</td>
                                             </tr>
 
                                         </tbody>
@@ -230,15 +235,11 @@ const BuyNow = ({ history }) => {
                                                 <th>Subtotal</th>
                                                 <td class="text-right">
                                                     <span class="fw-600">UGX
-                                                        {cart.discount ? <CurrencyFormat
-                                                            value={cart.discountprice}
-                                                            displayType="text"
-                                                            thousandSeparator
-                                                        /> : <CurrencyFormat
-                                                                value={cart.price}
+                                                    <CurrencyFormat
+                                                                value={cart.totalprice}
                                                                 displayType="text"
                                                                 thousandSeparator
-                                                            />}</span>
+                                                            /></span>
                                                 </td>
                                             </tr>
                                             <tr class="cart-shipping">

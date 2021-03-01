@@ -7,8 +7,11 @@ export const createProduct = async (product, token) =>
   }
   });
 
-export const getProducts = async () =>
-  await axios.get(`${process.env.REACT_APP_API}/product`);
+export const getProducts = async (pageNumber) =>
+  await axios.get(`${process.env.REACT_APP_API}/product?page=${pageNumber}`);
+
+export const searchProducts = async () =>
+  await axios.get(`${process.env.REACT_APP_API}/product/search`);
 
 export const getBrandNew = async (pageNumber) =>
   await axios.get(`${process.env.REACT_APP_API}/product/brandnew?page=${pageNumber}`);

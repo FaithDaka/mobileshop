@@ -6,15 +6,15 @@ const BottomFooter = () => (
     <div className="container">
       <div className="row align-items-center">
         <div className="col-lg-4">
-          <div className="text-center text-md-left">
-            <span style={{fontSize:'125%',lineHeight:'1em'}}>©</span>
+          <div className="text-md-left">
+            <span style={{fontSize:'125%',lineHeight:'1em'}}>Find us @ </span>
             Kampala Road, Church House First Floor
             <br />  
-            Suite CH - 001              
+            Suite CH - 001 , Po Box 100735 Kampla, Uganda          
           </div>
         </div>
         <div className="col-lg-4">
-          <ul className="list-inline my-3 my-md-0 social colored text-center">
+          <ul className="list-inline my-3 my-md-0 social colored">
             <li className="list-inline-item">
               <a href="#" target="_blank" className="facebook"><i className="lab la-facebook-f" /></a>
             </li>
@@ -39,6 +39,9 @@ const BottomFooter = () => (
                                 </li>
                                 <li class="breadcrumb-item">
                                 <Link to="/faqs">FAQs</Link>
+                                </li>
+                                <li class="breadcrumb-item">
+                                <Link to="/faqs">Return Policy</Link>
                                 </li>
                                 <li class="breadcrumb-item">
                                 <Link to="/terms">Terms and Conditions</Link>

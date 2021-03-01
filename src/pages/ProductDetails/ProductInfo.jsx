@@ -134,17 +134,17 @@ const ProductInfo = ({ product }) => {
           <div class="">
             <strong class="h2 fw-700 text-primary">
               {product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
-                value={product.discountprice}
+                value={product.discountprice * quantity}
                 displayType="text"
                 thousandSeparator
               /></strong>}
               {!product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
-                value={product.price}
+                value={product.price * quantity}
                 displayType="text"
                 thousandSeparator
               /></strong>}
               {storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
-                value={storagePrice}
+                value={storagePrice * quantity}
                 displayType="text"
                 thousandSeparator
               /></strong>}
