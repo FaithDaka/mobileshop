@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import CurrencyFormat from 'react-currency-format';
+import moment from "moment";
 
 const Receipt = ({ location }) => {
     const orderInfo = location.state;
@@ -48,7 +49,8 @@ const Receipt = ({ location }) => {
                                             <table class="table">
                                                 <tbody><tr>
                                                     <td class="w-50 fw-600">Order date:</td>
-                                                    <td>{orderInfo.state.createdAt}</td>
+                                                    <td>{moment(orderInfo.state.createdAt).format('ll')}
+                                                    </td>
                                                 </tr>
                                                     <tr>
                                                         <td class="w-50 fw-600">Order status:</td>
@@ -126,21 +128,15 @@ const Receipt = ({ location }) => {
                                                         </td>
                                                     </tr>
                                                     <tr>
+                                                        <th>Total Quantity</th>
+                                                        <td class="text-right">
+                                                        <span class="font-italic">{orderInfo.state.totalquantity}</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
                                                         <th>Shipping</th>
                                                         <td class="text-right">
-                                                            <span class="font-italic">0.00</span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Tax</th>
-                                                        <td class="text-right">
-                                                            <span class="font-italic">0.00</span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Discount</th>
-                                                        <td class="text-right">
-                                                            <span class="font-italic">0.00</span>
+                                                            <span class="font-italic">Free</span>
                                                         </td>
                                                     </tr>
                                                     <tr>
