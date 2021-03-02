@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import CurrencyFormat from 'react-currency-format';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import BuyNowModal from "../../components/Modal/buynow-modal";
-import HelmentData from '../../components/Helment'
-import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon } from "react-share";
 import { addToCart } from '../../store/actions/cartActions';
 
 const ProductInfo = ({ product }) => {
@@ -347,45 +345,6 @@ const ProductInfo = ({ product }) => {
             </div>
 
         }
-
-        <div class="row no-gutters">
-          <div class="col-sm-2">
-            <div class="opacity-50 my-2">Share:</div>
-          </div>
-          <div class="col-sm-10">
-            <div class="aiz-share jssocials">
-              <div class="jssocials-shares">
-                <FacebookShareButton
-                  url={currentUrl}
-                  quote={product.description}
-                  title={product.title}
-                  hashtag="#mobileshopug"
-                  image={product.images && product.images.length ? product.images[0].url : ''}
-                  className="">
-                  <FacebookIcon size={36} />
-                </FacebookShareButton>
-                <TwitterShareButton
-                  url={currentUrl}
-                  title={product.title}
-                  hashtag="#mobileshopug"
-                  class="jssocials-share jssocials-share-twitter"
-                >
-                  <TwitterIcon size={36} />
-                </TwitterShareButton>
-                <WhatsappShareButton
-                  url={currentUrl}
-                  quote={product.description}
-                  title={product.title}
-                  image={product.images && product.images.length ? product.images[0].url : ''}
-                  separator=":: "
-                  class="jssocials-share jssocials-share-whatsapp"
-                >
-                  <WhatsappIcon size={36} />
-                </WhatsappShareButton>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       <div id="sticky"></div>
     </>

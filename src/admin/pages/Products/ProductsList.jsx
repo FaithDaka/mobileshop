@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react'
+import moment from "moment";
 import { Link } from 'react-router-dom'
 import { toast } from "react-toastify";
 import CurrencyFormat from 'react-currency-format';
@@ -123,7 +124,7 @@ const ProductsList = () => {
                                         <tr>
                                             <td style={{ display: 'table-cell' }}>{product.title}</td>
                                             <td style={{ display: 'table-cell' }}>{product.category && product.category.name}</td>
-                                            <td style={{ display: 'table-cell' }}>{product.createdAt}</td>
+                                            <td style={{ display: 'table-cell' }}>{moment(product.createdAt).format('l')}</td>
                                             <td style={{ display: 'table-cell' }}>
                                                 <CurrencyFormat
                                                 value={product.price}
