@@ -5,7 +5,6 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { RWebShare } from "react-web-share";
 
-
 const ProductImage = ({ product }) => {
   const [currentImage, setCurrentImage] = useState("");
   const history = useHistory();
@@ -23,25 +22,13 @@ const ProductImage = ({ product }) => {
     );
   };
 
-// const sharePage=()=>{
-//   if ('canShare' in navigator) {
-//     const share = async function() {
-//       try {
-        // const response = await fetch(shareimg);
-        // const blob = await response.blob();
-        // const file = new File([blob], {currentImage}, {type: blob.type});
-  
-//         await navigator.share({
-//           url: document.location.href,
-//           title:"Check this out",
-//           text: "sharetext",
-//           files: [file]
-//         });
-//       } catch (err) {
-//         console.log(err.name, err.message);
-//       }
-//     };
-//   }
+  const iconstyles={
+    fontSize:"20px",
+    border:"none",
+    color:"#f90",
+    // paddingBottom:"2%",
+
+  }
 const urlToObject = async (url) => {
   const response = await fetch(url);
   const blob = await response.blob();
@@ -99,17 +86,12 @@ const sharePage = () => {
       </div>
       <div className="col-9">
         <div className="img-box">
-        <div class="float-right">
-        <i class="las la-share-alt-square" onClick={sharePage}></i>
-        {/* <RWebShare
-        data={{
-          text: "hhhh",
-          url: {currentUrl},
-          title: "Flamingos",
-        }}
-      >
-        <button>Share 🔗</button>
-      </RWebShare> */}
+        <div class="border p-1 rounded float-right thumbnail-box" style={{marginRight:"-10%"}} >
+        <i class="bi bi-share" onClick={sharePage} style={iconstyles}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+  <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+</svg>
+        </i>
         </div>
           {renderImage()}
         </div>

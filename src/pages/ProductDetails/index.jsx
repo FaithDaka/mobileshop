@@ -73,6 +73,7 @@ const ProductDetails = ({ match }) => {
             </section>
 
             <ProductSpecs product={product} related={related} />
+         
         </>
     )
 }
