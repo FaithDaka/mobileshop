@@ -4,7 +4,7 @@ import './styles.css'
 const FAQS = () => {
     return (
         <section className="faqs">
-            <div class="wpb_wrapper d-xl-none d-lg-block">
+            <div class="wpb_wrapper d-xl-none d-lg-block bg-white py-4 px-3">
 
                 <p class="heading">Frequently Asked Questions</p>
                 <div class="martfury-faq_group ">
