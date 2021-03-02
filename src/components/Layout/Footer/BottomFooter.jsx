@@ -2,34 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const BottomFooter = () => (
-  <footer className="d-xl-none d-lg-block pt-3 pb-7 pb-xl-3 text-light" style={{backgroundColor: '#131821'}}>
+  <footer className="d-xl-none d-lg-block pt-3 pb-7 text-light" style={{backgroundColor: '#131821'}}>
     <div className="container">
       <div className="row align-items-center">
-        <div className="col-lg-4">
-          <div className="text-md-left">
-            <span style={{fontSize:'125%',lineHeight:'1em'}}>Find us @ </span>
-            Kampala Road, Church House First Floor
-            <br />  
-            Suite CH - 001 , Po Box 100735 Kampla, Uganda          
-          </div>
-        </div>
-        <div className="col-lg-4 pt-3">
-          <ul class="breadcrumb bg-transparent p-0">
-                                <li class="breadcrumb-item">
-                                <Link to="/aboutus">About us</Link>
-                                </li>
-                                <li class="breadcrumb-item">
-                                <Link to="/faqs">FAQs</Link>
-                                </li>
-                                <li class="breadcrumb-item">
-                                <Link to="/faqs">Return Policy</Link>
-                                </li>
-                                <li class="breadcrumb-item">
-                                <Link to="/terms">Terms and Conditions</Link>
-                                </li>
-                            </ul>
-        </div>
-        <div className="col-lg-4">
+      <div className="col-lg-4">
           <ul className="list-inline my-3 my-md-0 social colored text-center">
             <li className="list-inline-item">
               <a href="https://fb.me/mobileshop.ug" target="_blank" className="facebook"><i className="lab la-facebook-f" /></a>
@@ -47,6 +23,30 @@ const BottomFooter = () => (
               <a href="#" target="_blank" className="linkedin"><i className="lab la-linkedin-in" /></a>
             </li> */}
           </ul>
+        </div>
+        <div className="col-lg-4">
+          <div className="text-md-left">
+            <span style={{fontSize:'125%',lineHeight:'1em'}}>Find us @ </span>
+            Kampala Road, Church House First Floor
+            <br />  
+            Suite CH - 001 , Po Box 100735 Kampala, Uganda          
+          </div>
+        </div>
+        <div className="col-lg-4 pt-3">
+          <ul class="breadcrumb bg-transparent p-0">
+                                <li class="breadcrumb-item">
+                                <Link to="/aboutus">About us</Link>
+                                </li>
+                                <li class="breadcrumb-item">
+                                <Link to="/faqs">FAQs</Link>
+                                </li>
+                                <li class="breadcrumb-item">
+                                <Link to="/faqs">Return Policy</Link>
+                                </li>
+                                <li class="breadcrumb-item">
+                                <Link to="/terms">Terms and Conditions</Link>
+                                </li>
+                            </ul>
         </div>
         <div className="col-lg-4 d-none d-lg-block">
           <div className="text-center text-md-right">
