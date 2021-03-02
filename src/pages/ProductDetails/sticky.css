@@ -4,4 +4,8 @@
 	bottom:230px;
 	left:10;
 	color:#FFF;
-}
+}.pony {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+  }
