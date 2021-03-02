@@ -13,6 +13,9 @@ const ProductImage = ({ product }) => {
 
   let location = useLocation();
   let currentUrl = "https://mobileshop.ug" + location.pathname;
+  let shareImage = product.images && product.images.length ? product.images[0].url : ''
+
+  console.log("Image ====>",shareImage)
   const renderImage = () => {
     return (
       <LazyLoadImage
@@ -45,7 +48,7 @@ const ProductImage = ({ product }) => {
 const urlToObject = async (url) => {
   const response = await fetch(url);
   const blob = await response.blob();
-  const file = new File([blob],{currentImage}, { type: blob.type });
+  const file = new File([blob],{shareImage}, { type: blob.type });
   return file;
 };
 const files=urlToObject({currentUrl})
@@ -54,8 +57,8 @@ const sharePage = () => {
   if (navigator.share) {
     navigator
       .share({
-        title: "title",
-        text: "text",
+        title: "Checkout this product on mobileshop",
+        text: product.title,
         url: document.location.href,
         file:{files}
       })
