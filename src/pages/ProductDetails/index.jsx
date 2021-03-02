@@ -8,7 +8,6 @@ import ProductSpecs from "./ProductSpecs";
 import LoadSpinner from '../../components/Spinner';
 import { getProduct, getRelated } from "../../functions/products";
 import './sticky.css';
-import SomeRandomText from './srt'
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
