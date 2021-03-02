@@ -8,7 +8,11 @@ const BottomMenu = ({open}) => {
 
   return(
   <div className="d-block d-lg-none bottom__menu">
+   
       <div className="navigation--list">
+      <div>
+      chhh
+    </div>
         <div className="navigation__content">
           <Link to="/" className="navigation__item ">
           <a className="las la-home la-2x" />
