@@ -18,3 +18,15 @@
 	width: 120px;
 	height: 50%;
 }
+.acc-price{
+	font-weight: bold;
+	text-align: center;
+}
+.cross{
+	background-color: #f90;
+	color: white;
+	border: none;
+	font-weight: bold;
+	font-size:12px;
+	
+}

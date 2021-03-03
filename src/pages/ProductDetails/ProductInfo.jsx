@@ -6,6 +6,7 @@ import CurrencyFormat from 'react-currency-format';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import BuyNowModal from "../../components/Modal/buynow-modal";
 import { addToCart } from '../../store/actions/cartActions';
+import RelatedAccessories from './RelatedAccessories';
 
 const ProductInfo = ({ product }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -286,6 +287,7 @@ const ProductInfo = ({ product }) => {
                   />}</strong>
               </div>
             </div>
+            <RelatedAccessories/>
           </div>
 
         </form>

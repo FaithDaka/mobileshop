@@ -5,6 +5,7 @@ import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
 import ProductSpecs from "./ProductSpecs";
 import LoadSpinner from '../../components/Spinner';
+
 import { getProduct, getRelated } from "../../functions/products";
 import './sticky.css';
 
@@ -77,8 +78,9 @@ const ProductDetails = ({ match }) => {
                     </div>
                 </div>
             </section>
-
+           
             <ProductSpecs product={product} related={related} />
+           
             <div className="extra">
                 <p style={{visibility:"hidden"}}>MobileShop.ug</p>
             </div>
