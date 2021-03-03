@@ -10324,6 +10324,11 @@ react-truncate@^2.4.0:
   resolved "https://registry.yarnpkg.com/react-truncate/-/react-truncate-2.4.0.tgz#3cf5ff09ab86f93e3c078d359f4de6d75aa60510"
   integrity sha512-3QW11/COYwi6iPUaunUhl06DW5NJBJD1WkmxW5YxqqUu6kvP+msB3jfoLg8WRbu57JqgebjVW8Lknw6T5/QZdA==
 
+react-web-share@^1.0.18:
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/react-web-share/-/react-web-share-1.0.18.tgz#fdf2e789341b04f112ae0a5b380d2c483c20a579"
+  integrity sha512-4xlpjoU8X/M56CqCef9cMd0qMDQJoQETC1JJ7oqhcYZfFQ+JS9zLun8APLw9GCN2sC32rvjFcd/Cry7IqTAU4Q==
+
 react@16.14.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
