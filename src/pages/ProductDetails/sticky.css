@@ -1,11 +1,32 @@
 .scroll{
     position:fixed;
 	z-index: 1000;
-	bottom:230px;
-	left:10;
+	bottom:80px;
+	left:0;
 	color:#FFF;
-}.pony {
-	position: -webkit-sticky;
-	position: sticky;
-	top: 0;
-  }
+	width:"100%";
+	right:0;
+}
+.extra{
+	padding-top: 20%;
+}
+.buy-now{
+	width: 180px;
+	height: 50%;
+}
+.add-to-cart{
+	width: 120px;
+	height: 50%;
+}
+.acc-price{
+	font-weight: bold;
+	text-align: center;
+}
+.cross{
+	background-color: #f90;
+	color: white;
+	border: none;
+	font-weight: bold;
+	font-size:12px;
+	
+}
