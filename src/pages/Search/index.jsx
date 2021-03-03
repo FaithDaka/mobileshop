@@ -7,6 +7,8 @@ import Browse from '../../components/Browser/Browse'
 import Filters from '../../components/Browser/Filters'
 import Pagination from '../../components/Pagination'
 import { fetchProductsByFilter } from "../../functions/products";
+import Footer from '../../components/Layout/Footer/index';
+import BottomFooter from '../../components/Layout/Footer/BottomFooter'
 
 const SearchFilters = () => {
     const [products, setProducts] = useState([]);
@@ -64,6 +66,8 @@ const SearchFilters = () => {
                     </div>
                 </form>
             </div>
+            <Footer />
+            <BottomFooter />
         </section>
     )
 }

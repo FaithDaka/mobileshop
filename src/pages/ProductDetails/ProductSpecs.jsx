@@ -10,9 +10,9 @@ const ProductSpecs = ({product, related}) => {
   <section className="mb-4">
     <div className="container">
       <div className="row gutters-10">
-        <div className="col-xl-3 order-1 order-xl-0">
+        {/* <div className="col-xl-3 order-1 order-xl-0">
           <RelatedAccessories product={product} />
-        </div>
+        </div> */}
         <div className="col-xl-9 order-0 order-xl-1">
             {product.condition === 'Brand New' && product.category.name !== 'Televisions' && <Specs product={product} />}
             {product.condition === 'Uk Used' && product.category.name !== 'Televisions'&& <Specs product={product} /> }

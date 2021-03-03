@@ -30,8 +30,8 @@ const Layout = ({ children }) => {
         </div>
       </section>
       {children}
-      <Footer />
-      <BottomFooter />
+      {/* <Footer />
+      <BottomFooter /> */}
       {showDrawer && (<MobileDrawer close={closeDrawer} />)}
       <BottomMenu open={openDrawer} />
     </div>

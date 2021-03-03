@@ -6,6 +6,7 @@ import CurrencyFormat from 'react-currency-format';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import BuyNowModal from "../../components/Modal/buynow-modal";
 import { addToCart } from '../../store/actions/cartActions';
+import RelatedAccessories from './RelatedAccessories';
 
 const ProductInfo = ({ product }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -96,19 +97,6 @@ const ProductInfo = ({ product }) => {
 
   }, [storageSize]);
 
-  const [scrolled, setScrolled] = useState(false)
-  //   useEffect(() => {
-  //     window.addEventListener("scroll", function() {
-  //         var elementTarget = document.getElementById("sticky");
-  //         if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight)) {
-
-  //             setScrolled(!scrolled)
-  //         }
-  //         else{
-  //           setScrolled(scrolled)
-  //         }
-  //       });
-  // }, [])
 
   return (
     <>
@@ -299,32 +287,11 @@ const ProductInfo = ({ product }) => {
                   />}</strong>
               </div>
             </div>
+            <RelatedAccessories/>
           </div>
 
         </form>
-        {
-          !scrolled ?
-
-
-            <div class="mt-2" style={{
-              display: "flex",
-              position: "relative",
-              transition: "all .35s ease",
-            }}>
-              <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
-                <span class="d-md-inline-block"> Add to cart</span>
-              </button>
-              <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
-                Buy Now
-        </button>
-              <button type="button" className=" btn btn-product-call">
-                <a href="tel:0751290264">
-                  <i class="las la-phone la-2x btn-call-details"></i>
-                </a>
-              </button>
-            </div>
-            :
-            <div className="scroll">
+            <div className="shadow p-2 mb-2 bg-white rounded scroll">
               <div class="mt-2" style={{
                 display: "flex",
                 position: "relative",
@@ -333,9 +300,9 @@ const ProductInfo = ({ product }) => {
                 <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
                   <span class="d-md-inline-block"> Add to cart</span>
                 </button>
-                <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
-                  Buy Now
-        </button>
+                <button type="button" class="btn btn-primary buy-now fw-600"onClick={openModal}>
+                <span class="d-md-inline-block"> Buy Now</span>
+                </button>
                 <button type="button" className=" btn btn-product-call">
                   <a href="tel:0751290264">
                     <i class="las la-phone la-2x btn-call-details"></i>
@@ -344,9 +311,9 @@ const ProductInfo = ({ product }) => {
               </div>
             </div>
 
-        }
+        {/* } */}
       </div>
-      <div id="sticky"></div>
+      
     </>
   )
 }

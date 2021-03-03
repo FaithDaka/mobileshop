@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom'
 import CartHeader from './CartHeader'
 import CartDetails from './CartDetails'
 import LoginModal from "../../components/Modal/cart-modal";
+import Footer from '../../components/Layout/Footer/index';
+import BottomFooter from '../../components/Layout/Footer/BottomFooter'
 
 const Cart = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -12,7 +14,7 @@ const Cart = () => {
     const closeModal = () => setIsOpen(false);
 
     const history = useHistory();
-    const {cartItems } = useSelector(state => state.cart);
+    const { cartItems } = useSelector(state => state.cart);
     const auth = useSelector(state => state.auth);
 
     const getTotal = () => {
@@ -39,6 +41,8 @@ const Cart = () => {
             <CartHeader />
             <CartDetails cart={cartItems} total={getTotal()} checkout={goToCheckout} />
             <LoginModal modalIsOpen={modalIsOpen} close={closeModal} />
+            <Footer />
+            <BottomFooter />
         </>
     )
 }
