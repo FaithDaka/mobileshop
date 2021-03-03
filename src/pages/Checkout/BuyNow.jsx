@@ -7,6 +7,8 @@ import SweetAlert from 'react-bootstrap-sweetalert';
 import CurrencyFormat from 'react-currency-format';
 import CartHeader from '../Cart/CartHeader'
 import Spinner from '../../components/Spinner'
+import Footer from '../../components/Layout/Footer/index';
+import BottomFooter from '../../components/Layout/Footer/BottomFooter'
 
 const BuyNow = ({ history }) => {
     const [name, setName] = useState('');
@@ -313,7 +315,8 @@ const BuyNow = ({ history }) => {
                     </div>
                 </div>
             </section>
-
+            <Footer />
+            <BottomFooter />
         </div>
     )
 }

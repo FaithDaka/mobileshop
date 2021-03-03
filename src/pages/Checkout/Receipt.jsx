@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import CurrencyFormat from 'react-currency-format';
 import moment from "moment";
+import Footer from '../../components/Layout/Footer/index';
+import BottomFooter from '../../components/Layout/Footer/BottomFooter'
 
 const Receipt = ({ location }) => {
     const orderInfo = location.state;
@@ -160,6 +162,8 @@ const Receipt = ({ location }) => {
                     </div>
                 </div>
             </div>
+            <Footer />
+            <BottomFooter />
         </section>
     )
 }

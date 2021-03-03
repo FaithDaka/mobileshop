@@ -8,6 +8,9 @@ import CurrencyFormat from 'react-currency-format';
 import CartHeader from '../Cart/CartHeader'
 import Spinner from '../../components/Spinner'
 import { removeCart } from '../../store/actions/cartActions'
+import Footer from '../../components/Layout/Footer/index';
+import BottomFooter from '../../components/Layout/Footer/BottomFooter'
+
 
 const Checkout = ({ history }) => {
     const [name, setName] = useState('');
@@ -324,6 +327,8 @@ const Checkout = ({ history }) => {
                 </div>
             </section>
 
+            <Footer />
+            <BottomFooter />
         </div>
     )
 }
