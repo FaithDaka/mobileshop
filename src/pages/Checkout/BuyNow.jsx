@@ -11,6 +11,7 @@ import Spinner from '../../components/Spinner'
 const BuyNow = ({ history }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [contact, setContact] = useState('');
     const [address, setAddress] = useState('');
     const [loading, setLoading] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
@@ -73,7 +74,8 @@ const BuyNow = ({ history }) => {
                     paymentMethod: 'cash',
                     shippingPrice: 0,
                     taxPrice: 0,
-                    totalPrice: cart.discount ? cart.discountprice : cart.price
+                    totalPrice: cart.discount ? cart.discountprice : cart.price,
+                    totalquantity: cart.quantity
                 }
 
                 const config = {
@@ -124,6 +126,15 @@ const BuyNow = ({ history }) => {
                         <div class="col-xxl-8 col-xl-10 mx-auto">
 
                             <div class="shadow-sm bg-white p-4 rounded mb-4">
+                            <div class="form-group">
+                                    <label class="control-label">Primary Phone Number</label>
+                                    <input type="text" class="form-control" name="phone" placeholder="Phone" value={auth.phonenumber} disabled />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Secondary Phone Number</label>
+                                    <input type="text" class="form-control" name="contact" placeholder="Secondary Contact" value={contact}
+                                        onChange={(e) => setContact(e.target.value)} />
+                                </div>
                                 <div class="form-group">
                                     <label class="control-label">Name</label>
                                     <input type="text" class="form-control" name="name" placeholder="Name" value={name}
@@ -211,15 +222,20 @@ const BuyNow = ({ history }) => {
                                         <tbody>
                                             <tr>
                                                 <td>{cart.title}</td>
-                                                <td class="text-right">UGX {cart.discount ? <CurrencyFormat
+                                                <td class="text-right">{cart.discount ? <>
+                                                <CurrencyFormat
                                                     value={cart.discountprice}
                                                     displayType="text"
                                                     thousandSeparator
-                                                /> : <CurrencyFormat
+                                                /> x {cart.quantity}
+                                                </> : <>
+                                                <CurrencyFormat
                                                         value={cart.price}
                                                         displayType="text"
                                                         thousandSeparator
-                                                    />}</td>
+                                                    /> x {cart.quantity}
+                                                    </>
+                                                    }</td>
                                             </tr>
 
                                         </tbody>
@@ -230,15 +246,11 @@ const BuyNow = ({ history }) => {
                                                 <th>Subtotal</th>
                                                 <td class="text-right">
                                                     <span class="fw-600">UGX
-                                                        {cart.discount ? <CurrencyFormat
-                                                            value={cart.discountprice}
-                                                            displayType="text"
-                                                            thousandSeparator
-                                                        /> : <CurrencyFormat
-                                                                value={cart.price}
+                                                    <CurrencyFormat
+                                                                value={cart.totalprice}
                                                                 displayType="text"
                                                                 thousandSeparator
-                                                            />}</span>
+                                                            /></span>
                                                 </td>
                                             </tr>
                                             <tr class="cart-shipping">
@@ -287,7 +299,7 @@ const BuyNow = ({ history }) => {
                         <div class="col-6">
                             <Link to="/" class="link link--style-3">
                                 <i class="las la-arrow-left"></i>
-                     Return to shop
+                     <span className="fw-800 fs-16">Return to shop</span>
                      </Link>
                         </div>
                         <div class="col-6 pr-2">

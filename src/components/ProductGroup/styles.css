@@ -7,24 +7,25 @@
 }
 .tabtext{
     font-weight: 600;
-    font-size: 16px;
-    padding-bottom: 16px;
+    font-size: 18px;
+    padding-bottom: 10px;
     border-bottom: gray solid; 
     border-width: thin;
     
 }
 
 .selected {
-    font-weight: 800;
+    font-weight: 700;
     font-size: 16px;
     color: #f90;
 
 }
 .select {
-    font-weight: 600;
-    font-size: 16px;
-    border-bottom: 2px solid black;
+    font-weight: 800;
+    font-size: 18px;
+    border-bottom: 3px solid black;
     color: #f90;  
+    line-height: 1.8;
 }
 .tab{
     border: none;

@@ -15,6 +15,7 @@ const EditProducts = ({ history, match }) => {
 
     const [storagePrice, setStoragePrice] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [imgloading, setImgLoading] = useState(false);
 
     const [title, setTitle] = useState('');
     const [discount, setDiscount] = useState('');
@@ -46,8 +47,9 @@ const EditProducts = ({ history, match }) => {
     const { id } = match.params;
 
     const loadProduct = () => {
+        setLoading(true);
         getProduct(id).then((p) => {
-            console.log("product --", p)
+            setLoading(false);
             setTitle(p.data.title)
             setPrice(p.data.price)
             setStoragePrice(p.data.storagePrice);
@@ -55,8 +57,8 @@ const EditProducts = ({ history, match }) => {
             setQuantity(p.data.quantity);
             setDescription(p.data.description);
             setImages(p.data.images);
-            setCategory(p.data.category.name);
-            setSubs(p.data.subs.name);
+            setCategory(p.data.category._id);
+            setSubs(p.data.subs._id);
             setColor(p.data.colors);
             setStorageChecked(p.data.storageChecked)
             setMemory(p.data.memory);
@@ -103,7 +105,7 @@ const EditProducts = ({ history, match }) => {
         let allUploadedFiles = images;
 
         if (files) {
-            setLoading(true);
+            setImgLoading(true);
             for (let i = 0; i < files.length; i++) {
                 Resizer.imageFileResizer(
                     files[i],
@@ -120,12 +122,12 @@ const EditProducts = ({ history, match }) => {
                                 { image: uri }
                             )
                             .then((res) => {
-                                setLoading(false);
+                                setImgLoading(false);
                                 allUploadedFiles.push(res.data);
                                 setImages(allUploadedFiles)
                             })
                             .catch((err) => {
-                                setLoading(false);
+                                setImgLoading(false);
                                 console.log("CLOUDINARY UPLOAD ERR", err);
                                 toast.error("error upload Failure");
                             });
@@ -138,6 +140,7 @@ const EditProducts = ({ history, match }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoading(true);
 
         const data = {
             title: title,
@@ -177,8 +180,26 @@ const EditProducts = ({ history, match }) => {
             });
     };
 
+    const handleImageRemove = (public_id) => {
+        setImgLoading(true);
+        axios
+          .post(
+            `${process.env.REACT_APP_API}/upload/remove`, { public_id }
+          )
+          .then((res) => {
+            setImgLoading(false);
+            const filteredImages = images.filter((item) => item.public_id !== public_id);
+            setImages(filteredImages)
+          })
+          .catch((err) => {
+            console.log(err);
+            setImgLoading(false);
+          });
+      };
+
     return (
         <>
+        {loading && <Spinner />}
             <div class="aiz-titlebar text-left mt-2 mb-3">
                 <h5 class="mb-0 h6">Edit Product</h5>
             </div>
@@ -200,18 +221,22 @@ const EditProducts = ({ history, match }) => {
                                         onChange={(e) => setTitle(e.target.value)} />
                                 </div>
                                 <div className="col-md-6">
-                                    <label>Condition</label>
+                                    <label>Product Type</label>
                                     <select name="condition"
                                         className="form-control"
                                         value={condition}
                                         onChange={(e) => setCondition(e.target.value)}>
                                         <option selected>Select Condition</option>
+                                        <option selected>Select Product Type</option>
                                         <option value="Brand New">Brand New</option>
                                         <option value="Uk Used">Uk Used</option>
-                                        <option value="Used">Used</option>
                                         <option value="Accessories">Accessories</option>
                                         <option value="Televisions">Televisions</option>
-                                        <option value="Speakers">Speakers</option>
+                                        <option value="Systems">Sound Systems</option>
+                                        <option value="Tablets">Tablets & Ipads</option>
+                                        <option value="Gaming">Gaming</option>
+                                        <option value="Fridges">Fridges</option>
+                                        <option value="Laptops">Laptops</option>
                                     </select>
                                 </div>
                             </div>
@@ -352,10 +377,11 @@ const EditProducts = ({ history, match }) => {
                                     </label>
 
                                     <div class="img-container">
+                                    {imgloading && <Spinner />}
                                         {images && images.map((image, i) => (
                                             <>
                                                 <LazyLoadImage key={i} src={image.url} alt="uplaodimage" class="img-admin" />
-                                                <div class="remove"><button class="btn btn-sm btn-link remove-attachment" type="button"><i class="la la-close"></i></button></div>
+                                                <div class="remove"><button class="btn btn-sm btn-link remove-attachment" type="button" onClick={() => handleImageRemove(image.public_id)}><i class="la la-close"></i></button></div>
                                             </>
                                         ))}
                                     </div>

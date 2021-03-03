@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import CurrencyFormat from 'react-currency-format';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import BuyNowModal from "../../components/Modal/buynow-modal";
-import HelmentData from '../../components/Helment'
-import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon } from "react-share";
 import { addToCart } from '../../store/actions/cartActions';
 
 const ProductInfo = ({ product }) => {
@@ -98,19 +96,6 @@ const ProductInfo = ({ product }) => {
 
   }, [storageSize]);
 
-  const [scrolled, setScrolled] = useState(false)
-  //   useEffect(() => {
-  //     window.addEventListener("scroll", function() {
-  //         var elementTarget = document.getElementById("sticky");
-  //         if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight)) {
-
-  //             setScrolled(!scrolled)
-  //         }
-  //         else{
-  //           setScrolled(scrolled)
-  //         }
-  //       });
-  // }, [])
 
   return (
     <>
@@ -143,26 +128,27 @@ const ProductInfo = ({ product }) => {
             <span class="badge badge-md badge-inline badge-pill badge-success">{product.condition}</span>
           </div>
         </div>
-        <hr />
-        <div class="row no-gutters mt-2">
-          <div class="col-sm-10">
-            <div class="">
-              <strong class="h2 fw-700 text-primary">
-                {product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
-                  value={product.discountprice}
-                  displayType="text"
-                  thousandSeparator
-                /></strong>}
-                {!product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
-                  value={product.price}
-                  displayType="text"
-                  thousandSeparator
-                /></strong>}
-                {storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
-                  value={storagePrice}
-                  displayType="text"
-                  thousandSeparator
-                /></strong>}
+        
+      <hr />
+      <div class="row no-gutters mt-2">
+        <div class="col-sm-10">
+          <div class="">
+            <strong class="h2 fw-700 text-primary">
+              {product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                value={product.discountprice * quantity}
+                displayType="text"
+                thousandSeparator
+              /></strong>}
+              {!product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                value={product.price * quantity}
+                displayType="text"
+                thousandSeparator
+              /></strong>}
+              {storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                value={storagePrice * quantity}
+                displayType="text"
+                thousandSeparator
+              /></strong>}
 
 
               </strong>
@@ -303,29 +289,7 @@ const ProductInfo = ({ product }) => {
           </div>
 
         </form>
-        {
-          !scrolled ?
-
-
-            <div class="mt-2" style={{
-              display: "flex",
-              position: "relative",
-              transition: "all .35s ease",
-            }}>
-              <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
-                <span class="d-md-inline-block"> Add to cart</span>
-              </button>
-              <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
-                Buy Now
-        </button>
-              <button type="button" className=" btn btn-product-call">
-                <a href="tel:0751290264">
-                  <i class="las la-phone la-2x btn-call-details"></i>
-                </a>
-              </button>
-            </div>
-            :
-            <div className="scroll">
+            <div className="shadow p-2 mb-2 bg-white rounded scroll">
               <div class="mt-2" style={{
                 display: "flex",
                 position: "relative",
@@ -334,9 +298,9 @@ const ProductInfo = ({ product }) => {
                 <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
                   <span class="d-md-inline-block"> Add to cart</span>
                 </button>
-                <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
-                  Buy Now
-        </button>
+                <button type="button" class="btn btn-primary buy-now fw-600"onClick={openModal}>
+                <span class="d-md-inline-block"> Buy Now</span>
+                </button>
                 <button type="button" className=" btn btn-product-call">
                   <a href="tel:0751290264">
                     <i class="las la-phone la-2x btn-call-details"></i>
@@ -345,48 +309,9 @@ const ProductInfo = ({ product }) => {
               </div>
             </div>
 
-        }
-
-        <div class="row no-gutters">
-          <div class="col-sm-2">
-            <div class="opacity-50 my-2">Share:</div>
-          </div>
-          <div class="col-sm-10">
-            <div class="aiz-share jssocials">
-              <div class="jssocials-shares">
-                <FacebookShareButton
-                  url={currentUrl}
-                  quote={product.description}
-                  title={product.title}
-                  hashtag="#mobileshopug"
-                  image={product.images && product.images.length ? product.images[0].url : ''}
-                  className="">
-                  <FacebookIcon size={36} />
-                </FacebookShareButton>
-                <TwitterShareButton
-                  url={currentUrl}
-                  title={product.title}
-                  hashtag="#mobileshopug"
-                  class="jssocials-share jssocials-share-twitter"
-                >
-                  <TwitterIcon size={36} />
-                </TwitterShareButton>
-                <WhatsappShareButton
-                  url={currentUrl}
-                  quote={product.description}
-                  title={product.title}
-                  image={product.images && product.images.length ? product.images[0].url : ''}
-                  separator=":: "
-                  class="jssocials-share jssocials-share-whatsapp"
-                >
-                  <WhatsappIcon size={36} />
-                </WhatsappShareButton>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* } */}
       </div>
-      <div id="sticky"></div>
+      
     </>
   )
 }

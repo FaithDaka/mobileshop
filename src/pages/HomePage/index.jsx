@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-
+import Footer from '../../components/Layout/Footer/index'
+import BottomFooter from '../../components/Layout/Footer/BottomFooter'
 import Banner from './Banner'
 import Promos from './Promos'
 import ProductGroup from '../../components/ProductGroup'
-import { getProducts } from "../../functions/products";
 
 const HomePage = () => {
 
@@ -12,6 +12,8 @@ const HomePage = () => {
       <Banner />
       {/* <Promos /> */}
       <ProductGroup />
+      <Footer />
+      <BottomFooter />
 
     </>
   )

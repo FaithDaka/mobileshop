@@ -12,6 +12,7 @@ import { removeCart } from '../../store/actions/cartActions'
 const Checkout = ({ history }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [contact, setContact] = useState('');
     const [address, setAddress] = useState('');
     const [loading, setLoading] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
@@ -72,12 +73,14 @@ const Checkout = ({ history }) => {
                 const orderData = {
                     orderItems: cartItems,
                     name: name,
+                    contact:contact,
                     email: email,
                     address: address,
                     paymentMethod: 'cash',
                     shippingPrice: 0,
                     taxPrice: 0,
-                    totalPrice: getTotal()
+                    totalPrice: getTotal(),
+                    totalquantity: totalQuantities
                 }
 
                 const config = {
@@ -88,7 +91,6 @@ const Checkout = ({ history }) => {
                 }
 
                 const res = await axios.post(`${process.env.REACT_APP_API}/orders`, orderData, config);
-                console.log("Order Data", res);
 
                 setLoading(false)
                 setShowAlert(true);
@@ -129,6 +131,15 @@ const Checkout = ({ history }) => {
                         <div class="col-xxl-8 col-xl-10 mx-auto">
 
                             <div class="shadow-sm bg-white p-4 rounded mb-4">
+                            <div class="form-group">
+                                    <label class="control-label">Primary Phone Number</label>
+                                    <input type="text" class="form-control" name="phone" placeholder="Phone" value={auth.phonenumber} disabled />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Secondary Phone Number</label>
+                                    <input type="text" class="form-control" name="contact" placeholder="Secondary Contact" value={contact}
+                                        onChange={(e) => setContact(e.target.value)} />
+                                </div>
                                 <div class="form-group">
                                     <label class="control-label">Name</label>
                                     <input type="text" class="form-control" name="name" placeholder="Name" value={name}
@@ -298,7 +309,7 @@ const Checkout = ({ history }) => {
                         <div class="col-6">
                             <Link to="/" class="link link--style-3">
                                 <i class="las la-arrow-left"></i>
-                     Return to shop
+                                <span className="fw-800 fs-16">Return to shop</span>
                      </Link>
                         </div>
                         <div class="col-6 pr-2">

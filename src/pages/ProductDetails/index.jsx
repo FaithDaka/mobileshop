@@ -36,13 +36,17 @@ const ProductDetails = ({ match }) => {
         window.scrollTo(0, 0)
     }, [])
 
+    const styles={
+        border:"red-solid",
+        bottom:"0"
+    }
 
     return (
         <>
 
-            <section class="mb-4 pt-3" >
+            <section class="mb-4 pt-3"  >
 
-                <div class="container">
+                <div class="container" id= "wrapper"> 
                     {loading && <LoadSpinner />}
                     <div class="col">
                         <ul class="breadcrumb bg-transparent p-0 justify-content-lg-end">
@@ -57,21 +61,28 @@ const ProductDetails = ({ match }) => {
                             </li>
                         </ul>
                     </div>
+                  
+       
                     <div class="bg-white shadow-sm rounded p-3">
                         <div class="row">
                             <div class="col-xl-5 col-lg-6 mb-3">
                                 <ProductImage product={product} />
                             </div>
-
+            
                             <div class="col-xl-7 col-lg-6">
                                 <ProductInfo product={product} />
                             </div>
+
                         </div>
                     </div>
                 </div>
             </section>
 
             <ProductSpecs product={product} related={related} />
+            <div className="extra">
+                <p style={{visibility:"hidden"}}>MobileShop.ug</p>
+            </div>
+          
         </>
     )
 }
