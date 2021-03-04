@@ -103,7 +103,8 @@ const Product = ({ product }) => {
                     <div class="tag _dsct _sm">-{product.discount}%</div>
                   </div>
                 </> :
-
+                <>
+                  <div></div>
                 <span className="fw-700 text-reset">
                   <CurrencyFormat
                     prefix={"UGX "}
@@ -111,6 +112,7 @@ const Product = ({ product }) => {
                     displayType="text"
                     thousandSeparator
                   /></span>
+                  </>
             }
           </div>
           <div className="rating rating-sm mt-1">
