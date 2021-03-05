@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import OtpTimer from 'otp-timer'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import Modal from 'react-modal';
@@ -25,6 +26,7 @@ const LoginModal = ({ modalIsOpen, close }) => {
 
     const [phone, setPhone] = useState('')
     const [hash, setHash] = useState('')
+    const [status, setStatus] = useState('')
     const [otp, setOTP] = useState('')
     const [loading, setLoading] = useState(false)
 
@@ -43,7 +45,13 @@ const LoginModal = ({ modalIsOpen, close }) => {
                 setLoading(false)
                 console.log("OTP Response Data", res)
                 setHash(res.data.hash)
+                setStatus(res.data.info.SMSMessageData.Recipients[0].status)
             })
+    }
+
+    const handleClick = () => {
+       console.log("Resend...")
+      //  sendOTP()
     }
 
     const confirmOTP = (e) => {
@@ -55,6 +63,18 @@ const LoginModal = ({ modalIsOpen, close }) => {
 
         dispatch(login(user, history, close));
     }
+
+    let style = {
+      otpTimer:{
+          margin:'10px',
+          color:'blue',
+      },
+      resendBtn:{
+        backgroundColor:'#5cb85c',
+        color:'white',
+        border: '1 px solid #ccc'
+      }
+  }
 
     return (
         <Modal
@@ -135,6 +155,10 @@ const LoginModal = ({ modalIsOpen, close }) => {
                                                    placeholder="Enter OTP Code" name="otp"
                                                    value={otp}
                                                    onChange={(e) => setOTP(e.target.value)}/>
+                                                </div>
+
+                                                <div>
+                                                   {status ==='success' ? '' : <OtpTimer seconds= {20} minutes={0} resend={handleClick} style={style} /> }
                                                 </div>
                                                 
                                                 <div class="mb-3">
