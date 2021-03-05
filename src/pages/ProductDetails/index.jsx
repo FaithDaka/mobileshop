@@ -37,6 +37,8 @@ const ProductDetails = ({ match }) => {
         window.scrollTo(0, 0)
     }, [])
 
+    console.log("product ===>", product);
+
 
     return (
         <>

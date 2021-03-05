@@ -34,7 +34,7 @@ const SideBar = () => {
                     <li class="aiz-side-nav-item">
                         <Link to="/admin/listproduct" class="aiz-side-nav-link ">
                             <i class="las la-shopping-cart aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">All Products</span>
+                            <span class="aiz-side-nav-text">List Products</span>
                         </Link>
                     </li>
 

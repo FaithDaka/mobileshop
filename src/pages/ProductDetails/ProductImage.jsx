@@ -13,8 +13,7 @@ const ProductImage = ({ product }) => {
   let location = useLocation();
   let currentUrl = "https://mobileshop.ug" + location.pathname;
   let shareImage = product.images && product.images.length ? product.images[0].url : ''
-
-  console.log("Image ====>",shareImage)
+  
   const renderImage = () => {
     return (
       <LazyLoadImage
