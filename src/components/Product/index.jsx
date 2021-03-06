@@ -103,8 +103,9 @@ const Product = ({ product }) => {
                     <div class="tag _dsct _sm">-{product.discount}%</div>
                   </div>
                 </> :
-                <>
-                  <div></div>
+                <><span className="fw-700 text-reset">
+                <a style={{display:"none"}}>none</a>
+              </span><br></br>
                 <span className="fw-700 text-reset">
                   <CurrencyFormat
                     prefix={"UGX "}

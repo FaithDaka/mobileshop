@@ -269,6 +269,25 @@ const ProductInfo = ({ product }) => {
           </div>
 
           <hr />
+          <div className=".d-sm-none .d-md-block p-2 mb-2 bg-white ">
+              <div class="mt-2" style={{
+                display: "flex",
+                position: "relative",
+                transition: "all .35s ease",
+              }}>
+                <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
+                  <span class="d-md-inline-block"> Add to cart</span>
+                </button>
+                <button type="button" class="btn btn-primary buy-now fw-600"onClick={openModal}>
+                <span class="d-md-inline-block"> Buy Now</span>
+                </button>
+                <button type="button" className=" btn btn-product-call">
+                  <a href="tel:0751290264">
+                    <i class="las la-phone la-2x btn-call-details"></i>
+                  </a>
+                </button>
+              </div>
+            </div>
 
           <div className="row no-gutters" id="chosen_price_div">
             <div className="col-sm-2">
@@ -291,7 +310,7 @@ const ProductInfo = ({ product }) => {
           </div>
 
         </form>
-            <div className="shadow p-2 mb-2 bg-white rounded scroll">
+            <div className="d-sm-none shadow p-2 mb-2 bg-white rounded scroll">
               <div class="mt-2" style={{
                 display: "flex",
                 position: "relative",

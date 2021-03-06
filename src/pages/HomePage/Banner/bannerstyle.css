@@ -1,0 +1,8 @@
+@media only screen and (min-width: 992px) {
+    .banners{
+        background-color: blue;
+        width:100% !important;
+        padding-top: 0em;
+        margin-top: -9em;
+    }
+}
