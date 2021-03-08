@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import _ from "lodash";
+import { toast } from "react-toastify";
 import { Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import Truncate from 'react-truncate';
 import CurrencyFormat from 'react-currency-format';
-import SweetAlert from 'react-bootstrap-sweetalert';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import StorageModal from "../../components/Modal/storage-modal";
 import { addToCart } from '../../store/actions/cartActions';
@@ -12,28 +12,42 @@ import './styles.css'
 
 const Product = ({ product }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
 
-    const dispatch = useDispatch();
-
-  const hideAlert = () => setShowAlert(false);
+  const dispatch = useDispatch();
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
-  const handleAddToCart = () => {
-      const cat = {
-        id: product._id,
-        title: product.title,
-        images: product.images[0].url,
-        price: product.price,
-        discount: product.discount,
-        discountprice: product.discountprice,
-        quantity: 1
-      }
+  const Msg = () => (
+    <div>
+      Product Added To Cart Successfully
+      <Link to='/cart' className="pl-2">
+      <button class="btn btn-sm btn-primary">Go To Cart</button>
+      </Link>
+    </div>
+  )
 
+  const handleAddToCart = () => {
+
+    const cat = {
+      _id: product._id,
+      title: product.title,
+      images: product.images[0].url,
+      price: product.price,
+      discount: product.discount,
+      discountprice: product.discountprice,
+      quantity: 1
+    }
+
+    var array = JSON.parse(window.localStorage.getItem("cartItems")) || [];
+    var value = cat.id
+    if (array.indexOf(value) === -1) {
       dispatch(addToCart(cat))
-      setShowAlert(true);
+      toast(Msg)
+    } else {
+      toast.error("Product Already Added To Cart")
+    }
+
   };
 
   const checkStorage = () => {
@@ -47,19 +61,10 @@ const Product = ({ product }) => {
   return (
     <div className="col mb-1">
       <div className="aiz-card-box border border-light rounded shadow-sm hov-shadow-md h-100 has-transition bg-white">
-        {showAlert && (
-          <SweetAlert
-            success
-            onConfirm={() => hideAlert()}
-            onCancel={() => hideAlert()}
-            title="Product Added to Cart Successfully!"
-            timeout={2000}
-          />
-        )}
         <StorageModal modalIsOpen={modalIsOpen} close={closeModal} product={product} />
         <div className="position-relative">
-          <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`} 
-          className="d-block text-center pt-3 product-img-box">
+          <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`}
+            className="d-block text-center pt-3 product-img-box">
             <LazyLoadImage
               alt="product"
               src={product.images && product.images.length ? product.images[0].url : ''}
@@ -76,10 +81,10 @@ const Product = ({ product }) => {
             <div className="fw-600 ms-brand">{product.subs ? <span className="badge badge-inline badge-soft-secondary">{product.subs.name}</span> : ''}
             </div>
             <h3 className="fw-600 fs-13 text-truncate-2 lh-1-4 mb-2">
-            <Truncate lines={2} ellipsis={<span>... <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`}></Link></span>}>
-              {product.title}
-            </Truncate>
-          </h3>
+              <Truncate lines={2} ellipsis={<span>... <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`}></Link></span>}>
+                {product.title}
+              </Truncate>
+            </h3>
             {
               product.discountprice ?
                 <>
@@ -120,7 +125,7 @@ const Product = ({ product }) => {
             <i className="las la-star active" />
             <i className="las la-star active" />
           </div>
-          
+
           <div className="mt-3" style={{
             display: "flex", position: "relative",
             alignItems: "center",

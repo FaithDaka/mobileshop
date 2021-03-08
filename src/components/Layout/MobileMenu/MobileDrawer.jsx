@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState, useRef } from 'react';
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { getCategories } from "../../../functions/category";
 import { getSubs } from "../../../functions/sub";
 import LoadSpinner from '../../Spinner';
 
-const MobileDrawer = ({ close }) => {
+const MobileDrawer = ({ close, history }) => {
 
     const [categories, setCategories] = useState([]);
     const [subs, setSubs] = useState([]);
@@ -45,11 +45,15 @@ const MobileDrawer = ({ close }) => {
                 <ul class="dropdown-menu aiz-side-nav-list">
                     {subs.map((cat) => cat.parent === c._id && (
                         <li class="aiz-side-nav-item">
-                        <Link to={`/products/${cat.slug}`} class="aiz-side-nav-link ">
-                        <i class="las la-tasks aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">{cat.name}</span>
-                        </Link>
-                    </li>
+                            <a onClick={() => {
+                                history.push(`/products/${cat.slug}`)
+                                close()
+                            }}
+                                class="aiz-side-nav-link ">
+                                <i class="las la-tasks aiz-side-nav-icon"></i>
+                                <span class="aiz-side-nav-text">{cat.name}</span>
+                            </a>
+                        </li>
                     ))}
                 </ul>
             </Link>
@@ -89,14 +93,13 @@ const MobileDrawer = ({ close }) => {
                                 <span class="aiz-side-nav-text">Categories</span>
                             </a>
                         </li>
-                        {loading && <LoadSpinner /> }
+                        {loading && <LoadSpinner />}
                         {showCategories()}
                     </ul>
                 </div>
             </div>
-            {/* <div class="aiz-sidebar-overlay"></div> */}
         </section>
     );
 }
 
-export default MobileDrawer;
+export default withRouter(MobileDrawer);

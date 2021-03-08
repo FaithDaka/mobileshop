@@ -79,7 +79,7 @@ const ProductDetails = ({ match }) => {
                 </div>
             </section>
            
-            <ProductSpecs product={product} related={related} />
+            <ProductSpecs product={product} related={related} loading={loading} />
            
             <div className="extra">
                 <p style={{visibility:"hidden"}}>MobileShop.ug</p>

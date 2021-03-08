@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import _ from "lodash";
+import { toast } from "react-toastify";
+import { Link } from 'react-router-dom';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import CurrencyFormat from 'react-currency-format';
@@ -61,6 +63,15 @@ const ProductInfo = ({ product }) => {
   const closeModal = () => setIsOpen(false);
   const dispatch = useDispatch();
 
+  const Msg = () => (
+    <div>
+      Product Added To Cart Successfully
+      <Link to='/cart' className="pl-2">
+      <button class="btn btn-sm btn-primary">Go To Cart</button>
+      </Link>
+    </div>
+  )
+
   const handleAddToCart = () => {
     const cat = {
       id: product._id,
@@ -76,7 +87,7 @@ const ProductInfo = ({ product }) => {
     }
 
     dispatch(addToCart(cat))
-    setShowAlert(true);
+    toast(Msg)
   };
 
   useEffect(() => {

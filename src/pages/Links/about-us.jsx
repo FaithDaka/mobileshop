@@ -3,7 +3,7 @@ import React from 'react'
 const AboutUS = () => {
     return (
         <section className="aboutUs">
-        <div class="wpb_column vc_column_container vc_col-sm-8 d-xl-none d-lg-block ">
+        <div class="wpb_column vc_column_container vc_col-sm-8 d-xl-none d-lg-block bg-white py-4 px-4">
             <div class="vc_column-inner">
                 <div class="wpb_wrapper">
                     <h3 class="vc_custom_heading mf-semi-bold vc_custom_1517547765976">Welcome to Mobile shop ug</h3>
