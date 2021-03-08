@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from "react";
 import _ from "lodash";
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Truncate from 'react-truncate';
+import { toast } from "react-toastify";
 import CurrencyFormat from 'react-currency-format';
-import SweetAlert from 'react-bootstrap-sweetalert';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { addToCart } from '../../store/actions/cartActions';
-import Spinner  from '../../components/Spinner'
 import './styles.css'
-import { toast } from "react-toastify";
 
 const Product = ({ product }) => {
-  const [showAlert, setShowAlert] = useState(false);
-
-  const hideAlert = () => setShowAlert(false);
-
   const dispatch = useDispatch();
 
   const Msg = () => (
@@ -49,21 +43,13 @@ const Product = ({ product }) => {
   return (
     <div className="pr-1">
       <div className="aiz-card-box border border-light rounded shadow-sm hov-shadow-md h-100 has-transition bg-white">
-        {showAlert && (
-          <SweetAlert
-            success
-            onConfirm={() => hideAlert()}
-            onCancel={() => hideAlert()}
-            title="Product Added to Cart Successfully!"
-            timeout={2000}
-          />
-        )}
         <div className="position-relative">
-          <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`} className="d-block text-center pt-3">
+          <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`} 
+          className="d-block text-center pt-3 product-img-box">
             <LazyLoadImage
               alt="product"
               src={product.images && product.images.length ? product.images[0].url : ''}
-              style={{ height: "150px", objectFit: "cover" }}
+              className="product-img"
               threshold={100}
             />
           </Link>
