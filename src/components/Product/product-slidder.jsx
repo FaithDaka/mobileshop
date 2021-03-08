@@ -3,40 +3,38 @@ import _ from "lodash";
 import { Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import Truncate from 'react-truncate';
+import { toast } from "react-toastify";
 import CurrencyFormat from 'react-currency-format';
-import SweetAlert from 'react-bootstrap-sweetalert';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import Spinner  from '../../components/Spinner'
+import { addToCart } from '../../store/actions/cartActions';
 import './styles.css'
 
 const Product = ({ product }) => {
-  const [showAlert, setShowAlert] = useState(false);
-
-  const hideAlert = () => setShowAlert(false);
-
   const dispatch = useDispatch();
 
+  const Msg = () => (
+    <div>
+      Product Added To Cart Successfully
+      <Link to='/cart' className="pl-2">
+      <button class="btn btn-sm btn-primary">Go To Cart</button>
+      </Link>
+    </div>
+  )
+
   const handleAddToCart = () => {
-
-    let cart = [];
-    if (typeof window !== "undefined") {
-      if (localStorage.getItem("cart")) {
-        cart = JSON.parse(localStorage.getItem("cart"));
-      }
-      cart.push({
-        ...product,
-        count: 1,
-      });
-      let unique = _.uniqWith(cart, _.isEqual);
-      localStorage.setItem("cart", JSON.stringify(unique));
-
-      dispatch({
-        type: "ADD_TO_CART",
-        payload: unique,
-      });
-      setShowAlert(true);
+    const cat = {
+      id: product._id,
+      title: product.title,
+      images: product.images[0].url,
+      price: product.price,
+      discount: product.discount,
+      discountprice: product.discountprice,
+      quantity: 1
     }
-  };
+
+    dispatch(addToCart(cat))
+    toast(Msg)
+};
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -45,21 +43,13 @@ const Product = ({ product }) => {
   return (
     <div className="pr-1">
       <div className="aiz-card-box border border-light rounded shadow-sm hov-shadow-md h-100 has-transition bg-white">
-        {showAlert && (
-          <SweetAlert
-            success
-            onConfirm={() => hideAlert()}
-            onCancel={() => hideAlert()}
-            title="Product Added to Cart Successfully!"
-            timeout={2000}
-          />
-        )}
         <div className="position-relative">
-          <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`} className="d-block text-center pt-3">
+          <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`} 
+          className="d-block text-center pt-3 product-img-box">
             <LazyLoadImage
               alt="product"
               src={product.images && product.images.length ? product.images[0].url : ''}
-              style={{ height: "150px", objectFit: "cover" }}
+              className="product-img"
               threshold={100}
             />
           </Link>

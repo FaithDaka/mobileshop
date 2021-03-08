@@ -97,6 +97,7 @@ const sharePage = () => {
         </div>
           {renderImage()}
         </div>
+        
       </div>
     </div>
   )

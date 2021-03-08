@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
 import _ from "lodash";
 import { Link } from 'react-router-dom';
 import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
 import ProductSpecs from "./ProductSpecs";
 import LoadSpinner from '../../components/Spinner';
+
 import { getProduct, getRelated } from "../../functions/products";
 import './sticky.css';
 
@@ -37,15 +37,22 @@ const ProductDetails = ({ match }) => {
         window.scrollTo(0, 0)
     }, [])
 
+<<<<<<< HEAD
     console.log("product ===>", product);
 
+=======
+    const styles={
+        border:"red-solid",
+        bottom:"0"
+    }
+>>>>>>> 8f353fed8057b36ed30015078759cccb0657287c
 
     return (
         <>
 
-            <section class="mb-4 pt-3" >
+            <section class="mb-4 pt-3"  >
 
-                <div class="container">
+                <div class="container" id= "wrapper"> 
                     {loading && <LoadSpinner />}
                     <div class="col">
                         <ul class="breadcrumb bg-transparent p-0 justify-content-lg-end">
@@ -60,22 +67,29 @@ const ProductDetails = ({ match }) => {
                             </li>
                         </ul>
                     </div>
+                  
+       
                     <div class="bg-white shadow-sm rounded p-3">
                         <div class="row">
                             <div class="col-xl-5 col-lg-6 mb-3">
                                 <ProductImage product={product} />
                             </div>
-
+            
                             <div class="col-xl-7 col-lg-6">
                                 <ProductInfo product={product} />
                             </div>
+
                         </div>
                     </div>
                 </div>
             </section>
-
-            <ProductSpecs product={product} related={related} />
-         
+           
+            <ProductSpecs product={product} related={related} loading={loading} />
+           
+            <div className="extra">
+                <p style={{visibility:"hidden"}}>MobileShop.ug</p>
+            </div>
+          
         </>
     )
 }

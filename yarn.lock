@@ -2513,6 +2513,11 @@ acorn@^7.1.0, acorn@^7.1.1, acorn@^7.4.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
+add@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/add/-/add-2.0.6.tgz#248f0a9f6e5a528ef2295dbeec30532130ae2235"
+  integrity sha1-JI8Kn25aUo7yKV2+7DBTITCuIjU=
+
 address@1.1.2, address@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/address/-/address-1.1.2.tgz#bf1116c9c758c51b7a933d296b72c221ed9428b6"
@@ -8656,6 +8661,15 @@ osenv@0:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
+otp-timer@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/otp-timer/-/otp-timer-1.1.5.tgz#fa19e2750dcdedb31ae6d9749a57576eaafee815"
+  integrity sha512-wwtd11DgZ7Znuu8FggSUL4SUrEEjF7YbGKcwu0ULLtCS+kpI/VB+7kz4n8+KOJRSNVYnwACk63QVd/B0pffoMA==
+  dependencies:
+    prop-types "^15.6.0"
+    react "^16.13.1"
+    react-dom "^16.13.1"
+
 owl.carousel@~2.3.4:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/owl.carousel/-/owl.carousel-2.3.4.tgz#6c53dc8d24304b790e4f27a1dc4a655e973ccdc9"
@@ -10040,7 +10054,7 @@ react-dev-utils@^11.0.1:
     strip-ansi "6.0.0"
     text-table "0.2.0"
 
-react-dom@16.14.0:
+react-dom@16.14.0, react-dom@^16.13.1:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.14.0.tgz#7ad838ec29a777fb3c75c3a190f661cf92ab8b89"
   integrity sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw==
@@ -10329,7 +10343,7 @@ react-web-share@^1.0.18:
   resolved "https://registry.yarnpkg.com/react-web-share/-/react-web-share-1.0.18.tgz#fdf2e789341b04f112ae0a5b380d2c483c20a579"
   integrity sha512-4xlpjoU8X/M56CqCef9cMd0qMDQJoQETC1JJ7oqhcYZfFQ+JS9zLun8APLw9GCN2sC32rvjFcd/Cry7IqTAU4Q==
 
-react@16.14.0:
+react@16.14.0, react@^16.13.1:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
   integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==

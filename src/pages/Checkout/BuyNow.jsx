@@ -7,6 +7,8 @@ import SweetAlert from 'react-bootstrap-sweetalert';
 import CurrencyFormat from 'react-currency-format';
 import CartHeader from '../Cart/CartHeader'
 import Spinner from '../../components/Spinner'
+import Footer from '../../components/Layout/Footer/index';
+import BottomFooter from '../../components/Layout/Footer/BottomFooter'
 
 const BuyNow = ({ history }) => {
     const [name, setName] = useState('');
@@ -127,30 +129,30 @@ const BuyNow = ({ history }) => {
 
                             <div class="shadow-sm bg-white p-4 rounded mb-4">
                             <div class="form-group">
-                                    <label class="control-label">Primary Phone Number</label>
+                                    
                                     <input type="text" class="form-control" name="phone" placeholder="Phone" value={auth.phonenumber} disabled />
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Secondary Phone Number</label>
+                                    
                                     <input type="text" class="form-control" name="contact" placeholder="Secondary Contact" value={contact}
                                         onChange={(e) => setContact(e.target.value)} />
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Name</label>
+                                    
                                     <input type="text" class="form-control" name="name" placeholder="Name" value={name}
                                         onChange={(e) => setName(e.target.value)} />
                                     {Object.keys(fullNameErrors).map((key) => <div style={{ color: 'red' }}>{fullNameErrors[key]}</div>)}
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label">Email</label>
+                                    
                                     <input type="text" class="form-control" name="email" placeholder="Email" value={email}
                                         onChange={(e) => setEmail(e.target.value)} />
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label">Delivery Address</label>
-                                    <input type="text" class="form-control" name="address" placeholder="Address" value={address}
+                                    
+                                    <input type="text" class="form-control" name="address" placeholder="Delivery Address" value={address}
                                         onChange={(e) => setAddress(e.target.value)} />
                                     {Object.keys(addressErrors).map((key) => <div style={{ color: 'red' }}>{addressErrors[key]}</div>)}
                                 </div>
@@ -291,7 +293,8 @@ const BuyNow = ({ history }) => {
                         <label class="aiz-checkbox">
                             <input type="checkbox" id="agree_checkbox" checked={termsCheck} onChange={(e) => setTermChecked(e.target.checked)} name="terms" />
                             <span class="aiz-square-check"></span>
-                            <span className="fw-700">I agree to the terms and conditions</span>
+                            <span className="fw-700">I agree to the </span>
+                            <Link to="/terms">terms and conditions</Link>
                         </label>
                         {Object.keys(termsErrors).map((key) => <div style={{ color: 'red' }}>{termsErrors[key]}</div>)}
                     </div>
@@ -313,7 +316,8 @@ const BuyNow = ({ history }) => {
                     </div>
                 </div>
             </section>
-
+            <Footer />
+            <BottomFooter />
         </div>
     )
 }

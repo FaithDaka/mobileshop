@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import OtpTimer from 'otp-timer'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import Modal from 'react-modal';
@@ -35,6 +36,10 @@ const BuyNowModal = ({ modalIsOpen, close }) => {
     const number = parseInt(phone, 10)
     const phonenumber = `+256${number}`
 
+    const handleClick=()=>{
+      //desired function to be performed on clicking resend button
+    }
+
     const sendOTP = (e) => {
         setLoading(true)
         e.preventDefault()
@@ -55,6 +60,18 @@ const BuyNowModal = ({ modalIsOpen, close }) => {
 
         dispatch(loginBuynow(user, history, close));
     }
+
+    let style = {
+      otpTimer:{
+          margin:'10px',
+          color:'blue',
+      },
+      resendBtn:{
+        backgroundColor:'#5cb85c',
+        color:'white',
+        border: '1 px solid #ccc'
+      }
+  }
 
     return (
         <Modal
@@ -136,6 +153,7 @@ const BuyNowModal = ({ modalIsOpen, close }) => {
                                                    value={otp}
                                                    onChange={(e) => setOTP(e.target.value)}/>
                                                 </div>
+                                                <OtpTimer seconds= {30} minutes={0} resend={handleClick} />
                                                 
                                                 <div class="mb-3">
                                                    <button type="submit" class="btn btn-primary btn-block fw-600">{auth.authenticating ?  <LoadSpinner /> : <span>Login into your account</span>}</button>
