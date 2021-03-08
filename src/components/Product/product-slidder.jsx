@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import _ from "lodash";
 import { Link } from 'react-router-dom';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Truncate from 'react-truncate';
 import CurrencyFormat from 'react-currency-format';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { addToCart } from '../../store/actions/cartActions';
 import Spinner  from '../../components/Spinner'
 import './styles.css'
+import { toast } from "react-toastify";
 
 const Product = ({ product }) => {
   const [showAlert, setShowAlert] = useState(false);
@@ -16,27 +18,29 @@ const Product = ({ product }) => {
 
   const dispatch = useDispatch();
 
+  const Msg = () => (
+    <div>
+      Product Added To Cart Successfully
+      <Link to='/cart' className="pl-2">
+      <button class="btn btn-sm btn-primary">Go To Cart</button>
+      </Link>
+    </div>
+  )
+
   const handleAddToCart = () => {
-
-    let cart = [];
-    if (typeof window !== "undefined") {
-      if (localStorage.getItem("cart")) {
-        cart = JSON.parse(localStorage.getItem("cart"));
-      }
-      cart.push({
-        ...product,
-        count: 1,
-      });
-      let unique = _.uniqWith(cart, _.isEqual);
-      localStorage.setItem("cart", JSON.stringify(unique));
-
-      dispatch({
-        type: "ADD_TO_CART",
-        payload: unique,
-      });
-      setShowAlert(true);
+    const cat = {
+      id: product._id,
+      title: product.title,
+      images: product.images[0].url,
+      price: product.price,
+      discount: product.discount,
+      discountprice: product.discountprice,
+      quantity: 1
     }
-  };
+
+    dispatch(addToCart(cat))
+    toast(Msg)
+};
 
   useEffect(() => {
     window.scrollTo(0, 0)

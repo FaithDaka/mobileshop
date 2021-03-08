@@ -45,13 +45,23 @@ const LoginModal = ({ modalIsOpen, close }) => {
                 setLoading(false)
                 console.log("OTP Response Data", res)
                 setHash(res.data.hash)
-                setStatus(res.data.info.SMSMessageData.Recipients[0].status)
+               //  setStatus(res.data.info.SMSMessageData.Recipients[0].status)
+                report(res.data.info.SMSMessageData.Recipients[0].messageId, res.data.info.SMSMessageData.Recipients[0].number);
             })
     }
 
+    const report = (sessionId,phoneNumber) => {
+      setLoading(true)
+      axios.post(`${process.env.REACT_APP_API}/otp/delivery-reports`, sessionId,phoneNumber)
+          .then(res => {
+              setLoading(false)
+              console.log("Report Data ===>", res)
+          })
+  }
+
     const handleClick = () => {
        console.log("Resend...")
-      //  sendOTP()
+      // sendOTP()
     }
 
     const confirmOTP = (e) => {

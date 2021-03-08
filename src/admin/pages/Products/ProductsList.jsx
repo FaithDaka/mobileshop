@@ -146,7 +146,7 @@ const ProductsList = () => {
                                         <tr>
                                             <td style={{ display: 'table-cell' }}>{product.title}</td>
                                             <td style={{ display: 'table-cell' }}>{product.category && product.category.name}</td>
-                                            <td style={{ display: 'table-cell' }}>{product.createdAt}</td>
+                                            <td style={{ display: 'table-cell' }}>{moment(product.createdAt).format('l')}</td>
                                             <td style={{ display: 'table-cell' }}>
                                                 <CurrencyFormat
                                                 value={product.price}
