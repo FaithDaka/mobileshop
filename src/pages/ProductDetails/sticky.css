@@ -27,9 +27,38 @@
 	color: white;
 	border: none;
 	bottom: 0;
-	/* margin-left:43px; */
+	margin-left:42px;
 	font-weight: bold;
-	font-size:12px;
-
-	
+	font-size:12px;	
 }
+.thumbnaily-box{
+	margin-right: -10px;
+	width:50px;
+	display: inline;
+	text-align: center;
+}
+.pd-page{
+	margin-top: -20%;
+}
+@media only screen and (min-width: 992px) {
+	.img-box{
+		height: 600px;
+		align-content: center;
+		padding-top: 0px;
+		margin-right: 1000px;
+	}
+	.thumbnail-box{
+		height:100px;	
+	}
+	.thumbnaily-box{
+		margin-right: -90px;
+	}
+	.cross{
+	bottom: 0;
+	border: black solid;
+	margin-left:10px;
+	}
+	.pd-page{
+		margin-top: -10%;
+	}
+} 

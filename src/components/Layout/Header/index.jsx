@@ -95,13 +95,13 @@
 //                 </div>
 //               </div> */}
 
-              // {/* <div className="d-none d-lg-none ml-3 mr-0">
-              //   <div className="nav-search-box">
-              //     <a href="#" className="nav-box-link">
-              //       <i className="la la-search la-flip-horizontal d-inline-block nav-box-icon" />
-              //     </a>
-              //   </div>
-              // </div> */}
+// {/* <div className="d-none d-lg-none ml-3 mr-0">
+//   <div className="nav-search-box">
+//     <a href="#" className="nav-box-link">
+//       <i className="la la-search la-flip-horizontal d-inline-block nav-box-icon" />
+//     </a>
+//   </div>
+// </div> */}
 
 //               <div
 //                 className="d-none d-lg-block  align-self-stretch ml-3 mr-0 text-white"
@@ -177,7 +177,7 @@ import { signout } from '../../../store/actions/auth';
 import LoginModal from "../../../components/Modal/login-modal";
 
 
-const Header = ({open}) => {
+const Header = ({ open }) => {
     const [modalIsOpen, setIsOpen] = useState(false);
 
     const openModal = () => setIsOpen(true);
@@ -189,7 +189,7 @@ const Header = ({open}) => {
 
     const history = useHistory();
 
-    const {cartItems} = useSelector((state) => state.cart)
+    const { cartItems } = useSelector((state) => state.cart)
     const auth = useSelector(state => state.auth);
 
     const logout = () => {
@@ -210,97 +210,99 @@ const Header = ({open}) => {
 
     return (
         <>
-        <LoginModal modalIsOpen={modalIsOpen} close={closeModal} />
-        <div className="d-none d-lg-block z-1020 shadow-sm fixed-top" style={{ background: '#101622' }}>
-            <div className="px-2 d-flex justify-content-between">
-                <div className="d-flex justify-content-start mr-2">
-                <div className="pt-3">
-                    <i className="las la-bars"
-                        style={{ fontSize: '25px', color: '#fff'}}
-                        onClick={open}
-                    >
-                    </i>
-                </div>
-                <div className="ft-logo" style={{paddingLeft:"3%"}}>
-                    <Link to="/">
-                    <img
-                        src={`${process.env.PUBLIC_URL}/images/logo.png`}
-                        alt="Logo"
-                        width={100}
-                    />
-                    </Link>
-                </div>
-                </div>
-                <div class="input-group" style={{width:"50%",paddingTop:"1%"}}>
-    <input type="text" class="form-control" placeholder="Search for products"/>
-    <div class="input-group-append">
-      <button class="btn btn-secondary" type="button" style={{height:"85%", backgroundColor:"#f90",border:"none"}}>
-      <i class="bi bi-search"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-</svg></i>
-     </button>
-    </div>
-  </div>
-                <div className="d-flex justify-content-around align-items-center align-items-stretch">
-                <div className="pt-2 text-white">
-                    <div className="d-lg-block ml-3 mr-0">
-                        <span class="btn btn-icon p-1">
+            <LoginModal modalIsOpen={modalIsOpen} close={closeModal} />
+            <div className="d-none d-lg-block z-1020 shadow-sm fixed-top" style={{ background: '#101622' }}>
+                <div className="px-2 d-flex justify-content-between">
+                    <div className="d-flex justify-content-start mr-2">
+                        <div className="pt-3">
+                            <i className="las la-bars"
+                                style={{ fontSize: '25px', color: '#fff' }}
+                                onClick={open}
+                            >
+                            </i>
+                        </div>
+                        <div className="ft-logo" style={{ paddingLeft: "3%" }}>
+                            <Link to="/">
+                                <img
+                                    src={`${process.env.PUBLIC_URL}/images/logo.png`}
+                                    alt="Logo"
+                                    width={100}
+                                />
+                            </Link>
+                        </div>
+                    </div>
+                    <div class="input-group" style={{ width: "50%", paddingTop: "1%" }}>
+                        <input type="text" class="form-control" placeholder="Search for products" />
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="button" style={{ height: "85%", backgroundColor: "#f90", border: "none" }}>
+                                <i class="bi bi-search"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                </svg></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="d-flex justify-content-around align-items-center align-items-stretch">
+                    <Link to={`${process.env.PUBLIC_URL}/cart`}>
+                        <div className="pt-2 text-white">
+                            <div className="d-lg-block ml-3 mr-0">
+                                <span class="btn btn-icon p-1">
                                     <span class=" position-relative d-inline-block">
                                         <i class="la la-shopping-cart la-2x text-white"></i>
                                         <span class="badge badge-circle badge-primary position-absolute absolute-top-right">{cartItems.length}</span>
                                     </span>
                                 </span>
-                    </div>
-                </div>
-                <div class="aiz-topbar-item text-white">
-                    <div class="align-items-center d-flex dropdown">
-                        {!auth.authenticate ? <a class="dropdown-toggle no-arrow text-dark"
-                            onClick={openModal}><span class="text-white">
-                                <span class="avatar avatar-sm mr-md-2">
-                                    <i class="las la-user" style={{ fontSize: '32px' }}></i>
-                                </span>
-                            </span></a> : <a class="dropdown-toggle no-arrow text-dark" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
-                                <span class="text-white">
-                                    <span class="avatar avatar-sm mr-md-2">
-                                        <i class="las la-user" style={{ fontSize: '32px' }}></i>
-                                    </span>
-                                </span>
-                            </a>}
-
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-md">
-                            {
-                                auth.authenticate ? (
-                                    <>
-                                        <a href="#" class="dropdown-item">
-                                            <i class="las la-user" style={{ fontSize: '24px' }}></i>
-                                            <span>{auth.phonenumber}</span>
-                                        </a>
-                                        {auth.isAdmin ? <Link to="/admin/dashboard" class="dropdown-item">
-                                            <i class="las la-cog" style={{ fontSize: '24px' }}></i>
-                                            <span>Admin DashBoard</span>
-                                        </Link> : ''}
-                                        <Link to="#" class="dropdown-item" onClick={logout}>
-                                            <i class="las la-sign-out-alt" style={{ fontSize: '24px' }}></i>
-                                            <span>Logout</span>
-                                        </Link>
-                                    </>) : (
-                                        <a href="#" class="dropdown-item">
-                                            <i class="las la-user" style={{ fontSize: '24px' }}></i>
-                                            <span>Login</span>
-                                        </a>
-                                    )
-                            }
-
+                            </div>
                         </div>
+                        </Link>
+                        <div class="aiz-topbar-item text-white">
+                            <div class="align-items-center d-flex dropdown">
+                                {!auth.authenticate ? <a class="dropdown-toggle no-arrow text-dark"
+                                    onClick={openModal}><span class="text-white">
+                                        <span class="avatar avatar-sm mr-md-2">
+                                            <i class="las la-user" style={{ fontSize: '32px' }}></i>
+                                        </span>
+                                    </span></a> : <a class="dropdown-toggle no-arrow text-dark" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
+                                        <span class="text-white">
+                                            <span class="avatar avatar-sm mr-md-2">
+                                                <i class="las la-user" style={{ fontSize: '32px' }}></i>
+                                            </span>
+                                        </span>
+                                    </a>}
+
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-md">
+                                    {
+                                        auth.authenticate ? (
+                                            <>
+                                                <a href="#" class="dropdown-item">
+                                                    <i class="las la-user" style={{ fontSize: '24px' }}></i>
+                                                    <span>{auth.phonenumber}</span>
+                                                </a>
+                                                {auth.isAdmin ? <Link to="/admin/dashboard" class="dropdown-item">
+                                                    <i class="las la-cog" style={{ fontSize: '24px' }}></i>
+                                                    <span>Admin DashBoard</span>
+                                                </Link> : ''}
+                                                <Link to="#" class="dropdown-item" onClick={logout}>
+                                                    <i class="las la-sign-out-alt" style={{ fontSize: '24px' }}></i>
+                                                    <span>Logout</span>
+                                                </Link>
+                                            </>) : (
+                                                <a href="#" class="dropdown-item">
+                                                    <i class="las la-user" style={{ fontSize: '24px' }}></i>
+                                                    <span>Login</span>
+                                                </a>
+                                            )
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
-                </div>
 
-                
                 </div>
-
             </div>
-        </div>
-        <div className="bottom-space"/>
+            <div className="bottom-space" />
         </>
     )
 }
