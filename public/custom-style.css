@@ -194,3 +194,17 @@ body{
     padding-right: 2px;
     padding-left: 2px;
 }
+@media only screen and (min-width: 768px) {
+    .modal-card{
+        width:300px;
+        margin-left: -50%;
+    
+    }
+    #homepage .btn-product-call {   
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        
+    }
+}

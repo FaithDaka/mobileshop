@@ -75,7 +75,7 @@ const LoginModal = ({ modalIsOpen, close }) => {
                            <div class="container">
                               <div class="row">
                                  <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-8 mx-auto">
-                                    <div class="card">
+                                    <div class="modal-card">
                                        <div class="text-center pt-4">
                                           <h1 class="h4 fw-600">
                                           Create Account.
@@ -96,7 +96,6 @@ const LoginModal = ({ modalIsOpen, close }) => {
                                                 <div class="mb-3">
                                                    <span class="opacity-60">By continuing you agree to <a href="#">Terms of Use</a> and {' '}
                                                    <a href="#">Privacy Notice</a></span>
-                                                   <span class="aiz-square-check"></span>
                                                 </div>
                                                 <div class="mb-3">
                                                    <button type="submit" class="btn btn-primary btn-block fw-600">{loading ? <LoadSpinner /> : <span>Verify Mobile Number</span>}</button>
@@ -120,7 +119,7 @@ const LoginModal = ({ modalIsOpen, close }) => {
                            <div class="container">
                               <div class="row">
                                  <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-8 mx-auto">
-                                    <div class="card">
+                                    <div class="modal-card">
                                        <div class="text-center pt-4">
                                           <h1 class="h4 fw-600">
                                           Verify Mobile Number
