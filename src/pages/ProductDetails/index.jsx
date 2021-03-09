@@ -37,15 +37,12 @@ const ProductDetails = ({ match }) => {
         window.scrollTo(0, 0)
     }, [])
 
-<<<<<<< HEAD
-    console.log("product ===>", product);
-
-=======
     const styles={
         border:"red-solid",
         bottom:"0"
     }
->>>>>>> 8f353fed8057b36ed30015078759cccb0657287c
+
+    console.log("product Info ====>", product)
 
     return (
         <>

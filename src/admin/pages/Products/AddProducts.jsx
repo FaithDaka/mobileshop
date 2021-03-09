@@ -87,8 +87,6 @@ const AddProducts = ({ history }) => {
 
     const newaccessories = accessorys.toString();
 
-    console.log("Accessories ====>", newaccessories)
-
     useEffect(() => {
         loadCategories();
         loadAccessories();

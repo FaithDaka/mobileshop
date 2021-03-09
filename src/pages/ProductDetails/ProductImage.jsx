@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useHistory, useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
-import { RWebShare } from "react-web-share";
+import { useSelector } from "react-redux";
 
 const ProductImage = ({ product }) => {
   const [currentImage, setCurrentImage] = useState("");
