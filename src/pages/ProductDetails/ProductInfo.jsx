@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import _ from "lodash";
 import { toast } from "react-toastify";
 import { Link } from 'react-router-dom';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import CurrencyFormat from 'react-currency-format';
 import SweetAlert from 'react-bootstrap-sweetalert';
@@ -30,9 +30,6 @@ const ProductInfo = ({ product }) => {
 
   const history = useHistory();
   const auth = useSelector(state => state.auth);
-
-  let location = useLocation();
-  let currentUrl = "https://mobileshop.ug" + location.pathname;
 
   const openModal = () => {
 
@@ -298,7 +295,7 @@ const ProductInfo = ({ product }) => {
                   />}</strong>
               </div>
             </div>
-            <RelatedAccessories/>
+            <RelatedAccessories product={product} />
           </div>
 
         </form>

@@ -17,6 +17,11 @@ import ListBrands from '../admin/pages/Brands/BrandsList'
 import AddBrand from '../admin/pages/Brands/AddBrands'
 import EditBrand from '../admin/pages/Brands/EditBrands'
 
+import AddAccessory from '../admin/pages/Accessories/AddAccessory'
+import EdiAccessory from '../admin/pages/Accessories/EditAccessories'
+import ListAccessories from '../admin/pages/Accessories/ListAccessories'
+import EditAccessories from '../admin/pages/Accessories/EditAccessories';
+
 const AdminRoutes = () => (
   <Switch>
     <Layout>
@@ -33,6 +38,9 @@ const AdminRoutes = () => (
       <AdminRoute exact path="/admin/categories" component={ListCategories} />
       <AdminRoute exact path="/admin/brands" component={ListBrands} />
       <AdminRoute exact path="/admin/addbrand" component={AddBrand} />
+      <AdminRoute exact path="/admin/addaccessory" component={AddAccessory} />
+      <AdminRoute exact path="/admin/updateaccessory/:id" component={EditAccessories} />
+      <AdminRoute exact path="/admin/listaccessories" component={ListAccessories} />
     </Layout>
   </Switch>
     )
