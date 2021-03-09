@@ -109,7 +109,7 @@ const BuyNow = ({ history }) => {
     };
 
     return (
-        <div>
+        <section class="mb-4 pt-3 pd-page">
             <CartHeader />
             {loading && <Spinner />}
 
@@ -124,191 +124,110 @@ const BuyNow = ({ history }) => {
                     Order Created Successfully
                 </SweetAlert>
             )}
-            <section class=" gry-bg">
+            <section class="gry-bg ">
                 <div class="container">
-                    <div class="row cols-xs-space cols-sm-space cols-md-space">
-                        <div class="col-xxl-8 col-xl-10 mx-auto">
 
-                            <div class="shadow-sm bg-white p-4 rounded mb-4">
-                                <div>Billing details</div>
-                                <div class="form-group">
 
-                                    <input type="text" class="form-control" name="phone" placeholder="Phone" value={auth.phonenumber} disabled />
-                                </div>
-                                <div class="form-group">
+                    <div class="shadow-sm bg-white p-4 rounded mb-4">
+                        <div class="form-group">
+                            <label class="control-label">Primary Phone Number</label>
+                            <input type="text" class="form-control" name="phone" placeholder="Phone" value={auth.phonenumber} disabled />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="contact" placeholder="Secondary Contact" value={contact}
+                                onChange={(e) => setContact(e.target.value)} />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" placeholder="Name" value={name}
+                                onChange={(e) => setName(e.target.value)} />
+                            {Object.keys(fullNameErrors).map((key) => <div style={{ color: 'red' }}>{fullNameErrors[key]}</div>)}
+                        </div>
 
-                                    <input type="text" class="form-control" name="contact" placeholder="Secondary Contact" value={contact}
-                                        onChange={(e) => setContact(e.target.value)} />
-                                </div>
-                                <div class="form-group">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="email" placeholder="Email" value={email}
+                                onChange={(e) => setEmail(e.target.value)} />
+                        </div>
 
-                                    <input type="text" class="form-control" name="name" placeholder="Name" value={name}
-                                        onChange={(e) => setName(e.target.value)} />
-                                    {Object.keys(fullNameErrors).map((key) => <div style={{ color: 'red' }}>{fullNameErrors[key]}</div>)}
-                                </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="address" placeholder="Delivery Address" value={address}
+                                onChange={(e) => setAddress(e.target.value)} />
+                            {Object.keys(addressErrors).map((key) => <div style={{ color: 'red' }}>{addressErrors[key]}</div>)}
+                        </div>
+                        <div class="form-group">
+                            <select class="custom-select" id="inputGroupSelect01" value={city}
+                                onChange={(e) => setCity(e.target.value)} >
+                                <option selected>City</option>
+                                <option value="1">Kampala</option>
+                                <option value="2">Mbarara</option>
+                                <option value="3">Jinja</option>
+                                <option value="4">Entebbe</option>
+                                <option value="5">Mukono</option>
+                            </select>
 
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="email" placeholder="Email" value={email}
-                                        onChange={(e) => setEmail(e.target.value)} />
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="address" placeholder="Delivery Address" value={address}
-                                        onChange={(e) => setAddress(e.target.value)} />
-                                    {Object.keys(addressErrors).map((key) => <div style={{ color: 'red' }}>{addressErrors[key]}</div>)}
-                                </div>
-                                <div class="form-group">
-                                    <select class="custom-select" id="inputGroupSelect01" value={city}
-                                        onChange={(e) => setCity(e.target.value)} >
-                                        <option selected>City</option>
-                                        <option value="1">Kampala</option>
-                                        <option value="2">Mbarara</option>
-                                        <option value="3">Jinja</option>
-                                        <option value="4">Entebbe</option>
-                                        <option value="5">Mukono</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="shadow-sm bg-white p-4 rounded mb-4">
-                                <div>Payment Info</div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" checked disabled />
-                                    <label class="form-check-label" for="flexRadioCheckedDisabled">
-                                        Cash On Delivery<br></br>
-                                        <small>Pay with Cash upon devlivery</small>
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled />
-                                    <label class="form-check-label" for="flexRadioDisabled">
-                                        Mobile Money<br></br>
-                                        <small>Pay with mobile money</small>
-                                    </label>
-                                </div>
-
-                            </div>
 
                         </div>
                     </div>
                 </div>
+
+
             </section>
-
-            <section class="mb-1">
-                <div class="container text-left">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="card border-0 shadow-sm rounded">
-                                <div class="card-header">
-                                    <h3 class="fs-16 fw-600 mb-0">Summary</h3>
-                                    <div class="text-right">
-                                        <span class="badge badge-inline badge-primary">{cart.quantity}Item</span>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th class="product-name">Product</th>
-                                                <th class="product-total text-right">Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>{cart.title}</td>
-                                                <td class="text-right">{cart.discount ? <>
-                                                    <CurrencyFormat
-                                                        value={cart.discountprice}
-                                                        displayType="text"
-                                                        thousandSeparator
-                                                    /> x {cart.quantity}
-                                                </> : <>
-                                                        <CurrencyFormat
-                                                            value={cart.price}
-                                                            displayType="text"
-                                                            thousandSeparator
-                                                        /> x {cart.quantity}
-                                                    </>
-                                                }</td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                    <table class="table">
-                                        <tfoot>
-                                            <tr class="cart-subtotal">
-                                                <th>Subtotal</th>
-                                                <td class="text-right">
-                                                    <span class="fw-600">UGX
-                                                    <CurrencyFormat
-                                                            value={cart.totalprice}
-                                                            displayType="text"
-                                                            thousandSeparator
-                                                        /></span>
-                                                </td>
-                                            </tr>
-                                            <tr class="cart-shipping">
-                                                <th>Number of Items</th>
-                                                <td class="text-right">
-                                                    <span class="font-italic">{cart.quantity}</span>
-                                                </td>
-                                            </tr>
-                                            <tr class="cart-shipping">
-                                                <th>Total Shipping</th>
-                                                <td class="text-right">
-                                                    <span class="font-italic">0.00</span>
-                                                </td>
-                                            </tr>
-                                            <tr class="cart-total">
-                                                <th><span class="strong-600">Total</span></th>
-                                                <td class="text-right">
-                                                    <strong><span>UGX
-                                                        <CurrencyFormat
-                                                            value={cart.totalprice}
-                                                            displayType="text"
-                                                            thousandSeparator
-                                                        /></span></strong>
-                                                </td>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                            </div>
+            <section class="gry-bg">
+                <div class="container">
+                    <div class="shadow-sm bg-white p-4 rounded mb-4 fs-15">
+                        <div style={{ paddingBottom: "2%" }}>Payment Info</div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" checked disabled />
+                            <label class="form-check-label" for="flexRadioCheckedDisabled">
+                                Cash On Delivery<br></br>
+                                <small>Pay with Cash upon devlivery</small>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled />
+                            <label class="form-check-label" for="flexRadioDisabled">
+                                Mobile Money<br></br>
+                                <small>Pay with mobile money</small>
+                            </label>
                         </div>
                     </div>
                 </div>
+
             </section>
 
-            <section className="mb-3">
+            <section class="gry-bg">
                 <div className="container">
-                    <div class="pl-2">
-                        <label class="aiz-checkbox">
-                            <input type="checkbox" id="agree_checkbox" checked={termsCheck} onChange={(e) => setTermChecked(e.target.checked)} name="terms" />
-                            <span class="aiz-square-check"></span>
-                            <span className="fw-700">I agree to the terms and conditions</span>
-                        </label>
-                        {Object.keys(termsErrors).map((key) => <div style={{ color: 'red' }}>{termsErrors[key]}</div>)}
-                    </div>
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <Link to="/" class="link link--style-3">
-                                <i class="las la-arrow-left"></i>
-                                <span className="fw-800 fs-16">Return to shop</span>
-                            </Link>
+                    <div class="shadow-sm bg-white p-4 rounded mb-4 fs-15">
+                        <div >
+                            <label class="aiz-checkbox">
+                                <input type="checkbox" id="agree_checkbox" checked={termsCheck} onChange={(e) => setTermChecked(e.target.checked)} name="terms" />
+                                <span class="aiz-square-check"></span>
+                                <span className="fw-700">I agree to the terms and conditions</span>
+                            </label>
+                            {Object.keys(termsErrors).map((key) => <div style={{ color: 'red' }}>{termsErrors[key]}</div>)}
                         </div>
-                        <div class="col-6 pr-2">
-                            <Link to="/receipt">
-                                <button onClick={placeOrder} type="button" class="btn btn-primary fw-600">
-                                    {loading ? <Spinner /> : <span>Complete Order</span>}
-                                </button>
-                            </Link>
-                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <Link to="/" class="link link--style-3">
+                                    <i class="las la-arrow-left"></i>
+                                    <span className="fw-800 fs-16">Return to shop</span>
+                                </Link>
+                            </div>
+                            <div class="col-6 pr-2 float-right">
+                                <Link to="/receipt">
+                                    <button onClick={placeOrder} type="button" class="btn btn-primary fw-600">
+                                        {loading ? <Spinner /> : <span>Complete Order</span>}
+                                    </button>
+                                </Link>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
             </section>
+
             <Footer />
             <BottomFooter />
-        </div>
+        </section>
     )
 }
 
