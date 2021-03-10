@@ -21,11 +21,11 @@ const EditAccessory = ({ match, history }) => {
     const [color, setColor] = useState('');
     const [images, setImages] = useState([]);
     const [specs, setSpecs] = useState('');
+    const [description, setDescription] = useState('');
 
     const loadAccessory = () => {
         setLoading(true);
         getAccessory(id).then((p) => {
-            console.log("Accessory ===>", p)
             setLoading(false);
             setTitle(p.data.title)
             setPrice(p.data.price)
@@ -34,6 +34,7 @@ const EditAccessory = ({ match, history }) => {
             setColor(p.data.color);
             setImages(p.data.images);
             setSpecs(p.data.specs);
+            setDescription(p.data.description);
         });
     };
 
@@ -102,14 +103,15 @@ const EditAccessory = ({ match, history }) => {
             color: color,
             images: images,
             specs: specs,
-            brand: brand
+            brand: brand,
+            description: description
         }
 
         updateAccessory(id, data, auth.token)
             .then((res) => {
                 setLoading(false);
                 history.push('/admin/listaccessories')
-                toast.success(res.data.message);
+                toast.success("Accessory Updated Successfully!");
             })
             .catch((err) => {
                 console.log(err);
@@ -160,6 +162,18 @@ const EditAccessory = ({ match, history }) => {
                                         <option value="infinix">Infinix</option>
                                         <option value="aramo">Aramo</option>
                                     </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label>Product Description</label>
+                                    <textarea
+                                        rows="3"
+                                        name="description"
+                                        className="form-control"
+                                        value={description}
+                                        onChange={(e) => setDescription(e.target.value)} />
                                 </div>
                             </div>
 

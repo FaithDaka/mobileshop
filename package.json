@@ -47,7 +47,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "react-scripts build && scp -r ./build/* uat@134.209.158.75:/var/www/mobileshop/html"
   },
   "eslintConfig": {
     "extends": [
