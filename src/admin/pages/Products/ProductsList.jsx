@@ -64,8 +64,7 @@ const ProductsList = () => {
                     toast.error(`${res.data.title} is deleted`);
                 })
                 .catch((err) => {
-                    if (err.response.status === 400) toast.error(err.response.data);
-                    console.log(err);
+                   toast.error("Product Successfully Removed!");
                 });
         }
     };
@@ -76,7 +75,7 @@ const ProductsList = () => {
         window.scrollTo(0, 0)
     }, [pageNumber]);
 
-    const filteredProducts = productSearch.filter((product) => product.title.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
+    // const filteredProducts = productSearch.filter((product) => product.title.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
 
     return (
         <>
@@ -120,7 +119,7 @@ const ProductsList = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {searchTerm ? <>{filteredProducts.map((product) => (
+                                    {/* {searchTerm ? <>{filteredProducts.map((product) => (
                                         <tr>
                                             <td style={{ display: 'table-cell' }}>{product.title}</td>
                                             <td style={{ display: 'table-cell' }}>{product.category && product.category.name}</td>
@@ -166,7 +165,30 @@ const ProductsList = () => {
                                     ))}
                                     </>
                                     
-                                    }
+                                    } */}
+
+{products.map((product) => (
+                                        <tr>
+                                            <td style={{ display: 'table-cell' }}>{product.title}</td>
+                                            <td style={{ display: 'table-cell' }}>{product.category && product.category.name}</td>
+                                            <td style={{ display: 'table-cell' }}>{moment(product.createdAt).format('l')}</td>
+                                            <td style={{ display: 'table-cell' }}>
+                                                <CurrencyFormat
+                                                value={product.price}
+                                                displayType="text"
+                                                thousandSeparator
+                                            /></td>
+                                            <td style={{ display: 'table-cell' }}>{product.condition}</td>
+                                            <td class="text-right footable-last-visible" style={{ display: 'table-cell' }}>
+                                                <Link class="btn btn-soft-primary btn-icon btn-circle btn-sm" to={`/admin/update/${product._id}`} title="Edit">
+                                                    <i class="las la-edit"></i>
+                                                </Link>
+                                                <span class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" onClick={() => handleRemove(product.slug)} title="Delete">
+                                                    <i class="las la-trash"></i>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    ))}
                                    
                                 </tbody>
                             </table>

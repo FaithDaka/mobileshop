@@ -93,6 +93,7 @@ const ListAccessories = () => {
                             <table class="table aiz-table mb-0 footable footable-1 breakpoint-lg">
                                 <thead>
                                     <tr class="footable-header">
+                                    <th style={{ display: 'table-cell' }}>ID</th>
                                         <th style={{ display: 'table-cell' }}>Name</th>
                                         <th style={{ display: 'table-cell' }}>Brand</th>
                                         <th style={{ display: 'table-cell' }}>Color</th>
@@ -105,6 +106,7 @@ const ListAccessories = () => {
                                     
                                      {accessories.map((product) => (
                                         <tr>
+                                            <td style={{ display: 'table-cell' }}>{product._id}</td>
                                             <td style={{ display: 'table-cell' }}>{product.title}</td>
                                             <td style={{ display: 'table-cell' }}>{product.brand}</td>
                                             <td style={{ display: 'table-cell' }}>{product.color}</td>
