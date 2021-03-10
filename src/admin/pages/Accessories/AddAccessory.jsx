@@ -14,12 +14,13 @@ const AddAccessory = ({ history }) => {
     const [imgloading, setImgLoading] = useState(false);
 
     const [title, setTitle] = useState('');
-    const [discountprice, setDiscountPrice] = useState('');
     const [price, setPrice] = useState('');
     const [brand, setBrand] = useState('');
     const [color, setColor] = useState('');
     const [images, setImages] = useState([]);
     const [specs, setSpecs] = useState('');
+    const [description, setDescription] = useState('');
+    const [discountprice, setDiscountPrice] = useState('');
 
     const fileUploadAndResize = (e) => {
         let files = e.target.files; // 3
@@ -82,11 +83,12 @@ const AddAccessory = ({ history }) => {
         const data = {
             title: title,
             price: price,
-            discountprice: discountprice,
             color: color,
             images: images,
             specs: specs,
-            brand: brand
+            brand: brand,
+            description: description,
+            discountprice: discountprice
         }
 
         createAccessory(data, auth.token)
@@ -140,6 +142,18 @@ const AddAccessory = ({ history }) => {
                                         <option value="infinix">Infinix</option>
                                         <option value="aramo">Aramo</option>
                                     </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label>Product Description</label>
+                                    <textarea
+                                        rows="3"
+                                        name="description"
+                                        className="form-control"
+                                        value={description}
+                                        onChange={(e) => setDescription(e.target.value)} />
                                 </div>
                             </div>
 

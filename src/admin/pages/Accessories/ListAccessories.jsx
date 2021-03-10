@@ -108,7 +108,7 @@ const ListAccessories = () => {
                                             <td style={{ display: 'table-cell' }}>{product.title}</td>
                                             <td style={{ display: 'table-cell' }}>{product.brand}</td>
                                             <td style={{ display: 'table-cell' }}>{product.color}</td>
-                                            <td style={{ display: 'table-cell' }}>{product.createdAt})</td>
+                                            <td style={{ display: 'table-cell' }}>{moment(product.createdAt).format('l')}</td>
                                             <td style={{ display: 'table-cell' }}>
                                                 <CurrencyFormat
                                                 value={product.price}

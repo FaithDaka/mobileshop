@@ -508,11 +508,11 @@ const AddProducts = ({ history }) => {
                                                 <div class="border p-1 rounded thumbnail-box">
                                                     <LazyLoadImage
                                                         class="thumbnail-img"
-                                                        src={c.images && c.images[0].url}
+                                                        src={c.images && c.images.length ? c.images[0].url: ''}
                                                         alt="thumbnail"
                                                     />
                                                 </div>
-                                                {/* <span>{c.title}</span> */}
+                                                <span class="badge badge-md badge-inline badge-pill badge-success">{c.title}</span>
                                             </label>
                                         ))}
                                     </div>
