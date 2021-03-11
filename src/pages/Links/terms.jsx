@@ -3,7 +3,7 @@ import './styles.css'
 const Terms = () => {
     return (
         <section className="terms">
-            <div id="content" class="site-content">
+            <div id="content" class="site-content bg-white py-4 px-3">
 
                 <div class="container">
                     <div class="row">

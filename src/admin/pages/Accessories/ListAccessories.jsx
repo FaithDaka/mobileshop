@@ -1,16 +1,13 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react'
 import moment from "moment";
 import { Link } from 'react-router-dom'
 import { toast } from "react-toastify";
 import CurrencyFormat from 'react-currency-format';
 import LoadSpinner from '../../../components/Spinner';
-import { getProducts, removeProduct, searchProducts } from "../../../functions/products";
+import { getAccessories, removeAccessory } from "../../../functions/accessory";
 
-const ProductsList = () => {
-
-    const [products, setProducts] = useState([]);
-    const [productSearch, setProductSearch] = useState([]);
+const ListAccessories = () => {
+    const [accessories, setAccessories] = useState([]);
     const [loading, setLoading] = useState(false);
     const [pageNumber, setPageNumber] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
@@ -32,60 +29,46 @@ const ProductsList = () => {
 
     const loadAllProducts = () => {
         setLoading(true);
-        getProducts(pageNumber)
+        getAccessories(pageNumber)
             .then((res) => {
-                setProducts(res.data.products);
+                setAccessories(res.data.accessories);
                 setTotalPages(res.data.totalPages)
                 setTotal(res.data.total)
                 setLoading(false);
             })
             .catch((err) => {
                 setLoading(false);
-                console.log(err);
-            });
-    };
-
-    const loadSearchProducts = () => {
-        searchProducts()
-            .then((res) => {
-                setProductSearch(res.data);
-                setLoading(false);
-            })
-            .catch((err) => {
-                console.log(err);
             });
     };
 
     const handleRemove = (slug) => {
         if (window.confirm("Delete?")) {
-            removeProduct(slug)
+            removeAccessory(slug)
                 .then((res) => {
                     loadAllProducts();
                     toast.error(`${res.data.title} is deleted`);
                 })
                 .catch((err) => {
-                   toast.error("Product Successfully Removed!");
+                    if (err.response.status === 400) toast.error(err.response.data);
+                    console.log(err);
                 });
         }
     };
 
     useEffect(() => {
         loadAllProducts();
-        loadSearchProducts()
         window.scrollTo(0, 0)
     }, [pageNumber]);
-
-    // const filteredProducts = productSearch.filter((product) => product.title.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
 
     return (
         <>
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h1 class="h3">All Products</h1>
+                    <h1 class="h3">All Accessories</h1>
                 </div>
                 <div class="col-md-6 text-md-right">
-                    <Link to="/admin/addproduct" class="btn btn-primary">
-                        <span>Add New Product</span>
+                    <Link to="/admin/addaccessory" class="btn btn-primary">
+                        <span>Add New Accessory</span>
                     </Link>
                 </div>
             </div>
@@ -93,12 +76,12 @@ const ProductsList = () => {
             <div class="card">
                 {loading && <LoadSpinner />}
                 <div class="card-header">
-                    <h5 class="mb-0 h6">Products</h5>
+                    <h5 class="mb-0 h6">Accessories</h5>
                     <div class="pull-right clearfix">
                         <form>
                             <div class="box-inline pad-rgt pull-left">
                                 <div class="" style={{ minWidth: '200px' }}>
-                                    <input type="text" class="form-control" name="searchTerm" placeholder="search products.." value={searchTerm} onChange={searchHandler}/>
+                                    <input type="text" class="form-control" name="searchTerm" placeholder="search accessories.." value={searchTerm} onChange={searchHandler}/>
                                 </div>
                             </div>
                         </form>
@@ -110,67 +93,23 @@ const ProductsList = () => {
                             <table class="table aiz-table mb-0 footable footable-1 breakpoint-lg">
                                 <thead>
                                     <tr class="footable-header">
+                                    <th style={{ display: 'table-cell' }}>ID</th>
                                         <th style={{ display: 'table-cell' }}>Name</th>
-                                        <th style={{ display: 'table-cell' }}>Category</th>
+                                        <th style={{ display: 'table-cell' }}>Brand</th>
+                                        <th style={{ display: 'table-cell' }}>Color</th>
                                         <th sstyle={{ display: 'table-cell' }}>Date Created</th>
                                         <th style={{ display: 'table-cell' }}>Price</th>
-                                        <th style={{ display: 'table-cell' }}>Type</th>
                                         <th width="10%" class="text-right footable-last-visible" style={{ display: 'table-cell' }}>Options</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* {searchTerm ? <>{filteredProducts.map((product) => (
-                                        <tr>
-                                            <td style={{ display: 'table-cell' }}>{product.title}</td>
-                                            <td style={{ display: 'table-cell' }}>{product.category && product.category.name}</td>
-                                            <td style={{ display: 'table-cell' }}>{moment(product.createdAt).format('l')}</td>
-                                            <td style={{ display: 'table-cell' }}>
-                                                <CurrencyFormat
-                                                value={product.price}
-                                                displayType="text"
-                                                thousandSeparator
-                                            /></td>
-                                            <td style={{ display: 'table-cell' }}>{product.condition}</td>
-                                            <td class="text-right footable-last-visible" style={{ display: 'table-cell' }}>
-                                                <Link class="btn btn-soft-primary btn-icon btn-circle btn-sm" to={`/admin/update/${product._id}`} title="Edit">
-                                                    <i class="las la-edit"></i>
-                                                </Link>
-                                                <span class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" onClick={() => handleRemove(product.slug)} title="Delete">
-                                                    <i class="las la-trash"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    ))}</> : <> 
-                                     {products.map((product) => (
-                                        <tr>
-                                            <td style={{ display: 'table-cell' }}>{product.title}</td>
-                                            <td style={{ display: 'table-cell' }}>{product.category && product.category.name}</td>
-                                            <td style={{ display: 'table-cell' }}>{moment(product.createdAt).format('l')}</td>
-                                            <td style={{ display: 'table-cell' }}>
-                                                <CurrencyFormat
-                                                value={product.price}
-                                                displayType="text"
-                                                thousandSeparator
-                                            /></td>
-                                            <td style={{ display: 'table-cell' }}>{product.condition}</td>
-                                            <td class="text-right footable-last-visible" style={{ display: 'table-cell' }}>
-                                                <Link class="btn btn-soft-primary btn-icon btn-circle btn-sm" to={`/admin/update/${product._id}`} title="Edit">
-                                                    <i class="las la-edit"></i>
-                                                </Link>
-                                                <span class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" onClick={() => handleRemove(product.slug)} title="Delete">
-                                                    <i class="las la-trash"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                    </>
                                     
-                                    } */}
-
-{products.map((product) => (
+                                     {accessories.map((product) => (
                                         <tr>
+                                            <td style={{ display: 'table-cell' }}>{product._id}</td>
                                             <td style={{ display: 'table-cell' }}>{product.title}</td>
-                                            <td style={{ display: 'table-cell' }}>{product.category && product.category.name}</td>
+                                            <td style={{ display: 'table-cell' }}>{product.brand}</td>
+                                            <td style={{ display: 'table-cell' }}>{product.color}</td>
                                             <td style={{ display: 'table-cell' }}>{moment(product.createdAt).format('l')}</td>
                                             <td style={{ display: 'table-cell' }}>
                                                 <CurrencyFormat
@@ -178,9 +117,8 @@ const ProductsList = () => {
                                                 displayType="text"
                                                 thousandSeparator
                                             /></td>
-                                            <td style={{ display: 'table-cell' }}>{product.condition}</td>
                                             <td class="text-right footable-last-visible" style={{ display: 'table-cell' }}>
-                                                <Link class="btn btn-soft-primary btn-icon btn-circle btn-sm" to={`/admin/update/${product._id}`} title="Edit">
+                                                <Link class="btn btn-soft-primary btn-icon btn-circle btn-sm" to={`/admin/updateaccessory/${product._id}`} title="Edit">
                                                     <i class="las la-edit"></i>
                                                 </Link>
                                                 <span class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" onClick={() => handleRemove(product.slug)} title="Delete">
@@ -219,4 +157,4 @@ const ProductsList = () => {
     )
 }
 
-export default ProductsList
+export default ListAccessories

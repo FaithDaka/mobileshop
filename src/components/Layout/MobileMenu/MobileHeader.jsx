@@ -96,10 +96,14 @@ const MobileHeader = ({open}) => {
                                             <i class="las la-user" style={{ fontSize: '24px' }}></i>
                                             <span>{auth.phonenumber}</span>
                                         </a>
-                                        {auth.isAdmin ? <Link to="/admin/dashboard" class="dropdown-item">
+                                        {/* {auth.isAdmin ? <Link to="/admin/dashboard" class="dropdown-item">
                                             <i class="las la-cog" style={{ fontSize: '24px' }}></i>
                                             <span>Admin DashBoard</span>
-                                        </Link> : ''}
+                                        </Link> : ''} */}
+                                        <Link to="/admin/dashboard" class="dropdown-item">
+                                            <i class="las la-cog" style={{ fontSize: '24px' }}></i>
+                                            <span>Admin DashBoard</span>
+                                        </Link>
                                         <Link to="#" class="dropdown-item" onClick={logout}>
                                             <i class="las la-sign-out-alt" style={{ fontSize: '24px' }}></i>
                                             <span>Logout</span>

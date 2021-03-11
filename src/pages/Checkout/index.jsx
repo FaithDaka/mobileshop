@@ -563,7 +563,8 @@ const Checkout = ({ history }) => {
                         <label class="aiz-checkbox">
                             <input type="checkbox" id="agree_checkbox" checked={termsCheck} onChange={(e) => setTermChecked(e.target.checked)} name="terms" />
                             <span class="aiz-square-check"></span>
-                            <span className="fw-700">I agree to the terms and conditions</span>
+                            <span className="fw-700">I agree to the </span>
+                            <Link to="/terms">terms and conditions</Link>
                         </label>
                         {Object.keys(termsErrors).map((key) => <div style={{ color: 'red' }}>{termsErrors[key]}</div>)}
                     </div>

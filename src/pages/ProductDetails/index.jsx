@@ -44,6 +44,8 @@ const ProductDetails = ({ match }) => {
         bottom:"0"
     }
 
+    console.log("product Info ====>", product)
+
     return (
         <>
 

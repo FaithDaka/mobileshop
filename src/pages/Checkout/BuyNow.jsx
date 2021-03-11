@@ -196,14 +196,28 @@ const BuyNow = ({ history }) => {
 
             <section class="gry-bg">
                 <div className="container">
-                    <div class="shadow-sm bg-white p-4 rounded mb-4 fs-15">
-                        <div >
-                            <label class="aiz-checkbox">
-                                <input type="checkbox" id="agree_checkbox" checked={termsCheck} onChange={(e) => setTermChecked(e.target.checked)} name="terms" />
-                                <span class="aiz-square-check"></span>
-                                <span className="fw-700">I agree to the terms and conditions</span>
-                            </label>
-                            {Object.keys(termsErrors).map((key) => <div style={{ color: 'red' }}>{termsErrors[key]}</div>)}
+                    <div class="pl-2">
+                        <label class="aiz-checkbox">
+                            <input type="checkbox" id="agree_checkbox" checked={termsCheck} onChange={(e) => setTermChecked(e.target.checked)} name="terms" />
+                            <span class="aiz-square-check"></span>
+                            <span className="fw-700">I agree to the </span>
+                            <Link to="/terms">terms and conditions</Link>
+                        </label>
+                        {Object.keys(termsErrors).map((key) => <div style={{ color: 'red' }}>{termsErrors[key]}</div>)}
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-6">
+                            <Link to="/" class="link link--style-3">
+                                <i class="las la-arrow-left"></i>
+                     <span className="fw-800 fs-16">Return to shop</span>
+                     </Link>
+                        </div>
+                        <div class="col-6 pr-2">
+                            <Link to="/receipt">
+                                <button onClick={placeOrder} type="button" class="btn btn-primary fw-600">
+                                    {loading ? <Spinner /> : <span>Complete Order</span>}
+                                </button>
+                            </Link>
                         </div>
                         <div class="row align-items-center">
                             <div class="col-6">

@@ -8,12 +8,12 @@ import { getSubs } from "../../../functions/sub";
 import Spinner from '../../../components/Spinner'
 import { createProduct } from "../../../functions/products";
 import { getCategories } from "../../../functions/category";
+import { getAccessories } from "../../../functions/accessory";
 
 const AddProducts = ({ history }) => {
 
     const auth = useSelector(state => state.auth);
 
-    const [storagePrice, setStoragePrice] = useState(false);
     const [loading, setLoading] = useState(false);
     const [imgloading, setImgLoading] = useState(false);
 
@@ -43,6 +43,11 @@ const AddProducts = ({ history }) => {
     const [subOptions, setSubOptions] = useState([]);
     const [categories, setCategories] = useState([]);
     const [category, setCategory] = useState('');
+    const [accessories, setAccessories] = useState(false);
+    const [accessory, setAccessory] = useState([]);
+    const [accessorys, setAccessorys] = useState([]);
+
+    const toggle = () => setAccessories(!accessories);
 
     const loadCategories = () => {
         setLoading(true);
@@ -60,8 +65,31 @@ const AddProducts = ({ history }) => {
         });
     }
 
+    const loadAccessories = () => {
+        setLoading(true);
+        getAccessories().then((a) => {
+            setAccessory(a.data.accessories)
+            setLoading(false);
+        })
+    }
+
+    const handleToggle = c => () => {
+        const currentCategoryId = accessorys.indexOf(c);
+        const newCheckedCategoryId = [...accessorys];
+        if (currentCategoryId === -1) {
+            newCheckedCategoryId.push(c);
+        } else {
+            newCheckedCategoryId.splice(currentCategoryId, 1);
+        }
+        setAccessorys(newCheckedCategoryId);
+
+    };
+
+    const newaccessories = accessorys.toString();
+
     useEffect(() => {
         loadCategories();
+        loadAccessories();
         loadSubs();
     }, []);
 
@@ -129,37 +157,39 @@ const AddProducts = ({ history }) => {
             sixtyfour: sixtyfour,
             onetwentyeight: onetwentyeight,
             twofiftysix: twofiftysix,
-            fivetwelve: fivetwelve
+            fivetwelve: fivetwelve,
+            accessorys: newaccessories
         }
 
         createProduct(data, auth.token)
             .then((res) => {
                 setLoading(false);
+                console.log("added products", data)
                 history.push('/admin/listproduct')
                 toast.success(res.data.message);
             })
             .catch((err) => {
-                console.log(err);
                 toast.error("Error while creating product");
+                setLoading(false);
             });
     };
 
     const handleImageRemove = (public_id) => {
         setImgLoading(true);
         axios
-          .post(
-            `${process.env.REACT_APP_API}/upload/remove`, { public_id }
-          )
-          .then((res) => {
-            setImgLoading(false);
-            const filteredImages = images.filter((item) => item.public_id !== public_id);
-            setImages(filteredImages)
-          })
-          .catch((err) => {
-            console.log(err);
-            setImgLoading(false);
-          });
-      };
+            .post(
+                `${process.env.REACT_APP_API}/upload/remove`, { public_id }
+            )
+            .then((res) => {
+                setImgLoading(false);
+                const filteredImages = images.filter((item) => item.public_id !== public_id);
+                setImages(filteredImages)
+            })
+            .catch((err) => {
+                console.log(err);
+                setImgLoading(false);
+            });
+    };
 
     return (
         <>
@@ -295,7 +325,7 @@ const AddProducts = ({ history }) => {
 
                             <div class="form-group row">
                                 <div class="col-md-12">
-                                <label>TV Specs</label>
+                                    <label>TV Specs</label>
                                     <textarea
                                         rows="3"
                                         name="tv"
@@ -303,23 +333,6 @@ const AddProducts = ({ history }) => {
                                         value={tv}
                                         onChange={(e) => setTV(e.target.value)} />
                                 </div>
-                                {/* <div class="col-md-6">
-                                    <label>Memory</label>
-                                    <select name="memory"
-                                        className="form-control"
-                                        value={memory}
-                                        onChange={(e) => setMemory(e.target.value)}>
-                                        <option selected>Select Memory</option>
-                                        <option value="1GB">1GB</option>
-                                        <option value="2GB">2GB</option>
-                                        <option value="3GB">3GB</option>
-                                        <option value="4GB">4GB</option>
-                                        <option value="6GB">6GB</option>
-                                        <option value="8GB">8GB</option>
-                                        <option value="10GB">10GB</option>
-                                        <option value="12GB">12GB</option>
-                                    </select>
-                                </div> */}
                             </div>
 
                         </div>
@@ -397,16 +410,16 @@ const AddProducts = ({ history }) => {
                     <div class="card">
                         <div class="card-header">
                             <h5 class="mb-0 h6">Product Storage Prices</h5>
-                                    <label class="aiz-checkbox">
-                                        <input type="checkbox" checked={storageChecked} onChange={(e) => setStorageChecked(e.target.checked)} />
-                                        <span class="opacity-60">Select if you want to add storage prices</span>
-                                        <span class="aiz-square-check"></span>
-                                    </label>
-                                    {storageChecked}
+                            <label class="aiz-checkbox">
+                                <input type="checkbox" checked={storageChecked} onChange={(e) => setStorageChecked(e.target.checked)} />
+                                <span class="opacity-60">Select if you want to add storage prices</span>
+                                <span class="aiz-square-check"></span>
+                            </label>
+                            {storageChecked}
                         </div>
                         <div class="card-body">
                             <div className="form-group row">
-                            <div className="col-sm-6">
+                                <div className="col-sm-6">
                                     <label>16 GB Price</label>
                                     <input type="number"
                                         name="sixteen"
@@ -426,7 +439,7 @@ const AddProducts = ({ history }) => {
                             </div>
 
                             <div className="form-group row">
-                            <div className="col-sm-6">
+                                <div className="col-sm-6">
                                     <label>64 GB Price</label>
                                     <input type="number"
                                         name="sixtyfour"
@@ -446,7 +459,7 @@ const AddProducts = ({ history }) => {
                             </div>
 
                             <div className="form-group row">
-                            <div className="col-sm-6">
+                                <div className="col-sm-6">
                                     <label>256 GB Price</label>
                                     <input type="number"
                                         name="twofiftysix"
@@ -467,9 +480,51 @@ const AddProducts = ({ history }) => {
 
                         </div>
                     </div>
+
+                    <div className="my-2" style={{ cursor: 'pointer' }}>
+                        <button
+                            type="button"
+                            onClick={toggle}
+                            className="btn btn-primary btn-raised "
+                        >
+                            Available Accessories
+                        </button>
+                    </div>
+
+                    {accessories && <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0 h6">Add availbale accessories</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <div class="aiz-radio-inline">
+                                        {accessory && accessory.map((c) => (
+                                            <label class="aiz-megabox pl-0 mr-2">
+                                                <input type="checkbox"
+                                                    value={accessorys.indexOf(c._id === -1)}
+                                                    onChange={handleToggle(c._id)}
+                                                />
+                                                <div class="border p-1 rounded thumbnail-box">
+                                                    <LazyLoadImage
+                                                        class="thumbnail-img"
+                                                        src={c.images && c.images.length ? c.images[0].url: ''}
+                                                        alt="thumbnail"
+                                                    />
+                                                </div>
+                                                <span class="badge badge-md badge-inline badge-pill badge-success">{c.title}</span>
+                                            </label>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>}
+
                     <div class="mb-3 text-right">
                         <button type="submit" name="button" class="btn btn-primary">
-                        {loading ? <Spinner /> : 'Add Product'}
+                            {loading ? <Spinner /> : 'Add Product'}
                         </button>
                     </div>
                 </form>

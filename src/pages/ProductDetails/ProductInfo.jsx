@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import _ from "lodash";
-import { useHistory, useLocation } from 'react-router-dom';
+import { toast } from "react-toastify";
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import CurrencyFormat from 'react-currency-format';
 import SweetAlert from 'react-bootstrap-sweetalert';
@@ -28,9 +30,6 @@ const ProductInfo = ({ product }) => {
 
   const history = useHistory();
   const auth = useSelector(state => state.auth);
-
-  let location = useLocation();
-  let currentUrl = "https://mobileshop.ug" + location.pathname;
 
   const openModal = () => {
 
@@ -61,6 +60,15 @@ const ProductInfo = ({ product }) => {
   const closeModal = () => setIsOpen(false);
   const dispatch = useDispatch();
 
+  const Msg = () => (
+    <div>
+      Product Added To Cart Successfully
+      <Link to='/cart' className="pl-2">
+      <button class="btn btn-sm btn-primary">Go To Cart</button>
+      </Link>
+    </div>
+  )
+
   const handleAddToCart = () => {
     const cat = {
       id: product._id,
@@ -76,7 +84,7 @@ const ProductInfo = ({ product }) => {
     }
 
     dispatch(addToCart(cat))
-    setShowAlert(true);
+    toast(Msg)
   };
 
   useEffect(() => {
@@ -306,7 +314,7 @@ const ProductInfo = ({ product }) => {
                   />}</strong>
               </div>
             </div>
-            <RelatedAccessories/>
+            <RelatedAccessories product={product} />
           </div>
 
         </form>

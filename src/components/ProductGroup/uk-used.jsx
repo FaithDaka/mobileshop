@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import Product from '../../components/Product'
 import LoadSpinner from '../../components/Spinner'
 
@@ -16,6 +16,10 @@ const UkUsed = ({ products, loading, total, pageNumber, count, totalused }) => {
     count(Math.min(total - 1, pageNumber + 1))
     window.scrollTo(0, 0)
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pageNumber]);
 
   return (
     <div>
