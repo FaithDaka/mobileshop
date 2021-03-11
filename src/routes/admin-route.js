@@ -1,28 +1,29 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Switch } from 'react-router-dom';
 import AdminRoute from './AdminRoute'
+import Spinner from '../components/Spinner';
 
 import Layout from '../admin/Layout';
-import Dashboard from '../admin/pages/Dashboard'
-import AddProduct from '../admin/pages/Products/AddProducts'
-import EditProduct from '../admin/pages/Products/EditProducts'
-import ListProduct from '../admin/pages/Products/ProductsList.jsx'
-import ListOrders from '../admin/pages/Orders/OrdersList'
-import OrderDetails from '../admin/pages/Orders/OrderDetails'
-import ListCustomers from '../admin/pages/Customers/customersList'
-import AddCategory from '../admin/pages/Categories/AddCategory'
-import EditCategory from '../admin/pages/Categories/EditCategory'
-import ListCategories from '../admin/pages/Categories/CategoriesList'
-import ListBrands from '../admin/pages/Brands/BrandsList'
-import AddBrand from '../admin/pages/Brands/AddBrands'
-import EditBrand from '../admin/pages/Brands/EditBrands'
 
-import AddAccessory from '../admin/pages/Accessories/AddAccessory'
-import EdiAccessory from '../admin/pages/Accessories/EditAccessories'
-import ListAccessories from '../admin/pages/Accessories/ListAccessories'
-import EditAccessories from '../admin/pages/Accessories/EditAccessories';
+const Dashboard = lazy(() => import("../admin/pages/Dashboard"));
+const AddProduct = lazy(() => import("../admin/pages/Products/AddProducts"));
+const EditProduct = lazy(() => import("../admin/pages/Products/EditProducts"));
+const ListProduct = lazy(() => import("../admin/pages/Products/ProductsList.jsx"));
+const ListOrders = lazy(() => import("../admin/pages/Orders/OrdersList"));
+const OrderDetails = lazy(() => import("../admin/pages/Orders/OrderDetails"));
+const ListCustomers = lazy(() => import("../admin/pages/Customers/customersList"));
+const AddCategory = lazy(() => import("../admin/pages/Categories/AddCategory"));
+const EditCategory = lazy(() => import("../admin/pages/Categories/EditCategory"));
+const ListCategories = lazy(() => import("../admin/pages/Categories/CategoriesList"));
+const ListBrands = lazy(() => import("../admin/pages/Brands/BrandsList"));
+const AddBrand = lazy(() => import("../admin/pages/Brands/AddBrands"));
+const EditBrand = lazy(() => import("../admin/pages/Brands/EditBrands"));
+const AddAccessory = lazy(() => import("../admin/pages/Accessories/AddAccessory"));
+const ListAccessories = lazy(() => import("../admin/pages/Accessories/ListAccessories"));
+const EditAccessories = lazy(() => import("../admin/pages/Accessories/EditAccessories"));
 
 const AdminRoutes = () => (
+  <Suspense fallback={<div><Spinner /></div>}>
   <Switch>
     <Layout>
       <AdminRoute exact path="/admin/dashboard" component={Dashboard} />
@@ -43,6 +44,7 @@ const AdminRoutes = () => (
       <AdminRoute exact path="/admin/listaccessories" component={ListAccessories} />
     </Layout>
   </Switch>
+  </Suspense>
     )
 
 export default AdminRoutes;
