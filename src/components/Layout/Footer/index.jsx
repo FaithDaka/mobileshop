@@ -1,9 +1,10 @@
 /* eslint-disable max-len */
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
 
 const Footer = () => (
-  <section className="d-xl-none d-lg-block bg-dark py-5 text-light d-none d-lg-block">
+  <section className="bg-dark py-5 text-light d-none d-lg-block">
     <div className="container">
       <div className="row">
         <div className="col-lg-5 col-xl-4 text-center text-md-left">

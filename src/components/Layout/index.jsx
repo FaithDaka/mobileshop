@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
     <div className="aiz-main-wrapper d-flex flex-column">
       <Header open={openDrawer} />
       <MobileHeader open={openDrawer} />
-      <section class="d-none d-lg-block text-center">
+      {/* <section class="d-none d-lg-block text-center">
         <div class="container">
           <div class="row">
             <div class="col-lg-6 mx-auto">
@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {children}
       {/* <Footer />
       <BottomFooter /> */}

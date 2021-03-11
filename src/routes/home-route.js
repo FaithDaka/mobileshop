@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Layout from '../components/Layout';
-import HomePage from '../pages/HomePage';
-import Cart from '../pages/Cart';
-import Search from '../pages/Search';
-import Checkout from '../pages/Checkout';
-import BuyNow from '../pages/Checkout/BuyNow';
-import Receipt from '../pages/Checkout/Receipt';
-import Categories from '../pages/Search/Categories';
-import ProductDetails from '../pages/ProductDetails';
-import Aboutus from '../pages/Links/about-us';
-import FAQS from '../pages/Links/faqs';
-import Terms from '../pages/Links/terms';
+import Spinner from '../components/Spinner';
+
+const HomePage = lazy(() => import("../pages/HomePage"));
+const Cart = lazy(() => import("../pages/Cart"));
+const Search = lazy(() => import("../pages/Search"));
+const Checkout = lazy(() => import("../pages/Checkout"));
+const BuyNow = lazy(() => import("../pages/Checkout/BuyNow"));
+const Receipt = lazy(() => import("../pages/Checkout/Receipt"));
+const Categories = lazy(() => import("../pages/Search/Categories"));
+const ProductDetails = lazy(() => import("../pages/ProductDetails"));
+const Aboutus = lazy(() => import("../pages/Links/about-us"));
+const FAQS = lazy(() => import("../pages/Links/faqs"));
+const Terms = lazy(() => import("../pages/Links/terms"));
 
 const HomeRoute = () => {
 
   return(
+    <Suspense fallback={<div><Spinner /></div>}>
   <Switch>
     <Layout>
       <Route exact path="/" component={HomePage} />
@@ -32,6 +35,7 @@ const HomeRoute = () => {
       <Route exact path="/products/:slug" component={ Categories } />      
     </Layout>
   </Switch>
+  </Suspense>
     )}
 
 export default HomeRoute

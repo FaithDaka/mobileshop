@@ -37,13 +37,13 @@ const Cart = () => {
     }, [])
 
     return (
-        <>
+        <section class="mb-4 pt-3 pd-page">
             <CartHeader />
             <CartDetails cart={cartItems} total={getTotal()} checkout={goToCheckout} />
             <LoginModal modalIsOpen={modalIsOpen} close={closeModal} />
             <Footer />
             <BottomFooter />
-        </>
+        </section>
     )
 }
 

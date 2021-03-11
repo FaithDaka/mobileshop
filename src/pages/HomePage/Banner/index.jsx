@@ -2,6 +2,7 @@ import React from "react";
 import BannerSlidder from "./BannerSlidder";
 import CategoriesNav from "./CategoriesNav";
 import TopDeals from "./TopDeals";
+import '../Banner/bannerstyle.css'
 
 const Banner = () => (
   <div className="home-banner-area mb-2 pt-3">

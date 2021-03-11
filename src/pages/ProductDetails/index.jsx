@@ -5,6 +5,8 @@ import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
 import ProductSpecs from "./ProductSpecs";
 import LoadSpinner from '../../components/Spinner';
+import Footer from '../../components/Layout/Footer/index';
+import BottomFooter from '../../components/Layout/Footer/BottomFooter'
 
 import { getProduct, getRelated } from "../../functions/products";
 import './sticky.css';
@@ -47,12 +49,12 @@ const ProductDetails = ({ match }) => {
     return (
         <>
 
-            <section class="mb-4 pt-3"  >
+            <section class="mb-4 pt-3 pd-page"  >
 
                 <div class="container" id= "wrapper"> 
                     {loading && <LoadSpinner />}
-                    <div class="col">
-                        <ul class="breadcrumb bg-transparent p-0 justify-content-lg-end">
+                    <div class="col" id="pd-top-links">
+                        <ul class="breadcrumb bg-transparent p-0 justify-content-lg-start">
                             <li class="breadcrumb-item opacity-50">
                                 <Link class="text-reset" to="/">Home</Link>
                             </li>
@@ -80,10 +82,14 @@ const ProductDetails = ({ match }) => {
                     </div>
                 </div>
             </section>
-           
-            <ProductSpecs product={product} related={related} loading={loading} />
-           
-            <div className="extra">
+         
+            <ProductSpecs product={product} related={related} />
+            <div class="d-none d-lg-block">
+                <Footer/>
+                <BottomFooter/>
+            </div>
+               
+            <div className=" d-md-none extra">
                 <p style={{visibility:"hidden"}}>MobileShop.ug</p>
             </div>
           

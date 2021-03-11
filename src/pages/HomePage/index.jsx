@@ -8,14 +8,14 @@ import ProductGroup from '../../components/ProductGroup'
 const HomePage = () => {
 
   return (
-    <>
+    <section id="homepage">
       <Banner />
       {/* <Promos /> */}
       <ProductGroup />
       <Footer />
       <BottomFooter />
 
-    </>
+    </section>
   )
 }
 
