@@ -1,32 +1,29 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from 'react-router-dom';
-import { signout } from '../../store/actions/auth';
 import logo from './SideBar/logo.png'
 
 const TopHeader = () => {
 
-    const auth = useSelector(state => state.auth);
-
-    const dispatch = useDispatch();
-    const history = useHistory();
+    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('username');
+    const role = localStorage.getItem('role');
 
     const logout = () => {
-        dispatch(signout(history));
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        localStorage.removeItem('role');
     }
 
-
     return (
-        <div class="aiz-topbar px-15px px-lg-25px d-flex align-items-stretch justify-content-between" style={{ background: '#101622'}}>
+        <div class="aiz-topbar px-15px px-lg-25px d-flex align-items-stretch justify-content-between" style={{ background: '#101622' }}>
             <div class="d-xl-none d-flex">
                 <div class="aiz-topbar-nav-toggler d-flex align-items-center justify-content-start mr-2 mr-md-3 text-white" data-toggle="aiz-mobile-nav">
-                    
+
                 </div>
                 <div class="">
-                <Link to="/">
-                    <img src={logo} class="brand-icon" alt="Mobile Shop Admin" width="100"/>
-                </Link>
+                    <Link to="/">
+                        <img src={logo} class="brand-icon" alt="Mobile Shop Admin" width="100" />
+                    </Link>
                 </div>
             </div>
             <div class="d-flex justify-content-between align-items-stretch flex-grow-xl-1">
@@ -65,7 +62,7 @@ const TopHeader = () => {
                                 <div class="p-3 bg-light border-bottom">
                                     <h6 class="mb-0">Notifications</h6>
                                 </div>
-                                <ul class="list-group c-scrollbar-light overflow-auto" style={{maxHeight:'300px'}}>
+                                <ul class="list-group c-scrollbar-light overflow-auto" style={{ maxHeight: '300px' }}>
                                     <li class="list-group-item">
                                         <a href="#" class="text-reset">
                                             <span class="ml-2">1101 new orders</span>
@@ -85,7 +82,7 @@ const TopHeader = () => {
                             <a class="dropdown-toggle no-arrow text-dark" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
                                 <span class="d-flex align-items-center">
                                     <span class="avatar avatar-sm mr-md-2">
-                                        <i class="las la-user-circle text-white" style={{fontSize: '48px'}}></i>
+                                        <i class="las la-user-circle text-white" style={{ fontSize: '48px' }}></i>
                                     </span>
                                     <span class="d-none d-md-block">
                                         <span class="d-block fw-500">Admin</span>
@@ -94,19 +91,15 @@ const TopHeader = () => {
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-md">
-                                    {
-                                auth.authenticate ? (
-                                    <>
-                                        <a href="#" class="dropdown-item">
-                                            <i class="las la-user" style={{ fontSize: '24px' }}></i>
-                                            <span>{auth.phonenumber}</span>
-                                        </a>
-                                        <Link to="#" class="dropdown-item" onClick={logout}>
-                                            <i class="las la-sign-out-alt" style={{ fontSize: '24px' }}></i>
-                                            <span>Logout</span>
-                                        </Link>
-                                    </>) : ''
-                            }
+
+                                <a href="#" class="dropdown-item">
+                                    <i class="las la-user" style={{ fontSize: '24px' }}></i>
+                                    <span>{username}</span>
+                                </a>
+                                <Link to="#" class="dropdown-item" onClick={logout}>
+                                    <i class="las la-sign-out-alt" style={{ fontSize: '24px' }}></i>
+                                    <span>Logout</span>
+                                </Link>
                             </div>
                         </div>
                     </div>

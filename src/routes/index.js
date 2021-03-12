@@ -11,15 +11,15 @@ const AdminPages = React.lazy(() => import("./admin-route.js"));
 
 const AppRoot = () => {
 
-  const dispatch  = useDispatch();
-  const auth = useSelector(state => state.auth);
+  // const dispatch  = useDispatch();
+  // const auth = useSelector(state => state.auth);
 
-  useEffect(() => {
-    if(!auth.authenticate){
-      dispatch(isUserLoggedIn());
-    }
+  // useEffect(() => {
+  //   if(!auth.authenticate){
+  //     dispatch(isUserLoggedIn());
+  //   }
 
-  }, [auth.authenticate]);
+  // }, [auth.authenticate]);
 
   return (
     <React.Suspense fallback={<div><Spinner /></div>}>

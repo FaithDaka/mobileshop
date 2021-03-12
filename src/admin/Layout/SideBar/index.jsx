@@ -65,7 +65,7 @@ const SideBar = () => {
                         </Link>
                     </li>
                     <li class="aiz-side-nav-item">
-                        <Link to="/admin/registerStaff" class="aiz-side-nav-link ">
+                        <Link to="/admin/listStaff" class="aiz-side-nav-link ">
                             <i class="las la-user-friends aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">Staff Users</span>
                         </Link>

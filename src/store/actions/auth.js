@@ -10,15 +10,15 @@ export const loginBuynow = (user, history, close) => {
     if (res.status === 200) {
       const token = res.data.token
       const phonenumber = res.data.profile.phonenumber
-      const isAdmin = res.data.profile.isAdmin
+      const role = res.data.profile.role
 
       localStorage.setItem("token", token);
       localStorage.setItem("phonenumber", phonenumber);
-      localStorage.setItem("isAdmin", isAdmin);
+      localStorage.setItem("role", role);
 
       dispatch({
         type: "LOGIN_SUCCESS",
-        payload: { token, phonenumber, isAdmin },
+        payload: { token, phonenumber, role },
         });
 
         history.push("/buynow");
@@ -43,15 +43,15 @@ export const loginCheckout = (user, history, close) => {
     if (res.status === 200) {
       const token = res.data.token
       const phonenumber = res.data.profile.phonenumber
-      const isAdmin = res.data.profile.isAdmin
+      const role = res.data.profile.role
 
       localStorage.setItem("token", token);
       localStorage.setItem("phonenumber", phonenumber);
-      localStorage.setItem("isAdmin", isAdmin);
+      localStorage.setItem("role", role);
 
       dispatch({
         type: "LOGIN_SUCCESS",
-        payload: { token, phonenumber, isAdmin },
+        payload: { token, phonenumber, role },
         });
 
       history.push("/checkout");
@@ -76,15 +76,15 @@ export const login = (user, history, close) => {
     if (res.status === 200) {
       const token = res.data.token
       const phonenumber = res.data.profile.phonenumber
-      const isAdmin = res.data.profile.isAdmin
+      const role = res.data.profile.role
 
       localStorage.setItem("token", token);
       localStorage.setItem("phonenumber", phonenumber);
-      localStorage.setItem("isAdmin", isAdmin);
+      localStorage.setItem("role", role);
 
       dispatch({
         type: "LOGIN_SUCCESS",
-        payload: { token, phonenumber, isAdmin },
+        payload: { token, phonenumber, role },
         });
 
       history.push("/");
@@ -104,10 +104,10 @@ export const isUserLoggedIn = () => {
     const token = localStorage.getItem("token");
     if (token) {
       const phonenumber = localStorage.getItem("phonenumber");
-      const isAdmin = localStorage.getItem("isAdmin");
+      const role = localStorage.getItem("role");
       dispatch({
         type: "LOGIN_SUCCESS",
-        payload: { token, phonenumber, isAdmin },
+        payload: { token, phonenumber, role },
       });
     } else {
       dispatch({

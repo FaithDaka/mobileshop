@@ -24,6 +24,7 @@ const ListAccessories = React.lazy(() => import("../admin/pages/Accessories/List
 const EditAccessories = React.lazy(() => import("../admin/pages/Accessories/EditAccessories"));
 const RegisterAdmin = React.lazy(() => import("../admin/pages/Staff/registerStaff"));
 const LoginAdmin = React.lazy(() => import("../admin/pages/Staff/loginStaff"));
+const ListStaff = React.lazy(() => import("../admin/pages/Staff/ListStaff"));
 
 const AdminRoutes = () => (
   <React.Suspense fallback={<div><Spinner /></div>}>
@@ -33,6 +34,7 @@ const AdminRoutes = () => (
       <AdminRoute exact path="/admin/addproduct" component={AddProduct} />
       <AdminRoute exact path="/admin/update/:id" component={EditProduct} />
       <AdminRoute exact path="/admin/registerStaff" component={RegisterAdmin} />
+      <AdminRoute exact path="/admin/listStaff" component={ListStaff} />
       <AdminRoute exact path="/admin/loginStaff" component={LoginAdmin} />
       <AdminRoute exact path="/admin/listproduct" component={ListProduct} />
       <AdminRoute exact path="/admin/customers" component={ListCustomers} /> 

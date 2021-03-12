@@ -1,6 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { toast } from "react-toastify";
+import Spinner from '../../../components/Spinner';
+import { registerAdmin } from "../../../functions/staff";
 
-const registerStaff = () => {
+const RegisterStaff = ({ history }) => {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [username, setUserName] = useState('');
+    const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setLoading(true);
+
+        const data = {
+            firstName,
+            lastName,
+            username,
+            password
+        }
+
+        registerAdmin(data)
+            .then((res) => {
+                setLoading(false);
+                history.push('/admin/listStaff')
+                toast.success("Staff User Successfully Created!");
+            })
+            .catch((err) => {
+                console.log(err);
+                setLoading(false);
+                toast.error("Error while creating new staff!");
+            });
+    };
+
     return (
         <section class="gry-bg py-4">
             <div class="profile">
@@ -15,25 +48,46 @@ const registerStaff = () => {
                                 </div>
                                 <div class="px-4 py-3 py-lg-4">
 
-                                    <form id="reg-form" class="form-default">
-                                    <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="First Name" name="password" aria-autocomplete="list" />
+                                    <form id="reg-form" class="form-default" onSubmit={handleSubmit}>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control"
+                                                placeholder="First Name"
+                                                name="firstName"
+                                                className="form-control"
+                                                value={firstName}
+                                                onChange={(e) => setFirstName(e.target.value)}
+                                            />
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Last Name" name="password" aria-autocomplete="list" />
+                                            <input type="text" class="form-control"
+                                                placeholder="Last Name"
+                                                name="lastName"
+                                                value={lastName}
+                                                onChange={(e) => setLastName(e.target.value)}
+
+                                            />
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="username" name="password" aria-autocomplete="list" />
+                                            <input type="text" class="form-control"
+                                                placeholder="username"
+                                                name="username"
+                                                value={username}
+                                                onChange={(e) => setUserName(e.target.value)}
+
+                                            />
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="password" name="password" aria-autocomplete="list" />
+                                            <input type="password" class="form-control" placeholder="password"
+                                                name="password"
+                                                value={password}
+                                                onChange={(e) => setPassword(e.target.value)} />
                                         </div>
 
                                         <div class="mb-5">
-                                            <button type="submit" class="btn btn-primary btn-block fw-600">Create Account</button>
+                                            <button type="submit" class="btn btn-primary btn-block fw-600">{loading ? <Spinner /> : 'Create Account'}</button>
                                         </div>
                                     </form>
                                 </div>
@@ -48,4 +102,4 @@ const registerStaff = () => {
     )
 }
 
-export default registerStaff
+export default RegisterStaff;

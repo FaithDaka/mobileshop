@@ -15,6 +15,7 @@ const ProductDetails = React.lazy(() => import("../pages/ProductDetails"));
 const Aboutus = React.lazy(() => import("../pages/Links/about-us"));
 const FAQS = React.lazy(() => import("../pages/Links/faqs"));
 const Terms = React.lazy(() => import("../pages/Links/terms"));
+const LoginAdmin = React.lazy(() => import("../admin/pages/Staff/loginStaff"));
 
 const HomeRoute = () => {
 
@@ -32,6 +33,7 @@ const HomeRoute = () => {
       <Route exact path="/aboutus" component={Aboutus} /> 
       <Route exact path="/faqs" component={FAQS} /> 
       <Route exact path="/terms" component={Terms} /> 
+      <Route exact path="/login/staff" component={LoginAdmin} />
       <Route exact path="/products/:slug" component={ Categories } />      
     </Layout>
   </Switch>

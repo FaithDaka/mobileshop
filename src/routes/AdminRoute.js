@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 const AdminRoute = ({
   component,
@@ -8,9 +7,9 @@ const AdminRoute = ({
   ...rest
 }) => {
 
-  const auth = useSelector(state => state.auth);
+  const role = localStorage.getItem('role');
 
-  return auth.authenticate && auth.isAdmin ? (
+  return role === 'admin' ? (
     <Route exact path={path} component={component} {...rest} />
   ) : (
       <Redirect to={"/"} />
