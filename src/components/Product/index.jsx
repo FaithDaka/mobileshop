@@ -138,7 +138,7 @@ const Product = ({ product }) => {
             <button type="button" className="btn btn-product-cart" onClick={checkStorage}>
               <span className="btn-cart">Add Cart</span>
             </button>
-            <button type="button" className=" btn btn-product-call">
+            <button type="button" className=" btn btn-product-call d-xl-none d-lg-block">
               <a href="tel:0751290264">
                 <i class="las la-phone la-2x btn-call"></i>
               </a>

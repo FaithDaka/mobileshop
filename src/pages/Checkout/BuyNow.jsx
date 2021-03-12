@@ -205,7 +205,7 @@ const BuyNow = ({ history }) => {
                         </label>
                         {Object.keys(termsErrors).map((key) => <div style={{ color: 'red' }}>{termsErrors[key]}</div>)}
                     </div>
-                    <div class="row align-items-center">
+                    <div class="row align-items-center mb-3">
                         <div class="col-6">
                             <Link to="/" class="link link--style-3">
                                 <i class="las la-arrow-left"></i>
@@ -219,22 +219,7 @@ const BuyNow = ({ history }) => {
                                 </button>
                             </Link>
                         </div>
-                        <div class="row align-items-center">
-                            <div class="col-6">
-                                <Link to="/" class="link link--style-3">
-                                    <i class="las la-arrow-left"></i>
-                                    <span className="fw-800 fs-16">Return to shop</span>
-                                </Link>
-                            </div>
-                            <div class="col-6 pr-2 float-right">
-                                <Link to="/receipt">
-                                    <button onClick={placeOrder} type="button" class="btn btn-primary fw-600">
-                                        {loading ? <Spinner /> : <span>Complete Order</span>}
-                                    </button>
-                                </Link>
-                            </div>
-
-                        </div>
+                        
                     </div>
                 </div>
             </section>

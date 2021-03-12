@@ -72,7 +72,7 @@ const CustomerList = () => {
                                 <td style={{ display: 'table-cell' }}>{user.phonenumber}</td>
                                 <td style={{ display: 'table-cell' }}>{user.isAdmin}</td>
                                 <td style={{ display: 'table-cell' }}>
-                                    <Link class="btn btn-soft-primary btn-icon btn-circle btn-sm" title="Edit">
+                                    <Link to={`/admin/customers/${user._id}`} class="btn btn-soft-primary btn-icon btn-circle btn-sm" title="Edit">
                                         <i class="las la-edit"></i>
                                     </Link>
                                     <span class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" title="Delete">

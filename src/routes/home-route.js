@@ -1,25 +1,25 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Layout from '../components/Layout';
 import Spinner from '../components/Spinner';
 
-const HomePage = lazy(() => import("../pages/HomePage"));
-const Cart = lazy(() => import("../pages/Cart"));
-const Search = lazy(() => import("../pages/Search"));
-const Checkout = lazy(() => import("../pages/Checkout"));
-const BuyNow = lazy(() => import("../pages/Checkout/BuyNow"));
-const Receipt = lazy(() => import("../pages/Checkout/Receipt"));
-const Categories = lazy(() => import("../pages/Search/Categories"));
-const ProductDetails = lazy(() => import("../pages/ProductDetails"));
-const Aboutus = lazy(() => import("../pages/Links/about-us"));
-const FAQS = lazy(() => import("../pages/Links/faqs"));
-const Terms = lazy(() => import("../pages/Links/terms"));
+const HomePage = React.lazy(() => import("../pages/HomePage"));
+const Cart = React.lazy(() => import("../pages/Cart"));
+const Search = React.lazy(() => import("../pages/Search"));
+const Checkout = React.lazy(() => import("../pages/Checkout"));
+const BuyNow = React.lazy(() => import("../pages/Checkout/BuyNow"));
+const Receipt = React.lazy(() => import("../pages/Checkout/Receipt"));
+const Categories = React.lazy(() => import("../pages/Search/Categories"));
+const ProductDetails = React.lazy(() => import("../pages/ProductDetails"));
+const Aboutus = React.lazy(() => import("../pages/Links/about-us"));
+const FAQS = React.lazy(() => import("../pages/Links/faqs"));
+const Terms = React.lazy(() => import("../pages/Links/terms"));
 
 const HomeRoute = () => {
 
   return(
-    <Suspense fallback={<div><Spinner /></div>}>
+    <React.Suspense fallback={<div><Spinner /></div>}>
   <Switch>
     <Layout>
       <Route exact path="/" component={HomePage} />
@@ -35,7 +35,7 @@ const HomeRoute = () => {
       <Route exact path="/products/:slug" component={ Categories } />      
     </Layout>
   </Switch>
-  </Suspense>
+  </React.Suspense>
     )}
 
 export default HomeRoute

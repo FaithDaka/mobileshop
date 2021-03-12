@@ -212,9 +212,9 @@ const Header = ({ open }) => {
         <>
             <LoginModal modalIsOpen={modalIsOpen} close={closeModal} />
             <div className="d-none d-lg-block z-1020 shadow-sm fixed-top" style={{ background: '#101622' }}>
-                <div className="px-2 d-flex justify-content-between">
+                <div className="px-2 d-flex justify-content-between container">
                     <div className="d-flex justify-content-start mr-2">
-                        <div className="pt-3">
+                        <div className="pt-3 d-xl-none d-lg-block">
                             <i className="las la-bars"
                                 style={{ fontSize: '25px', color: '#fff' }}
                                 onClick={open}
@@ -226,7 +226,7 @@ const Header = ({ open }) => {
                                 <img
                                     src={`${process.env.PUBLIC_URL}/images/logo.png`}
                                     alt="Logo"
-                                    width={100}
+                                    width={130}
                                 />
                             </Link>
                         </div>

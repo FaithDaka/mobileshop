@@ -277,7 +277,7 @@ const ProductInfo = ({ product }) => {
           </div>
 
           <hr />
-          <div className=".d-sm-none .d-md-block p-2 mb-2 bg-white ">
+          <div className="d-sm-none d-md-block p-2 mb-2 bg-white ">
               <div class="mt-2" style={{
                 display: "flex",
                 position: "relative",
