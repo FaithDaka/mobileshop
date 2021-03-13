@@ -172,12 +172,12 @@ const ProductsList = () => {
                                             <td style={{ display: 'table-cell' }}>{product.title}</td>
                                             <td style={{ display: 'table-cell' }}>{product.category && product.category.name}</td>
                                             <td style={{ display: 'table-cell' }}>{moment(product.createdAt).format('l')}</td>
-                                            <td style={{ display: 'table-cell' }}>
+                                            {/* <td style={{ display: 'table-cell' }}>
                                                 <CurrencyFormat
                                                 value={product.price}
                                                 displayType="text"
                                                 thousandSeparator
-                                            /></td>
+                                            /></td> */}
                                             <td style={{ display: 'table-cell' }}>{product.condition}</td>
                                             <td class="text-right footable-last-visible" style={{ display: 'table-cell' }}>
                                                 <Link class="btn btn-soft-primary btn-icon btn-circle btn-sm" to={`/admin/update/${product._id}`} title="Edit">

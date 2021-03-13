@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import Product from '../../components/Product'
-import LoadSpinner from '../../components/Spinner'
-import { getAccessories } from "../../functions/products";
+import React, { useState, useEffect } from 'react';
+import LoadSpinner from '../../components/Spinner';
+import Accessory from '../../components/Product/accessory';
+import { getAccessories } from "../../functions/accessory";
 
 const Accessories = () => {
     const [pageNumber, setPageNumber] = useState(0);
@@ -25,7 +25,7 @@ const Accessories = () => {
     const loadUkUsed = () => {
         setLoading(true);
         getAccessories(pageNumber).then((res) => {
-            setProducts(res.data.products);
+            setProducts(res.data.accessories);
             setTotalPages(res.data.totalPages)
             setTotal(res.data.total)
             setLoading(false);
@@ -43,7 +43,7 @@ const Accessories = () => {
                 products && products.length > 0 ?
                     <div className="row gutters-5 row-cols-xxl-5 row-cols-lg-5 row-cols-md-3 row-cols-2">
                         {products.map(product => (
-                            <Product product={product} />
+                            <Accessory product={product} />
                         ))}
                     </div> :
                     <p>Accessories Currently Out of Stock</p>

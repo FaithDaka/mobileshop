@@ -12,6 +12,7 @@ const BuyNow = React.lazy(() => import("../pages/Checkout/BuyNow"));
 const Receipt = React.lazy(() => import("../pages/Checkout/Receipt"));
 const Categories = React.lazy(() => import("../pages/Search/Categories"));
 const ProductDetails = React.lazy(() => import("../pages/ProductDetails"));
+const AccessoryDetails = React.lazy(() => import("../pages/AccessoryDetails"));
 const Aboutus = React.lazy(() => import("../pages/Links/about-us"));
 const FAQS = React.lazy(() => import("../pages/Links/faqs"));
 const Terms = React.lazy(() => import("../pages/Links/terms"));
@@ -25,6 +26,7 @@ const HomeRoute = () => {
     <Layout>
       <Route exact path="/" component={HomePage} />
       <Route exact path="/product/:id" component={ProductDetails} />
+      <Route exact path="/accessory/:id" component={AccessoryDetails} />
       <Route exact path="/cart" component={Cart} />
       <Route exact path="/buynow" component={BuyNow} />
       <Route exact path="/checkout" component={Checkout} />
