@@ -24,7 +24,7 @@ const AddProducts = ({ history }) => {
     const [description, setDescription] = useState('');
     const [images, setImages] = useState([]);
     const [subs, setSubs] = useState([]);
-    const [color, setColor] = useState('');
+    const [color, setColor] = useState([]);
     const [storageChecked, setStorageChecked] = useState(false)
     const [memory, setMemory] = useState('');
     const [condition, setCondition] = useState([]);
@@ -46,6 +46,25 @@ const AddProducts = ({ history }) => {
     const [accessories, setAccessories] = useState(false);
     const [accessory, setAccessory] = useState([]);
     const [accessorys, setAccessorys] = useState([]);
+    const [colors, setColors] = useState([
+        {id: 1, name: 'Balck', code: '#000000'},
+        {id: 2, name: 'Yellow', code: '#FFFF00'},
+        {id: 3, name: 'Red', code: '#FF0000'},
+        {id: 4, name: 'Blue', code: '#0000FF'},
+        {id: 5, name: 'Gold', code: '#FFD700'},
+        {id: 6, name: 'Silver', code: '#C0C0C0'},
+        {id: 7, name: 'Rose Gold', code: '#B76E79'},
+        {id: 8, name: 'Matte Black', code: '#28282B'},
+        {id: 9, name: 'Jet Black', code: '#0A0A0A'},
+        {id: 10, name: 'Purple', code: '#800080'},
+        {id: 11, name: 'Graphite', code: '#383428'},
+        {id: 12, name: 'Pacific Blue', code: '#1ca9c9'},
+        {id: 13, name: 'Pink', code: '#FFC0CB'},
+        {id: 14, name: 'Grey', code: '#808080'},
+        {id: 15, name: 'Violet', code: '#EE82EE'},
+        {id: 16, name: 'Space Gray', code: '#343d52'},
+        {id: 17, name: 'Bronze', code: '#cd7f32'},
+    ]);
 
     const toggle = () => setAccessories(!accessories);
 
@@ -82,10 +101,25 @@ const AddProducts = ({ history }) => {
             newCheckedCategoryId.splice(currentCategoryId, 1);
         }
         setAccessorys(newCheckedCategoryId);
-
     };
 
     const newaccessories = accessorys.toString();
+
+    const ToggleColor = c => () => {
+        const currentColorId = color.indexOf(c);
+        console.log("Selected Index", currentColorId)
+        const newCheckedColorId = [...color];
+        if (currentColorId === -1) {
+            newCheckedColorId.push(c);
+        } else {
+            newCheckedColorId.splice(currentColorId, 1);
+        }
+        setColor(newCheckedColorId);
+    };
+
+    const newcolors = color.toString();
+
+    console.log("Colors ====>", newcolors);
 
     useEffect(() => {
         loadCategories();
@@ -140,7 +174,7 @@ const AddProducts = ({ history }) => {
             price: price,
             discount: discount,
             quantity: quantity,
-            color: color,
+            color: newcolors,
             memory: memory,
             storageChecked: storageChecked,
             images: images,
@@ -481,6 +515,33 @@ const AddProducts = ({ history }) => {
                         </div>
                     </div>
 
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0 h6">Attach Phone Colors</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <div class="aiz-radio-inline">
+                                        {colors.map((c) => (
+                                            <label class="aiz-megabox pl-0 mr-2">
+                                                <input type="checkbox"
+                                                    value={colors.indexOf(c.id === -1)}
+                                                    onChange={ToggleColor(c.code)}
+                                                />
+                                                <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
+                                                    <span class="size-30px d-inline-block rounded" style={{ background: `${c.code}` }}></span>
+                                                </span>
+                                                <span class="badge badge-md badge-inline badge-pill badge-soft-secondary">{c.name.substring(0, 15)}</span>
+                                            </label>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                     <div className="my-2" style={{ cursor: 'pointer' }}>
                         <button
                             type="button"
@@ -497,7 +558,7 @@ const AddProducts = ({ history }) => {
                         </div>
                         <div class="card-body">
                             <div class="form-group row">
-                                <div class="col-sm-10">
+                                <div class="col-sm-12">
                                     <div class="aiz-radio-inline">
                                         {accessory && accessory.map((c) => (
                                             <label class="aiz-megabox pl-0 mr-2">
@@ -508,11 +569,11 @@ const AddProducts = ({ history }) => {
                                                 <div class="border p-1 rounded thumbnail-box">
                                                     <LazyLoadImage
                                                         class="thumbnail-img"
-                                                        src={c.images && c.images.length ? c.images[0].url: ''}
+                                                        src={c.images && c.images.length ? c.images[0].url : ''}
                                                         alt="thumbnail"
                                                     />
                                                 </div>
-                                                <span class="badge badge-md badge-inline badge-pill badge-success">{c.title}</span>
+                                                <span class="badge badge-md badge-inline badge-pill badge-soft-secondary">{c.title.substring(0, 15)}</span>
                                             </label>
                                         ))}
                                     </div>

@@ -173,9 +173,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
-import { signout } from '../../../store/actions/auth';
 import LoginModal from "../../../components/Modal/login-modal";
-
 
 const Header = ({ open }) => {
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -190,11 +188,17 @@ const Header = ({ open }) => {
     const history = useHistory();
 
     const { cartItems } = useSelector((state) => state.cart)
-    const auth = useSelector(state => state.auth);
 
     const logout = () => {
-        dispatch(signout(history));
+        localStorage.removeItem('token');
+        localStorage.removeItem('phonenumber');
+        localStorage.removeItem('role');
+        history.push("/");
     }
+
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
+    const phonenumber = localStorage.getItem('phonenumber');
 
     const handleChange = (e) => {
         dispatch({
@@ -212,9 +216,9 @@ const Header = ({ open }) => {
         <>
             <LoginModal modalIsOpen={modalIsOpen} close={closeModal} />
             <div className="d-none d-lg-block z-1020 shadow-sm fixed-top" style={{ background: '#101622' }}>
-                <div className="px-2 d-flex justify-content-between">
+                <div className="px-2 d-flex justify-content-between container">
                     <div className="d-flex justify-content-start mr-2">
-                        <div className="pt-3">
+                        <div className="pt-3 d-xl-none d-lg-block">
                             <i className="las la-bars"
                                 style={{ fontSize: '25px', color: '#fff' }}
                                 onClick={open}
@@ -226,7 +230,7 @@ const Header = ({ open }) => {
                                 <img
                                     src={`${process.env.PUBLIC_URL}/images/logo.png`}
                                     alt="Logo"
-                                    width={100}
+                                    width={130}
                                 />
                             </Link>
                         </div>
@@ -256,7 +260,7 @@ const Header = ({ open }) => {
                         </Link>
                         <div class="aiz-topbar-item text-white">
                             <div class="align-items-center d-flex dropdown">
-                                {!auth.authenticate ? <a class="dropdown-toggle no-arrow text-dark"
+                                {!token ? <a class="dropdown-toggle no-arrow text-dark"
                                     onClick={openModal}><span class="text-white">
                                         <span class="avatar avatar-sm mr-md-2">
                                             <i class="las la-user" style={{ fontSize: '32px' }}></i>
@@ -271,13 +275,13 @@ const Header = ({ open }) => {
 
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-md">
                                     {
-                                        auth.authenticate ? (
+                                        token ? (
                                             <>
                                                 <a href="#" class="dropdown-item">
                                                     <i class="las la-user" style={{ fontSize: '24px' }}></i>
-                                                    <span>{auth.phonenumber}</span>
+                                                    <span>{phonenumber}</span>
                                                 </a>
-                                                {auth.isAdmin ? <Link to="/admin/dashboard" class="dropdown-item">
+                                                {role === 'admin' ? <Link to="/admin/dashboard" class="dropdown-item">
                                                     <i class="las la-cog" style={{ fontSize: '24px' }}></i>
                                                     <span>Admin DashBoard</span>
                                                 </Link> : ''}

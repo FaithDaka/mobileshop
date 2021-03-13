@@ -8,13 +8,12 @@ import CurrencyFormat from 'react-currency-format';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import BuyNowModal from "../../components/Modal/buynow-modal";
 import { addToCart } from '../../store/actions/cartActions';
-import RelatedAccessories from './RelatedAccessories';
 
 const ProductInfo = ({ product }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [storageSize, setStorageSize] = useState('64GB');
-  const [color, setColor] = useState('');
+  const [color, setColor] = useState('Black');
   const [storagePrice, setStoragePrice] = useState(product.storageprice && product.storageprice.sixtyfour);
   const [quantity, setQuantity] = useState(1);
 
@@ -64,7 +63,7 @@ const ProductInfo = ({ product }) => {
     <div>
       Product Added To Cart Successfully
       <Link to='/cart' className="pl-2">
-        <button class="btn btn-sm btn-primary">Go To Cart</button>
+      <button class="btn btn-sm btn-primary">Go To Cart</button>
       </Link>
     </div>
   )
@@ -137,27 +136,27 @@ const ProductInfo = ({ product }) => {
             <span class="badge badge-md badge-inline badge-pill badge-success">{product.condition}</span>
           </div>
         </div>
-
-        <hr />
-        <div class="row no-gutters mt-2">
-          <div class="col-sm-10">
-            <div class="">
-              <strong class="h2 fw-700 text-primary">
-                {product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
-                  value={product.discountprice * quantity}
-                  displayType="text"
-                  thousandSeparator
-                /></strong>}
-                {!product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
-                  value={product.price * quantity}
-                  displayType="text"
-                  thousandSeparator
-                /></strong>}
-                {storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
-                  value={storagePrice * quantity}
-                  displayType="text"
-                  thousandSeparator
-                /></strong>}
+        
+      <hr />
+      <div class="row no-gutters mt-2">
+        <div class="col-sm-10">
+          <div class="">
+            <strong class="h2 fw-700 text-primary">
+              {product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                value={product.discountprice * quantity}
+                displayType="text"
+                thousandSeparator
+              /></strong>}
+              {!product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                value={product.price * quantity}
+                displayType="text"
+                thousandSeparator
+              /></strong>}
+              {storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                value={storagePrice * quantity}
+                displayType="text"
+                thousandSeparator
+              /></strong>}
 
 
               </strong>
@@ -228,25 +227,34 @@ const ProductInfo = ({ product }) => {
             </div>
           </div> : ''}
 
-          <div class="row no-gutters">
+          {product.condition === 'Brand New' && <div class="row no-gutters">
             <div class="col-sm-2">
-              {product.color && product.color.length > 1 ? <div class="my-2">Color: {color}</div> : '' }
+              <div class="my-2">Color: {color}</div>
             </div>
-
             <div class="col-sm-10">
               <div class="aiz-radio-inline">
-                {product.color && product.color.length > 1 ? product.color.map((c) =>
-                  <label class="aiz-megabox pl-0 mr-2">
-                    <input type="radio" name="color" value={c} onChange={changeColor} />
-                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                      <span class="size-30px d-inline-block rounded" style={{ background: `${c}`}}></span>
-                    </span>
-                  </label>
-                )
-                  : ''}
+                <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="Black">
+                  <input type="radio" name="color" value="Black" onChange={changeColor} />
+                  <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
+                    <span class="size-30px d-inline-block rounded" style={{ background: '#000000' }}></span>
+                  </span>
+                </label>
+                <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="Coral">
+                  <input type="radio" name="color" value="Silver" onChange={changeColor} />
+                  <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
+                    <span class="size-30px d-inline-block rounded" style={{ background: '#FF7F50' }}></span>
+                  </span>
+                </label>
+                <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="Red">
+                  <input type="radio" name="color" value="Red" onChange={changeColor} />
+                  <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
+                    <span class="size-30px d-inline-block rounded" style={{ background: '#FF0000' }}></span>
+                  </span>
+                </label>
               </div>
             </div>
-          </div>
+          </div>}
+
 
           <div className="row no-gutters">
             <div className="col-sm-2">
@@ -269,24 +277,24 @@ const ProductInfo = ({ product }) => {
 
           <hr />
           <div className="d-none d-lg-block p-2 mb-2 bg-white ">
-            <div class="mt-2" style={{
-              display: "flex",
-              position: "relative",
-              transition: "all .35s ease",
-            }}>
-              <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
-                <span class="d-md-inline-block"> Add to cart</span>
-              </button>
-              <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
+              <div class="mt-2" style={{
+                display: "flex",
+                position: "relative",
+                transition: "all .35s ease",
+              }}>
+                <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
+                  <span class="d-md-inline-block"> Add to cart</span>
+                </button>
+                <button type="button" class="btn btn-primary buy-now fw-600"onClick={openModal}>
                 <span class="d-md-inline-block"> Buy Now</span>
-              </button>
-              <button type="button" className=" btn btn-product-call">
-                <a href="tel:0751290264">
-                  <i class="las la-phone la-2x btn-call-details"></i>
-                </a>
-              </button>
+                </button>
+                <button type="button" className=" btn btn-product-call">
+                  <a href="tel:0751290264">
+                    <i class="las la-phone la-2x btn-call-details"></i>
+                  </a>
+                </button>
+              </div>
             </div>
-          </div>
 
           <div className="row no-gutters" id="chosen_price_div">
             <div className="col-sm-2">
@@ -299,39 +307,38 @@ const ProductInfo = ({ product }) => {
                   displayType="text"
                   thousandSeparator
                 /> : <CurrencyFormat
-                  value={product.price * quantity}
-                  displayType="text"
-                  thousandSeparator
-                />}</strong>
+                    value={product.price * quantity}
+                    displayType="text"
+                    thousandSeparator
+                  />}</strong>
               </div>
             </div>
-            <RelatedAccessories product={product} />
           </div>
 
         </form>
-        <div className="d-sm-none shadow p-2 mb-2 bg-white rounded scroll">
-          <div class="mt-2" style={{
-            display: "flex",
-            position: "relative",
-            transition: "all .35s ease",
-          }}>
-            <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
-              <span class="d-md-inline-block"> Add to cart</span>
-            </button>
-            <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
-              <span class="d-md-inline-block"> Buy Now</span>
-            </button>
-            <button type="button" className=" btn btn-product-call">
-              <a href="tel:0751290264">
-                <i class="las la-phone la-2x btn-call-details"></i>
-              </a>
-            </button>
-          </div>
-        </div>
+            <div className="d-sm-none shadow p-2 mb-2 bg-white rounded scroll">
+              <div class="mt-2" style={{
+                display: "flex",
+                position: "relative",
+                transition: "all .35s ease",
+              }}>
+                <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
+                  <span class="d-md-inline-block"> Add to cart</span>
+                </button>
+                <button type="button" class="btn btn-primary buy-now fw-600"onClick={openModal}>
+                <span class="d-md-inline-block"> Buy Now</span>
+                </button>
+                <button type="button" className=" btn btn-product-call">
+                  <a href="tel:0751290264">
+                    <i class="las la-phone la-2x btn-call-details"></i>
+                  </a>
+                </button>
+              </div>
+            </div>
 
         {/* } */}
       </div>
-
+      
     </>
   )
 }

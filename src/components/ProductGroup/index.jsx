@@ -208,7 +208,7 @@ const ProductGroup = () => {
       {/* desktop view */}
 
       
-      <div className="p-4 rounded mb-4 categories-container">
+      <div className="p-4 rounded mb-4 categories-container container">
         {renderView()}
       </div>
     </section>

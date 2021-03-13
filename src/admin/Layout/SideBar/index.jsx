@@ -7,7 +7,7 @@ const SideBar = () => {
         <div class="aiz-sidebar left c-scrollbar">
             <div class="pl-2">
                 <Link to="/" class="d-block text-left">
-                    <img class="" src={logo} alt="Mobile Shop Admin" width="130"/>
+                    <img class="" src={logo} alt="Mobile Shop Admin" width="130" />
                 </Link>
             </div>
             <div class="aiz-side-nav-wrap">
@@ -25,30 +25,16 @@ const SideBar = () => {
                     </li>
 
                     <li class="aiz-side-nav-item">
-                        <Link to="/admin/addproduct" class="aiz-side-nav-link ">
-                            <i class="las la-wrench aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">Add Product</span>
-                        </Link>
-                    </li>
-
-                    <li class="aiz-side-nav-item">
                         <Link to="/admin/listproduct" class="aiz-side-nav-link ">
                             <i class="las la-shopping-cart aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">List Products</span>
-                        </Link>
-                    </li>
-
-                    <li class="aiz-side-nav-item">
-                        <Link to="/admin/addaccessory" class="aiz-side-nav-link ">
-                            <i class="las la-wrench aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">Add Accessory</span>
+                            <span class="aiz-side-nav-text">All Products</span>
                         </Link>
                     </li>
 
                     <li class="aiz-side-nav-item">
                         <Link to="/admin/listaccessories" class="aiz-side-nav-link ">
                             <i class="las la-shopping-cart aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">List Accessories</span>
+                            <span class="aiz-side-nav-text">All Accessories</span>
                         </Link>
                     </li>
 
@@ -56,13 +42,6 @@ const SideBar = () => {
                         <Link to="/admin/listorders" class="aiz-side-nav-link ">
                             <i class="las la-money-bill aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">All Orders</span>
-                        </Link>
-                    </li>
-
-                    <li class="aiz-side-nav-item">
-                        <Link to="/admin/customers" class="aiz-side-nav-link ">
-                            <i class="las la-user-friends aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">Customers</span>
                         </Link>
                     </li>
 
@@ -77,6 +56,18 @@ const SideBar = () => {
                         <Link to="/admin/brands" class="aiz-side-nav-link ">
                             <i class="las la-wrench aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">Brands</span>
+                        </Link>
+                    </li>
+                    <li class="aiz-side-nav-item">
+                        <Link to="/admin/customers" class="aiz-side-nav-link ">
+                            <i class="las la-user-friends aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">Customers</span>
+                        </Link>
+                    </li>
+                    <li class="aiz-side-nav-item">
+                        <Link to="/admin/listStaff" class="aiz-side-nav-link ">
+                            <i class="las la-user-friends aiz-side-nav-icon"></i>
+                            <span class="aiz-side-nav-text">Staff Users</span>
                         </Link>
                     </li>
                 </ul>

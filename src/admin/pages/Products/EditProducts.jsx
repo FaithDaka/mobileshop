@@ -8,6 +8,7 @@ import { getSubs } from "../../../functions/sub";
 import Spinner from '../../../components/Spinner'
 import { getProduct, updateProduct } from "../../../functions/products";
 import { getCategories } from "../../../functions/category";
+import { getAccessories } from "../../../functions/accessory";
 
 const EditProducts = ({ history, match }) => {
 
@@ -43,6 +44,11 @@ const EditProducts = ({ history, match }) => {
     const [subOptions, setSubOptions] = useState([]);
     const [categories, setCategories] = useState([]);
     const [category, setCategory] = useState('');
+    const [accessories, setAccessories] = useState(false);
+    const [accessory, setAccessory] = useState([]);
+    const [accessorys, setAccessorys] = useState([]);
+
+    const toggle = () => setAccessories(!accessories);
 
     const { id } = match.params;
 
@@ -94,8 +100,31 @@ const EditProducts = ({ history, match }) => {
         });
     }
 
+    const loadAccessories = () => {
+        setLoading(true);
+        getAccessories().then((a) => {
+            setAccessory(a.data.accessories)
+            setLoading(false);
+        })
+    }
+
+    const handleToggle = c => () => {
+        const currentCategoryId = accessorys.indexOf(c);
+        const newCheckedCategoryId = [...accessorys];
+        if (currentCategoryId === -1) {
+            newCheckedCategoryId.push(c);
+        } else {
+            newCheckedCategoryId.splice(currentCategoryId, 1);
+        }
+        setAccessorys(newCheckedCategoryId);
+
+    };
+
+    const newaccessories = accessorys.toString();
+
     useEffect(() => {
         loadCategories();
+        loadAccessories();
         loadProduct();
         loadSubs();
     }, []);
@@ -165,12 +194,14 @@ const EditProducts = ({ history, match }) => {
             sixtyfour: sixtyfour,
             onetwentyeight: onetwentyeight,
             twofiftysix: twofiftysix,
-            fivetwelve: fivetwelve
+            fivetwelve: fivetwelve,
+            accessorys: newaccessories
         }
 
             updateProduct(id, data)
             .then((res) => {
                 setLoading(false);
+                console.log("Updated product", res)
                 toast.success(`"${res.data.title}" Updated Succesfully`);
                 history.push("/admin/listproduct");
             })
@@ -503,6 +534,49 @@ const EditProducts = ({ history, match }) => {
 
                         </div>
                     </div>
+
+                    <div className="my-2" style={{ cursor: 'pointer' }}>
+                        <button
+                            type="button"
+                            onClick={toggle}
+                            className="btn btn-primary btn-raised "
+                        >
+                            Available Accessories
+                        </button>
+                    </div>
+
+                    {accessories && <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0 h6">Availbale accessories</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <div class="aiz-radio-inline">
+                                        {accessory && accessory.map((c) => (
+                                            <label class="aiz-megabox pl-0 mr-2">
+                                                <input type="checkbox"
+                                                    value={accessorys.indexOf(c._id === -1)}
+                                                    onChange={handleToggle(c._id)}
+                                                />
+                                                <div class="border p-1 rounded thumbnail-box">
+                                                    <LazyLoadImage
+                                                        class="thumbnail-img"
+                                                        src={c.images && c.images.length ? c.images[0].url: ''}
+                                                        alt="thumbnail"
+                                                    />
+                                                </div>
+                                                <span class="badge badge-md badge-inline badge-pill badge-success">{c.title.substring(0,15)}</span>
+                                            </label>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    }
+
                     <div class="mb-3 text-right">
                         <button type="submit" name="button" class="btn btn-primary">
                         {loading ? <Spinner /> : 'Update Product'}
