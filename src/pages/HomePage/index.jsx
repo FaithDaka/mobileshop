@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from "react";
-import Footer from '../../components/Layout/Footer/index'
-import BottomFooter from '../../components/Layout/Footer/BottomFooter'
+import React from 'react'
 import Banner from './Banner'
-import Promos from './Promos'
-import ProductGroup from '../../components/ProductGroup'
+import BottomBanners from './Banner/BottomBanners'
+import ProductGroupping from '../../components/ProductGroup'
 
 const HomePage = () => {
-
-  return (
-    <section id="homepage">
-      <Banner />
-      {/* <Promos /> */}
-      <ProductGroup />
-      <Footer />
-      <BottomFooter />
-
-    </section>
-  )
+    return (
+        <>
+            <Banner />
+            {/* <BottomBanners /> */}
+            <ProductGroupping />
+        </>
+    )
 }
 
 export default HomePage

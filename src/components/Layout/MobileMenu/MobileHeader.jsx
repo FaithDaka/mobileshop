@@ -143,7 +143,6 @@ const MobileHeader = ({open}) => {
                 </form>
             </div>
         </div>
-        <div className="bottom-space"/>
         </>
     )
 }
