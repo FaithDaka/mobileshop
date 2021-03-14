@@ -1,0 +1,200 @@
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
+
+const MiddleHeader = () => {
+    const [modalIsOpen, setIsOpen] = useState(false);
+
+    const openModal = () => setIsOpen(true);
+    const closeModal = () => setIsOpen(false);
+
+    const dispatch = useDispatch();
+    const { search } = useSelector((state) => ({ ...state }));
+    const { text } = search;
+
+    const history = useHistory();
+
+    const { cartItems } = useSelector((state) => state.cart)
+
+    const logout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('phonenumber');
+        localStorage.removeItem('role');
+        history.push("/");
+    }
+
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
+    const phonenumber = localStorage.getItem('phonenumber');
+
+    const handleChange = (e) => {
+        dispatch({
+            type: "SEARCH_QUERY",
+            payload: { text: e.target.value },
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        history.push(`/search?${text}`);
+    };
+    return (
+        <header class=" sticky-top  z-1020 bg-white border-bottom shadow-sm" >
+            <div class="position-relative logo-bar-area z-1">
+                <div class="container">
+                    <div class="d-flex align-items-center">
+                        <div class="col-auto col-xl-3 pl-0 pr-3 d-flex align-items-center" style={{height:80}}>
+                            <Link class="d-block py-20px pb-3 mr-3 ml-0" to="/">
+                                <img src="images/logo.png" alt="MobileShop Logo" class="mw-100  " width="130"/>
+                            </Link>
+                        </div>
+                        <div class="d-lg-none ml-auto mr-0">
+                            {/* <a class="p-2 d-block text-reset" href="javascript:void(0);" data-toggle="class-toggle" data-target=".front-header-search">
+                                <i class="las la-search la-flip-horizontal la-2x"></i>
+                            </a> */}
+                        </div>
+                        <div class="flex-grow-1 front-header-search d-flex align-items-center bg-white">
+                            <div class="position-relative flex-grow-1">
+                                <form>
+                                    <div class="d-flex position-relative align-items-center">
+                                        <div class="d-lg-none" data-toggle="class-toggle" data-target=".front-header-search">
+                                            <button class="btn px-2" type="button"><i class="la la-2x la-long-arrow-left"></i></button>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="text" class="border-0 border-lg form-control" id="search" name="q" placeholder="I am shopping for..." autocomplete="off" />
+                                            <div class="input-group-append d-none d-lg-block">
+                                                <button class="btn btn-primary" type="submit">
+                                                    <i class="la la-search la-flip-horizontal fs-18"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="d-none d-lg-none ml-3 mr-0">
+                            <div class="nav-search-box">
+                                <a href="#" class="nav-box-link">
+                                    <i class="la la-search la-flip-horizontal d-inline-block nav-box-icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-none d-lg-block ml-3 mr-0">
+                            <div class="" id="compare">
+                                <a href="#" class="d-flex align-items-center text-reset">
+                                    <i class="la la-refresh la-2x opacity-80"></i>
+                                    <span class="flex-grow-1 ml-1">
+                                        <span class="badge badge-primary badge-inline badge-pill">0</span>
+                                        <span class="nav-box-text d-none d-xl-block opacity-70">Compare</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ml-3 mr-0">
+                            <div class="" id="wishlist">
+                                <a href="#" class="d-flex align-items-center text-reset">
+                                    <i class="la la-heart-o la-2x opacity-80"></i>
+                                    <span class="flex-grow-1 ml-1">
+                                        <span class="badge badge-primary badge-inline badge-pill">0</span>
+                                        <span class="nav-box-text d-none d-xl-block opacity-70">Wishlist</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="align-self-stretch ml-3 mr-0" data-hover="dropdown">
+                            <div class="nav-cart-box dropdown h-100" id="cart_items">
+                                <a href="javascript:void(0)" class="d-flex align-items-center text-reset h-100" data-toggle="dropdown" data-display="static">
+                                    <i class="la la-shopping-cart la-2x opacity-80"></i>
+                                    <span class="flex-grow-1 ml-1">
+                                        <span class="badge badge-primary badge-inline badge-pill">0</span>
+                                        <span class="nav-box-text d-none d-xl-block opacity-70">Cart</span>
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg p-0 stop-propagation">
+                                    <div class="text-center p-3">
+                                        <i class="las la-frown la-3x opacity-60 mb-3"></i>
+                                        <h3 class="h6 fw-700">Your Cart is empty</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white border-top border-gray-200 py-1 d-none d-lg-block">
+                <div class="container">
+                    <ul class="list-inline mb-0 pl-0 mobile-hor-swipe">
+                        <li class="list-inline-item mr-0">
+                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                                Apple
+                   </a>
+                        </li>
+                        <li class="list-inline-item mr-0">
+                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                                Samsung
+                   </a>
+                        </li>
+                        <li class="list-inline-item mr-0">
+                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                                Tecno
+                   </a>
+                        </li>
+                        <li class="list-inline-item mr-0">
+                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                                Redme
+                   </a>
+                        </li>
+                        <li class="list-inline-item mr-0">
+                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                                Google
+                   </a>
+                        </li>
+                        <li class="list-inline-item mr-0">
+                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                                One Plus
+                   </a>
+                        </li>
+                        <li class="list-inline-item mr-0">
+                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                                Nokia
+                   </a>
+                        </li>
+                        <li class="list-inline-item mr-0">
+                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                                Infinix
+                   </a>
+                        </li>
+                        <li class="list-inline-item mr-0">
+                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                                Oppo
+                   </a>
+                        </li>
+                        <li class="list-inline-item mr-0">
+                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                                Xiaomi
+                   </a>
+                        </li>
+                        <li class="list-inline-item mr-0">
+                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                                Hisense
+                   </a>
+                        </li>
+                        <li class="list-inline-item mr-0">
+                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                                Smart Tvs
+                   </a>
+                        </li>
+                        <li class="list-inline-item mr-0">
+                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                                Gaming Consoles
+                   </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+    )
+}
+
+export default MiddleHeader

@@ -39,14 +39,8 @@ const Product = ({ product }) => {
       quantity: 1
     }
 
-    var array = JSON.parse(window.localStorage.getItem("cartItems")) || [];
-    var value = cat.id
-    if (array.indexOf(value) === -1) {
       dispatch(addToCart(cat))
       toast(Msg)
-    } else {
-      toast.error("Product Already Added To Cart")
-    }
 
   };
 

@@ -15,41 +15,31 @@ const BannerSlidder = () => {
   };
 
   return (
-    <div className="d-xl-none d-lg-block col-lg-7 ">
-      <div className="mobile-img-auto-height">
         <div className="slick-list draggable">
           <Slider {...settings}>
             <div className="slick-slide">
-              <div className="carousel-box">
-                <img
-                  className="d-block rounded shadow-sm lazyloaded responsive"
-                  src="images/Banner1.jpeg"
-                  alt="Slidder Banner"
-                />
+              <div class="carousel-box" >
+                <a href="#">
+                  <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/Banner1.webp" alt="MobileShop Banner" height="315" />
+                </a>
               </div>
             </div>
             <div className="slick-slide">
-              <div className="carousel-box">
-                <img
-                  className="d-block rounded shadow-sm lazyloaded responsive"
-                  src="images/banner-new.jpeg"
-                  alt="Slidder Banner"
-                />
+            <div class="carousel-box" >
+                <a href="#">
+                  <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/Banner2.webp" alt="MobileShop Banner" height="315" />
+                </a>
               </div>
             </div>
             <div className="slick-slide">
-              <div className="carousel-box">
-                <img
-                  className="d-block rounded shadow-sm lazyloaded responsive"
-                  src="images/banner-new-1.jpeg"
-                  alt="Slidder Banner"
-                />
+            <div class="carousel-box" >
+                <a href="#">
+                  <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/Banner6.webp" alt="MobileShop Banner" height="315" />
+                </a>
               </div>
             </div>
           </Slider>
         </div>
-      </div>
-    </div>
   )
 };
 

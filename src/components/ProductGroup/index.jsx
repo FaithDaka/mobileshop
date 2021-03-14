@@ -67,9 +67,9 @@ const ProductGroup = () => {
 
     <section className=" mb-3" >
       <div className=" container">
-        <div className="d-md-none shadow p-3 mb-5 bg-white rounded">
+        <div className="d-md-none shadow p-3 bg-white rounded">
           <div className="row">
-            <div className="col-12 col-md-6 col-lg-6" style={{ paddingBottom: "2%" }}>
+            <div className="col-12 col-md-6 col-lg-6">
               <div className="row">
                 <div className=" col-3 col-md-3 col-lg-3" onClick={() => setCurrentTab('phones')} >
                   <div className="border" style={divstyle}>
@@ -135,10 +135,10 @@ const ProductGroup = () => {
         </div>
       </div>
 {/* desktop view */}
-      <div className=" d-none d-lg-block container" style={{marginBottom:"43%"}}>
-      <div class="shadow-sm bg-white p-4 rounded mb-4">
+      <div className=" d-none d-lg-block container">
+      <div class="shadow-sm bg-white p-2 rounded">
           <div className="row">
-            <div className="col-12 col-md-6 col-lg-6" style={{ paddingBottom: "2%" }}>
+            <div className="col-12 col-md-6 col-lg-6" >
               <div className="row">
                 <div className=" col-3 col-md-3 col-lg-3" onClick={() => setCurrentTab('phones')} >
                   <div className="border" style={divstyle}>
@@ -208,7 +208,7 @@ const ProductGroup = () => {
       {/* desktop view */}
 
       
-      <div className="p-4 rounded mb-4 categories-container container">
+      <div className="my-3 rounded categories-container container">
         {renderView()}
       </div>
     </section>
