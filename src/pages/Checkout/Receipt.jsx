@@ -12,7 +12,7 @@ const Receipt = ({ location }) => {
     }, [])
 
     return (
-        <section class="mb-4 pt-3 pd-page">
+        <section class="my-4 pt-4">
             <div class="container text-left">
 
                 <div class="shadow-sm bg-white p-4 rounded mb-4">

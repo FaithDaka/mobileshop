@@ -29,7 +29,7 @@ const ProductInfo = ({ product }) => {
   }
 
   const history = useHistory();
-  const auth = useSelector(state => state.auth);
+  const token = localStorage.getItem('token');
 
   const openModal = () => {
 
@@ -48,7 +48,7 @@ const ProductInfo = ({ product }) => {
       color
     }
 
-    if (auth.authenticate) {
+    if (token) {
       localStorage.setItem("buynow", JSON.stringify(data));
       history.push("/buynow");
     } else {

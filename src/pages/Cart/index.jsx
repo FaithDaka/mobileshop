@@ -15,7 +15,8 @@ const Cart = () => {
 
     const history = useHistory();
     const { cartItems } = useSelector(state => state.cart);
-    const auth = useSelector(state => state.auth);
+    
+    const token = localStorage.getItem('token');
 
     const getTotal = () => {
         return cartItems.reduce((currentValue, nextValue) => {
@@ -25,7 +26,7 @@ const Cart = () => {
 
     const goToCheckout = (e) => {
         e.preventDefault()
-        if (auth.authenticate) {
+        if (token) {
             history.push("/checkout");
         } else {
             openModal()
@@ -37,8 +38,7 @@ const Cart = () => {
     }, [])
 
     return (
-        <section class="mb-4 pt-3">
-            <CartHeader />
+        <section class="mb-4 my-4 pt-4">
             <CartDetails cart={cartItems} total={getTotal()} checkout={goToCheckout} />
             <LoginModal modalIsOpen={modalIsOpen} close={closeModal} />
             <Footer />
