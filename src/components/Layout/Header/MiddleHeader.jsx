@@ -44,9 +44,9 @@ const MiddleHeader = () => {
             <div class="position-relative logo-bar-area z-1">
                 <div class="container">
                     <div class="d-flex align-items-center">
-                        <div class="col-auto col-xl-3 pl-0 pr-3 d-flex align-items-center" style={{height:80}}>
+                        <div class="col-auto col-xl-3 pl-0 pr-3 d-flex align-items-center" style={{ height: 80 }}>
                             <Link class="d-block py-20px pb-3 mr-3 ml-0" to="/">
-                                <img src="images/logo.png" alt="MobileShop Logo" class="mw-100  " width="130"/>
+                                <img src="images/logo.png" alt="MobileShop Logo" class="mw-100  " width="130" />
                             </Link>
                         </div>
                         <div class="d-lg-none ml-auto mr-0">
@@ -126,69 +126,69 @@ const MiddleHeader = () => {
                 <div class="container">
                     <ul class="list-inline mb-0 pl-0 mobile-hor-swipe">
                         <li class="list-inline-item mr-0">
-                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                            <Link to="/products/apple" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
                                 Apple
-                   </a>
+                   </Link>
                         </li>
                         <li class="list-inline-item mr-0">
-                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                            <Link to="/products/samsung" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
                                 Samsung
-                   </a>
+                   </Link>
                         </li>
                         <li class="list-inline-item mr-0">
-                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                            <Link to="/products/tecno" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
                                 Tecno
-                   </a>
+                   </Link>
                         </li>
                         <li class="list-inline-item mr-0">
-                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
-                                Redme
-                   </a>
+                            <Link to="/products/realme" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                                Realme
+                   </Link>
                         </li>
                         <li class="list-inline-item mr-0">
-                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                            <Link to="/products/google" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
                                 Google
-                   </a>
+                   </Link>
                         </li>
                         <li class="list-inline-item mr-0">
-                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                            <Link to="/products/oneplus" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
                                 One Plus
-                   </a>
+                   </Link>
                         </li>
                         <li class="list-inline-item mr-0">
-                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                            <Link to="/products/nokia" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
                                 Nokia
-                   </a>
+                   </Link>
                         </li>
                         <li class="list-inline-item mr-0">
-                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                            <Link to="/products/infinix" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
                                 Infinix
-                   </a>
+                   </Link>
                         </li>
                         <li class="list-inline-item mr-0">
-                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                            <Link to="/products/oppo" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
                                 Oppo
-                   </a>
+                   </Link>
                         </li>
                         <li class="list-inline-item mr-0">
-                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                            <Link to="/products/xiaomi" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
                                 Xiaomi
-                   </a>
+                   </Link>
                         </li>
                         <li class="list-inline-item mr-0">
-                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                            <Link to="/products/hisense" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
                                 Hisense
-                   </a>
+                   </Link>
                         </li>
                         <li class="list-inline-item mr-0">
-                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
-                                Smart Tvs
-                   </a>
+                            <Link to="/products/jbl-speakers" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                                JBL Speakers
+                   </Link>
                         </li>
                         <li class="list-inline-item mr-0">
-                            <a href="#" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
-                                Gaming Consoles
-                   </a>
+                            <Link to="/products/consoles" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                                Consoles
+                   </Link>
                         </li>
                     </ul>
                 </div>

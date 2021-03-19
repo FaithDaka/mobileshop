@@ -51,7 +51,7 @@ const Product = ({ product }) => {
   }
 
   return (
-    <div className="col mb-1">
+    <div className="mb-1">
       <div className="aiz-card-box border border-light rounded shadow-sm hov-shadow-md h-100 has-transition bg-white">
         <StorageModal modalIsOpen={modalIsOpen} close={closeModal} product={product} />
         <div className="position-relative">

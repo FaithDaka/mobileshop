@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Carousel from "../Carousel";
 import Product from '../../components/Product'
 import LoadSpinner from '../../components/Spinner'
 import { getSpeakers } from "../../functions/products";
@@ -38,38 +39,14 @@ const SoundSytems = () => {
     }, [pageNumber]);
 
     return (
-        <div>
+        <Carousel title="Sound Systems">
             {loading && <LoadSpinner />}
             {
-                products && products.length > 0 ?
-                    <div className="row gutters-5 row-cols-xxl-5 row-cols-lg-5 row-cols-md-3 row-cols-2">
-                        {products.map(product => (
-                            <Product product={product} />
-                        ))}
-                    </div> :
-                    <p>Sound Sytems Currently Out of Stock</p>
-            }
+                products.map(item => (
+                    <Product product={item} />
+                ))}
+        </Carousel>
 
-            <div class="aiz-pagination">
-                <nav className="text-center">
-                    <span>Showing 1- 20 of {total} results</span>
-                    <ul class="pagination d-flex justify-content-center">
-                        <li class="page-item disabled" aria-label="« Previous" onClick={goToPrevious}>
-                            <span class="page-link" aria-hidden="true">‹</span>
-                        </li>
-                        <li class="page-item d-flex">
-                            {pages.map((pageIndex) => (
-                                <a key={pageIndex} class="page-link" onClick={() => setPageNumber(pageIndex)}>{pageIndex + 1}</a>
-                            ))}
-
-                        </li>
-                        <li class="page-item" onClick={goToNext}>
-                            <span class="page-link" aria-hidden="true">›</span>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
     )
 }
 

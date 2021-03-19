@@ -1,11 +1,10 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Carousel from "../Carousel";
-import Product from '../../components/Product'
-import LoadSpinner from '../../components/Spinner'
-import { getUkUsed } from "../../functions/products";
+import Product from '../Product/product-slidder';
+import { getBrandNew } from "../../functions/products";
+import LoadSpinner from '../../components/Spinner';
 
-const UkUsed = () => {
+const Slidder = () => {
 
   const [pageNumberNew, setPageNumberNew] = useState(0);
   const [pageNumberUsed, setPageNumberUsed] = useState(0);
@@ -16,7 +15,7 @@ const UkUsed = () => {
 
   const loadBrandNew = () => {
     setLoading(true);
-    getUkUsed(pageNumberNew).then((res) => {
+    getBrandNew(pageNumberNew).then((res) => {
       setProducts(res.data.products);
       setNewTotalPages(res.data.totalPages)
       setTotalNew(res.data.total);
@@ -29,7 +28,7 @@ const UkUsed = () => {
   }, [pageNumberNew]);
 
   return (
-    <Carousel title="Uk Used">
+    <Carousel title="Brand New">
       {loading && <LoadSpinner />}
       {
         products.map(item => (
@@ -40,4 +39,4 @@ const UkUsed = () => {
   )
 }
 
-export default UkUsed
+export default Slidder;
