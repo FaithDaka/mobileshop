@@ -15,7 +15,7 @@ const RelatedProducts = ({ related, loading }) => {
         {loading && <LoadSpinner />}
       </div>
       <div className="pt-3">
-            <Slider autoplay={true} slidesToShow={2} autoplaySpeed={2000} infinite={true} arrows={false}>
+            <Slider autoplay={true} slidesToShow={4} autoplaySpeed={2000} infinite={true} arrows={false}>
               {
                 related.map(item => (
                   <Product product={item} />

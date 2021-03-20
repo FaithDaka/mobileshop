@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import LoadSpinner from '../../components/Spinner';
-import Carousel from "../Carousel";
 import Accessory from '../../components/Product/accessory';
 import { getAccessories } from "../../functions/accessory";
 
@@ -38,13 +37,38 @@ const Accessories = () => {
         window.scrollTo(0, 0)
     }, [pageNumber]);
     return (
-        <Carousel title="Accessories">
+        <div>
             {loading && <LoadSpinner />}
             {
-                products.map(item => (
-                    <Accessory product={item} />
-                ))}
-        </Carousel>
+                products && products.length > 0 ?
+                    <div className="row gutters-5 row-cols-xxl-5 row-cols-lg-5 row-cols-md-3 row-cols-2">
+                        {products.map(product => (
+                            <Accessory product={product} />
+                        ))}
+                    </div> :
+                    <p>Accessories Currently Out of Stock</p>
+            }
+
+            <div class="aiz-pagination">
+                <nav className="text-center">
+                    <span>Showing 1- 20 of {total} results</span>
+                    <ul class="pagination d-flex justify-content-center">
+                        <li class="page-item disabled" aria-label="« Previous" onClick={goToPrevious}>
+                            <span class="page-link" aria-hidden="true">‹</span>
+                        </li>
+                        <li class="page-item d-flex">
+                            {pages.map((pageIndex) => (
+                                <a key={pageIndex} class="page-link" onClick={() => setPageNumber(pageIndex)}>{pageIndex + 1}</a>
+                            ))}
+
+                        </li>
+                        <li class="page-item" onClick={goToNext}>
+                            <span class="page-link" aria-hidden="true">›</span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
 
     )
 }

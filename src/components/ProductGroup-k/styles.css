@@ -1,0 +1,67 @@
+
+.tab-text{
+    font-weight: 600;
+    font-size: 16px;
+    padding-bottom: 16px;
+    color: black;
+}
+.tabtext{
+    font-weight: 600;
+    font-size: 18px;
+    padding-bottom: 10px;
+    border-bottom: gray solid; 
+    border-width: thin;
+    
+}
+
+.selected {
+    font-weight: 700;
+    font-size: 16px;
+    color: #f90;
+
+}
+.select {
+    font-weight: 800;
+    font-size: 18px;
+    border-bottom: 3px solid black;
+    color: #f90;  
+    line-height: 1.8;
+}
+.tab{
+    border: none;
+   border-right:gray solid; 
+   border-bottom: gray solid; 
+   border-width: thin;
+   font-weight: 600;
+   font-size: 16px;
+   padding-bottom: 16px;    
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .categories-container{
+        margin-top: -10%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .categories-container{
+        margin-top: -10%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .categories-container{
+    margin-top: -6%;
+}}
+
+/* Large devices (laptops/desktops, 992px and up)  */
+@media only screen and (min-width: 992px) {
+    .categories-container{
+        margin-top: -620px;
+    
+}
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */

@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/role-supports-aria-props */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from 'react'
 import Product from '../../components/Product'
 import LoadSpinner from '../../components/Spinner'
 
-const UkUsed = ({ products, loading, total, pageNumber, count, totalused }) => {
+const BrandNew = ({ products, loading, total, pageNumber, count, totalnew, firstProduct, currentProducts }) => {
 
   const pages = new Array(total).fill(null).map((v, i) => i);
 
@@ -31,12 +32,13 @@ const UkUsed = ({ products, loading, total, pageNumber, count, totalused }) => {
               <Product product={product} />
             ))}
           </div> :
-          <p>No Uk used phones at the moment</p>
+          <p>No brand new phones yet</p>
       }
 
+      
       <div class="aiz-pagination">
         <nav className="text-center">
-          <span>Showing 1- 20 of {totalused} results</span>
+        <span>Showing {firstProduct + 1} - {firstProduct + currentProducts.length} of {totalnew} results</span>
           <ul class="pagination d-flex justify-content-center">
             <li class="page-item disabled" aria-label="« Previous" onClick={goToPrevious}>
               <span class="page-link" aria-hidden="true">‹</span>
@@ -58,4 +60,4 @@ const UkUsed = ({ products, loading, total, pageNumber, count, totalused }) => {
   )
 }
 
-export default UkUsed
+export default BrandNew
