@@ -29,7 +29,7 @@ const ProductInfo = ({ product }) => {
   }
 
   const history = useHistory();
-  const auth = useSelector(state => state.auth);
+  const token = localStorage.getItem('token');
 
   const openModal = () => {
 
@@ -48,7 +48,7 @@ const ProductInfo = ({ product }) => {
       color
     }
 
-    if (auth.authenticate) {
+    if (token) {
       localStorage.setItem("buynow", JSON.stringify(data));
       history.push("/buynow");
     } else {
@@ -289,10 +289,8 @@ const ProductInfo = ({ product }) => {
           </div>
 
           <div className="row no-gutters" id="chosen_price_div">
-            <div className="col-sm-2">
-              <div className="opacity-50 my-2">Total Quantity Price:</div>
-            </div>
-            <div className="col-sm-10">
+            
+            {/* <div className="col-sm-10">
               <div className="product-price">
                 <strong id="chosen_price" className="h4 fw-700 text-primary">UGX {product.discount ? <CurrencyFormat
                   value={product.discountprice * quantity}
@@ -304,7 +302,7 @@ const ProductInfo = ({ product }) => {
                   thousandSeparator
                 />}</strong>
               </div>
-            </div>
+            </div> */}
             <RelatedAccessories product={product} />
           </div>
 

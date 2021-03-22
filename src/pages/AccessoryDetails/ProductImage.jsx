@@ -85,7 +85,7 @@ const sharePage = () => {
 
       </div>
       <div className="col-9">
-        <div className="img-box">
+        <div className="">
         <div class="border p-1 rounded float-right thumbnaily-box" >
         <i class="bi bi-share" onClick={sharePage} style={iconstyles}>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">

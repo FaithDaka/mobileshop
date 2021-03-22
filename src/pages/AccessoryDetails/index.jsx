@@ -41,7 +41,7 @@ const AccessoryDetails = ({ match }) => {
     return (
         <>
 
-            <section class="mb-4 pt-3 pd-page"  >
+            <section class="mb-4 pt-3">
 
                 <div class="container" id= "wrapper"> 
                     {loading && <LoadSpinner />}

@@ -11,6 +11,7 @@ const Checkout = React.lazy(() => import("../pages/Checkout"));
 const BuyNow = React.lazy(() => import("../pages/Checkout/BuyNow"));
 const Receipt = React.lazy(() => import("../pages/Checkout/Receipt"));
 const Categories = React.lazy(() => import("../pages/Search/Categories"));
+const TypeCategories = React.lazy(() => import("../pages/Search/Types"));
 const ProductDetails = React.lazy(() => import("../pages/ProductDetails"));
 const AccessoryDetails = React.lazy(() => import("../pages/AccessoryDetails"));
 const Aboutus = React.lazy(() => import("../pages/Links/about-us"));
@@ -36,7 +37,8 @@ const HomeRoute = () => {
       <Route exact path="/faqs" component={FAQS} /> 
       <Route exact path="/terms" component={Terms} /> 
       <Route exact path="/login/staff" component={LoginAdmin} />
-      <Route exact path="/products/:slug" component={ Categories } />      
+      <Route exact path="/products/:slug" component={ Categories } /> 
+      <Route exact path="/category/:condition" component={ TypeCategories } />     
     </Layout>
   </Switch>
   </React.Suspense>

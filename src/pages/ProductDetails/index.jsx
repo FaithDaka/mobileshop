@@ -44,14 +44,10 @@ const ProductDetails = ({ match }) => {
         bottom:"0"
     }
 
-    console.log("product Info ====>", product)
-
     return (
         <>
-
             <section class="mb-4 pt-3">
-
-                <div class="container" id= "wrapper"> 
+                <div class="container"> 
                     {loading && <LoadSpinner />}
                     <div class="col" id="pd-top-links">
                         <ul class="breadcrumb bg-transparent p-0 justify-content-lg-start">

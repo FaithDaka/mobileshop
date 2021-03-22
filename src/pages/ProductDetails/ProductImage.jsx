@@ -57,9 +57,6 @@ const sharePage = () => {
 };
 
 
-  // const sharePage=()=>{
-  //   console.log(currentUrl)
-  // }
   return (
     <div className="row">
       <div className="col-3">
