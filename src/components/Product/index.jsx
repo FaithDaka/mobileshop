@@ -57,11 +57,11 @@ const Product = ({ product }) => {
         <div className="position-relative">
           <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`}
             className="d-block text-center pt-3 product-img-box">
-            <LazyLoadImage
+            <img
               alt="product"
               src={product.images && product.images.length ? product.images[0].url : ''}
               threshold={100}
-              className="product-img"
+              className="product-img ls-is-cached lazyloaded"
             />
           </Link>
           <div className="absolute-top-left pt-2 pl-2">
