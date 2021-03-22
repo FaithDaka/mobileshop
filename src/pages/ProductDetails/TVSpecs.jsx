@@ -8,8 +8,8 @@ const TVSpecs = ({ product }) => {
             </div>
 
             <div className="tab-content pt-0">
-                <div className="tab-pane fade active show" id="tab_default_1">
-                    <div className="p-4">
+                <div className="tab-pane fade active show">
+                    <div className="">
                         <div className="mw-100 overflow-hidden text-left">
                             <p><br /></p>
                             <table className="table table-bordered" style={{ width: '100%' }}>

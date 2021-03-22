@@ -15,6 +15,7 @@ const ProductInfo = ({ product }) => {
   const [showAlert, setShowAlert] = useState(false);
   const [storageSize, setStorageSize] = useState('64GB');
   const [color, setColor] = useState('');
+  const [colorName, setColorName] = useState('');
   const [storagePrice, setStoragePrice] = useState(product.storageprice && product.storageprice.sixtyfour);
   const [quantity, setQuantity] = useState(1);
 
@@ -104,6 +105,65 @@ const ProductInfo = ({ product }) => {
     }
 
   }, [storageSize]);
+
+  useEffect(() => {
+    if (color === '#343d52') {
+      setColorName('Space Gray')
+    } else if
+      (color === '#C0C0C0') {
+      setColorName('Silver')
+    } else if (color === '#FFD700') {
+      setColorName('Gold')
+    }
+    else if (color === '#000000') {
+      setColorName('Black')
+    }
+    else if (color === '#FFFF00') {
+      setColorName('Yellow')
+    }
+    else if (color === '#FF0000') {
+      setColorName('Red')
+    }
+    else if (color === '#0000FF') {
+      setColorName('Blue')
+    }
+    else if (color === '#B76E79') {
+      setColorName('Rose Gold')
+    }
+    else if (color === '#28282B') {
+      setColorName('Matte Black')
+    }
+    else if (color === '#0A0A0A') {
+      setColorName('Jet Black')
+    }
+    else if (color === '#B76E79') {
+      setColorName('Rose Gold')
+    }
+    else if (color === '#800080') {
+      setColorName('Purple')
+    }
+    else if (color === '#383428') {
+      setColorName('Graphite')
+    }
+    else if (color === '#B76E79') {
+      setColorName('Rose Gold')
+    }
+    else if (color === '#1ca9c9') {
+      setColorName('Pacific Blue')
+    }
+    else if (color === '#FFC0CB') {
+      setColorName('Pink')
+    }
+    else if (color === '#808080') {
+      setColorName('Grey')
+    }
+    else if (color === '#EE82EE') {
+      setColorName('Violet')
+    }
+    else if (color === '#cd7f32') {
+      setColorName('Bronze')
+    }
+  }, [color]);
 
 
   return (
@@ -230,7 +290,7 @@ const ProductInfo = ({ product }) => {
 
           <div class="row no-gutters">
             <div class="col-sm-2">
-              {product.color && product.color.length > 1 ? <div class="my-2">Color: {color}</div> : '' }
+              {product.color && product.color.length > 1 ? <div class="my-2">Color: {colorName}</div> : ''}
             </div>
 
             <div class="col-sm-10">
@@ -239,7 +299,7 @@ const ProductInfo = ({ product }) => {
                   <label class="aiz-megabox pl-0 mr-2">
                     <input type="radio" name="color" value={c} onChange={changeColor} />
                     <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                      <span class="size-30px d-inline-block rounded" style={{ background: `${c}`}}></span>
+                      <span class="size-30px d-inline-block rounded" style={{ background: `${c}` }}></span>
                     </span>
                   </label>
                 )
@@ -289,7 +349,7 @@ const ProductInfo = ({ product }) => {
           </div>
 
           <div className="row no-gutters" id="chosen_price_div">
-            
+
             {/* <div className="col-sm-10">
               <div className="product-price">
                 <strong id="chosen_price" className="h4 fw-700 text-primary">UGX {product.discount ? <CurrencyFormat
