@@ -40,7 +40,11 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
         } else if
             (storageSize === '64GB') {
             setStoragePrice(product.storageprice && product.storageprice.sixtyfour)
-        } else if (storageSize === '128GB') {
+        } else if
+        (storageSize === '16GB') {
+        setStoragePrice(product.storageprice && product.storageprice.sixteen)
+    }
+        else if (storageSize === '128GB') {
             setStoragePrice(product.storageprice && product.storageprice.onetwentyeight)
         }
         else if (storageSize === '256GB') {
@@ -95,6 +99,13 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
                         </div>
                         <div class="col-sm-10">
                             <div class="aiz-radio-inline">
+                            <label class="aiz-megabox pl-0 mr-2">
+                                    {product.storageprice.sixteen && <><input type="radio" name="storage" value="16GB" onChange={handleOptionChange} />
+                                        <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                                            16GB
+                                        </span></>
+                                    }
+                                </label>
                             <label class="aiz-megabox pl-0 mr-2">
                                     {product.storageprice.thirtytwo && <><input type="radio" name="storage" value="32GB" onChange={handleOptionChange} />
                                         <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
