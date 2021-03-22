@@ -14,6 +14,17 @@ const RelatedProducts = ({ related, loading }) => {
         </h3>
         {loading && <LoadSpinner />}
       </div>
+      <div class="d-md-none">
+      <div className="pt-3">
+            <Slider autoplay={true} slidesToShow={2} autoplaySpeed={2000} infinite={true} arrows={false}>
+              {
+                related.map(item => (
+                  <Product product={item} />
+                ))}
+            </Slider>
+      </div>
+      </div>
+      <div class="d-none d-lg-block">
       <div className="pt-3">
             <Slider autoplay={true} slidesToShow={4} autoplaySpeed={2000} infinite={true} arrows={false}>
               {
@@ -21,6 +32,7 @@ const RelatedProducts = ({ related, loading }) => {
                   <Product product={item} />
                 ))}
             </Slider>
+      </div>
       </div>
     </div>
   )
