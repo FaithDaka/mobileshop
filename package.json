@@ -9,6 +9,7 @@
     "add": "^2.0.6",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.2",
+    "colornames": "^1.1.1",
     "dotenv": "^8.2.0",
     "firebase": "^8.2.6",
     "moment": "^2.29.1",

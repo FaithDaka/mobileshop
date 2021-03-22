@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import CurrencyFormat from 'react-currency-format';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useHistory } from 'react-router-dom';
-
+import { removeFromCart } from '../../../store/actions/cartActions'
+import Dropdown from './dropdown'
+import LoginModal from "../../../components/Modal/login-modal";
 const MiddleHeader = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -39,7 +44,22 @@ const MiddleHeader = () => {
         e.preventDefault();
         history.push(`/search?${text}`);
     };
+
+    const styles = {
+       paddingTop:"3%",
+        width:"90%",
+        paddingRight:"10%"
+      }
+    
+
+      const removeFromCartHandler = (id) => {
+          dispatch(removeFromCart(id))
+          toast.success("Product successfuly removed from cart");
+      }
+    
     return (
+        <>
+        <LoginModal modalIsOpen={modalIsOpen} close={closeModal} />
         <header class=" sticky-top  z-1020 bg-white border-bottom shadow-sm" >
             <div class="position-relative logo-bar-area z-1">
                 <div class="container">
@@ -54,55 +74,88 @@ const MiddleHeader = () => {
                                 <i class="las la-search la-flip-horizontal la-2x"></i>
                             </a> */}
                         </div>
-                        <div class="flex-grow-1 front-header-search d-flex align-items-center bg-white">
+                        <div class="flex-grow-1 front-header-search d-flex align-items-center bg-white" >
                             <div class="position-relative flex-grow-1">
-                                <form>
+                                <form style={styles}>
                                     <div class="d-flex position-relative align-items-center">
                                         <div class="d-lg-none" data-toggle="class-toggle" data-target=".front-header-search">
                                             <button class="btn px-2" type="button"><i class="la la-2x la-long-arrow-left"></i></button>
                                         </div>
                                         <div class="input-group">
-                                            <input type="text" class="border-0 border-lg form-control" id="search" name="q" placeholder="I am shopping for..." autocomplete="off" />
+                                            <input type="text" class="border-0 border-lg form-control" id="search" name="q" placeholder="I am shopping for..." autocomplete="off" 
+                                             value={text}
+                                             onChange={handleChange}/>
                                             <div class="input-group-append d-none d-lg-block">
-                                                <button class="btn btn-primary" type="submit">
+                                                <button class="btn btn-primary" type="submit" onClick={handleSubmit} >
                                                     <i class="la la-search la-flip-horizontal fs-18"></i>
                                                 </button>
-                                            </div>
+                                                        </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="d-none d-lg-none ml-3 mr-0">
-                            <div class="nav-search-box">
-                                <a href="#" class="nav-box-link">
-                                    <i class="la la-search la-flip-horizontal d-inline-block nav-box-icon"></i>
+                        
+                        <div class="ml-3 mr-0">
+                            <div class="nav-cart-box dropdown h-100" id="cart_items">
+                                <a href="javascript:void(0)" class="d-flex align-items-center text-reset h-100" data-toggle="dropdown" data-display="static">
+                                <span class=" position-relative d-inline-block">
+                                        <i class="la la-shopping-cart la-2x" style={{fontSize: '32px', color:"black"}}></i>
+                                        <span class="badge badge-circle badge-primary position-absolute absolute-top-right">{cartItems.length}</span>
+                                    </span>
                                 </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg p-0 dropdown-menu-animated stop-propagation">
+                                    <div class="text-center p-3 bg-white">
+                                    <Dropdown cart={cartItems}  />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="d-none d-lg-block ml-3 mr-0">
-                            <div class="" id="compare">
-                                <a href="#" class="d-flex align-items-center text-reset">
-                                    <i class="la la-refresh la-2x opacity-80"></i>
-                                    <span class="flex-grow-1 ml-1">
-                                        <span class="badge badge-primary badge-inline badge-pill">0</span>
-                                        <span class="nav-box-text d-none d-xl-block opacity-70">Compare</span>
+                     
+                            <div class="align-items-center d-flex dropdown">
+                        {!token ? <a class="dropdown-toggle no-arrow text-dark"
+                            onClick={openModal}><span>
+                                <span class="avatar avatar-sm mr-md-2">
+                                    <i class="las la-user" style={{ fontSize: '32px' ,color:'black'}}></i>
+                                </span>
+                            </span></a> : <a class="dropdown-toggle no-arrow text-dark" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
+                                <span class="text-white">
+                                    <span class="avatar avatar-sm mr-md-2">
+                                        <i class="las la-user la-2x opacity-80" style={{ fontSize: '32px', color:'black' }}></i>
                                     </span>
-                                </a>
-                            </div>
+                                </span>
+                            </a>}
+
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-md">
+                            {
+                                token ? (
+                                    <>
+                                        <a href="#" class="dropdown-item">
+                                            <i class="las la-user" style={{ fontSize: '24px' }}></i>
+                                            <span>{phonenumber}</span>
+                                        </a>
+                                        {role === 'admin' ? <Link to="/admin/dashboard" class="dropdown-item">
+                                                    <i class="las la-cog" style={{ fontSize: '24px' }}></i>
+                                                    <span>Admin DashBoard</span>
+                                                </Link> : ''}
+                                        <Link to="#" class="dropdown-item" onClick={logout}>
+                                            <i class="las la-sign-out-alt" style={{ fontSize: '24px' }}></i>
+                                            <span>Logout</span>
+                                        </Link>
+                                    </>) : (
+                                        <a href="#" class="dropdown-item">
+                                            <i class="las la-user" style={{ fontSize: '24px' }}></i>
+                                            <span>Login</span>
+                                        </a>
+                                    )
+                            }
+
                         </div>
-                        <div class="ml-3 mr-0">
-                            <div class="" id="wishlist">
-                                <a href="#" class="d-flex align-items-center text-reset">
-                                    <i class="la la-heart-o la-2x opacity-80"></i>
-                                    <span class="flex-grow-1 ml-1">
-                                        <span class="badge badge-primary badge-inline badge-pill">0</span>
-                                        <span class="nav-box-text d-none d-xl-block opacity-70">Wishlist</span>
-                                    </span>
-                                </a>
-                            </div>
+                    </div>
+                            
                         </div>
-                        <div class="align-self-stretch ml-3 mr-0" data-hover="dropdown">
+                        {/* <div class="align-self-stretch ml-3 mr-0" data-hover="dropdown">
                             <div class="nav-cart-box dropdown h-100" id="cart_items">
                                 <a href="javascript:void(0)" class="d-flex align-items-center text-reset h-100" data-toggle="dropdown" data-display="static">
                                     <i class="la la-shopping-cart la-2x opacity-80"></i>
@@ -118,7 +171,7 @@ const MiddleHeader = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
@@ -194,6 +247,7 @@ const MiddleHeader = () => {
                 </div>
             </div>
         </header>
+        </>
     )
 }
 

@@ -39,10 +39,7 @@ const ProductDetails = ({ match }) => {
         window.scrollTo(0, 0)
     }, [])
 
-    const styles={
-        border:"red-solid",
-        bottom:"0"
-    }
+    console.log("Product Details ====>", product)
 
     return (
         <>
