@@ -22,7 +22,8 @@ Modal.setAppElement('#root');
 const StorageModal = ({ modalIsOpen, close, product }) => {
     const [storageSize, setStorageSize] = useState('');
     const [storagePrice, setStoragePrice] = useState('');
-    const [color, setColor] = useState('Black');
+    const [color, setColor] = useState('');
+    const [colorName, setColorName] = useState('');
 
     const handleOptionChange = (e) => {
         setStorageSize(e.target.value);
@@ -41,9 +42,9 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
             (storageSize === '64GB') {
             setStoragePrice(product.storageprice && product.storageprice.sixtyfour)
         } else if
-        (storageSize === '16GB') {
-        setStoragePrice(product.storageprice && product.storageprice.sixteen)
-    }
+            (storageSize === '16GB') {
+            setStoragePrice(product.storageprice && product.storageprice.sixteen)
+        }
         else if (storageSize === '128GB') {
             setStoragePrice(product.storageprice && product.storageprice.onetwentyeight)
         }
@@ -57,24 +58,83 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
     }, [storageSize])
 
     const addToCartHandler = () => {
-            const cat = {
-                id: product._id,
-                title: product.title,
-                images: product.images[0].url,
-                price: product.price,
-                discount: product.discount,
-                discountprice: product.discountprice,
-                countInStock: product.countInStock,
-                quantity: 1,
-                storageSize,
-                storagePrice,
-                color
-            }
+        const cat = {
+            id: product._id,
+            title: product.title,
+            images: product.images[0].url,
+            price: product.price,
+            discount: product.discount,
+            discountprice: product.discountprice,
+            countInStock: product.countInStock,
+            quantity: 1,
+            storageSize,
+            storagePrice,
+            color
+        }
 
-            dispatch(addToCart(cat))
-            toast.success("Product Added To Cart Successfully");
-            close();
+        dispatch(addToCart(cat))
+        toast.success("Product Added To Cart Successfully");
+        close();
     }
+
+    useEffect(() => {
+        if (color === '#343d52') {
+            setColorName('Space Gray')
+        } else if
+            (color === '#C0C0C0') {
+            setColorName('Silver')
+        } else if (color === '#FFD700') {
+            setColorName('Gold')
+        }
+        else if (color === '#000000') {
+            setColorName('Black')
+        }
+        else if (color === '#FFFF00') {
+            setColorName('Yellow')
+        }
+        else if (color === '#FF0000') {
+            setColorName('Red')
+        }
+        else if (color === '#0000FF') {
+            setColorName('Blue')
+        }
+        else if (color === '#B76E79') {
+            setColorName('Rose Gold')
+        }
+        else if (color === '#28282B') {
+            setColorName('Matte Black')
+        }
+        else if (color === '#0A0A0A') {
+            setColorName('Jet Black')
+        }
+        else if (color === '#B76E79') {
+            setColorName('Rose Gold')
+        }
+        else if (color === '#800080') {
+            setColorName('Purple')
+        }
+        else if (color === '#383428') {
+            setColorName('Graphite')
+        }
+        else if (color === '#B76E79') {
+            setColorName('Rose Gold')
+        }
+        else if (color === '#1ca9c9') {
+            setColorName('Pacific Blue')
+        }
+        else if (color === '#FFC0CB') {
+            setColorName('Pink')
+        }
+        else if (color === '#808080') {
+            setColorName('Grey')
+        }
+        else if (color === '#EE82EE') {
+            setColorName('Violet')
+        }
+        else if (color === '#cd7f32') {
+            setColorName('Bronze')
+        }
+    }, [color]);
 
     return (
         <Modal
@@ -99,14 +159,14 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
                         </div>
                         <div class="col-sm-10">
                             <div class="aiz-radio-inline">
-                            <label class="aiz-megabox pl-0 mr-2">
+                                <label class="aiz-megabox pl-0 mr-2">
                                     {product.storageprice.sixteen && <><input type="radio" name="storage" value="16GB" onChange={handleOptionChange} />
                                         <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
                                             16GB
                                         </span></>
                                     }
                                 </label>
-                            <label class="aiz-megabox pl-0 mr-2">
+                                <label class="aiz-megabox pl-0 mr-2">
                                     {product.storageprice.thirtytwo && <><input type="radio" name="storage" value="32GB" onChange={handleOptionChange} />
                                         <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
                                             32GB
@@ -168,28 +228,20 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
 
                     <div class="row no-gutters">
                         <div class="col-sm-2">
-                            <div class="opacity-50 my-2">Color: {color}</div>
+                            {product.color && product.color.length > 1 ? <div class="my-2">Color: {colorName}</div> : ''}
                         </div>
+
                         <div class="col-sm-10">
                             <div class="aiz-radio-inline">
-                                <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="Black">
-                                    <input type="radio" name="color" value="Black" onChange={changeColor} />
-                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                                        <span class="size-30px d-inline-block rounded" style={{ background: '#000000' }}></span>
-                                    </span>
-                                </label>
-                                <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="Coral">
-                                    <input type="radio" name="color" value="Silver" onChange={changeColor} />
-                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                                        <span class="size-30px d-inline-block rounded" style={{ background: '#FF7F50' }}></span>
-                                    </span>
-                                </label>
-                                <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="Red">
-                                    <input type="radio" name="color" value="Red" onChange={changeColor} />
-                                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                                        <span class="size-30px d-inline-block rounded" style={{ background: '#FF0000' }}></span>
-                                    </span>
-                                </label>
+                                {product.color && product.color.length > 1 ? product.color.map((c) =>
+                                    <label class="aiz-megabox pl-0 mr-2">
+                                        <input type="radio" name="color" value={c} onChange={changeColor} />
+                                        <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
+                                            <span class="size-30px d-inline-block rounded" style={{ background: `${c}` }}></span>
+                                        </span>
+                                    </label>
+                                )
+                                    : ''}
                             </div>
                         </div>
                     </div>

@@ -97,6 +97,10 @@ const ProductInfo = ({ product }) => {
     } else if (storageSize === '128GB') {
       setStoragePrice(product.storageprice && product.storageprice.onetwentyeight)
     }
+    else if
+      (storageSize === '16GB') {
+      setStoragePrice(product.storageprice && product.storageprice.sixteen)
+    }
     else if (storageSize === '256GB') {
       setStoragePrice(product.storageprice && product.storageprice.twofiftysix)
     }
@@ -169,10 +173,6 @@ const ProductInfo = ({ product }) => {
   return (
     <>
       <div class="text-left">
-        {/* <HelmentData title={product.title}
-        description={product.description}
-        image={product.images && product.images.length ? product.images[0].url : ''}
-      ></HelmentData> */}
         {showAlert && (
           <SweetAlert
             success
@@ -219,7 +219,6 @@ const ProductInfo = ({ product }) => {
                   thousandSeparator
                 /></strong>}
 
-
               </strong>
               <span class="opacity-70"></span>
             </div>
@@ -243,6 +242,13 @@ const ProductInfo = ({ product }) => {
             </div>
             <div class="col-sm-10">
               <div class="aiz-radio-inline">
+                <label class="aiz-megabox pl-0 mr-2">
+                  {product.storageprice.sixteen && <><input type="radio" name="storage" value="16GB" onChange={handleOptionChange} />
+                    <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
+                      16GB
+                                        </span></>
+                  }
+                </label>
                 <label class="aiz-megabox pl-0 mr-2">
                   {product.storageprice.thirtytwo && <><input type="radio" name="storage" value="32GB" onChange={handleOptionChange} />
                     <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
