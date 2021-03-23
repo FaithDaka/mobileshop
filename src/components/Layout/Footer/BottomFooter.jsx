@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const BottomFooter = () => (
-  <footer className="pt-3 pb-7 text-light" style={{backgroundColor: '#131821'}}>
+  <footer className="pt-3 pb-3 text-light" style={{backgroundColor: '#131821'}}>
     <div className="container">
       <div className="row align-items-center">
       <div className="col-lg-4">
@@ -16,12 +16,6 @@ const BottomFooter = () => (
             <li className="list-inline-item">
               <a href="https://instagram.com/mobileshop.ug?igshid=1aj8702pmna3c" target="_blank" className="instagram"><i className="lab la-instagram" /></a>
             </li>
-            {/* <li className="list-inline-item">
-              <a href="#" target="_blank" className="youtube"><i className="lab la-youtube" /></a>
-            </li> */}
-            {/* <li className="list-inline-item">
-              <a href="#" target="_blank" className="linkedin"><i className="lab la-linkedin-in" /></a>
-            </li> */}
           </ul>
         </div>
         <div className="col-lg-4">

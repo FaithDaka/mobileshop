@@ -6,7 +6,7 @@ import TopHeader from './TopHeader'
 const Header = () => {
     return (
         <>
-            <TopHeader />
+            {/* <TopHeader /> */}
             <MiddleHeader />
           
         </>

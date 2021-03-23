@@ -107,7 +107,6 @@ const AddProducts = ({ history }) => {
 
     const ToggleColor = c => () => {
         const currentColorId = color.indexOf(c);
-        console.log("Selected Index", currentColorId)
         const newCheckedColorId = [...color];
         if (currentColorId === -1) {
             newCheckedColorId.push(c);
@@ -118,8 +117,6 @@ const AddProducts = ({ history }) => {
     };
 
     const newcolors = color.toString();
-
-    console.log("Colors ====>", newcolors);
 
     useEffect(() => {
         loadCategories();
