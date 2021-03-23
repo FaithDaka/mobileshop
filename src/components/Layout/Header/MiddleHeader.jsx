@@ -117,12 +117,12 @@ const MiddleHeader = () => {
                         {!token ? <a class="dropdown-toggle no-arrow text-dark"
                             onClick={openModal}><span>
                                 <span class="avatar avatar-sm mr-md-2">
-                                    <i class="las la-user" style={{ fontSize: '32px'}}></i>
+                                    <i class="las la-user" style={{ fontSize: '32px',color:"white"}}></i>
                                 </span>
                             </span></a> : <a class="dropdown-toggle no-arrow text-dark" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
                                 <span class="text-white">
                                     <span class="avatar avatar-sm mr-md-2">
-                                        <i class="las la-user la-2x opacity-80" style={{ fontSize: '32px'}}></i>
+                                        <i class="las la-user la-2x opacity-80" style={{ fontSize: '32px', color:"white"}}></i>
                                     </span>
                                 </span>
                             </a>}
@@ -155,23 +155,7 @@ const MiddleHeader = () => {
                     </div>
                             
                         </div>
-                        {/* <div class="align-self-stretch ml-3 mr-0" data-hover="dropdown">
-                            <div class="nav-cart-box dropdown h-100" id="cart_items">
-                                <a href="javascript:void(0)" class="d-flex align-items-center text-reset h-100" data-toggle="dropdown" data-display="static">
-                                    <i class="la la-shopping-cart la-2x opacity-80"></i>
-                                    <span class="flex-grow-1 ml-1">
-                                        <span class="badge badge-primary badge-inline badge-pill">0</span>
-                                        <span class="nav-box-text d-none d-xl-block opacity-70">Cart</span>
-                                    </span>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg p-0 stop-propagation">
-                                    <div class="text-center p-3">
-                                        <i class="las la-frown la-3x opacity-60 mb-3"></i>
-                                        <h3 class="h6 fw-700">Your Cart is empty</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
+                       
                     </div>
                 </div>
             </div>
