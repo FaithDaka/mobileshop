@@ -9,7 +9,7 @@ const HomePage = () => {
         <>
             <Banner />
             <ProductGroupping />
-            <div class="d-none d-lg-block">
+            <div class="d-none d-lg-block" style={{marginTop:"-3%"}}>
                 <Footer/>
                 <BottomFooter/>
             

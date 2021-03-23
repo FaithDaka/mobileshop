@@ -573,7 +573,8 @@ const AddProducts = ({ history }) => {
                                                         alt="thumbnail"
                                                     />
                                                 </div>
-                                                <span class="badge badge-md badge-inline badge-pill badge-soft-secondary">{c.title.substring(0, 15)}</span>
+                                                
+                                                <span class="aiz-megabox-elem badge badge-md badge-inline badge-pill badge-soft-secondary">{c.title.substring(0, 15)}</span>
                                             </label>
                                         ))}
                                     </div>

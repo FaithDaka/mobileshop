@@ -32,7 +32,8 @@
 	font-size:12px;	
 }
 .thumbnaily-box{
-	margin-right: -10px;
+	/* margin-right: -10px; */
+	margin-top: -190px;
 	width:50px;
 	display: inline;
 	text-align: center;
@@ -61,15 +62,26 @@
 		width: 70% !important;
 		height: 60px;
 	}
-
 	.thumbnaily-box{
-		margin-right: -90px;
+		position: relative;
+		right: 0;
+		margin-top: -600px;
 	}
-	.cross{
+
+	/* .thumbnaily-box{
+		margin-right: -90px;
+	} */
+	/* .cross{
 	bottom: 0;
 	right: 0;
-	}
+	} */
 	.pd-page{
 		margin-top: -10%;
 	}
 } 
+@media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+	[class*="col-"] {
+	  width: 100%;
+	}
+  }

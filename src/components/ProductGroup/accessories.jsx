@@ -9,6 +9,7 @@ const Accessories = () => {
     const [total, setTotal] = useState(0);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
+ 
 
     const pages = new Array(totalPages).fill(null).map((v, i) => i);
 
@@ -49,7 +50,7 @@ const Accessories = () => {
                     <p>Accessories Currently Out of Stock</p>
             }
 
-            <div class="aiz-pagination">
+            <div class="pb-5 aiz-pagination">
                 <nav className="text-center">
                     <span>Showing 1- 20 of {total} results</span>
                     <ul class="pagination d-flex justify-content-center">

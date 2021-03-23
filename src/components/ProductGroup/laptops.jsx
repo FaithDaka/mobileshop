@@ -50,7 +50,7 @@ const LapTops = () => {
                     <p>LapTops Currently Out of Stock</p>
             }
 
-            <div class="aiz-pagination">
+            <div class="pb-5 aiz-pagination">
                 <nav className="text-center">
                     <span>Showing 1- 20 of {total} results</span>
                     <ul class="pagination d-flex justify-content-center">
