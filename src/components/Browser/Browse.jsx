@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import MobileFilter from './MobileFilter'
+import CategoriesModal from '../../pages/Search/categorymodal'
 
 const Browse = () => {
-    const [showDrawer, setShowDrawer] = useState(false);
+   const [modalIsOpen, setIsOpen] = useState(false);
 
-    const openDrawer = () => setShowDrawer(true);
-    const closeDrawer = () => setShowDrawer(false);
+   const openModal = () => setIsOpen(true);
+   const closeModal = () => setIsOpen(false);
 
     return (
         <div class="d-flex align-items-center">
+        <CategoriesModal modalIsOpen={modalIsOpen} close={closeModal} />
             {/* {showDrawer && (<MobileFilter close={closeDrawer} />)} */}
-        <div class="form-group ml-auto mr-0 w-200px d-none d-xl-block">
+        {/* <div class="form-group ml-auto mr-0 w-200px d-none d-xl-block">
            <label class="mb-0 opacity-50">Brands</label>
            <div class="dropdown bootstrap-select form-control form-control-sm aiz-">
               <select class="form-control form-control-sm aiz-selectpicker" data-live-search="true" name="brand" onchange="filter()" tabindex="-98">
@@ -59,9 +61,11 @@ const Browse = () => {
                  </div>
               </div>
            </div>
-        </div>
-        <div class="d-xl-none ml-auto ml-xl-3 mr-0 form-group align-self-end">
-           <button type="button" class="btn btn-icon p-0" data-toggle="class-toggle">
+        </div> */}
+       
+        <div class="d-xl-none mr-auto mr-xr-3 ml-0 form-group ">
+           Filters :
+           <button type="button" class="btn btn-icon p-0" data-toggle="class-toggle" onClick={openModal}>
            <i class="la la-filter la-2x"></i>
            </button>
         </div>

@@ -1,0 +1,6 @@
+.cats{
+    text-transform: uppercase;
+}
+li:hover, li:active, li:focus{
+    background:none !important;
+}

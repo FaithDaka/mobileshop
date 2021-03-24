@@ -1,62 +1,55 @@
-import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
-import Product from '../../components/Product';
-import LoadSpinner from '../../components/Spinner';
-import Browse from '../../components/Browser/Browse'
-import Pagination from '../../components/Pagination'
-import { getProductBrands } from "../../functions/products";
-
-const Categories = ({ match }) => {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(false);
-
-    const { slug } = match.params;
-
-    useEffect(() => {
-        setLoading(true);
-        getProductBrands(slug).then((res) => {
-            setProducts(res.data);
-            setLoading(false);
-        });
-    }, [slug]);
+import React, { useState } from 'react';
+import Modal from 'react-modal';
 
 
+const customStyles = {
+    content: {
+        top: '50%',
+        transform: 'translateY(-50%)'
+    },
+    overlay: {
+        backgroundColor: 'rgba(77,77,77,0.6)',
+        zIndex: '10000'
+    }
+};
+
+Modal.setAppElement('#root');
+
+const CategoriesModal = ({ modalIsOpen, close }) => {
 
     return (
-        <section class="mb-4 pt-3">
-            {loading && <LoadSpinner />}
-            <div class="container sm-px-0">
-                <form class="" id="search-form" action="" method="GET">
-                    <div class="row">
-                        <div class="col-xl-3 d-none d-lg-block">
-
-                            <section>
-                                <ul class="breadcrumb bg-transparent p-0">
-                                    <li class="breadcrumb-item opacity-50 fs-16">
-                                        Filters
-                                </li>
-
-                                </ul>
-
-                                <section className="shadow-lg p-3 mb-5 bg-white rounded">
+        <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={close}
+            style={customStyles}
+            contentLabel="Filters"
+            className="modal-dialog modal-dialog-centered"
+            id="login-modal" >
+            <div className="modal-content">
+                <div className="modal-body">
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={close}>
+                        <span aria-hidden="true"><i className="icon-close"></i></span>
+                    </button>
+                    <section className="shadow-lg p-3 mb-5 bg-white rounded">
 
 
 
-                                    <section class="border-bottom mb-4 pb-3 pt-2">
+                    <section class="border-bottom mb-4">
 
-                                        <h6 class="font-weight-bold mb-3">Condition</h6>
+<h6 class="font-weight-bold mb-3">Condition</h6>
 
-                                        <div class="form-check mb-3">
-                                            <input type="checkbox" class="form-check-input filled-in" id="new" />
-                                            <label class="form-check-label  text-uppercase card-link-secondary" for="new">New</label>
-                                        </div>
-                                        <div class="form-check mb-3">
-                                            <input type="checkbox" class="form-check-input filled-in" id="used" />
-                                            <label class="form-check-label  text-uppercase card-link-secondary" for="used">UK Used</label>
-                                        </div>
+<div class="form-check mb-3">
+    <input type="checkbox" class="form-check-input filled-in" id="34" />
+    <label class="form-check-label  text-uppercase card-link-secondary" for="34">New</label>
+</div>
+<div class="form-check mb-3">
+    <input type="checkbox" class="form-check-input filled-in" id="36" />
+    <label class="form-check-label  text-uppercase card-link-secondary" for="36">Uk used</label>
+</div>
 
 
-                                    </section>
+
+</section>
 
 
                                     <section class="border-bottom mb-4">
@@ -147,38 +140,37 @@ const Categories = ({ match }) => {
                                         <span class="d-md-inline-block"> Apply</span>
                                     </button>
                                 </section>
-
-
-                            </section>
-
+                        <section class="gry-bg py-2">
+                        <div class="profile">
+                           <div class="container">
+                              <div class="row">
+                                 <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-8 mx-auto">
+                                    <div class="modal-card">
+                                       <div class="text-center pt-4">
+                                          <h1 class="h4 fw-600">
+                                          Filters
+                                          </h1>
+                                          <span class="opacity-60">Please make sure you fill in a valid phone number so we can reach you during delivery.</span>
+                                       </div>
+                                       <div class="px-4 py-3 py-lg-4">
+                                          
+                                          
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
-                        <div class="col-xl-9">
-                            <ul class="breadcrumb bg-transparent p-0">
-                                <li class="breadcrumb-item opacity-50">
-                                    <Link class="text-reset" to="/">Home</Link>
-                                </li>
-                                <li class="breadcrumb-item opacity-50">
-                                    <a class="text-reset" href="#">All Categories</a>
-                                </li>
-                            </ul>
-                            <div class="text-left">
-                                <Browse />
-                            </div>
-                            <input type="hidden" name="min_price" value="" />
-                            <input type="hidden" name="max_price" value="" />
+                     </section>
 
-                            <div class="row gutters-5 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
-                                {products && products.length > 0 ? products.map(item => (
-                                    <Product product={item} />
-                                )) : 'No Products in this Category Yet ??'}
-                            </div>
+                   
 
-                        </div>
-                    </div>
-                </form>
+                    
+                </div>
             </div>
-        </section>
+        </Modal>
     )
 }
 
-export default Categories
+
+export default CategoriesModal;
