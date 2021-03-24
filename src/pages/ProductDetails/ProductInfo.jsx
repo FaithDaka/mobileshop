@@ -32,6 +32,8 @@ const ProductInfo = ({ product }) => {
   const history = useHistory();
   const token = localStorage.getItem('token');
 
+  console.log("Product Details ====>", product)
+
   const openModal = () => {
 
     const data = {
@@ -355,20 +357,6 @@ const ProductInfo = ({ product }) => {
           </div>
 
           <div className="row no-gutters" id="chosen_price_div">
-
-            {/* <div className="col-sm-10">
-              <div className="product-price">
-                <strong id="chosen_price" className="h4 fw-700 text-primary">UGX {product.discount ? <CurrencyFormat
-                  value={product.discountprice * quantity}
-                  displayType="text"
-                  thousandSeparator
-                /> : <CurrencyFormat
-                  value={product.price * quantity}
-                  displayType="text"
-                  thousandSeparator
-                />}</strong>
-              </div>
-            </div> */}
             <RelatedAccessories product={product} />
           </div>
 

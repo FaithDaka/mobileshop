@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Product from '../../components/Product';
 import LoadSpinner from '../../components/Spinner';
 import Browse from '../../components/Browser/Browse'
-import Filters from '../../components/Browser/Filters'
+import Filters from './Filters';
 import Pagination from '../../components/Pagination'
 import { fetchProductsByFilter } from "../../functions/products";
 import Footer from '../../components/Layout/Footer/index';
@@ -39,7 +39,7 @@ const SearchFilters = () => {
                 <form class="" id="search-form" action="" method="GET">
                     <div class="row">
                         <div class="col-xl-3">
-                            {/* <Filters /> */}
+                            <Filters />
                         </div>
                         <div class="col-xl-9">
                             <ul class="breadcrumb bg-transparent p-0">

@@ -39,8 +39,6 @@ const ProductDetails = ({ match }) => {
         window.scrollTo(0, 0)
     }, [])
 
-    console.log("Product Details ====>", product)
-
     return (
         <>
             <section class="mb-4 mt-4 pt-3">
