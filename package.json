@@ -51,7 +51,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "react-scripts build && scp -r ./build/* uat@134.209.158.75:/var/www/mobileshop/html"
+    "deploy": "react-scripts build && scp -r ./build/* mobileprod@167.71.37.230:/var/www/mobileshop/html"
   },
   "eslintConfig": {
     "extends": [
