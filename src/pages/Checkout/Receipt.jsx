@@ -165,8 +165,14 @@ const Receipt = ({ location }) => {
                     </div>
                 </div>
             </div>
+            <div className='d-lg-none pb-5'>
+                <Footer />
+                <BottomFooter />
+            </div>
+            <div className='d-none d-lg-block' style={{marginBottom:"-2%"}} >
             <Footer />
             <BottomFooter />
+            </div>
         </section>
     )
 }

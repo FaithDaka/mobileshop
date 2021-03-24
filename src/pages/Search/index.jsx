@@ -66,8 +66,7 @@ const SearchFilters = () => {
                     </div>
                 </form>
             </div>
-            <Footer />
-            <BottomFooter />
+            
         </section>
     )
 }

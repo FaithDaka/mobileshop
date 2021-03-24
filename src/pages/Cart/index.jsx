@@ -41,8 +41,14 @@ const Cart = () => {
         <section class="mb-4 my-4 pt-4">
             <CartDetails cart={cartItems} total={getTotal()} checkout={goToCheckout} />
             <LoginModal modalIsOpen={modalIsOpen} close={closeModal} />
+            <div className='d-lg-none pb-3'>
             <Footer />
             <BottomFooter />
+            </div>
+            <div className='d-none d-lg-block' style={{marginBottom:"-2%"}} >
+            <Footer />
+            <BottomFooter />
+            </div>
         </section>
     )
 }
