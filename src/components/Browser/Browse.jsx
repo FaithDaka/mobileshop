@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import MobileFilter from './MobileFilter'
 import CategoriesModal from '../../pages/Search/categorymodal'
 
 const Browse = () => {

@@ -8,12 +8,9 @@ const ProductSpecs = ({ product, related }) => {
   return (
     <section className="mb-4">
       <div className="container">
-        <div class="bg-white shadow-sm rounded p-3">
+        <div class="bg-white shadow-sm rounded">
           <div className="col-xl-9 order-0 order-xl-1">
-            {product.condition === 'Brand New' && <Specs product={product} />}
-            {product.condition === 'Uk Used' && <Specs product={product} />}
-            {product.condition !== 'Uk Used' && product.condition !== 'Brand New ' && <TvSpecs product={product} />}
-
+            {product.category && product.category.name === 'Mobile Phones' ? <Specs product={product} /> : <TvSpecs product={product} />}
           </div>
         </div>
         <div class="bg-white shadow-sm rounded p-3" style={{ marginTop: "4%" }}>
