@@ -21,7 +21,7 @@ const Phones = () => {
   const lastProduct = pageNumberNew * productsPerPage;
   const firstProduct = lastProduct - productsPerPage;
   const currentProducts = brandnew.slice(firstProduct, lastProduct);
-
+  const currentProduct = ukused.slice(firstProduct, lastProduct);
   const renderView = () => {
     if (currentTab === 'brandnew') {
       return <BrandNew
@@ -43,6 +43,8 @@ const Phones = () => {
         pageNumber={pageNumberUsed}
         count={setPageNumberUsed}
         totalused={totalUsed}
+        firstProduct={firstProduct}
+        currentProducts={currentProduct}
       />;
     }
   }

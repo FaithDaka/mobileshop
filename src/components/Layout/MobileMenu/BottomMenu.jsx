@@ -11,7 +11,7 @@ const BottomMenu = ({open}) => {
    
       <div className="navigation--list">
       <div>
-      chhh
+   
     </div>
         <div className="navigation__content">
           <Link to="/" className="navigation__item ">

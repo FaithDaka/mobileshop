@@ -36,7 +36,7 @@ const BrandNew = ({ products, loading, total, pageNumber, count, totalnew, first
       }
 
       
-      <div class="aiz-pagination">
+      <div class="pb-5 aiz-pagination">
         <nav className="text-center">
         <span>Showing {firstProduct + 1} - {firstProduct + currentProducts.length} of {totalnew} results</span>
           <ul class="pagination d-flex justify-content-center">

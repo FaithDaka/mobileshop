@@ -43,7 +43,7 @@ const ProductDetails = ({ match }) => {
 
     return (
         <>
-            <section class="mb-4 pt-3">
+            <section class="mb-4 mt-4 pt-3">
                 <div class="container"> 
                     {loading && <LoadSpinner />}
                     <div class="col" id="pd-top-links">

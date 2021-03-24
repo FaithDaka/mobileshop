@@ -51,7 +51,7 @@ const AddProducts = ({ history }) => {
         {id: 2, name: 'Yellow', code: '#FFFF00'},
         {id: 3, name: 'Red', code: '#FF0000'},
         {id: 4, name: 'Blue', code: '#0000FF'},
-        {id: 5, name: 'Gold', code: '#FFD700'},
+        {id: 5, name: 'Gold', code: '#E6BE8A'},
         {id: 6, name: 'Silver', code: '#C0C0C0'},
         {id: 7, name: 'Rose Gold', code: '#B76E79'},
         {id: 8, name: 'Matte Black', code: '#28282B'},
@@ -570,7 +570,8 @@ const AddProducts = ({ history }) => {
                                                         alt="thumbnail"
                                                     />
                                                 </div>
-                                                <span class="badge badge-md badge-inline badge-pill badge-soft-secondary">{c.title.substring(0, 15)}</span>
+                                                
+                                                <span class="aiz-megabox-elem badge badge-md badge-inline badge-pill badge-soft-secondary">{c.title.substring(0, 15)}</span>
                                             </label>
                                         ))}
                                     </div>

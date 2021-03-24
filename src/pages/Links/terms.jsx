@@ -1,7 +1,11 @@
 import React from 'react'
 import './styles.css'
+import Footer from '../../components/Layout/Footer/index'
+import BottomFooter from '../../components/Layout/Footer/BottomFooter'
+
 const Terms = () => {
     return (
+        <>
         <section className="terms">
             <div id="content" class="site-content bg-white py-4 px-3">
 
@@ -83,6 +87,11 @@ This clause largely follows the wording recommended in the Regulations and it in
                 </div>
             </div>
         </section>
+          <div>
+          <Footer/>
+          <BottomFooter/>
+      </div>
+      </>
     )
 }
 

@@ -83,11 +83,11 @@ const Footer = () => (
                   Order History
                 </a>
               </li>
-              <li className="mb-2">
+              {/* <li className="mb-2">
                 <a className="opacity-50 hov-opacity-100 text-reset" href="#">
                   My Wishlist
                 </a>
-              </li>
+              </li> */}
               <li className="mb-2">
                 <a className="opacity-50 hov-opacity-100 text-reset" href="#">
                   Track Order

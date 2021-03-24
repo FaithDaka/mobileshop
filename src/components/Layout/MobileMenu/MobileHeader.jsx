@@ -67,7 +67,9 @@ const MobileHeader = ({open}) => {
                     </Link>
                 </div>
                 </div>
+                
                 <div className="d-flex justify-content-around align-items-center align-items-stretch">
+                <Link to ='/cart'>
                 <div className="pt-2 text-white">
                     <div className="d-lg-block ml-3 mr-0">
                         <span class="btn btn-icon p-1">
@@ -78,6 +80,7 @@ const MobileHeader = ({open}) => {
                                 </span>
                     </div>
                 </div>
+                </Link>
                 <div class="aiz-topbar-item text-white">
                     <div class="align-items-center d-flex dropdown">
                         {!token ? <a class="dropdown-toggle no-arrow text-dark"
