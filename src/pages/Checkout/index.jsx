@@ -332,7 +332,7 @@ const Checkout = ({ history }) => {
 
             <section class="gry-bg">
                  <div className="container">
-                <div class="shadow-sm bg-white py-2 px-2rounded">
+                <div class="shadow-sm bg-white py-2 px-2 rounded">
                     <div >
                         <label class="aiz-checkbox">
                             <input type="checkbox" id="agree_checkbox" checked={termsCheck} onChange={(e) => setTermChecked(e.target.checked)} name="terms" />

@@ -183,7 +183,7 @@ const BuyNow = ({ history }) => {
                                 <div class="card-header p-3">
                                     <h3 class="fs-16 fw-600 mb-0">
                                         Select a payment option
-                 </h3>
+                                 </h3>
                                 </div>
                                 <div class="card-body text-center">
                                     <div class="row">
@@ -323,7 +323,7 @@ const BuyNow = ({ history }) => {
 
             <section class="gry-bg">
                 <div className="container">
-                    <div class="shadow-sm bg-white py-2 px-2rounded">
+                    <div class="shadow-sm bg-white py-2 px-2 rounded">
                         <div >
                             <label class="aiz-checkbox">
                                 <input type="checkbox" id="agree_checkbox" checked={termsCheck} onChange={(e) => setTermChecked(e.target.checked)} name="terms" />
@@ -356,9 +356,9 @@ const BuyNow = ({ history }) => {
                 <Footer />
                 <BottomFooter />
             </div>
-            <div className='d-none d-lg-block' style={{marginBottom:"-2%"}} >
-            <Footer />
-            <BottomFooter />
+            <div className='d-none d-lg-block' style={{ marginBottom: "-2%" }} >
+                <Footer />
+                <BottomFooter />
             </div>
         </>
     )
