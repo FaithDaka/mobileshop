@@ -23,12 +23,7 @@ const ProductImage = ({ product }) => {
     );
   };
 
-  const iconstyles = {
-    fontSize: "20px",
-    border: "none",
-    color: "#f90",
 
-  }
   const urlToObject = async (url) => {
     const response = await fetch(url);
     const blob = await response.blob();
@@ -56,7 +51,6 @@ const ProductImage = ({ product }) => {
     console.log(files)
   };
 
-
   return (
     <div className="row">
       <div className="col-3">
@@ -82,19 +76,30 @@ const ProductImage = ({ product }) => {
         </div>
 
       </div>
-      <div className="col-9">
-        <div className="img-box">
+      <div className="col-9" >
+        <div className='d-none d-lg-block'>
+          {
+            product.category && product.category.name === 'Mobile Phones' || product.category && product.category.name === 'Tablets' ?
 
-          {renderImage()}
+              <div className="img-box">
+
+                {renderImage()}
+              </div>
+              :
+              <div className='ml-0 pl-0 pt-2 '>
+
+                {renderImage()}
+              </div>
+          }
+        </div>
+        <div class="d-lg-none">
+          <div className="img-box">
+
+            {renderImage()}
+          </div>
         </div>
 
-        <div class="border p-1 rounded float-right thumbnaily-box" >
-          <i class="bi bi-share" onClick={sharePage} style={iconstyles}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
-              <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
-            </svg>
-          </i>
-        </div>
+
       </div>
 
     </div>

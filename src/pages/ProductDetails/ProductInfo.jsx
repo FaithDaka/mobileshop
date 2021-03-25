@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import _ from "lodash";
 import { toast } from "react-toastify";
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import CurrencyFormat from 'react-currency-format';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import BuyNowModal from "../../components/Modal/buynow-modal";
 import { addToCart } from '../../store/actions/cartActions';
 import RelatedAccessories from './RelatedAccessories';
+import { useHistory, useLocation } from 'react-router-dom';
+
 
 const ProductInfo = ({ product }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -22,12 +23,48 @@ const ProductInfo = ({ product }) => {
   const hideAlert = () => setShowAlert(false);
   const changeColor = (e) => setColor(e.target.value);
   const handleOptionChange = (e) => setStorageSize(e.target.value);
+  let location = useLocation();
+  let currentUrl = "https://mobileshop.ug" + location.pathname;
 
   const decQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1)
     }
   }
+  const iconstyles = {
+    fontSize: "20px",
+    border: "none",
+    color: "#f90",
+
+  }
+  let shareImage = product.images && product.images.length ? product.images[0].url : ''
+
+  const urlToObject = async (url) => {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const file = new File([blob], { shareImage }, { type: blob.type });
+    return file;
+  };
+  const files = urlToObject({ currentUrl })
+
+  const sharePage = () => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "Checkout this product on mobileshop",
+          text: product.title,
+          url: document.location.href,
+          file: { files }
+        })
+        .then(() => {
+          console.log('Successfully shared');
+        })
+        .catch(error => {
+          console.error('Something went wrong sharing the blog', error);
+        });
+    }
+    console.log(files)
+  };
 
   const history = useHistory();
   const token = localStorage.getItem('token');
@@ -349,9 +386,11 @@ const ProductInfo = ({ product }) => {
                 <span class="d-md-inline-block"> Buy Now</span>
               </button>
               <button type="button" className=" btn btn-product-call">
-                <a href="tel:0751290264">
-                  <i class="las la-phone la-2x btn-call-details"></i>
-                </a>
+                <i class="bi bi-share" onClick={sharePage} style={iconstyles}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                    <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
+                  </svg>
+                </i>
               </button>
             </div>
           </div>
@@ -373,11 +412,15 @@ const ProductInfo = ({ product }) => {
             <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
               <span class="d-md-inline-block"> Buy Now</span>
             </button>
-            <button type="button" className=" btn btn-product-call">
-              <a href="tel:0751290264">
-                <i class="las la-phone la-2x btn-call-details"></i>
-              </a>
-            </button>
+            <div className='d-none d-lg-block'>
+              <button type="button" className=" btn btn-product-call">
+                <i class="bi bi-share" onClick={sharePage} style={iconstyles}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                    <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
+                  </svg>
+                </i>
+              </button>
+            </div>
           </div>
         </div>
 
