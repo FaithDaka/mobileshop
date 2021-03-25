@@ -1,6 +1,7 @@
-.cats{
-    text-transform: uppercase;
+ul ul li {
+	top:0;
+	left:1700px;
 }
-li:hover, li:active, li:focus{
-    background:none !important;
+ul ul li :hover ,ul li :hover ,ul ul li :active,ul li :active,ul li :focus ,ul ul li :focus {
+	color: #f90 !important;
 }
