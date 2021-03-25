@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import _ from "lodash";
 import { toast } from "react-toastify";
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import CurrencyFormat from 'react-currency-format';
 import SweetAlert from 'react-bootstrap-sweetalert';
@@ -20,6 +20,8 @@ const ProductInfo = ({ product }) => {
   const hideAlert = () => setShowAlert(false);
   const changeColor = (e) => setColor(e.target.value);
   const handleOptionChange = (e) => setStorageSize(e.target.value);
+  let location = useLocation();
+  let currentUrl = "https://mobileshop.ug" + location.pathname;
 
   const decQuantity = () => {
     if (quantity > 1) {
@@ -63,7 +65,7 @@ const ProductInfo = ({ product }) => {
     <div>
       Product Added To Cart Successfully
       <Link to='/cart' className="pl-2">
-      <button class="btn btn-sm btn-primary">Go To Cart</button>
+        <button class="btn btn-sm btn-primary">Go To Cart</button>
       </Link>
     </div>
   )
@@ -85,6 +87,12 @@ const ProductInfo = ({ product }) => {
     dispatch(addToCart(cat))
     toast(Msg)
   };
+  const iconstyles = {
+    fontSize: "20px",
+    border: "none",
+    color: "#f90",
+
+  }
 
   useEffect(() => {
     if (storageSize === '32GB') {
@@ -104,6 +112,34 @@ const ProductInfo = ({ product }) => {
 
   }, [storageSize]);
 
+  let shareImage = product.images && product.images.length ? product.images[0].url : ''
+
+  const urlToObject = async (url) => {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const file = new File([blob], { shareImage }, { type: blob.type });
+    return file;
+  };
+  const files = urlToObject({ currentUrl })
+
+  const sharePage = () => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "Checkout this product on mobileshop",
+          text: product.title,
+          url: document.location.href,
+          file: { files }
+        })
+        .then(() => {
+          console.log('Successfully shared');
+        })
+        .catch(error => {
+          console.error('Something went wrong sharing the blog', error);
+        });
+    }
+    console.log(files)
+  };
 
   return (
     <>
@@ -136,27 +172,27 @@ const ProductInfo = ({ product }) => {
             <span class="badge badge-md badge-inline badge-pill badge-success">{product.condition}</span>
           </div>
         </div>
-        
-      <hr />
-      <div class="row no-gutters mt-2">
-        <div class="col-sm-10">
-          <div class="">
-            <strong class="h2 fw-700 text-primary">
-              {product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
-                value={product.discountprice * quantity}
-                displayType="text"
-                thousandSeparator
-              /></strong>}
-              {!product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
-                value={product.price * quantity}
-                displayType="text"
-                thousandSeparator
-              /></strong>}
-              {storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
-                value={storagePrice * quantity}
-                displayType="text"
-                thousandSeparator
-              /></strong>}
+
+        <hr />
+        <div class="row no-gutters mt-2">
+          <div class="col-sm-10">
+            <div class="">
+              <strong class="h2 fw-700 text-primary">
+                {product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                  value={product.discountprice * quantity}
+                  displayType="text"
+                  thousandSeparator
+                /></strong>}
+                {!product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                  value={product.price * quantity}
+                  displayType="text"
+                  thousandSeparator
+                /></strong>}
+                {storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                  value={storagePrice * quantity}
+                  displayType="text"
+                  thousandSeparator
+                /></strong>}
 
 
               </strong>
@@ -277,24 +313,29 @@ const ProductInfo = ({ product }) => {
 
           <hr />
           <div className="d-none d-lg-block p-2 mb-2 bg-white ">
-              <div class="mt-2" style={{
-                display: "flex",
-                position: "relative",
-                transition: "all .35s ease",
-              }}>
-                <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
-                  <span class="d-md-inline-block"> Add to cart</span>
-                </button>
-                <button type="button" class="btn btn-primary buy-now fw-600"onClick={openModal}>
+            <div class="mt-2" style={{
+              display: "flex",
+              position: "relative",
+              transition: "all .35s ease",
+            }}>
+              <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
+                <span class="d-md-inline-block"> Add to cart</span>
+              </button>
+              <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
                 <span class="d-md-inline-block"> Buy Now</span>
-                </button>
+              </button>
+              <div className='d-none d-lg-block'>
                 <button type="button" className=" btn btn-product-call">
-                  <a href="tel:0751290264">
-                    <i class="las la-phone la-2x btn-call-details"></i>
-                  </a>
+                  <i class="bi bi-share" onClick={sharePage} style={iconstyles}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                      <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
+                    </svg>
+                  </i>
                 </button>
               </div>
+
             </div>
+          </div>
 
           <div className="row no-gutters" id="chosen_price_div">
             <div className="col-sm-2">
@@ -316,29 +357,29 @@ const ProductInfo = ({ product }) => {
           </div>
 
         </form>
-            <div className="d-sm-none shadow p-2 mb-2 bg-white rounded scroll">
-              <div class="mt-2" style={{
-                display: "flex",
-                position: "relative",
-                transition: "all .35s ease",
-              }}>
-                <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
-                  <span class="d-md-inline-block"> Add to cart</span>
-                </button>
-                <button type="button" class="btn btn-primary buy-now fw-600"onClick={openModal}>
-                <span class="d-md-inline-block"> Buy Now</span>
-                </button>
-                <button type="button" className=" btn btn-product-call">
-                  <a href="tel:0751290264">
-                    <i class="las la-phone la-2x btn-call-details"></i>
-                  </a>
-                </button>
-              </div>
-            </div>
+        <div className="d-sm-none shadow p-2 mb-2 bg-white rounded scroll">
+          <div class="mt-2" style={{
+            display: "flex",
+            position: "relative",
+            transition: "all .35s ease",
+          }}>
+            <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
+              <span class="d-md-inline-block"> Add to cart</span>
+            </button>
+            <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
+              <span class="d-md-inline-block"> Buy Now</span>
+            </button>
+            <button type="button" className=" btn btn-product-call">
+              <a href="tel:0751290264">
+                <i class="las la-phone la-2x btn-call-details"></i>
+              </a>
+            </button>
+          </div>
+        </div>
 
         {/* } */}
       </div>
-      
+
     </>
   )
 }
