@@ -85,7 +85,6 @@ const EditProducts = ({ history, match }) => {
             setImages(p.data.images);
             setCategory(p.data.category._id);
             setSubs(p.data.subs._id);
-            setColor(p.data.colors);
             setStorageChecked(p.data.storageChecked)
             setMemory(p.data.memory);
             setCondition(p.data.condition);
@@ -153,8 +152,8 @@ const EditProducts = ({ history, match }) => {
         }
         setColor(newCheckedColorId);
     };
-
-    const newcolors = color ? color.toString() : 'Black';
+    
+    const newcolors = color.toString();
 
     useEffect(() => {
         loadCategories();
