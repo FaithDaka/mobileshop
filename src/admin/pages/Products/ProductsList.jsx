@@ -75,7 +75,7 @@ const ProductsList = () => {
         window.scrollTo(0, 0)
     }, [pageNumber]);
 
-    // const filteredProducts = productSearch.filter((product) => product.title.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
+    const filteredProducts = productSearch.filter((product) => product.title.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
 
     return (
         <>
@@ -119,7 +119,7 @@ const ProductsList = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* {searchTerm ? <>{filteredProducts.map((product) => (
+                                    {searchTerm ? <>{filteredProducts.map((product) => (
                                         <tr>
                                             <td style={{ display: 'table-cell' }}>{product.title}</td>
                                             <td style={{ display: 'table-cell' }}>{product.category && product.category.name}</td>
@@ -165,19 +165,19 @@ const ProductsList = () => {
                                     ))}
                                     </>
                                     
-                                    } */}
+                                    }
 
-{products.map((product) => (
+{/* {products.map((product) => (
                                         <tr>
                                             <td style={{ display: 'table-cell' }}>{product.title}</td>
                                             <td style={{ display: 'table-cell' }}>{product.category && product.category.name}</td>
                                             <td style={{ display: 'table-cell' }}>{moment(product.createdAt).format('l')}</td>
-                                            {/* <td style={{ display: 'table-cell' }}>
+                                            <td style={{ display: 'table-cell' }}>
                                                 <CurrencyFormat
                                                 value={product.price}
                                                 displayType="text"
                                                 thousandSeparator
-                                            /></td> */}
+                                            /></td>
                                             <td style={{ display: 'table-cell' }}>{product.condition}</td>
                                             <td class="text-right footable-last-visible" style={{ display: 'table-cell' }}>
                                                 <Link class="btn btn-soft-primary btn-icon btn-circle btn-sm" to={`/admin/update/${product._id}`} title="Edit">
@@ -188,7 +188,7 @@ const ProductsList = () => {
                                                 </span>
                                             </td>
                                         </tr>
-                                    ))}
+                                    ))} */}
                                    
                                 </tbody>
                             </table>

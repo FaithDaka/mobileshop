@@ -140,7 +140,10 @@ const AddAccessory = ({ history }) => {
                                         <option value="samsung">Samsung</option>
                                         <option value="opp">Oppo</option>
                                         <option value="infinix">Infinix</option>
-                                        <option value="aramo">Aramo</option>
+                                        <option value="huwaei">Huwaei</option>
+                                        <option value="sony">Sony</option>
+                                        <option value="jbl">JBL</option>
+                                        <option value="generic">Generic</option>
                                     </select>
                                 </div>
                             </div>

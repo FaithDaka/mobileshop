@@ -25,28 +25,22 @@ const RelatedAccessories = ({ product }) => {
     </div>
   )
 
-  const handleAddToCart = () => {
-
+  const handleAddToCart = (e) => {
+    e.preventDefault();
     const cat = {
-      _id: product._id,
-      title: product.title,
-      images: product.images[0].url,
-      price: product.price,
+      id: product.accessorys._id,
+      title: product.accessorys.title,
+      images: product.accessorys.images && product.accessorys.images[0].url,
+      price: product.accessorys.price,
       discount: product.discount,
-      discountprice: product.discountprice,
+      discountprice: product.accessorys.discountprice,
       quantity: 1
     }
 
-    var array = JSON.parse(window.localStorage.getItem("cartItems")) || [];
-    var value = cat.id
-    if (array.indexOf(value) === -1) {
-      dispatch(addToCart(cat))
-      toast(Msg)
-    } else {
-      toast.error("Product Already Added To Cart")
-    }
+    dispatch(addToCart(cat))
+    toast(Msg)
+};
 
-  };
   const settings = {
     dots: true,
     infinite: true,
