@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom'
 import { toast } from "react-toastify";
 import CurrencyFormat from 'react-currency-format';
 import LoadSpinner from '../../../components/Spinner';
-import { getAccessories, removeAccessory } from "../../../functions/accessory";
+import { getAccessories, removeAccessory, searchAccessories } from "../../../functions/accessory";
 
 const ListAccessories = () => {
     const [accessories, setAccessories] = useState([]);
+    const [accessorySearch, setAccessorySearch] = useState([]);
     const [loading, setLoading] = useState(false);
     const [pageNumber, setPageNumber] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
@@ -41,6 +42,17 @@ const ListAccessories = () => {
             });
     };
 
+    const loadSearchAccessories = () => {
+        searchAccessories()
+            .then((res) => {
+                setAccessorySearch(res.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
     const handleRemove = (slug) => {
         if (window.confirm("Delete?")) {
             removeAccessory(slug)
@@ -57,8 +69,13 @@ const ListAccessories = () => {
 
     useEffect(() => {
         loadAllProducts();
+        loadSearchAccessories();
         window.scrollTo(0, 0)
     }, [pageNumber]);
+
+    const filteredAccessories = accessorySearch.filter((product) => product.title.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
+
+    console.log("Accessories =====>", accessories);
 
     return (
         <>
@@ -103,7 +120,32 @@ const ListAccessories = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+
+                                {searchTerm ? <>
+                                    {filteredAccessories.map((product) => (
+                                        <tr>
+                                            <td style={{ display: 'table-cell' }}>{product._id}</td>
+                                            <td style={{ display: 'table-cell' }}>{product.title}</td>
+                                            <td style={{ display: 'table-cell' }}>{product.brand}</td>
+                                            <td style={{ display: 'table-cell' }}>{product.color}</td>
+                                            <td style={{ display: 'table-cell' }}>{moment(product.createdAt).format('l')}</td>
+                                            <td style={{ display: 'table-cell' }}>
+                                                <CurrencyFormat
+                                                value={product.price}
+                                                displayType="text"
+                                                thousandSeparator
+                                            /></td>
+                                            <td class="text-right footable-last-visible" style={{ display: 'table-cell' }}>
+                                                <Link class="btn btn-soft-primary btn-icon btn-circle btn-sm" to={`/admin/updateaccessory/${product._id}`} title="Edit">
+                                                    <i class="las la-edit"></i>
+                                                </Link>
+                                                <span class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" onClick={() => handleRemove(product.slug)} title="Delete">
+                                                    <i class="las la-trash"></i>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                    </> : <> 
                                      {accessories.map((product) => (
                                         <tr>
                                             <td style={{ display: 'table-cell' }}>{product._id}</td>
@@ -127,7 +169,10 @@ const ListAccessories = () => {
                                             </td>
                                         </tr>
                                     ))}
-                                   
+                                    </>
+                                    
+                                    }
+                                    
                                 </tbody>
                             </table>
                         </div>
