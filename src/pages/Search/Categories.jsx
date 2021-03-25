@@ -47,12 +47,19 @@ const Categories = ({ match }) => {
                             </div>
                             <input type="hidden" name="min_price" value="" />
                             <input type="hidden" name="max_price" value="" />
-
-                            <div class="row gutters-5 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
+                            {
+                                products?
+                                <div class="row gutters-5 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
+                                
                                 {products && products.length > 0 ? products.map(item => (
                                     <Product product={item} />
                                 )) : 'No Products in this Category Yet ??'}
                             </div>
+                            :
+                            <p>No Products in this Category Yet ??</p>
+                            }
+
+                            <Link to ='preorder'>Pre order</Link>
 
                         </div>
                     </div>

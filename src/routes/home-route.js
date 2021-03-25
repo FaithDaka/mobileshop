@@ -18,6 +18,7 @@ const Aboutus = React.lazy(() => import("../pages/Links/about-us"));
 const FAQS = React.lazy(() => import("../pages/Links/faqs"));
 const Terms = React.lazy(() => import("../pages/Links/terms"));
 const LoginAdmin = React.lazy(() => import("../admin/pages/Staff/loginStaff"));
+const PreOrder = React.lazy(() => import("../pages/Search/preorder"));
 
 const HomeRoute = () => {
 
@@ -38,7 +39,8 @@ const HomeRoute = () => {
       <Route exact path="/terms" component={Terms} /> 
       <Route exact path="/login/staff" component={LoginAdmin} />
       <Route exact path="/products/:slug" component={ Categories } /> 
-      <Route exact path="/category/:condition" component={ TypeCategories } />     
+      <Route exact path="/category/:condition" component={ TypeCategories } />  
+      <Route exact path="/preorder" component={PreOrder}/>   
     </Layout>
   </Switch>
   </React.Suspense>
