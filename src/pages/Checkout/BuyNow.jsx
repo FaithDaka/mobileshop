@@ -183,7 +183,7 @@ const BuyNow = ({ history }) => {
                                 <div class="card-header p-3">
                                     <h3 class="fs-16 fw-600 mb-0">
                                         Select a payment option
-                 </h3>
+                                 </h3>
                                 </div>
                                 <div class="card-body text-center">
                                     <div class="row">
@@ -192,11 +192,11 @@ const BuyNow = ({ history }) => {
 
                                                 <div class="col-6 col-md-4">
                                                     <label class="aiz-megabox d-block mb-3">
-                                                        <input value="cash_on_delivery" class="online_payment" type="radio" name="payment_option" checked="" />
+                                                        <input value="cash_on_delivery" class="online_payment" type="radio" name="payment_option" checked="yes" />
                                                         <span class="d-block p-3 aiz-megabox-elem">
-                                                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/cards/cod.png" class="img-fluid mb-2" />
+                                                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/cards/cod.png" class="img-fluid mb-2" width="75"/>
                                                             <span class="d-block text-center">
-                                                                <span class="d-block fw-600 fs-15">Cash on Delivery</span>
+                                                                <span class="d-block fw-600 fs-14">Cash on Delivery</span>
                                                             </span>
                                                         </span>
                                                     </label>
@@ -206,9 +206,9 @@ const BuyNow = ({ history }) => {
                                                     <label class="aiz-megabox d-block mb-3">
                                                         <input value="cash_on_delivery" class="online_payment" type="radio" name="payment_option" checked="" />
                                                         <span class="d-block p-3 aiz-megabox-elem">
-                                                            <img src="images/MTN.webp" class="img-fluid mb-2" />
+                                                            <img src="images/MTN.webp" class="img-fluid mb-2" width="40" />
                                                             <span class="d-block text-center">
-                                                                <span class="d-block fw-600 fs-15">MTN Mobile Money</span>
+                                                                <span class="d-block fw-600 fs-14">MTN Mobile Money</span>
                                                             </span>
                                                         </span>
                                                     </label>
@@ -216,11 +216,11 @@ const BuyNow = ({ history }) => {
 
                                                 <div class="col-6 col-md-4">
                                                     <label class="aiz-megabox d-block mb-3">
-                                                        <input value="cash_on_delivery" class="online_payment" type="radio" name="payment_option" checked="" />
+                                                        <input value="cash_on_delivery" class="online_payment" type="radio" name="payment_option" checked=""/>
                                                         <span class="d-block p-3 aiz-megabox-elem">
-                                                            <img src="images/Airtel.webp" class="img-fluid mb-2" />
+                                                            <img src="images/Airtel.webp" class="img-fluid mb-2" width="50"/>
                                                             <span class="d-block text-center">
-                                                                <span class="d-block fw-600 fs-15">Airtel Money</span>
+                                                                <span class="d-block fw-600 fs-14">Airtel Money</span>
                                                             </span>
                                                         </span>
                                                     </label>
@@ -356,9 +356,9 @@ const BuyNow = ({ history }) => {
                 <Footer />
                 <BottomFooter />
             </div>
-            <div className='d-none d-lg-block' style={{marginBottom:"-2%"}} >
-            <Footer />
-            <BottomFooter />
+            <div className='d-none d-lg-block' style={{ marginBottom: "-2%" }} >
+                <Footer />
+                <BottomFooter />
             </div>
         </>
     )
