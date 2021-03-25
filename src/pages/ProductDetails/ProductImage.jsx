@@ -83,9 +83,26 @@ const ProductImage = ({ product }) => {
 
       </div>
       <div className="col-9">
+        <div className='d-none d-lg-block'>
+      {
+          product.category === 'Mobile Phones'?
+        
+        <div className="img-box"> 
+
+          {renderImage()}
+        </div>
+        :
+        <div> 
+
+          {renderImage()}
+        </div>
+}
+</div>
+<div class="d-lg-none">
         <div className="img-box">
 
           {renderImage()}
+        </div>
         </div>
 
         <div class="border p-1 rounded float-right thumbnaily-box" >

@@ -82,7 +82,6 @@ const sharePage = () => {
           ) : ''
           }
         </div>
-
       </div>
       <div className="col-9">
         <div className="">
