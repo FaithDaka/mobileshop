@@ -7,6 +7,9 @@ export const createAccessory = async (accessory, token) =>
   }
 });
 
+export const searchAccessories = async () =>
+  await axios.get(`${process.env.REACT_APP_API}/accessory/search`);
+
 export const getAccessories = async (pageNumber) =>
   await axios.get(`${process.env.REACT_APP_API}/accessory?page=${pageNumber}`);
 
