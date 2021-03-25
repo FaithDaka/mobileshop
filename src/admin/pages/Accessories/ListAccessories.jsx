@@ -75,8 +75,6 @@ const ListAccessories = () => {
 
     const filteredAccessories = accessorySearch.filter((product) => product.title.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
 
-    console.log("Accessories =====>", accessories);
-
     return (
         <>
             <div class="row align-items-center">
