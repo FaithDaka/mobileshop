@@ -58,7 +58,7 @@ const Product = ({ product }) => {
         <div className="position-relative">
           <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`}
             className="d-block text-center pt-3 product-img-box">
-            <img
+            <LazyLoadImage
               alt="product"
               src={product.images && product.images.length ? product.images[0].url : ''}
               threshold={100}
