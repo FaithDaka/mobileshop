@@ -85,7 +85,6 @@ const EditProducts = ({ history, match }) => {
             setImages(p.data.images);
             setCategory(p.data.category._id);
             setSubs(p.data.subs._id);
-            // setColor(p.data.color);
             setStorageChecked(p.data.storageChecked)
             setMemory(p.data.memory);
             setCondition(p.data.condition);
