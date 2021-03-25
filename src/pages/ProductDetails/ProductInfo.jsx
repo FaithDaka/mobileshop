@@ -155,7 +155,7 @@ const ProductInfo = ({ product }) => {
     } else if
       (color === '#C0C0C0') {
       setColorName('Silver')
-    } else if (color === '#FFD700') {
+    } else if (color === '#E6BE8A') {
       setColorName('Gold')
     }
     else if (color === '#000000') {
