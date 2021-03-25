@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import Modal from 'react-modal';
 import LoadSpinner from "../../components/Spinner"
-import { loginCheckout } from "../../store/actions/auth"
+import { loginBuynow } from "../../store/actions/auth"
 import './verify.css';
 import './tel.css';
 
@@ -32,7 +32,7 @@ const CartModal = ({ modalIsOpen, close }) => {
     let dispatch = useDispatch();
     const history = useHistory();
     const auth = useSelector(state => state.auth);
-
+    
     const number = parseInt(phone, 10)
     const phonenumber = `+256${number}`
 
@@ -55,10 +55,10 @@ const CartModal = ({ modalIsOpen, close }) => {
         e.preventDefault()
 
         const user = {
-            phonenumber, hash, otp, 
+            phonenumber, hash, otp
         }
 
-        dispatch(loginCheckout(user, history, close));
+        dispatch(loginBuynow(user, history, close));
     }
 
     let style = {
@@ -72,7 +72,6 @@ const CartModal = ({ modalIsOpen, close }) => {
         border: '1 px solid #ccc'
       }
   }
-
     return (
         <Modal
             isOpen={modalIsOpen}
@@ -92,7 +91,7 @@ const CartModal = ({ modalIsOpen, close }) => {
                            <div class="container">
                               <div class="row">
                                  <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-8 mx-auto">
-                                    <div class="card">
+                                    <div class="modal-card">
                                        <div class="text-center pt-4">
                                           <h1 class="h4 fw-600">
                                           Create Account.
@@ -113,7 +112,6 @@ const CartModal = ({ modalIsOpen, close }) => {
                                                 <div class="mb-3">
                                                    <span class="opacity-60">By continuing you agree to <a href="#">Terms of Use</a> and {' '}
                                                    <a href="#">Privacy Notice</a></span>
-                                                   <span class="aiz-square-check"></span>
                                                 </div>
                                                 <div class="mb-3">
                                                    <button type="submit" class="btn btn-primary btn-block fw-600">{loading ? <LoadSpinner /> : <span>Verify Mobile Number</span>}</button>
@@ -137,7 +135,7 @@ const CartModal = ({ modalIsOpen, close }) => {
                            <div class="container">
                               <div class="row">
                                  <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-8 mx-auto">
-                                    <div class="card">
+                                    <div class="modal-card">
                                        <div class="text-center pt-4">
                                           <h1 class="h4 fw-600">
                                           Verify Mobile Number
@@ -153,7 +151,9 @@ const CartModal = ({ modalIsOpen, close }) => {
                                                    value={otp}
                                                    onChange={(e) => setOTP(e.target.value)}/>
                                                 </div>
+
                                                 <OtpTimer seconds= {30} minutes={0} resend={handleClick} />
+                                                
                                                 
                                                 <div class="mb-3">
                                                    <button type="submit" class="btn btn-primary btn-block fw-600">{auth.authenticating ?  <LoadSpinner /> : <span>Login into your account</span>}</button>

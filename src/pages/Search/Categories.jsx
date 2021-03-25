@@ -6,6 +6,9 @@ import LoadSpinner from '../../components/Spinner';
 import Browse from '../../components/Browser/Browse'
 import Pagination from '../../components/Pagination'
 import { getProductBrands } from "../../functions/products";
+import Footer from '../../components/Layout/Footer/index';
+import BottomFooter from '../../components/Layout/Footer/BottomFooter'
+
 
 const Categories = ({ match }) => {
     const [products, setProducts] = useState([]);
@@ -54,6 +57,10 @@ const Categories = ({ match }) => {
                         </div>
                     </div>
                 </form>
+            </div>
+            <div className='d-none d-lg-block' style={{marginBottom:"-2%"}} >
+            <Footer />
+            <BottomFooter />
             </div>
         </section>
     )

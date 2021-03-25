@@ -352,8 +352,14 @@ const BuyNow = ({ history }) => {
                     </div>
                 </div>
             </section>
+            <div className='d-lg-none pb-5'>
+                <Footer />
+                <BottomFooter />
+            </div>
+            <div className='d-none d-lg-block' style={{marginBottom:"-2%"}} >
             <Footer />
             <BottomFooter />
+            </div>
         </>
     )
 }
