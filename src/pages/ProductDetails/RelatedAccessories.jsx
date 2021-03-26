@@ -59,7 +59,7 @@ const RelatedAccessories = ({ product }) => {
           <div className="container">
             <div className="row">
               {product.accessorys && product.accessorys.length !== 1 && product.accessorys.map((accessory) => (
-                <div className="border rounded bg-white pr-4 mr-4 col-4 accessory-box">
+                <div className="border rounded bg-white pr-4 mr-4 col-4 col-md-4 col-lg-4 accessory-box">
                   <div className="border rounded bg-white inner-box">
                     <Link to={`/accessory/${accessory._id}`}>
                       <div style={{ width: "auto" }}>

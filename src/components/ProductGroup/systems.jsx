@@ -47,7 +47,7 @@ const SoundSytems = () => {
                             <Product product={product} />
                         ))}
                     </div> :
-                    <p>Sound Sytems Currently Out of Stock</p>
+                    <p>Fetching Products...</p>
             }
 
             <div class="pb-5 aiz-pagination">

@@ -53,7 +53,7 @@ const Categories = ({ match }) => {
                                 
                                 {products && products.length > 0 ? products.map(item => (
                                     <Product product={item} />
-                                )) : 'No Products in this Category Yet ??'}
+                                )) : 'Fetching products...'}
                             </div>
                             :
                             <p>No Products in this Category Yet ??</p>
