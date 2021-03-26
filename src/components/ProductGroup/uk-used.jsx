@@ -31,7 +31,7 @@ const UkUsed = ({ products, loading, total, pageNumber, count, totalused,firstPr
               <Product product={product} />
             ))}
           </div> :
-          <p>No Uk used phones at the moment</p>
+          <p>Fetching Products...</p>
       }
 
       <div class="aiz-pagination">

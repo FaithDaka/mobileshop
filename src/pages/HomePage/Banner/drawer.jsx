@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState, useRef } from 'react';
 import { Link, withRouter } from "react-router-dom";
 import { getCategories } from "../../../functions/category";
@@ -35,25 +34,22 @@ const Drawer = (history ) => {
         loadCategories();
         loadSubs()
     }, []);
-    const styles={
-        border:"brown-solid"
-    }
-
+  
     const showCategories = () => categories.map((c) => (
         <li class="">
             <Link to="#" class="dropdown aiz-side-nav-link" >
-                <Link to="#" class="dropdown-toggle" data-toggle="dropdown" style={styles}>
+                <Link to="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="las la-tasks aiz-side-nav-icon"></i>
                     <span class="aiz-side-nav-text">{c.name}</span>
                 </Link>
-                <ul class="dropdown-menu" style={styles}>
+                <ul class="dropdown-menu" id="dmenu">
                     {subs.map((cat) => cat.parent === c._id && (
                         <li class="">
                             <a onClick={() => {
                                 history.push(`/products/${cat.slug}`)
                                 
                             }}
-                                class="aiz-side-nav-link " style={styles}>
+                                class="aiz-side-nav-link ">
                                 <i class="las la-tasks aiz-side-nav-icon"></i>
                                 <span class="aiz-side-nav-text">{cat.name}</span>
                             </a>
