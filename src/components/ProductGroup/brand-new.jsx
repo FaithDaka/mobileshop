@@ -32,7 +32,7 @@ const BrandNew = ({ products, loading, total, pageNumber, count, totalnew, first
               <Product product={product} />
             ))}
           </div> :
-          <p>No brand new phones yet</p>
+          <p>Fetching Products...</p>
       }
 
       

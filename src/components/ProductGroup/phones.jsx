@@ -79,7 +79,13 @@ const Phones = () => {
 
   return (
     <>
-      <div className="container">
+    <nav class="nav nav-pills nav-justified">
+  <a class={`nav-item nav-link mr-2 text-left ${currentTab === 'brandnew' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('brandnew')} >Brand New</a>
+  <a class={`nav-item nav-link ml-02text-left ${currentTab === 'ukused' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('ukused')} >Premium UK-Used</a>
+
+ 
+</nav>
+      {/* <div className="container">
         <div className="row">
           <div className={`col-6 col-md-6 col-lg-6 ${currentTab === 'brandnew' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('brandnew')}>
             <div className="">
@@ -94,7 +100,7 @@ const Phones = () => {
 
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="" style={{paddingTop:"1%"}}>
         {renderView()}

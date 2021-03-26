@@ -47,7 +47,7 @@ const Accessories = () => {
                             <Accessory product={product} />
                         ))}
                     </div> :
-                    <p>Accessories Currently Out of Stock</p>
+                    <p>Fetching Products...</p>
             }
 
             <div class="pb-5 aiz-pagination">
