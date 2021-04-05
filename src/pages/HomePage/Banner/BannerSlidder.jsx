@@ -19,23 +19,17 @@ const BannerSlidder = () => {
           <Slider {...settings}>
             <div className="slick-slide">
               <div class="carousel-box" >
-                {/* <a href="#">
-                  <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/Banner1.webp" alt="MobileShop Banner" height="315" />
-                </a> */}
+                  <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/1.webp" alt="MobileShop Banner" height="340" />
               </div>
             </div>
             <div className="slick-slide">
             <div class="carousel-box" >
-                {/* <a href="#">
-                  <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/Banner2.webp" alt="MobileShop Banner" height="315" />
-                </a> */}
+                  <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/3.webp" alt="MobileShop Banner" height="340" />
               </div>
             </div>
             <div className="slick-slide">
             <div class="carousel-box" >
-                {/* <a href="#">
-                  <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/Banner6.webp" alt="MobileShop Banner" height="315" />
-                </a> */}
+                  <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/5.webp" alt="MobileShop Banner" height="340" />
               </div>
             </div>
           </Slider>

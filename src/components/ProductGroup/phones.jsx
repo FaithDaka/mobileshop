@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import _ from "lodash";
 import BrandNew from './brand-new';
 import UkUsed from './uk-used';
 import { getBrandNew, getUkUsed } from "../../functions/products";
@@ -22,10 +22,14 @@ const Phones = () => {
   const firstProduct = lastProduct - productsPerPage;
   const currentProducts = brandnew.slice(firstProduct, lastProduct);
   const currentProduct = ukused.slice(firstProduct, lastProduct);
+
+  const random = _.sampleSize(brandnew, 20);
+  const randomUK = _.sampleSize(ukused, 20);
+
   const renderView = () => {
     if (currentTab === 'brandnew') {
       return <BrandNew
-        products={brandnew}
+        products={random}
         loading={loading}
         total={newtotalPages}
         pageNumber={pageNumberNew}
@@ -37,7 +41,7 @@ const Phones = () => {
     }
     if (currentTab === 'ukused') {
       return <UkUsed
-        products={ukused}
+        products={randomUK}
         loading={loading}
         total={usedtotalPages}
         pageNumber={pageNumberUsed}

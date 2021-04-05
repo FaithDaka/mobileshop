@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react'
+import _ from "lodash";
 import Product from '../../components/Product'
 import LoadSpinner from '../../components/Spinner'
 import { getTelevisions } from "../../functions/products";
@@ -38,13 +39,15 @@ const Televisions = () => {
         window.scrollTo(0, 0)
     }, [pageNumber]);
 
+    const random = _.sampleSize(products, 20);
+
     return (
         <div>
             {loading && <LoadSpinner />}
             {
                 products && products.length > 0 ?
                     <div className="row gutters-5 row-cols-xxl-5 row-cols-lg-5 row-cols-md-3 row-cols-2">
-                        {products.map(product => (
+                        {random.map(product => (
                             <Product product={product} />
                         ))}
                     </div> :
