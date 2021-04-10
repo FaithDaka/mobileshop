@@ -46,7 +46,7 @@ const SideBar = () => {
                     </li>
 
                     <li class="aiz-side-nav-item">
-                        <Link to="/preorders" class="aiz-side-nav-link ">
+                        <Link to="/admin/preorders" class="aiz-side-nav-link ">
                             <i class="las la-money-bill aiz-side-nav-icon"></i>
                             <span class="aiz-side-nav-text">Pre Orders</span>
                         </Link>
