@@ -1,26 +1,27 @@
 /* eslint-disable jsx-a11y/role-supports-aria-props */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
+import _ from "lodash";
 import Product from '../../components/Product'
 import LoadSpinner from '../../components/Spinner'
+import Pagination from '../Pagination';
 
-const BrandNew = ({ products, loading, total, pageNumber, count, totalnew, firstProduct, currentProducts }) => {
+const BrandNew = ({ products, loading }) => {
 
-  const pages = new Array(total).fill(null).map((v, i) => i);
+  const [productsPerPage] = useState(20);
+  const [currentpage, setCurrentPage] = useState(1);
 
-  const goToPrevious = () => {
-    count(Math.max(0, pageNumber - 1))
-    window.scrollTo(0, 0)
-  }
+  const lastProduct = currentpage * productsPerPage;
+  const firstProduct = lastProduct - productsPerPage;
+  
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const goToNext = () => {
-    count(Math.min(total - 1, pageNumber + 1))
-    window.scrollTo(0, 0)
-  }
+  const brandnew = products.filter(product => product.condition === "Brand New")
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pageNumber]);
+  const random = _.sampleSize(brandnew, brandnew.length);
+
+  const currentProducts = random.slice(firstProduct, lastProduct);
+  const totalProducts = random.length;
 
   return (
     <div>
@@ -28,33 +29,20 @@ const BrandNew = ({ products, loading, total, pageNumber, count, totalnew, first
       {
         products && products.length > 0 ?
           <div className="row gutters-5 row-cols-xxl-5 row-cols-lg-5 row-cols-md-3 row-cols-2">
-            {products.map(product => (
+            {currentProducts.map(product => (
               <Product product={product} />
             ))}
-          </div> :
-          <p>Fetching Products...</p>
+          </div> : <LoadSpinner />
       }
 
-      
-      <div class="pb-5 aiz-pagination">
-        <nav className="text-center">
-        <span>Showing {firstProduct + 1} - {firstProduct + currentProducts.length} of {totalnew} results</span>
-          <ul class="pagination d-flex justify-content-center">
-            <li class="page-item disabled" aria-label="« Previous" onClick={goToPrevious}>
-              <span class="page-link" aria-hidden="true">‹</span>
-            </li>
-            <li class="page-item d-flex">
-              {pages.map((pageIndex) => (
-                <a key={pageIndex} class="page-link" onClick={() => count(pageIndex)}>{pageIndex + 1}</a>
-              ))}
-
-            </li>
-            <li class="page-item" onClick={goToNext}>
-              <span class="page-link" aria-hidden="true">›</span>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <Pagination 
+        paginate={paginate} 
+        totalProducts={totalProducts}
+        productsPerPage={productsPerPage}
+        currentpage={currentpage}
+        firstProduct={firstProduct}
+        currentProducts={currentProducts}
+        />
     </div>
 
   )
