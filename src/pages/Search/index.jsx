@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import _ from "lodash";
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import Product from '../../components/Product';
@@ -7,12 +8,25 @@ import Browse from '../../components/Browser/Browse'
 import Filters from './Filters';
 import Pagination from '../../components/Pagination'
 import { fetchProductsByFilter } from "../../functions/products";
-import Footer from '../../components/Layout/Footer/index';
 import BottomFooter from '../../components/Layout/Footer/BottomFooter'
+import PreOrder from "./preorder";
 
 const SearchFilters = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
+
+    const [productsPerPage] = useState(20);
+    const [currentpage, setCurrentPage] = useState(1);
+
+    const lastProduct = currentpage * productsPerPage;
+    const firstProduct = lastProduct - productsPerPage;
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+    const random = _.sampleSize(products, products.length);
+
+    const currentProducts = random.slice(firstProduct, lastProduct);
+    const totalProducts = random.length;
 
     let { search } = useSelector((state) => ({ ...state }));
     const { text } = search;
@@ -33,7 +47,7 @@ const SearchFilters = () => {
     }, [text]);
 
     return (
-        <section class="mb-4 pt-3">
+        <section class="pt-3">
             {loading && <LoadSpinner />}
             <div class="container sm-px-0">
                 <form class="" id="search-form" action="" method="GET">
@@ -56,17 +70,28 @@ const SearchFilters = () => {
                             <input type="hidden" name="min_price" value="" />
                             <input type="hidden" name="max_price" value="" />
 
-                            <div class="row gutters-5 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
-                                {products.map(item => (
-                                    <Product product={item} />
-                                ))}
-                            </div>
-                            
+                            {
+                                products && products.length > 0 ?
+                                    <div className="row gutters-5 row-cols-xxl-4 row-cols-xl-4 row-cols-lg-4 row-cols-md-3 row-cols-2">
+                                        {currentProducts.map(item => (
+                                            <Product product={item} />
+                                        ))}
+                                    </div> : <PreOrder />
+                            }
+
                         </div>
                     </div>
                 </form>
             </div>
-            
+            <Pagination
+                paginate={paginate}
+                totalProducts={totalProducts}
+                productsPerPage={productsPerPage}
+                currentpage={currentpage}
+                firstProduct={firstProduct}
+                currentProducts={currentProducts}
+            />
+            <BottomFooter />
         </section>
     )
 }

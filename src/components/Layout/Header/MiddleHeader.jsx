@@ -2,12 +2,11 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import CurrencyFormat from 'react-currency-format';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useHistory } from 'react-router-dom';
 import { removeFromCart } from '../../../store/actions/cartActions'
 import Dropdown from './dropdown'
 import LoginModal from "../../../components/Modal/login-modal";
+
 const MiddleHeader = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -98,12 +97,12 @@ const MiddleHeader = () => {
                         
                         <div class="ml-3 mr-0 text-light">
                             <div class="nav-cart-box dropdown h-100" id="cart_items">
-                                <a href="javascript:void(0)" class="d-flex align-items-center text-reset h-100" data-toggle="dropdown" data-display="static">
+                                <Link to="/cart" class="d-flex align-items-center text-reset h-100" data-toggle="dropdown" data-display="static">
                                 <span class=" position-relative d-inline-block">
                                         <i class="la la-shopping-cart la-2x" style={{fontSize: '32px'}}></i>
                                         <span class="badge badge-circle badge-primary position-absolute absolute-top-right">{cartItems.length}</span>
                                     </span>
-                                </a>
+                                </Link>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg p-0 dropdown-menu-animated stop-propagation">
                                     <div class="text-center p-3 bg-white">
                                     <Dropdown cart={cartItems}  />

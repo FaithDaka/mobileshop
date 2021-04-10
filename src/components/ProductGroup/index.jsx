@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import React, { useState } from 'react'
+import React, { useState, useEffect  } from 'react'
+import { getAllProducts } from "../../functions/products";
 
 import Systems from './systems';
 import Phones from './phones';
@@ -15,6 +16,8 @@ import './styles.css';
 
 const ProductGroup = () => {
   const [currentTab, setCurrentTab] = useState('phones');
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const divstyles = {
     fontSize: "13px"
@@ -35,30 +38,42 @@ const ProductGroup = () => {
     display: "block",
   }
 
+  const fetchAllProducts = () => {
+    setLoading(true);
+    getAllProducts().then((res) => {
+      setProducts(res.data);
+      setLoading(false);
+    });
+  };
+
+  useEffect(() => {
+    fetchAllProducts();
+  }, []);
+
   const renderView = () => {
     if (currentTab === 'systems') {
-      return <Systems />;
+      return <Systems products={products} loading={loading} />;
     }
     if (currentTab === 'phones') {
       return <Phones />;
     }
     if (currentTab === 'accessories') {
-      return <Accessories />;
+      return <Accessories products={products} loading={loading} />;
     }
     if (currentTab === 'televisions') {
-      return <Televisions />;
+      return <Televisions products={products} loading={loading} />;
     }
     if (currentTab === 'laptops') {
-      return <Laptop />;
+      return <Laptop products={products} loading={loading} />;
     }
     if (currentTab === 'fridges') {
-      return <Fridges />;
+      return <Fridges products={products} loading={loading} />;
     }
     if (currentTab === 'gaming') {
-      return <Gaming />;
+      return <Gaming products={products} loading={loading} />;
     }
     if (currentTab === 'tablet') {
-      return <Tablet />;
+      return <Tablet products={products} loading={loading} />;
     }
 
   };

@@ -3,10 +3,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
-import SweetAlert from 'react-bootstrap-sweetalert';
 import CurrencyFormat from 'react-currency-format';
-import CartHeader from '../Cart/CartHeader'
-import Spinner from '../../components/Spinner'
+import Spinner from '../../components/Spinner';
 import { removeCart } from '../../store/actions/cartActions'
 import Footer from '../../components/Layout/Footer/index';
 import BottomFooter from '../../components/Layout/Footer/BottomFooter'
