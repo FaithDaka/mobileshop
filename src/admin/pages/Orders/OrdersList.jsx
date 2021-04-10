@@ -8,8 +8,6 @@ const OrdersList = () => {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const auth = useSelector(state => state.auth);
-
     const loadOrders = () => {
         setLoading(true);
         getOrders().then((c) => {
@@ -21,8 +19,6 @@ const OrdersList = () => {
     useEffect(() => {
         loadOrders();
     }, []);
-
-    console.log("Orders", orders);
 
     return (
         <div class="card">

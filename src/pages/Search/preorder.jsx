@@ -1,124 +1,113 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+import {withRouter} from 'react-router-dom';
 import { toast } from "react-toastify";
-import { Link } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import Spinner from '../../components/Spinner';
+import { createPreOrder } from "../../functions/orders";
 
-import Footer from '../../components/Layout/Footer/index';
-import BottomFooter from '../../components/Layout/Footer/BottomFooter';
+const PreOrder = ({ history }) => {
+    const [names, setNames] = useState('');
+    const [email, setEmail] = useState('');
+    const [address, setAddress] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [phonenumber, setPhoneNumber] = useState('');
+    const [product, setProduct] = useState('');
+    const [description, setDescription] = useState('');
 
+    const preOrder = (e) => {
+        e.preventDefault();
+        setLoading(true)
 
-const PreOrder = ({history}) => {
+        const data = {
+            product,
+            description,
+            address,
+            email,
+            phonenumber,
+            names
+        }
 
+        createPreOrder(data)
+            .then((res) => {
+                setLoading(false);
+                history.push('/')
+                console.log("Pre-ordered Data ===>", res);
+                toast.success("Pre Order Details Successfully Captured");
+            })
+            .catch((err) => {
+                console.log(err)
+                setLoading(false);
+                toast.error("Error Ecountered in Capturing Pre Order Details");
+            });
+    }
 
     return (
         <>
-            <section class="my-4 pt-4">
+            <div class="card shadow-sm border-0 rounded">
+                <div class="card-header p-3">
 
-                <div class="container text-left">
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div class="alert alert-danger" role="alert">
+                        <span class="fw-600">
+                            No Search Results Found. Kindly Make a Pre-Order By Filling in Details Below
+                 </span>
+                    </div>
+                </div>
+                <div class="card-body">
 
-                            <div class="card shadow-sm border-0 rounded">
-                                <div class="card-header p-3">
-                                    <h3 class="fs-16 fw-600 mb-0">
-                                        Pre-Order Product
-                 </h3>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-xxl-8 col-xl-10 mx-auto">
-                                            <div class="row gutters-10">
-
-                                                <div class="modal-body">
-                                                    <div class="">
-                                                        <div class="row">
-                                                            <div class="col-md-10">
-                                                                <input type="text" class="form-control mb-3" placeholder="Phone Number" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-10">
-                                                                <input type="text" class="form-control mb-3" name="fullnames" placeholder="Full Names" />
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-10">
-                                                                <input type="email" class="form-control mb-3" name="email" placeholder="Email Address" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-10">
-                                                                <input type="text" class="form-control mb-3" name="address" placeholder="Product Name" />
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="row">
-                                                            <div class="col-md-10">
-                                                                <label for="exampleFormControlTextarea1" class="form-label"></label>
-                                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder='Description of product to order'></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-                                </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <input type="text" class="form-control mb-3" name="names" placeholder="Enter Full Names" value={names}
+                                    onChange={(e) => setNames(e.target.value)} />
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <input type="text" class="form-control mb-3" name="product" placeholder="Enter Phone Name e.g iPhone 11" value={product}
+                                    onChange={(e) => setProduct(e.target.value)} />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <input type="email" class="form-control mb-3" name="email" placeholder="Enter Email Address" value={email}
+                                    onChange={(e) => setEmail(e.target.value)} />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <input type="text" class="form-control mb-3" name="address" placeholder="Enter Delivery Address" value={address}
+                                    onChange={(e) => setAddress(e.target.value)} />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <input type="text" class="form-control mb-3" name="phonenumber" placeholder="Enter Phone Number" value={phonenumber}
+                                    onChange={(e) => setPhoneNumber(e.target.value)} />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <textarea type="text" rows="4" class="form-control mb-3" name="phone" placeholder="Enter specifications of Phone you are looking for e.g memory, space, ram" value={description}
+                                    onChange={(e) => setDescription(e.target.value)} />
+                            </div>
+                        </div>
 
-
+                        <div class="col-12 float-right">
+                            <button onClick={preOrder} type="button" class="btn btn-primary fw-600">
+                                {loading ? <Spinner /> : <span>Pre Order</span>}
+                            </button>
                         </div>
 
                     </div>
                 </div>
-            </section>
-
-            <section class="gry-bg">
-                <div className="container">
-                    <div class="shadow-sm bg-white py-3 px-2 rounded ">
-                        <div >
-                            <label class="aiz-checkbox">
-                                <input type="checkbox" id="agree_checkbox" />
-                                <span class="aiz-square-check"></span>
-                                <span className="fw-700">I agree to the </span>
-                                <Link to="/terms">terms and conditions</Link>
-                            </label>
-
-                        </div>
-                        <div class="row align-items-center">
-                            <div class="col-6">
-                                <Link to="/" class="link link--style-3">
-                                    <i class="las la-arrow-left"></i>
-                                    <span className="fw-800 fs-16">Return to shop</span>
-                                </Link>
-                            </div>
-                            <div class="col-6 pr-2 float-right">
-                                <Link>
-                                    <button type="button" class="btn btn-primary fw-600">
-                                        Submit
-                                    </button>
-                                </Link>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <div className='d-lg-none pb-5'>
-                <Footer />
-                <BottomFooter />
             </div>
-            <div className='d-none d-lg-block' style={{ marginBottom: "-2%" }} >
-                <Footer />
-                <BottomFooter />
+            <div class="alert alert-info" role="alert">
+                <span class="fw-600">
+                    Pre-Ordered Items take between 3-5 working days. Our Sales Team will get in touch with you shortly.
+                 </span>
             </div>
         </>
+
     )
 }
 
-export default PreOrder
+export default withRouter(PreOrder);
