@@ -197,13 +197,13 @@ body{
         margin-left: -50%;
     
     }
-    #homepage .btn-product-call {   
+    /* #homepage .btn-product-call {   
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-content: center;
         
-    }
+    } */
 }
 /* .spinner {
     margin: 100px auto 0;
@@ -298,4 +298,15 @@ body{
         -o-transform: translateY(-20px);
         transform: translateY(-20px)
     }
+}
+
+.help{
+    font-size: 26px;
+    font-weight: 700;
+    color: #f90;
+}  
+.help-contact{
+    font-size: 24px;
+    font-weight: 700;
+    
 }
