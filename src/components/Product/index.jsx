@@ -129,7 +129,7 @@ const Product = ({ product }) => {
             paddingBottom: "5px"
           }}>
             <button type="button" className="btn btn-product-cart" onClick={checkStorage}>
-              <span className="btn-cart">Add Cart</span>
+              <span className="btn-cart">Add to Cart</span>
             </button>
             <button type="button" className=" btn btn-product-call d-xl-none d-lg-block">
               <a href="tel:0751290264">
