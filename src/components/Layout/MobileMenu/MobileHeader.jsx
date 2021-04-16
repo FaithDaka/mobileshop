@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import LoginModal from "../../../components/Modal/login-modal";
+
 import './search.css';
 
 const MobileHeader = ({open}) => {
