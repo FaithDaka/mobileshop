@@ -1,11 +1,12 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState, useRef } from 'react';
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { getCategories } from "../../../functions/category";
 import { getSubs } from "../../../functions/sub";
 import { Helmet } from "react-helmet";
 import LoadSpinner from '../../../components/Spinner/index'
 
-const Drawer = (history) => {
+const Drawer = ({history}) => {
 
     const [categories, setCategories] = useState([]);
     const [subs, setSubs] = useState([]);
@@ -99,4 +100,4 @@ const Drawer = (history) => {
     );
 }
 
-export default Drawer;
+export default withRouter(Drawer);
