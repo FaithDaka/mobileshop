@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom'
 import { toast } from "react-toastify";
 import CurrencyFormat from 'react-currency-format';
 import LoadSpinner from '../../../components/Spinner';
-import { getAccessories, removeAccessory, searchAccessories } from "../../../functions/accessory";
+import { removeAccessory, searchAccessories } from "../../../functions/accessory";
 
 const ListAccessories = () => {
-    const [accessories, setAccessories] = useState([]);
     const [accessorySearch, setAccessorySearch] = useState([]);
     const [loading, setLoading] = useState(false);
     const [pageNumber, setPageNumber] = useState(0);
@@ -28,20 +27,6 @@ const ListAccessories = () => {
         window.scrollTo(0, 0)
     }
 
-    const loadAllProducts = () => {
-        setLoading(true);
-        getAccessories(pageNumber)
-            .then((res) => {
-                setAccessories(res.data.accessories);
-                setTotalPages(res.data.totalPages)
-                setTotal(res.data.total)
-                setLoading(false);
-            })
-            .catch((err) => {
-                setLoading(false);
-            });
-    };
-
     const loadSearchAccessories = () => {
         searchAccessories()
             .then((res) => {
@@ -57,7 +42,7 @@ const ListAccessories = () => {
         if (window.confirm("Delete?")) {
             removeAccessory(slug)
                 .then((res) => {
-                    loadAllProducts();
+                    loadSearchAccessories();
                     toast.error(`${res.data.title} is deleted`);
                 })
                 .catch((err) => {
@@ -68,7 +53,6 @@ const ListAccessories = () => {
     };
 
     useEffect(() => {
-        loadAllProducts();
         loadSearchAccessories();
         window.scrollTo(0, 0)
     }, [pageNumber]);
@@ -142,7 +126,7 @@ const ListAccessories = () => {
                                         </tr>
                                     ))}
                                     </> : <> 
-                                     {accessories.map((product) => (
+                                     {accessorySearch.map((product) => (
                                         <tr>
                                             <td style={{ display: 'table-cell' }}>{product.title}</td>
                                             <td style={{ display: 'table-cell' }}>{product.brand}</td>

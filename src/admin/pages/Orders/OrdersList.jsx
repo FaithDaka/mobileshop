@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from "react-redux";
+import moment from "moment";
 import { Link } from 'react-router-dom'
 import { getOrders } from "../../../functions/orders";
 import LoadSpinner from '../../../components/Spinner';
@@ -11,7 +11,8 @@ const OrdersList = () => {
     const loadOrders = () => {
         setLoading(true);
         getOrders().then((c) => {
-            setOrders(c.data)
+            const Orders = c.data.sort((a, b) => (b.createdAt - a.createdAt))
+            setOrders(Orders)
             setLoading(false);
         });
     }
@@ -109,8 +110,7 @@ const OrdersList = () => {
                                         {order.orderedBy}
                 </td>
                 <td style={{ display: 'table-cell' }}>
-                
-                                        {order.createdAt}
+                                        {moment(order.createdAt).format('l')}
                                        
                 </td>
                 
