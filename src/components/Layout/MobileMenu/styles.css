@@ -126,3 +126,7 @@ a, button, input, select, textarea {
 .navigation--list .navigation__item i:hover{
     color: black;
 }
+.drawercat:hover span {
+    color: #f90;
+
+}

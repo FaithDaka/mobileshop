@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import { getCategories } from "../../../functions/category";
 import { getSubs } from "../../../functions/sub";
 import LoadSpinner from '../../Spinner';
+import { Helmet } from "react-helmet";
 
 const MobileDrawer = ({ close, history }) => {
 
@@ -36,28 +37,28 @@ const MobileDrawer = ({ close, history }) => {
     }, []);
 
     const showCategories = () => categories.map((c) => (
-        <li class="aiz-side-nav-item">
-            <Link to="#" class="dropdown aiz-side-nav-link">
-                <Link to="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="las la-tasks aiz-side-nav-icon"></i>
-                    <span class="aiz-side-nav-text">{c.name}</span>
-                </Link>
-                <ul class="dropdown-menu aiz-side-nav-list">
-                    {subs.map((cat) => cat.parent === c._id && (
-                        <li class="aiz-side-nav-item">
-                            <a onClick={() => {
-                                history.push(`/products/${cat.slug}`)
-                                close()
-                            }}
-                                class="aiz-side-nav-link ">
-                                <i class="las la-tasks aiz-side-nav-icon"></i>
-                                <span class="aiz-side-nav-text">{cat.name}</span>
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </Link>
-        </li>
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle p-2 m-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ background: "transparent" }}>
+                <i class="las la-tasks aiz-side-nav-icon"></i>
+                <span class="aiz-side-nav-text">{c.name}</span>
+            </a>
+
+            <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+                {subs.map((cat) => cat.parent === c._id && (
+
+                    <a onClick={() => {
+                        history.push(`/products/${cat.slug}`)
+                        close()
+                    }}
+                        class="dropdown-item pb-1 drawercat"  >
+                        <i class="las la-tasks aiz-side-nav-icon" style={{color:"white"}}></i>
+                        <span class="aiz-side-nav-text" style={{color:"white"}}>{cat.name}</span>
+                    </a>
+
+                ))}
+
+            </div>
+        </div>
     ));
 
     const handleClick = e => {
@@ -77,13 +78,27 @@ const MobileDrawer = ({ close, history }) => {
 
     return (
         <section ref={node} className="">
+           <Helmet>
+           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+           </Helmet>
             <div class="sidebar-mobile c-scrollbar">
                 <div class="">
                     <a href="#" class="d-block text-left">
                         <img src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="side bar" width={100} />
                     </a>
                 </div>
-                <div class="aiz-side-nav-wrap">
+                <div>
+                    <a href="#" class="aiz-side-nav-link active m-1" aria-expanded="false" style={{ color: "#f90", fontSize: 18 + "px" }}>
+                        <i class="las la-home aiz-side-nav-icon"></i>
+                        <span class="aiz-side-nav-text">Categories</span>
+                    </a>
+                    {loading && <LoadSpinner />}
+                    {showCategories()}
+
+                </div>
+                {/* <div class="aiz-side-nav-wrap">
                     <div class="px-20px mb-3" />
                     <ul class="aiz-side-nav-list" id="search-menu" />
                     <ul class="aiz-side-nav-list metismenu" id="main-menu" data-toggle="aiz-side-menu">
@@ -96,7 +111,9 @@ const MobileDrawer = ({ close, history }) => {
                         {loading && <LoadSpinner />}
                         {showCategories()}
                     </ul>
-                </div>
+                </div> */}
+
+
             </div>
         </section>
     );
