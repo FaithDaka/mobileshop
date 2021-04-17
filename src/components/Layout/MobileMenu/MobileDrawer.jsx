@@ -51,7 +51,7 @@ const MobileDrawer = ({ close, history }) => {
                         close()
                     }}
                         class="dropdown-item pb-1 drawercat"  >
-                        <i class="las la-tasks aiz-side-nav-icon"></i>
+                        <i class="las la-tasks aiz-side-nav-icon" style={{color:"white"}}></i>
                         <span class="aiz-side-nav-text" style={{color:"white"}}>{cat.name}</span>
                     </a>
 
