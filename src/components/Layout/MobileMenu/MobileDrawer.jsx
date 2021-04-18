@@ -84,11 +84,7 @@ const MobileDrawer = ({ close, history }) => {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
            </Helmet>
             <div class="sidebar-mobile c-scrollbar">
-                <div class="">
-                    <a href="#" class="d-block text-left">
-                        <img src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="side bar" width={100} />
-                    </a>
-                </div>
+               
                 <div>
                     <a href="#" class="aiz-side-nav-link active m-1" aria-expanded="false" style={{ color: "#f90", fontSize: 18 + "px" }}>
                         <i class="las la-home aiz-side-nav-icon"></i>
