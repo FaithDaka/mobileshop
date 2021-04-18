@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom'
-import CartHeader from './CartHeader'
 import CartDetails from './CartDetails'
 import LoginModal from "../../components/Modal/cart-modal";
 import Footer from '../../components/Layout/Footer/index';
@@ -38,6 +38,21 @@ const Cart = () => {
     }, [])
 
     return (
+        <>
+        <Helmet>
+                <title>Cart Details</title>
+                <meta name="description" content="MobileShop Cart" />
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-193008384-1">
+                </script>
+                <script>
+                    {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-193008384-1');
+        `}
+                </script>
+            </Helmet>
         <section class="mb-4 my-4 pt-4">
             <CartDetails cart={cartItems} total={getTotal()} checkout={goToCheckout} />
             <LoginModal modalIsOpen={modalIsOpen} close={closeModal} />
@@ -50,6 +65,7 @@ const Cart = () => {
             <BottomFooter />
             </div>
         </section>
+        </>
     )
 }
 

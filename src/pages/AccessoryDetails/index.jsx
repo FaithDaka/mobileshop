@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
+import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom';
 import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
@@ -36,14 +37,26 @@ const AccessoryDetails = ({ match }) => {
         window.scrollTo(0, 0)
     }, [])
 
-    console.log("accessory Info ====>", product)
-
     return (
         <>
+            <Helmet>
+                <title>Accessory Details</title>
+                <meta name="description" content="MobileShop Accessory Details" />
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-193008384-1">
+                </script>
+                <script>
+                    {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-193008384-1');
+        `}
+                </script>
+            </Helmet>
 
             <section class="mb-4 pt-3">
 
-                <div class="container" id= "wrapper"> 
+                <div class="container" id="wrapper">
                     {loading && <LoadSpinner />}
                     <div class="col" id="pd-top-links">
                         <ul class="breadcrumb bg-transparent p-0 justify-content-lg-start">
@@ -58,14 +71,14 @@ const AccessoryDetails = ({ match }) => {
                             </li>
                         </ul>
                     </div>
-                  
-       
+
+
                     <div class="bg-white shadow-sm rounded p-3">
                         <div class="row">
                             <div class="col-xl-5 col-lg-6 mb-3">
                                 <ProductImage product={product} />
                             </div>
-            
+
                             <div class="col-xl-7 col-lg-6 mb-3">
                                 <ProductInfo product={product} />
                             </div>
@@ -74,17 +87,17 @@ const AccessoryDetails = ({ match }) => {
                     </div>
                 </div>
             </section>
-         
+
             {/* <ProductSpecs product={product} related={related} /> */}
             <div class="d-none d-lg-block">
-                <Footer/>
-                <BottomFooter/>
+                <Footer />
+                <BottomFooter />
             </div>
-               
+
             <div className=" d-md-none extra">
-                <p style={{visibility:"hidden"}}>MobileShop.ug</p>
+                <p style={{ visibility: "hidden" }}>MobileShop.ug</p>
             </div>
-          
+
         </>
     )
 }

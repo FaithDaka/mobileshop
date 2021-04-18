@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import _ from "lodash";
+import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import Product from '../../components/Product';
@@ -48,6 +49,21 @@ const SearchFilters = () => {
     }, [text]);
 
     return (
+        <>
+        <Helmet>
+                <title>Search Details</title>
+                <meta name="description" content="MobileShop Search Details" />
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-193008384-1">
+                </script>
+                <script>
+                    {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-193008384-1');
+        `}
+                </script>
+            </Helmet>
         <section class="pt-3">
             {loading && <LoadSpinner />}
             <div class="container sm-px-0">
@@ -94,6 +110,7 @@ const SearchFilters = () => {
             />
             <BottomFooter />
         </section>
+        </>
     )
 }
 
