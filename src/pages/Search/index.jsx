@@ -34,7 +34,8 @@ const SearchFilters = () => {
     const fetchProducts = (arg) => {
         setLoading(true)
         fetchProductsByFilter(arg).then((res) => {
-            setProducts(res.data);
+            const combined = [...res.data.products, ...res.data.accessories];
+            setProducts(combined);
             setLoading(false)
         });
     };
