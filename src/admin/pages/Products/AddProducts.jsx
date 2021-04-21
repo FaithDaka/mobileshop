@@ -86,8 +86,8 @@ const AddProducts = ({ history }) => {
 
     const loadAccessories = () => {
         setLoading(true);
-        getAccessories().then((a) => {
-            setAccessory(a.data.accessories)
+        getAccessories().then((res) => {
+            setAccessory(res.data)
             setLoading(false);
         })
     }
