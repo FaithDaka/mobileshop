@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { toast } from "react-toastify";
 import CurrencyFormat from 'react-currency-format';
 import LoadSpinner from '../../../components/Spinner';
-import { getProducts, removeProduct, searchProducts } from "../../../functions/products";
+import { getProducts, removeProduct, getAllProducts } from "../../../functions/products";
 
 const ProductsList = () => {
 
@@ -46,7 +46,7 @@ const ProductsList = () => {
     };
 
     const loadSearchProducts = () => {
-        searchProducts()
+        getAllProducts()
             .then((res) => {
                 setProductSearch(res.data);
                 setLoading(false);
@@ -76,6 +76,8 @@ const ProductsList = () => {
     }, [pageNumber]);
 
     const filteredProducts = productSearch.filter((product) => product.title.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
+
+    console.log("Search Products ====>", productSearch)
 
     return (
         <>

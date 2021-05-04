@@ -21,20 +21,20 @@ const Product = ({ product }) => {
     </div>
   )
 
-  const handleAddToCart = () => {
-    const cat = {
-      id: product._id,
-      title: product.title,
-      images: product.images[0].url,
-      price: product.price,
-      discount: product.discount,
-      discountprice: product.discountprice,
-      quantity: 1
-    }
+//   const handleAddToCart = () => {
+//     const cat = {
+//       id: product._id,
+//       title: product.title,
+//       images: product.images[0].url,
+//       price: product.price,
+//       discount: product.discount,
+//       discountprice: product.discountprice,
+//       quantity: 1
+//     }
 
-    dispatch(addToCart(cat))
-    toast(Msg)
-};
+//     dispatch(addToCart(cat))
+//     toast(Msg)
+// };
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -106,7 +106,7 @@ const Product = ({ product }) => {
             <i className="las la-star active" />
             <i className="las la-star active" />
           </div>
-          <div className="mt-3" style={{
+          {/* <div className="mt-3" style={{
             display: "flex", position: "relative",
             alignItems: "center",
             transition: "all .35s ease",
@@ -115,7 +115,7 @@ const Product = ({ product }) => {
             <button type="button" className="btn btn-product-cart" onClick={handleAddToCart}>
               <span className="btn-cart">Add Cart</span>
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

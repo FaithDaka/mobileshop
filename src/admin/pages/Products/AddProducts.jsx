@@ -45,7 +45,7 @@ const AddProducts = ({ history }) => {
     const [category, setCategory] = useState('');
     const [accessories, setAccessories] = useState(false);
     const [accessory, setAccessory] = useState([]);
-    const [accessorys, setAccessorys] = useState([]);
+    const [accessorys, setAccessorys] = useState('');
     const [colors, setColors] = useState([
         {id: 1, name: 'Balck', code: '#000000'},
         {id: 2, name: 'Yellow', code: '#FFFF00'},
