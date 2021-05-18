@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import Modal from 'react-modal';
 import LoadSpinner from "../../components/Spinner"
-import { loginBuynow } from "../../store/actions/auth"
+import { loginCheckout } from "../../store/actions/auth"
 import './verify.css';
 import './tel.css';
 
@@ -58,7 +58,7 @@ const CartModal = ({ modalIsOpen, close }) => {
             phonenumber, hash, otp
         }
 
-        dispatch(loginBuynow(user, history, close));
+        dispatch(loginCheckout(user, history, close));
     }
 
     let style = {
