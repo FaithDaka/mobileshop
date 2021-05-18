@@ -24,7 +24,7 @@ const BottomMenu = ({open}) => {
             <span style={{ color: '#bbb' }}> Categories</span>
           </a>
 
-          <a className="navigation__item call-item" href="https://wa.me/256751290264?text=Mobile%20Shop%20I%20have%20an%20inquiry" title="WhatsApp Call">
+          <a className="navigation__item call-item" href="https://wa.me/256709744874?text=Mobile%20Shop%20I%20have%20an%20inquiry" title="WhatsApp Call">
             <div className="whatsapp-img">
               {/* <i
                 className="fab fa-whatsapp"

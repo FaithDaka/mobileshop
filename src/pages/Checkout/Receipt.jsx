@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
+import { Helmet } from "react-helmet";
 import CurrencyFormat from 'react-currency-format';
 import moment from "moment";
 import Footer from '../../components/Layout/Footer/index';
@@ -12,6 +13,21 @@ const Receipt = ({ location }) => {
     }, [])
 
     return (
+        <>
+        <Helmet>
+                <title>Receipt Details</title>
+                <meta name="description" content="MobileShop Receipt" />
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-193008384-1">
+                </script>
+                <script>
+                    {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-193008384-1');
+        `}
+                </script>
+            </Helmet>
         <section class="my-4 pt-4">
             <div class="container text-left">
 
@@ -174,6 +190,7 @@ const Receipt = ({ location }) => {
             <BottomFooter />
             </div>
         </section>
+        </>
     )
 }
 

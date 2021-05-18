@@ -136,6 +136,8 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
         }
     }, [color]);
 
+    console.log("Product Colors ====>", product)
+
     return (
         <Modal
             isOpen={modalIsOpen}
@@ -160,28 +162,28 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
                         <div class="col-sm-10">
                             <div class="aiz-radio-inline">
                                 <label class="aiz-megabox pl-0 mr-2">
-                                    {product.storageprice.sixteen && <><input type="radio" name="storage" value="16GB" onChange={handleOptionChange} />
+                                    {product.storageprice && product.storageprice.sixteen && <><input type="radio" name="storage" value="16GB" onChange={handleOptionChange} />
                                         <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
                                             16GB
                                         </span></>
                                     }
                                 </label>
                                 <label class="aiz-megabox pl-0 mr-2">
-                                    {product.storageprice.thirtytwo && <><input type="radio" name="storage" value="32GB" onChange={handleOptionChange} />
+                                    {product.storageprice && product.storageprice.thirtytwo && <><input type="radio" name="storage" value="32GB" onChange={handleOptionChange} />
                                         <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
                                             32GB
                                         </span></>
                                     }
                                 </label>
                                 <label class="aiz-megabox pl-0 mr-2">
-                                    {product.storageprice.sixtyfour && <><input type="radio" name="storage" value="64GB" onChange={handleOptionChange} />
+                                    {product.storageprice && product.storageprice.sixtyfour && <><input type="radio" name="storage" value="64GB" onChange={handleOptionChange} />
                                         <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
                                             64GB
                                         </span></>
                                     }
                                 </label>
                                 <label class="aiz-megabox pl-0 mr-2">
-                                    {product.storageprice.onetwentyeight && <>
+                                    {product.storageprice && product.storageprice.onetwentyeight && <>
                                         <input type="radio" name="storage" value="128GB" onChange={handleOptionChange} />
                                         <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
                                             128GB
@@ -190,7 +192,7 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
                                     }
                                 </label>
                                 <label class="aiz-megabox pl-0 mr-2">
-                                    {product.storageprice.twofiftysix && <>
+                                    {product.storageprice && product.storageprice.twofiftysix && <>
                                         <input type="radio" name="storage" value="256GB" onChange={handleOptionChange} />
                                         <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
                                             256GB
@@ -199,7 +201,7 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
                                     }
                                 </label>
                                 <label class="aiz-megabox pl-0 mr-2">
-                                    {product.storageprice.fivetwelve && <>
+                                    {product.storageprice && product.storageprice.fivetwelve && <>
                                         <input type="radio" name="storage" value="512GB" onChange={handleOptionChange} />
                                         <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
                                             512GB
@@ -227,13 +229,13 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
                     </div>
 
                     <div class="row no-gutters">
-                        <div class="col-sm-2">
+                        {/* <div class="col-sm-2">
                             {product.color && product.color.length > 1 ? <div class="my-2">Color: {colorName}</div> : ''}
-                        </div>
+                        </div> */}
 
                         <div class="col-sm-10">
                             <div class="aiz-radio-inline">
-                                {product.color && product.color.length > 1 ? product.color.map((c) =>
+                                {product.color && product.color ? product.color.map((c) =>
                                     <label class="aiz-megabox pl-0 mr-2">
                                         <input type="radio" name="color" value={c} onChange={changeColor} />
                                         <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">

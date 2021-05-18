@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 import { toast } from "react-toastify";
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
@@ -115,6 +116,20 @@ const Checkout = ({ history }) => {
 
     return (
         <>
+        <Helmet>
+                <title>Check out Details</title>
+                <meta name="description" content="MobileShop Checkout" />
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-193008384-1">
+                </script>
+                <script>
+                    {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-193008384-1');
+        `}
+                </script>
+            </Helmet>
             <section class="my-4 pt-4">
                 {loading && <Spinner />}
                 <div class="container text-left">

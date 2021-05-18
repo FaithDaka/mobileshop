@@ -45,7 +45,7 @@ const AddProducts = ({ history }) => {
     const [category, setCategory] = useState('');
     const [accessories, setAccessories] = useState(false);
     const [accessory, setAccessory] = useState([]);
-    const [accessorys, setAccessorys] = useState([]);
+    const [accessorys, setAccessorys] = useState('');
     const [colors, setColors] = useState([
         {id: 1, name: 'Balck', code: '#000000'},
         {id: 2, name: 'Yellow', code: '#FFFF00'},
@@ -86,8 +86,8 @@ const AddProducts = ({ history }) => {
 
     const loadAccessories = () => {
         setLoading(true);
-        getAccessories().then((a) => {
-            setAccessory(a.data.accessories)
+        getAccessories().then((res) => {
+            setAccessory(res.data)
             setLoading(false);
         })
     }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
+import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom';
 import ProductImage from "./ProductImage";
 import ProductInfo from "./ProductInfo";
@@ -41,6 +42,20 @@ const ProductDetails = ({ match }) => {
 
     return (
         <>
+        <Helmet>
+                <title>Product Details</title>
+                <meta name="description" content="MobileShop Product Details" />
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-193008384-1">
+                </script>
+                <script>
+                    {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-193008384-1');
+        `}
+                </script>
+            </Helmet>
             <section class="mb-4 mt-4 pt-3">
                 <div class="container"> 
                     {loading && <LoadSpinner />}
