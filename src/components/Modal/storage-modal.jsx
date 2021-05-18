@@ -136,6 +136,8 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
         }
     }, [color]);
 
+    console.log("Product Colors ====>", product)
+
     return (
         <Modal
             isOpen={modalIsOpen}
@@ -227,13 +229,13 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
                     </div>
 
                     <div class="row no-gutters">
-                        <div class="col-sm-2">
+                        {/* <div class="col-sm-2">
                             {product.color && product.color.length > 1 ? <div class="my-2">Color: {colorName}</div> : ''}
-                        </div>
+                        </div> */}
 
                         <div class="col-sm-10">
                             <div class="aiz-radio-inline">
-                                {product.color && product.color.length > 1 ? product.color.map((c) =>
+                                {product.color && product.color ? product.color.map((c) =>
                                     <label class="aiz-megabox pl-0 mr-2">
                                         <input type="radio" name="color" value={c} onChange={changeColor} />
                                         <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">

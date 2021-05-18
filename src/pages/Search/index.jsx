@@ -3,7 +3,7 @@ import _ from "lodash";
 import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-import Product from '../../components/Product';
+import Product from '../../components/Product/product-search';
 import LoadSpinner from '../../components/Spinner';
 import Browse from '../../components/Browser/Browse'
 import Filters from './Filters';
@@ -44,7 +44,7 @@ const SearchFilters = () => {
     useEffect(() => {
         const delayed = setTimeout(() => {
             fetchProducts({ query: text });
-        }, 300);
+        }, 200);
         return () => clearTimeout(delayed);
     }, [text]);
 
