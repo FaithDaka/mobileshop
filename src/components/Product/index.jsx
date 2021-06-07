@@ -22,7 +22,7 @@ const Product = ({ product }) => {
     <div>
       Product Added To Cart Successfully
       <Link to='/cart' className="pl-2">
-      <button class="btn btn-sm btn-primary">Go To Cart</button>
+        <button class="btn btn-sm btn-primary">Go To Cart</button>
       </Link>
     </div>
   )
@@ -40,7 +40,7 @@ const Product = ({ product }) => {
 
     dispatch(addToCart(cat))
     toast(Msg)
-};
+  };
 
   const checkStorage = () => {
     if (product.storageChecked) {
@@ -50,7 +50,7 @@ const Product = ({ product }) => {
     }
   }
 
-  
+
   return (
     <div className="col mb-1">
       <div className="aiz-card-box border border-light rounded shadow-sm hov-shadow-md h-100 has-transition bg-white">
@@ -67,17 +67,22 @@ const Product = ({ product }) => {
           </Link>
           <div className="absolute-top-left pt-2 pl-2">
             {product.condition === 'Uk Used' ? <span className="badge badge-inline badge-danger">UK Used</span> : ''}
+            {product.condition === 'Brand New' ? <><span className="badge badge-inline badge-success" style={{backgroundColor:"red"}}>Brand New</span><br></br>
+              <img src="https://my-test-11.slatic.net/p/d45f59157c241f0830f132372b0dd873.png" alt="" width="50" height="60" /> </> : ''}
           </div>
+
         </div>
         <div className="p-md-3 p-2 text-left">
           <div className="fs-15">
             <div className="fw-600 ms-brand">{product.subs ? <span className="badge badge-inline badge-soft-secondary">{product.subs.name}</span> : ''}
             </div>
+
             <h3 className="fw-600 fs-13 text-truncate-2 lh-1-4 mb-2">
               <Truncate lines={2} ellipsis={<span>... <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`}></Link></span>}>
                 {product.title}
               </Truncate>
             </h3>
+
             {
               product.discountprice ?
                 <>
@@ -102,16 +107,16 @@ const Product = ({ product }) => {
                   </div>
                 </> :
                 <><span className="fw-700 text-reset">
-                <a style={{display:"none"}}>none</a>
-              </span><br></br>
-                <span className="fw-700 text-reset">
-                  <CurrencyFormat
-                    prefix={"UGX "}
-                    value={product.price}
-                    displayType="text"
-                    thousandSeparator
-                  /></span>
-                  </>
+                  <a style={{ display: "none" }}>none</a>
+                </span><br></br>
+                  <span className="fw-700 text-reset">
+                    <CurrencyFormat
+                      prefix={"UGX "}
+                      value={product.price}
+                      displayType="text"
+                      thousandSeparator
+                    /></span>
+                </>
             }
           </div>
           <div className="rating rating-sm mt-1">
