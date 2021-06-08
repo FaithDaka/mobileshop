@@ -208,6 +208,11 @@ const ProductInfo = ({ product }) => {
     }
   }, [color]);
 
+    const mystyle = {
+      marginLeft:"80px",
+      backgroundColor: "DodgerBlue",
+    
+    };
 
   return (
     <>
@@ -412,13 +417,14 @@ const ProductInfo = ({ product }) => {
             <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
               <span class="d-md-inline-block"> Buy Now</span>
             </button>
-            <div>
-              <button type="button" className=" btn btn-product-call">
-              <a href="tel:0709744874">
-                <i class="las la-phone la-2x btn-call"></i>
+            <div class="shadow-lg ml-2 pr-2 pl-2 pt-2 pb-1 bg-white rounded">
+            <a href="tel:0709744874" >
+            <i class="las la-phone la-2x"></i>
+                {/* <i class="las la-phone  btn-call" ></i> */}
               </a>
-              </button>
             </div>
+
+            
           </div>
         </div>
 
