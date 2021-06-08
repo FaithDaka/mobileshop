@@ -198,53 +198,44 @@ const Checkout = ({ history }) => {
                                 </div>
                             </div>
 
+                            
                             <div class="card shadow-sm border-0 rounded">
                                 <div class="card-header p-3">
                                     <h3 class="fs-16 fw-600 mb-0">
-                                        Select a payment option</h3>
+                                        Select a delivery option</h3>
                                 </div>
-                                <div class="card-body text-center">
+                                <div class="card-body">
                                     <div class="row">
                                         <div class="col-xxl-8 col-xl-10 mx-auto">
-                                            <div class="row gutters-10">
 
-                                                <div class="col-6 col-md-4">
-                                                    <label class="aiz-megabox d-block mb-3">
-                                                        <input value="cash_on_delivery" class="online_payment" type="radio" name="payment_option" checked="yes" />
-                                                        <span class="d-block p-3 aiz-megabox-elem">
-                                                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/cards/cod.png" class="img-fluid mb-2" width="75" />
-                                                            <span class="d-block text-center">
-                                                                <span class="d-block fw-600 fs-14">Cash on Delivery</span>
-                                                            </span>
-                                                        </span>
-                                                    </label>
-                                                </div>
 
-                                                <div class="col-6 col-md-4">
-                                                    <label class="aiz-megabox d-block mb-3">
-                                                        <input value="cash_on_delivery" class="online_payment" type="radio" name="payment_option" checked="" />
-                                                        <span class="d-block p-3 aiz-megabox-elem">
-                                                            <img src="images/MTN.webp" class="img-fluid mb-2" width="40" />
-                                                            <span class="d-block text-center">
-                                                                <span class="d-block fw-600 fs-14">MTN Mobile Money</span>
-                                                            </span>
-                                                        </span>
-                                                    </label>
-                                                </div>
+                                            <p>
+                                                <input type="radio" id="test1" name="radio-group" checked />
+                                                <label for="test1" style={{ whiteSpace: 'nowrap' }}><span class="d-block" >
+                                                    <span class="d-block fw-600 fs-14">Cash on delivery &nbsp; &nbsp;&nbsp;
+                                                <img src="https://m.media-amazon.com/images/I/71VmVA1WhgL._SS500_.jpg" class="img-fluid mb-2" width="30" height='30' />
+                                                    </span>
+                                                </span></label>
+                                            </p>
+                                            <p>
+                                                <input type="radio" id="test2" name="radio-group" />
+                                                <label for="test2"><span class="d-block">
+                                                    <span class="d-block fw-600 fs-14">Airtel mobile money &nbsp; &nbsp;&nbsp;
+                                                <img src="images/Airtel.webp" class="img-fluid mb-2" width="30" height='30' />
+                                                    </span>
+                                                </span></label>
+                                            </p>
+                                            <p>
+                                                <input type="radio" id="test3" name="radio-group" />
+                                                <label for="test3"><span class="d-block">
+                                                    <span class="d-block fw-600 fs-14">MTN mobile money &nbsp; &nbsp;&nbsp;
+                                                <img src="images/MTN.webp" class="img-fluid mb-2" width="30" height='30' />
+                                                    </span>
+                                                </span></label>
+                                            </p>
 
-                                                <div class="col-6 col-md-4">
-                                                    <label class="aiz-megabox d-block mb-3">
-                                                        <input value="cash_on_delivery" class="online_payment" type="radio" name="payment_option" checked="" />
-                                                        <span class="d-block p-3 aiz-megabox-elem">
-                                                            <img src="images/Airtel.webp" class="img-fluid mb-2" width="50" />
-                                                            <span class="d-block text-center">
-                                                                <span class="d-block fw-600 fs-14">Airtel Money</span>
-                                                            </span>
-                                                        </span>
-                                                    </label>
-                                                </div>
 
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -260,18 +251,16 @@ const Checkout = ({ history }) => {
                                         <div class="col-xxl-8 col-xl-10 mx-auto">
 
 
-                                            <p>
-                                                <input type="radio" id="test1" name="radio-group" checked />
-                                                <label for="test1"><span class="d-block">
-                                                    <span class="d-block fw-600 fs-14">Delivery</span>
-                                                </span></label>
-                                            </p>
-                                            <p>
-                                                <input type="radio" id="test2" name="radio-group" />
-                                                <label for="test2"><span class="d-block">
-                                                    <span class="d-block fw-600 fs-14">Pickup station</span>
-                                                </span></label>
-                                            </p>
+                                            <div>
+                                                <input type="radio" id="huey" name="drone" value="huey"
+                                                    checked />
+                                                <label for="huey"><span class="d-block fw-600 fs-14">Delivery</span></label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" id="dewey" name="drone" value="dewey" />
+                                                <label for="dewey"><span class="d-block fw-600 fs-14">Pickup station</span></label>
+                                            </div>
 
 
 
@@ -279,6 +268,10 @@ const Checkout = ({ history }) => {
                                     </div>
                                 </div>
                             </div>
+
+
+
+
                         </div>
                         <div class="col-lg-4 mt-2 mt-lg-0">
                             <div class="card border-0 shadow-sm rounded">
