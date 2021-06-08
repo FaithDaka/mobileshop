@@ -42,7 +42,7 @@ const Product = ({ product }) => {
 
   return (
     <div className="pr-1">
-      <div className="aiz-card-box border border-light rounded shadow-sm hov-shadow-md h-100 has-transition bg-white">
+      <div className="aiz-card-box rounded shadow-sm hov-shadow-md h-100 has-transition bg-white">
         <div className="position-relative">
           <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`} 
           className="d-block text-center pt-3 product-img-box">
@@ -70,12 +70,12 @@ const Product = ({ product }) => {
               product.discountprice ?
                 <>
                   <span className="fw-600 text-reset">
-                    <CurrencyFormat
+                   <strong><CurrencyFormat
                       prefix={"UGX "}
                       value={product.discountprice}
                       displayType="text"
                       thousandSeparator
-                    />
+                    /></strong> 
                   </span>
                   <div className="s-prc-w">
                     <del className="d-block opacity-70">
@@ -91,12 +91,12 @@ const Product = ({ product }) => {
                 </> :
 
                 <span className="fw-600 text-reset">
-                  <CurrencyFormat
+                  <strong><CurrencyFormat
                     prefix={"UGX "}
                     value={product.price}
                     displayType="text"
                     thousandSeparator
-                  /></span>
+                  /></strong></span>
             }
           </div>
           <div className="rating rating-sm mt-1">
