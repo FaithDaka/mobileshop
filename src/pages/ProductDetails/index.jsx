@@ -8,7 +8,7 @@ import ProductSpecs from "./ProductSpecs";
 import LoadSpinner from '../../components/Spinner';
 import Footer from '../../components/Layout/Footer/index';
 import BottomFooter from '../../components/Layout/Footer/BottomFooter'
-
+import Shipping from './shipping'
 import { getProduct, getRelated } from "../../functions/products";
 import './sticky.css';
 
@@ -87,9 +87,12 @@ const ProductDetails = ({ match }) => {
                         </div>
                     </div>
                 </div>
+                
             </section>
+            <Shipping/>
          
             <ProductSpecs product={product} related={related} />
+            
             <div class="d-none d-lg-block">
                 <Footer/>
                 <BottomFooter/>

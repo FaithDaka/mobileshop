@@ -246,6 +246,35 @@ const BuyNow = ({ history }) => {
                                     </div>
                                 </div>
                             </div>
+                            <div class="card shadow-sm border-0 rounded">
+                                <div class="card-header p-3">
+                                    <h3 class="fs-16 fw-600 mb-0">
+                                        Select a delivery option</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-xxl-8 col-xl-10 mx-auto">
+
+
+                                            <p>
+                                                <input type="radio" id="test1" name="radio-group" checked />
+                                                <label for="test1"><span class="d-block">
+                                                    <span class="d-block fw-600 fs-14">Delivery</span>
+                                                </span></label>
+                                            </p>
+                                            <p>
+                                                <input type="radio" id="test2" name="radio-group" />
+                                                <label for="test2"><span class="d-block">
+                                                    <span class="d-block fw-600 fs-14">Pickup station</span>
+                                                </span></label>
+                                            </p>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-4 mt-2 mt-lg-0">
                             <div class="card border-0 shadow-sm rounded">

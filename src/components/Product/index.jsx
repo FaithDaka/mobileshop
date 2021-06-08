@@ -39,7 +39,7 @@ const Product = ({ product }) => {
     }
 
     dispatch(addToCart(cat))
-    toast(Msg)
+    toast.success(Msg)
   };
 
   const checkStorage = () => {
@@ -67,21 +67,27 @@ const Product = ({ product }) => {
           </Link>
           <div className="absolute-top-left pt-2 pl-2">
             {product.condition === 'Uk Used' ? <span className="badge badge-inline badge-danger">UK Used</span> : ''}
-            {product.condition === 'Brand New' ? <><span className="badge badge-inline badge-success" style={{backgroundColor:"red"}}>Brand New</span><br></br>
-              <img src="https://my-test-11.slatic.net/p/d45f59157c241f0830f132372b0dd873.png" alt="" width="50" height="60" /> </> : ''}
+            {product.condition === 'Brand New' ? <><span className="badge badge-inline badge-success" style={{backgroundColor:"#c29b0c"}}>Brand New</span><br></br>
+              <img src="/images/warranty.png" alt="wnty" width="50" height="60" /> </> : ''}
           </div>
 
         </div>
+        
         <div className="p-md-3 p-2 text-left">
+          
           <div className="fs-15">
+          
             <div className="fw-600 ms-brand">{product.subs ? <span className="badge badge-inline badge-soft-secondary">{product.subs.name}</span> : ''}
             </div>
-
-            <h3 className="fw-600 fs-13 text-truncate-2 lh-1-4 mb-2">
+    
+            <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`}>
+            <h3 className="fw-600 fs-13 text-truncate-2 lh-1-4 mb-2" style={{color:"black"}}>
               <Truncate lines={2} ellipsis={<span>... <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`}></Link></span>}>
+                
                 {product.title}
               </Truncate>
             </h3>
+            </Link>
 
             {
               product.discountprice ?

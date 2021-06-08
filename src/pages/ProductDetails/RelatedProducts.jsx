@@ -6,6 +6,10 @@ import LoadSpinner from '../../components/Spinner';
 import Product from '../../components/Product/product-slidder'
 
 const RelatedProducts = ({ related, loading }) => {
+  const styles={
+
+  boxShadow: 'none',
+  }
 
   var settings = {
     arrows: false,
@@ -51,10 +55,10 @@ const RelatedProducts = ({ related, loading }) => {
       </div>
       <div class="d-md-none">
       <div className="pt-3">
-            <Slider autoplay={true} slidesToShow={2} autoplaySpeed={2000} infinite={true} arrows={false}>
+            <Slider autoplay={true} slidesToShow={2} autoplaySpeed={2000} infinite={true} arrows={false}  style={styles}>
               {
                 related.map(item => (
-                  <Product product={item} />
+                  <Product product={item} style={styles}/>
                 ))}
             </Slider>
       </div>
@@ -64,7 +68,7 @@ const RelatedProducts = ({ related, loading }) => {
             <Slider {...settings}>
               {
                 related.map(item => (
-                  <Product product={item} />
+                  <Product product={item}  style={styles}/>
                 ))}
             </Slider>
       </div>

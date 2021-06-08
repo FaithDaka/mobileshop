@@ -116,7 +116,7 @@ const Checkout = ({ history }) => {
 
     return (
         <>
-        <Helmet>
+            <Helmet>
                 <title>Check out Details</title>
                 <meta name="description" content="MobileShop Checkout" />
                 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-193008384-1">
@@ -198,72 +198,93 @@ const Checkout = ({ history }) => {
                                 </div>
                             </div>
 
+                            
                             <div class="card shadow-sm border-0 rounded">
                                 <div class="card-header p-3">
                                     <h3 class="fs-16 fw-600 mb-0">
-                                        Select a payment option
-                                        
-                 </h3>
+                                        Select a delivery option</h3>
                                 </div>
-                                <div class="card-body text-center">
+                                <div class="card-body">
                                     <div class="row">
                                         <div class="col-xxl-8 col-xl-10 mx-auto">
-                                            <div class="row gutters-10">
 
-                                                <div class="col-6 col-md-4">
-                                                    <label class="aiz-megabox d-block mb-3">
-                                                        <input value="cash_on_delivery" class="online_payment" type="radio" name="payment_option" checked="yes" />
-                                                        <span class="d-block p-3 aiz-megabox-elem">
-                                                            <img src="https://demo.activeitzone.com/ecommerce/public/assets/img/cards/cod.png" class="img-fluid mb-2" width="75"/>
-                                                            <span class="d-block text-center">
-                                                                <span class="d-block fw-600 fs-14">Cash on Delivery</span>
-                                                            </span>
-                                                        </span>
-                                                    </label>
-                                                </div>
 
-                                                <div class="col-6 col-md-4">
-                                                    <label class="aiz-megabox d-block mb-3">
-                                                        <input value="cash_on_delivery" class="online_payment" type="radio" name="payment_option" checked="" />
-                                                        <span class="d-block p-3 aiz-megabox-elem">
-                                                            <img src="images/MTN.webp" class="img-fluid mb-2" width="40" />
-                                                            <span class="d-block text-center">
-                                                                <span class="d-block fw-600 fs-14">MTN Mobile Money</span>
-                                                            </span>
-                                                        </span>
-                                                    </label>
-                                                </div>
+                                            <p>
+                                                <input type="radio" id="test1" name="radio-group" checked />
+                                                <label for="test1" style={{ whiteSpace: 'nowrap' }}><span class="d-block" >
+                                                    <span class="d-block fw-600 fs-14">Cash on delivery &nbsp; &nbsp;&nbsp;
+                                                <img src="https://m.media-amazon.com/images/I/71VmVA1WhgL._SS500_.jpg" class="img-fluid mb-2" width="30" height='30' />
+                                                    </span>
+                                                </span></label>
+                                            </p>
+                                            <p>
+                                                <input type="radio" id="test2" name="radio-group" />
+                                                <label for="test2"><span class="d-block">
+                                                    <span class="d-block fw-600 fs-14">Airtel mobile money &nbsp; &nbsp;&nbsp;
+                                                <img src="images/Airtel.webp" class="img-fluid mb-2" width="30" height='30' />
+                                                    </span>
+                                                </span></label>
+                                            </p>
+                                            <p>
+                                                <input type="radio" id="test3" name="radio-group" />
+                                                <label for="test3"><span class="d-block">
+                                                    <span class="d-block fw-600 fs-14">MTN mobile money &nbsp; &nbsp;&nbsp;
+                                                <img src="images/MTN.webp" class="img-fluid mb-2" width="30" height='30' />
+                                                    </span>
+                                                </span></label>
+                                            </p>
 
-                                                <div class="col-6 col-md-4">
-                                                    <label class="aiz-megabox d-block mb-3">
-                                                        <input value="cash_on_delivery" class="online_payment" type="radio" name="payment_option" checked=""/>
-                                                        <span class="d-block p-3 aiz-megabox-elem">
-                                                            <img src="images/Airtel.webp" class="img-fluid mb-2" width="50"/>
-                                                            <span class="d-block text-center">
-                                                                <span class="d-block fw-600 fs-14">Airtel Money</span>
-                                                            </span>
-                                                        </span>
-                                                    </label>
-                                                </div>
 
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="card shadow-sm border-0 rounded">
+                                <div class="card-header p-3">
+                                    <h3 class="fs-16 fw-600 mb-0">
+                                        Select a delivery option</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-xxl-8 col-xl-10 mx-auto">
+
+
+                                            <div>
+                                                <input type="radio" id="huey" name="drone" value="huey"
+                                                    checked />
+                                                <label for="huey"><span class="d-block fw-600 fs-14">Delivery</span></label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" id="dewey" name="drone" value="dewey" />
+                                                <label for="dewey"><span class="d-block fw-600 fs-14">Pickup station</span></label>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
                         </div>
                         <div class="col-lg-4 mt-2 mt-lg-0">
                             <div class="card border-0 shadow-sm rounded">
                                 <div class="card-header">
                                     <h3 class="fs-16 fw-600 mb-0">Summary</h3>
                                     <div class="text-right">
-                                        <span class="badge badge-inline badge-primary">{totalQuantities} Items</span>
+                                        <span class="badge badge-inline badge-primary">{cartItems.length} Items</span>
                                     </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="rounded px-2 mb-2 bg-soft-primary border-soft-primary border">
-                                        Total Items Bought:
-                 <span class="fw-700 float-right">{totalQuantities}</span>
+                                        Total Items Ordered:
+                 <span class="fw-700 float-right">{cartItems.length}</span>
                                     </div>
                                     <table class="table">
                                         <thead>
@@ -344,43 +365,43 @@ const Checkout = ({ history }) => {
             </section>
 
             <section class="gry-bg">
-                 <div className="container">
-                <div class="shadow-sm bg-white py-2 px-2 rounded">
-                    <div >
-                        <label class="aiz-checkbox">
-                            <input type="checkbox" id="agree_checkbox" checked={termsCheck} onChange={(e) => setTermChecked(e.target.checked)} name="terms" />
-                            <span class="aiz-square-check"></span>
-                            <span className="fw-700">I agree to the </span>
-                            <Link to="/terms">terms and conditions</Link>
-                        </label>
-                        {Object.keys(termsErrors).map((key) => <div style={{ color: 'red' }}>{termsErrors[key]}</div>)}
-                    </div>
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <Link to="/" class="link link--style-3">
-                                <i class="las la-arrow-left"></i>
-                                <span className="fw-800 fs-16">Return to shop</span>
-                            </Link>
+                <div className="container">
+                    <div class="shadow-sm bg-white py-2 px-2 rounded">
+                        <div >
+                            <label class="aiz-checkbox">
+                                <input type="checkbox" id="agree_checkbox" checked={termsCheck} onChange={(e) => setTermChecked(e.target.checked)} name="terms" />
+                                <span class="aiz-square-check"></span>
+                                <span className="fw-700">I agree to the </span>
+                                <Link to="/terms">terms and conditions</Link>
+                            </label>
+                            {Object.keys(termsErrors).map((key) => <div style={{ color: 'red' }}>{termsErrors[key]}</div>)}
                         </div>
-                        <div class="col-6 pr-2 float-right">
-                            <Link to="/receipt">
-                                <button onClick={placeOrder} type="button" class="btn btn-primary fw-600">
-                                    {loading ? <Spinner /> : <span>Complete Order</span>}
-                                </button>
-                            </Link>
-                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <Link to="/" class="link link--style-3">
+                                    <i class="las la-arrow-left"></i>
+                                    <span className="fw-800 fs-16">Return to shop</span>
+                                </Link>
+                            </div>
+                            <div class="col-6 pr-2 float-right">
+                                <Link to="/receipt">
+                                    <button onClick={placeOrder} type="button" class="btn btn-primary fw-600">
+                                        {loading ? <Spinner /> : <span>Complete Order</span>}
+                                    </button>
+                                </Link>
+                            </div>
 
+                        </div>
                     </div>
-                </div>
                 </div>
             </section>
             <div className='d-lg-none pb-5'>
                 <Footer />
                 <BottomFooter />
             </div>
-            <div className='d-none d-lg-block' style={{marginBottom:"-2%"}} >
-            <Footer />
-            <BottomFooter />
+            <div className='d-none d-lg-block' style={{ marginBottom: "-2%" }} >
+                <Footer />
+                <BottomFooter />
             </div>
 
         </>

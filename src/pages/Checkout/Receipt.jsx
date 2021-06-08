@@ -39,7 +39,7 @@ const Receipt = ({ location }) => {
                                     <div class="text-center py-4 mb-4">
                                         <i class="la la-check-circle la-3x text-success mb-3"></i>
                                         <h1 class="h3 mb-3 fw-600">Thank You for Your Order!</h1>
-                                        <h2 class="h5">Order Code: <span class="fw-700 text-primary">{orderInfo.state._id}</span></h2>
+                                        <h2 class="h5">Order ID: <span class="fw-700 text-primary">{orderInfo.state._id}</span></h2>
                                         <p class="opacity-70 font-italic">A copy or your order summary has been sent to {orderInfo.state.email}</p>
                                     </div>
                                     <div class="mb-4">
@@ -48,7 +48,7 @@ const Receipt = ({ location }) => {
                                             <div class="col-md-6">
                                                 <table class="table">
                                                     <tbody><tr>
-                                                        <td class="w-50 fw-600">Order:</td>
+                                                        <td class="w-50 fw-600">Order ID:</td>
                                                         <td>{orderInfo.state._id}</td>
                                                     </tr>
                                                         <tr>
