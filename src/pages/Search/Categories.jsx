@@ -8,6 +8,7 @@ import Pagination from '../../components/Pagination'
 import { getProductBrands } from "../../functions/products";
 import Footer from '../../components/Layout/Footer/index';
 import BottomFooter from '../../components/Layout/Footer/BottomFooter'
+import PreOrder from './preorder'
 
 
 const Categories = ({ match }) => {
@@ -59,7 +60,9 @@ const Categories = ({ match }) => {
                             <p>No Products in this Category Yet ??</p>
                             }
 
-                            <Link to ='preorder'>Pre order</Link>
+                            <PreOrder/>
+                            {/* <h6>There Are No Products in this Category Yet </h6>
+                            <Link to ='/preorder'><p className="text-center fs-14 ">Pre Order Product</p></Link> */}
 
                         </div>
                     </div>

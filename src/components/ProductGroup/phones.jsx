@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import BrandNew from './brand-new';
 import UkUsed from './uk-used';
 import { getAllProducts } from "../../functions/products";
+import Helmet from 'react-helmet';
+
 
 const Phones = () => {
   const [currentTab, setCurrentTab] = useState('brandnew');
@@ -37,29 +39,17 @@ const Phones = () => {
   }, []);
 
   return (
+
     <>
-      <nav class="nav nav-pills nav-justified">
-        <a class={`nav-item nav-link mr-2 text-left ${currentTab === 'brandnew' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('brandnew')} >Brand New</a>
-        <a class={`nav-item nav-link ml-02text-left ${currentTab === 'ukused' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('ukused')} >Premium UK-Used</a>
+    <Helmet>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    </Helmet>
+      <nav class="nav nav-pills nav-justified tablist">
+        <a id='bnew' class={`nav-item nav-link mr-0 pr-0 text-center ${currentTab === 'brandnew' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('brandnew')} >Brand New </a>
+        <a id='uused' class={`nav-item nav-link ml-0 pl-0 text-center ${currentTab === 'ukused' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('ukused')} >Premium UK-Used </a>
 
 
       </nav>
-      {/* <div className="container">
-        <div className="row">
-          <div className={`col-6 col-md-6 col-lg-6 ${currentTab === 'brandnew' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('brandnew')}>
-            <div className="">
-              <Link to="#" data-toggle="tab" className="p-3 text-reset show ">Brand New</Link>
-            </div>
-
-          </div>
-          <div className={`col-6 col-md-6 col-lg-6 ${currentTab === 'ukused' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('ukused')}>
-            <div className="">
-              <Link to="#" data-toggle="tab" className="p-3 text-reset show ">Uk Used</Link>
-            </div>
-
-          </div>
-        </div>
-      </div> */}
 
       <div className="" style={{ paddingTop: "1%" }}>
         {renderView()}

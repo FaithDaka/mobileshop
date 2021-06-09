@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import _ from "lodash";
-import { toast } from "react-toastify";
+import { toast ,ToastContainer } from "react-toastify";
 import { Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import Truncate from 'react-truncate';
@@ -39,7 +39,11 @@ const Product = ({ product }) => {
     }
 
     dispatch(addToCart(cat))
-    toast.success(Msg)
+    toast(Msg,{
+      className: 'black-background',
+      bodyClassName: "grow-font-size",
+      progressClassName: 'fancy-progress-bar'
+    });
   };
 
   const checkStorage = () => {
