@@ -124,7 +124,7 @@ const ProductInfo = ({ product }) => {
     }
 
     dispatch(addToCart(cat))
-    toast(Msg)
+    toast.info(Msg)
   };
 
   useEffect(() => {
@@ -219,7 +219,7 @@ const ProductInfo = ({ product }) => {
       <div class="text-left">
         {showAlert && (
           <SweetAlert
-            success
+            info
             onConfirm={() => hideAlert()}
             onCancel={() => hideAlert()}
             title="Product Added to Cart Successfully!"

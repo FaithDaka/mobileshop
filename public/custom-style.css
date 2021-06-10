@@ -523,3 +523,10 @@ to {
     }
   
   }
+  .Toastify__toast--info {
+    color: #0c5460 !important;
+    background-color: #d1ecf1 !important;
+    border-color: #bee5eb !important;
+    
+  }
+  

@@ -39,7 +39,7 @@ const Product = ({ product }) => {
     }
 
     dispatch(addToCart(cat))
-    toast.success(Msg)
+    toast.info(Msg)
   };
 
   const checkStorage = () => {
