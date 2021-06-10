@@ -20,8 +20,8 @@ const customStyles = {
 };
 
 const styles={
-  marginTop:'-95%',
-  marginRight:'11%'
+  marginTop:'-100%',
+  marginRight:'5%',
 }
 
 const styles2={

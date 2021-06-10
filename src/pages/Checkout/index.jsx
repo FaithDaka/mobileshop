@@ -202,7 +202,7 @@ const Checkout = ({ history }) => {
                             <div class="card shadow-sm border-0 rounded">
                                 <div class="card-header p-3">
                                     <h3 class="fs-16 fw-600 mb-0">
-                                        Select a delivery option</h3>
+                                        Select a payment option</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
@@ -213,7 +213,7 @@ const Checkout = ({ history }) => {
                                                 <input type="radio" id="test1" name="radio-group" checked />
                                                 <label for="test1" style={{ whiteSpace: 'nowrap' }}><span class="d-block" >
                                                     <span class="d-block fw-600 fs-14">Cash on delivery &nbsp; &nbsp;&nbsp;
-                                                <img src="https://m.media-amazon.com/images/I/71VmVA1WhgL._SS500_.jpg" class="img-fluid mb-2" width="30" height='30' />
+                                                <img src="https://www.glam-secret.com/wp-content/uploads/2021/02/Cash-On-Delivery-Logo.jpg" class="img-fluid mb-2" width="70" height='60' />
                                                     </span>
                                                 </span></label>
                                             </p>
@@ -270,9 +270,6 @@ const Checkout = ({ history }) => {
                                     </div>
                                 </div>
                             </div>
-
-
-
 
                         </div>
                         <div class="col-lg-4 mt-2 mt-lg-0">

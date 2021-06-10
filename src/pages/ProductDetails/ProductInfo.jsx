@@ -412,9 +412,12 @@ const ProductInfo = ({ product }) => {
             position: "relative",
             transition: "all .35s ease",
           }}>
-            <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-400" onClick={handleAddToCart}>
-              <span class="d-md-inline-block"> Add to cart</span>
+            <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600 pl-0 ml-0 pr-0 mr-0" onClick={handleAddToCart}>
+              <i class="bi bi-cart-dash-fill" style={{paddingLeft:"0%",marginRight:"0%",marginLeft:"0%",paddingRight:"0%"}}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart-dash-fill" viewBox="0 0 16 16">
+  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1z"/>
+</svg></i>
             </button>
+            
             <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
               <span class="d-md-inline-block"> Buy Now</span>
             </button>

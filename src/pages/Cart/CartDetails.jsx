@@ -13,7 +13,7 @@ const CartDetails = ({ cart, total, checkout }) => {
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
-        toast.info("Product successfuly removed from cart");
+        toast("Product successfuly removed from cart");
     }
 
     return (

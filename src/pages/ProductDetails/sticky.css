@@ -18,6 +18,18 @@
 	width: 120px;
 	height: 50%;
 }
+@media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+	.add-to-cart{
+		width: 80px;
+		height: 50%;
+	}
+	.buy-now{
+		width: 240px;
+		height: 50%;
+	}
+
+  }
 .acc-price{
 	white-space: nowrap;
 	font-weight: 500;
