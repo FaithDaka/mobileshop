@@ -248,7 +248,7 @@ const Checkout = ({ history }) => {
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-xxl-8 col-xl-10 mx-auto">
+                                        <div class="col-xxl-8 col-xl-10 mx-auto" style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
 
 
                                             <div>
@@ -259,7 +259,9 @@ const Checkout = ({ history }) => {
 
                                             <div>
                                                 <input type="radio" id="dewey" name="drone" value="dewey" />
-                                                <label for="dewey"><span class="d-block fw-600 fs-14">Pickup station</span></label>
+                                                <label for="dewey"><span class="d-block fw-600 fs-14">Pickup station<br>
+                                                </br>
+                                                Church House, <br></br>1st Floor room 001</span></label>
                                             </div>
 
 

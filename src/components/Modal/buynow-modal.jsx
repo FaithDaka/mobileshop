@@ -94,7 +94,7 @@ const BuyNowModal = ({ modalIsOpen, close }) => {
                                     <div class="modal-card">
                                        <div class="text-center pt-4">
                                           <h1 class="h4 fw-600">
-                                          Create Account.
+                                          Enter Phone Number.
                                           </h1>
                                           <span class="opacity-60">Please make sure you fill in a valid phone number so we can reach you during delivery.</span>
                                        </div>

@@ -215,7 +215,7 @@ const ProductInfo = ({ product }) => {
     };
 
   return (
-    <>
+    <section id ='productinfo'>
       <div class="text-left">
         {showAlert && (
           <SweetAlert
@@ -238,6 +238,7 @@ const ProductInfo = ({ product }) => {
             <span class="ml-1 opacity-50">(ratings)</span>
           </div>
           <div class="col-6 text-right">
+        
             <span class="badge badge-md badge-inline badge-pill badge-success">{product.condition}</span>
           </div>
         </div>
@@ -411,7 +412,7 @@ const ProductInfo = ({ product }) => {
             position: "relative",
             transition: "all .35s ease",
           }}>
-            <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
+            <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-400" onClick={handleAddToCart}>
               <span class="d-md-inline-block"> Add to cart</span>
             </button>
             <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
@@ -420,7 +421,7 @@ const ProductInfo = ({ product }) => {
             <div class="shadow-lg ml-2 pr-2 pl-2 pt-2 pb-1 bg-white rounded">
             <a href="tel:0709744874" >
             <i class="las la-phone la-2x"></i>
-                {/* <i class="las la-phone  btn-call" ></i> */}
+               
               </a>
             </div>
 
@@ -431,7 +432,7 @@ const ProductInfo = ({ product }) => {
         {/* } */}
       </div>
 
-    </>
+    </section>
   )
 }
 

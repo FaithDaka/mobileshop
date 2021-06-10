@@ -10,7 +10,7 @@ const customStyles = {
       top: '40%',
       bottom:'-15%',
       transform: 'translateY(-50%)',
-      backgroundColor:"transparent",
+      backgroundColor:"white",
       border:'none'
   },
   overlay: {
@@ -18,6 +18,17 @@ const customStyles = {
       zIndex: '10000'
   }
 };
+
+const styles={
+  marginTop:'-95%',
+  marginRight:'11%'
+}
+
+const styles2={
+  // marginTop:'10%',
+  marginRight:'20%'
+ 
+}
 
 Modal.setAppElement('#root')
 
@@ -32,12 +43,17 @@ const ProductImage = ({ product }) => {
 
   const renderImage = () => {
     return (
-
+      <>
       <LazyLoadImage
         class="responsive-img"
         src={currentImage ? currentImage : product.images && product.images.length ? product.images[0].url : ''}
         alt="image-details"
       />
+       {product.condition === 'Brand New' ?  <img style={styles} class="float-right" src="/images/warranty.png" alt="wnty" width="50" height="60" />: ''} &nbsp;
+      </>
+
+      
+      
     );
   };
 
@@ -95,8 +111,28 @@ const ProductImage = ({ product }) => {
         class="responsive-img"
         src={currentImage ? currentImage : product.images && product.images.length ? product.images[0].url : ''}
         alt="image-details"
-        height="500"
+        max-height="700"
       />
+      <div class="thumbnail-container" style={{display:'flex', flexDirection:'row', justifyContent:'space-around', paddingTop:'10%'}}>
+            {product.images && product.images.length ? product.images.map((thumb, index) =>
+              <Link to="#" key={thumb.id}
+                onClick={() =>
+                  setCurrentImage(
+                    index === 0 ? product.images.url : thumb.url
+                  )
+                }>
+                <div class="border  border border-dark p-1 rounded thumbnail-box">
+                  <LazyLoadImage
+                    class="thumbnail-img"
+                    src={index === 0 ? product.images[0].url : thumb.url}
+                    alt="thumbnail"
+                  />
+                </div>
+              </Link>
+            ) : ''
+            }
+
+          </div>
         </div>
       </Modal>
 
@@ -150,11 +186,14 @@ const ProductImage = ({ product }) => {
           <div className='d-none d-lg-block'>
             {
               product.category && product.category.name === 'Mobile Phones' || product.category && product.category.name === 'Tablets' ?
-
-                <div className="img-box">
-
-                  {renderImage()}
-                </div>
+                <>
+                 {product.condition === 'Brand New' ?  <img style={styles2} class="float-right" src="/images/warranty.png" alt="wnty" width="60" height="70" />: ''} &nbsp;
+     
+                 <div className="img-box">
+                {renderImage()}
+                  </div>
+                </>
+                
                 :
                 <div className='ml-0 pl-0 pt-2 '>
 
@@ -162,7 +201,9 @@ const ProductImage = ({ product }) => {
                 </div>
             }
           </div>
+          
           <div class="d-lg-none">
+            
             <button type="button" className="mb-3 btn btn-product-call float-right">
               <i class="bi bi-share " onClick={sharePage} >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
@@ -175,8 +216,8 @@ const ProductImage = ({ product }) => {
             </button>
 
             <div className="img-box"  onClick={openModal}>
-
-              {renderImage()}
+           
+             {renderImage()}
             </div>
 
           </div>

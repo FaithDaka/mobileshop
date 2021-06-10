@@ -6,16 +6,32 @@
     color: black;
 }
 .tabtext{
-    /* border: none; */
     border-bottom: #f90 solid;
-    border-width: thin;
-    border-radius: 0%;
+    border-width: 2px;
     cursor: pointer;
     color:#f90;
     font-weight: 500;
     font-size: 14px;
+    /* margin-bottom:0%; */
     
 }
+
+
+/* .tabtext:after{
+    font-family: "Material Icons";
+ 
+}
+.tabtext:after{
+    content: "\e5cc";
+  
+ }
+.tabtexti:before{
+    font-family: "Material Icons";
+ 
+}
+.tabtexti:before{
+    content: "\e5cb";
+ } */
 
 .selected {
     font-weight: 700;
@@ -24,12 +40,15 @@
 
 }
 .select {
-    border-radius: 0%;
+    /* border-radius: 0%; */
+    background-color: #f90;
     border: #f90;
+    margin-bottom:0%;
     font-size: 15px;
     font-weight: bold;
-    border-bottom: #f90 solid;
-    border-width: 2px;
+    /* border-bottom: #f90 solid; */
+    /* border-width: 2px; */
+    
 }
 .tab{
     border: none;
@@ -40,32 +59,17 @@
    font-size: 16px;
    padding-bottom: 16px;    
 }
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-    .categories-container{
-        margin-top: -10%;
-    }
+/* .tablist{
+    border-bottom: #f90 solid;
+} */
+.nav-custom .hover{
+    background-color: blue;
 }
+.navbar-nav > .active > a {
+    color: aqua;
+    background-color: chartreuse;    
+  }
+  .navbar-nav > .active > a {
+    color: red
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-    .categories-container{
-        margin-top: -10%;
-    }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-    .categories-container{
-    margin-top: -6%;
-}}
-
-/* Large devices (laptops/desktops, 992px and up)  */
-@media only screen and (min-width: 992px) {
-    .categories-container{
-        margin-top: -620px;
-    
-}
-} 
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
+  }

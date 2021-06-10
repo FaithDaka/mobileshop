@@ -498,8 +498,8 @@ to {
     height: 12px;
     background: #F90;
     position: absolute;
-    top: 4px;
-    left: 4px;
+    top: 3px;
+    left: 3px;
     border-radius: 100%;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
@@ -514,3 +514,12 @@ to {
     -webkit-transform: scale(1);
     transform: scale(1);
 }
+@media screen 
+  and (device-width: 320px) 
+  and (device-height: 640px) 
+  and (-webkit-device-pixel-ratio: 4) {
+    #productinfo .add-to-cart{
+        display: none;
+    }
+  
+  }
