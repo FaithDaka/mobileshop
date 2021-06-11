@@ -3,6 +3,41 @@ import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import Modal from 'react-modal';
+
+const customStyles = {
+  content: {
+      top: '50%',
+      // bottom:'-10%',
+      transform: 'translateY(-50%)',
+      backgroundColor:"white",
+      minwidth:'100%',
+      minHeight:'100%',
+      border:'none',
+      height:'auto'
+  },
+  overlay: {
+      // background: 'rgba(0,0,0,.5)',
+      backgroundColor:'white',
+      zIndex: '10000'
+  }
+};
+
+const styles={
+  marginTop:'-100%',
+  marginRight:'5%',
+}
+
+const styles2={
+  // marginTop:'10%',
+  marginRight:'20%'
+ 
+}
+const imgstyle={
+  marginTop:'-100%',
+  paddingTop:'-70%',
+}
+Modal.setAppElement('#root')
 
 const ProductImage = ({ product }) => {
   const [currentImage, setCurrentImage] = useState("");
@@ -57,10 +92,57 @@ const ProductImage = ({ product }) => {
   };
 
 
-  // const sharePage=()=>{
-  //   console.log(currentUrl)
-  // }
+  const [modalIsOpen, setIsOpen] = useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   return (
+    <>
+     <Modal
+      
+      isOpen={modalIsOpen}
+      onRequestClose={closeModal}
+      style={customStyles}
+      transparent={true}
+      contentLabel="Image Modal"
+    >
+      <button class="float-right" onClick={closeModal}>close</button>
+
+      <div>
+      <LazyLoadImage
+      class="responsive-img"
+      src={currentImage ? currentImage : product.images && product.images.length ? product.images[0].url : ''}
+      alt="image-details"
+      max-height="auto"
+    />
+   
+      <div class="thumbnail-container" style={{display:'flex', flexDirection:'row', justifyContent:'space-around', paddingTop:'2%'}}>
+            {product.images && product.images.length ? product.images.map((thumb, index) =>
+              <Link to="#" key={thumb.id}
+                onClick={() =>
+                  setCurrentImage(
+                    index === 0 ? product.images.url : thumb.url
+                  )
+                }>
+                <div class="border  border border-dark p-1 rounded thumbnail-box">
+                  <LazyLoadImage
+                    class="thumbnail-img"
+                    src={index === 0 ? product.images[0].url : thumb.url}
+                    alt="thumbnail"
+                  />
+                </div>
+              </Link>
+            ) : ''
+            }
+
+          </div>
+        </div>
+      </Modal>
+      
     <div className="row">
       <div className="col-3">
         <div class="thumbnail-container">
@@ -99,16 +181,19 @@ const ProductImage = ({ product }) => {
               </svg>
             </i>
           </div>
-          <div className="img-box">
+          <button type="button" className=" btn btn-product-call float-right" >
+              <i class="las la-search-plus la-2x " onClick={openModal}></i>
+            </button>
 
-            {renderImage()}
-          </div>
+            <div className="img-box"  onClick={openModal}>
+           
+             {renderImage()}
+            </div>
         </div>
-
-
       </div>
 
     </div>
+    </>
   )
 }
 

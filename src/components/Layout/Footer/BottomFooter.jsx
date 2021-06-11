@@ -28,19 +28,19 @@ const BottomFooter = () => (
         </div>
         <div className="col-lg-4 pt-3">
           <ul class="breadcrumb bg-transparent p-0">
-                                <li class="breadcrumb-item">
-                                <Link to="/aboutus">About us</Link>
-                                </li>
-                                <li class="breadcrumb-item">
-                                <Link to="/faqs">FAQs</Link>
-                                </li>
-                                <li class="breadcrumb-item">
-                                <Link to="/faqs">Return Policy</Link>
-                                </li>
-                                <li class="breadcrumb-item">
-                                <Link to="/terms">Terms and Conditions</Link>
-                                </li>
-                            </ul>
+              <li class="breadcrumb-item">
+              <Link to="/aboutus">About us</Link>
+              </li>
+              <li class="breadcrumb-item">
+              <Link to="/faqs">FAQs</Link>
+              </li>
+              <li class="breadcrumb-item">
+              <Link to="/faqs">Return Policy</Link>
+              </li>
+              <li class="breadcrumb-item">
+              <Link to="/terms">Terms and Conditions</Link>
+              </li>
+          </ul>
         </div>
       </div>
     </div>

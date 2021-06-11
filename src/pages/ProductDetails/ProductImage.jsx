@@ -60,7 +60,7 @@ const ProductImage = ({ product }) => {
       </>
 
       
-      
+    
     );
   };
 

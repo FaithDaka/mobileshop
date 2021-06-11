@@ -16,6 +16,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const ProductDetails = ({ match }) => {
+  
     let productId = match.params.id;
 
     const [product, setProduct] = useState({});
@@ -62,13 +63,16 @@ const ProductDetails = ({ match }) => {
                     <div class="col" id="pd-top-links">
                         <ul class="breadcrumb bg-transparent p-0 justify-content-lg-start">
                             <li class="breadcrumb-item opacity-50">
-                                <Link class="text-reset" to="/">Home</Link>
+                                <Link class="text-reset" to="/">Home  &gt;&gt;</Link>
                             </li>
-                            <li class="text-dark fw-600 breadcrumb-item">
-                                <Link class="text-reset" to="/">{product.category ? product.category.name : ''}</Link>
+                            <li class="text-dark fw-600 ">
+                                <Link class="text-reset" to="/">{product.category ? product.category.name : ''} &gt;&gt;</Link>
                             </li>
-                            <li class="text-dark fw-600 breadcrumb-item">
-                                <Link class="text-reset" to="/">{product.subs ? product.subs.name : ''}</Link>
+                            <li class="text-dark fw-600 ">
+                                <Link class="text-reset" to="/">{product.subs ? product.subs.name : ''}&gt;&gt;</Link>
+                            </li>
+                            <li class="text-dark fw-600 elipsis " >
+                                <Link class="text-reset" to="/">{product.title ? product.title : ''}</Link>
                             </li>
                         </ul>
                     </div>
