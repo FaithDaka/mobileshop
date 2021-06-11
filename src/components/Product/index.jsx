@@ -39,7 +39,7 @@ const Product = ({ product }) => {
     }
 
     dispatch(addToCart(cat))
-    toast.success(Msg)
+    toast.info(Msg)
   };
 
   const checkStorage = () => {
@@ -68,7 +68,7 @@ const Product = ({ product }) => {
           <div className="absolute-top-left pt-2 pl-2">
             {product.condition === 'Uk Used' ? <span className="badge badge-inline badge-danger">UK Used</span> : ''}
             {product.condition === 'Brand New' ? <><span className="badge badge-inline badge-success" style={{backgroundColor:"#c29b0c"}}>Brand New</span><br></br>
-              <img src="/images/warranty.png" alt="wnty" width="50" height="60" /> </> : ''}
+              <img src="/images/warranty2.png" alt="wnty" width="50" height="60" /> </> : ''}
           </div>
 
         </div>

@@ -136,7 +136,7 @@ const BuyNow = ({ history }) => {
                                 <div class="card-header p-3">
                                     <h3 class="fs-16 fw-600 mb-0">
                                         Enter Delivery Address Details
-                 </h3>
+                                </h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
@@ -197,64 +197,45 @@ const BuyNow = ({ history }) => {
                             <div class="card shadow-sm border-0 rounded">
                                 <div class="card-header p-3">
                                     <h3 class="fs-16 fw-600 mb-0">
-                                        Enter Delivery Address Details
-                 </h3>
+                                        Select a payment option</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-xxl-8 col-xl-10 mx-auto">
-                                            <div class="row gutters-10">
 
-                                                <div class="modal-body">
-                                                    <div class="">
-                                                        <div class="row">
-                                                            <div class="col-md-10">
-                                                                <input type="text" class="form-control mb-3" value={phonenumber} disabled placeholder="Phone Number" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-10">
-                                                                <input type="text" class="form-control mb-3" name="fullnames" placeholder="Full Names" value={name}
-                                                                    onChange={(e) => setName(e.target.value)} />
-                                                            </div>
-                                                            {Object.keys(fullNameErrors).map((key) => <div style={{ color: 'red' }}>{fullNameErrors[key]}</div>)}
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-10">
-                                                                <input type="email" class="form-control mb-3" name="email" placeholder="Email Address" value={email}
-                                                                    onChange={(e) => setEmail(e.target.value)} />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-10">
-                                                                <input type="text" class="form-control mb-3" name="address" placeholder="Delivery Address" value={address}
-                                                                    onChange={(e) => setAddress(e.target.value)} />
-                                                                {Object.keys(addressErrors).map((key) => <div style={{ color: 'red' }}>{addressErrors[key]}</div>)}
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-10">
-                                                                <select class="form-control mb-3" name="address" value={city}
-                                                                    onChange={(e) => setCity(e.target.value)} placeholder="Delivery City">
-                                                                    <option selected>City</option>
-                                                                    <option value="1">Kampala</option>
-                                                                    <option value="2">Mbarara</option>
-                                                                    <option value="3">Jinja</option>
-                                                                    <option value="4">Entebbe</option>
-                                                                    <option value="5">Mukono</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
+                                            <p>
+                                                <input type="radio" id="test1" name="radio-group" checked />
+                                                <label for="test1" style={{ whiteSpace: 'nowrap' }}><span class="d-block" >
+                                                    <span class="d-block fw-600 fs-14">Cash on delivery &nbsp; &nbsp;&nbsp;
+                                                <img src="https://m.media-amazon.com/images/I/71VmVA1WhgL._SS500_.jpg" class="img-fluid mb-2" width="30" height='30' />
+                                                    </span>
+                                                </span></label>
+                                            </p>
+                                            <p>
+                                                <input type="radio" id="test2" name="radio-group" />
+                                                <label for="test2"><span class="d-block">
+                                                    <span class="d-block fw-600 fs-14">Airtel mobile money &nbsp; &nbsp;&nbsp;
+                                                <img src="images/Airtel.webp" class="img-fluid mb-2" width="30" height='30' />
+                                                    </span>
+                                                </span></label>
+                                            </p>
+                                            <p>
+                                                <input type="radio" id="test3" name="radio-group" />
+                                                <label for="test3"><span class="d-block">
+                                                    <span class="d-block fw-600 fs-14">MTN mobile money &nbsp; &nbsp;&nbsp;
+                                                <img src="images/MTN.webp" class="img-fluid mb-2" width="30" height='30' />
+                                                    </span>
+                                                </span></label>
+                                            </p>
+
+
+
                                         </div>
                                     </div>
-
-
-
                                 </div>
                             </div>
+
                             <div class="card shadow-sm border-0 rounded">
                                 <div class="card-header p-3">
                                     <h3 class="fs-16 fw-600 mb-0">
@@ -262,21 +243,21 @@ const BuyNow = ({ history }) => {
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                    <div class="col-xxl-8 col-xl-10 mx-auto" style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
+                                        <div class="col-xxl-8 col-xl-10 mx-auto" style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
 
 
-                                            <p>
-                                                <input type="radio" id="test1" name="radio-group" checked />
-                                                <label for="test1"><span class="d-block">
-                                                    <span class="d-block fw-600 fs-14">Delivery</span>
-                                                </span></label>
-                                            </p>
-                                            <p>
-                                                <input type="radio" id="test2" name="radio-group" />
-                                                <label for="test2"><span class="d-block">
-                                                    <span class="d-block fw-600 fs-14">Pickup station</span>
-                                                </span></label>
-                                            </p>
+                                            <div>
+                                                <input type="radio" id="huey" name="drone" value="huey"
+                                                    checked />
+                                                <label for="huey"><span class="d-block fw-600 fs-14">Delivery</span></label>
+                                            </div>
+
+                                            <div>
+                                                <input type="radio" id="dewey" name="drone" value="dewey" />
+                                                <label for="dewey"><span class="d-block fw-600 fs-14">Pickup station<br>
+                                                </br>
+                                                Church House, <br></br>1st Floor room 001</span></label>
+                                            </div>
 
 
 
@@ -284,7 +265,7 @@ const BuyNow = ({ history }) => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            </div>
                         <div class="col-lg-4 mt-2 mt-lg-0">
                             <div class="card border-0 shadow-sm rounded">
                                 <div class="card-header">

@@ -44,13 +44,12 @@ const Phones = () => {
     <Helmet>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     </Helmet>
-      <nav class="nav nav-pills nav-justified tablist">
-        <a id='bnew' class={`nav-item nav-link mr-0 pr-0 text-center ${currentTab === 'brandnew' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('brandnew')} >Brand New </a>
-        <a id='uused' class={`nav-item nav-link ml-0 pl-0 text-center ${currentTab === 'ukused' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('ukused')} >Premium UK-Used </a>
+    <nav class="nav nav-pills nav-justified">
+        <a class={`nav-item nav-link mr-2 text-center ${currentTab === 'brandnew' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('brandnew')} >Brand New</a>
+        <a class={`nav-item nav-link ml-2 text-center ${currentTab === 'ukused' ? 'select' : 'tabtext'}`} onClick={() => setCurrentTab('ukused')} >UK-Used</a>
 
 
       </nav>
-
       <div className="" style={{ paddingTop: "1%" }}>
         {renderView()}
       </div>

@@ -6,32 +6,16 @@
     color: black;
 }
 .tabtext{
+    /* border: none; */
     border-bottom: #f90 solid;
-    border-width: 2px;
+    border-width: thin;
+    border-radius: 0%;
     cursor: pointer;
     color:#f90;
     font-weight: 500;
     font-size: 14px;
-    /* margin-bottom:0%; */
     
 }
-
-
-/* .tabtext:after{
-    font-family: "Material Icons";
- 
-}
-.tabtext:after{
-    content: "\e5cc";
-  
- }
-.tabtexti:before{
-    font-family: "Material Icons";
- 
-}
-.tabtexti:before{
-    content: "\e5cb";
- } */
 
 .selected {
     font-weight: 700;
@@ -40,15 +24,12 @@
 
 }
 .select {
-    /* border-radius: 0%; */
-    background-color: #f90;
+    border-radius: 0%;
     border: #f90;
-    margin-bottom:0%;
     font-size: 15px;
     font-weight: bold;
-    /* border-bottom: #f90 solid; */
-    /* border-width: 2px; */
-    
+    border-bottom: #f90 solid;
+    border-width: 2px;
 }
 .tab{
     border: none;
@@ -73,3 +54,44 @@
     color: red
 
   }
+
+
+.tabtext:after{
+    font-family: "Material Icons";
+ 
+}
+.tabtext:after{
+    content: "\e7f7";
+    font-size:19px;
+    padding-left: 10px;
+    display: inline-block;
+  transform: rotate(-30deg);
+
+  
+ }
+.tabtexti:before{
+    font-family: "Material Icons";
+    
+
+ 
+}
+.tabtexti:before{
+    content: "\e7f7";
+    font-size:19px;
+    padding-right: 10px;
+    display: inline-block;
+    transform: rotate(-30deg);
+  
+ }
+
+ .tabtexti{
+    /* border: none; */
+    border-bottom: #f90 solid;
+    border-width: thin;
+    border-radius: 0%;
+    cursor: pointer;
+    color:#f90;
+    font-weight: 500;
+    font-size: 14px;
+    
+}
