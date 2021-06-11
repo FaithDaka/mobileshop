@@ -38,7 +38,7 @@ const RelatedAccessories = ({ product }) => {
     }
 
     dispatch(addToCart(cat))
-    toast(Msg)
+    toast.info(Msg)
 };
 
   const settings = {
@@ -93,13 +93,15 @@ const RelatedAccessories = ({ product }) => {
         <div className="d-sm-none">
         <Slider autoplay={true} slidesToShow={2} autoplaySpeed={2000} infinite={true} arrows={false}>
         {product.accessorys && product.accessorys.length !== 1 && product.accessorys.map((accessory) => (
-                <div className=" pr-4 mr-4 col-4 accessory-box">
-                  <div className="inner-box">
-                    <Link to={`/accessory/${accessory._id}`}>
+          <>
+          <span class="border mr-2" >
+            <div>
+            <Link to={`/accessory/${accessory._id}`}>
                       <div style={{ width: "auto" }}>
                         <img src={accessory.images[0].url}
                           width="50" height="50"
                           alt="accessory" />
+
 
                       </div>
                     </Link>
@@ -108,8 +110,11 @@ const RelatedAccessories = ({ product }) => {
                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                       </svg></i>
                     </button>
-                  </div>
-                  <span className="fw-700 text-left acc-price">
+                    </div>
+             
+                </span>
+            
+                <span className="fw-700 text-left acc-price">
                     <CurrencyFormat
                       prefix={"UGX "}
                       value={accessory.price}
@@ -117,8 +122,34 @@ const RelatedAccessories = ({ product }) => {
                       thousandSeparator
                     />
                   </span>
+                  </>
 
-                </div>
+                // <div className=" pr-4 mr-4 col-4 accessory-box">
+                //   <div className="inner-box">
+                //     <Link to={`/accessory/${accessory._id}`}>
+                //       <div style={{ width: "auto" }}>
+                //         <img src={accessory.images[0].url}
+                //           width="50" height="50"
+                //           alt="accessory" />
+
+                //       </div>
+                //     </Link>
+                //     <button className="cross float-right" onClick={handleAddToCart}>
+                //       <i class="bi bi-plus text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                //         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                //       </svg></i>
+                //     </button>
+                //   </div>
+                //   <span className="fw-700 text-left acc-price">
+                //     <CurrencyFormat
+                //       prefix={"UGX "}
+                //       value={accessory.price}
+                //       displayType="text"
+                //       thousandSeparator
+                //     />
+                //   </span>
+
+                // </div>
               ))}
             </Slider>
             </div>

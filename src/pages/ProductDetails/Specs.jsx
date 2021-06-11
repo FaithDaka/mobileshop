@@ -4,7 +4,7 @@ const Specs = ({ product }) => {
   return (
     <div className="bg-white mb-3 shadow-sm rounded">
       <div className="nav border-bottom aiz-nav-tabs">
-        <a href="#tab_default_1" data-toggle="tab" className="p-3 fs-16 fw-600 text-reset show active">Technical Specifications</a>
+        <a href="#tab_default_1" data-toggle="tab" className="p-3 fs-16 fw-600 text-reset show active"><strong>Technical Specifications</strong></a>
       </div>
 
       <div className="tab-content pt-0">

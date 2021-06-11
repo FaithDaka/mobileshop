@@ -49,7 +49,7 @@ const RelatedProducts = ({ related, loading }) => {
     <div className="rounded shadow-sm mb-3">
       <div className="border-bottom p-3">
         <h3 className="fs-16 fw-600 mb-0">
-          <span className="mr-4">Related products</span>
+          <span className="mr-4"><strong>Related products</strong></span>
         </h3>
         {loading && <LoadSpinner />}
       </div>

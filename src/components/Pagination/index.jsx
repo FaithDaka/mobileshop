@@ -11,23 +11,7 @@ const Pagination = ({ productsPerPage, totalProducts, paginate, firstProduct, cu
 
     return (
         <div class="aiz-pagination aiz-pagination-center mt-4 mb-5">
-            <div className="text-center mb-3">
-            Showing
-            {' '}
-            <span>
-              (
-              {firstProduct + 1}
-              {' '}
-              to
-              {' '}
-              {firstProduct + currentProducts.length}
-              ) of
-              {' '}
-              {totalProducts}
-            </span>
-            {' '}
-            Products
-          </div>
+           
             <nav>
                 <ul class="pagination">
                     {/* <li class="page-item disabled" aria-disabled="true" aria-label="« Previous">
@@ -49,6 +33,23 @@ const Pagination = ({ productsPerPage, totalProducts, paginate, firstProduct, cu
                     </li> */}
                 </ul>
             </nav>
+            <div className="text-center mb-0 pb-1">
+            Showing
+            {' '}
+            <span>
+              (
+              {firstProduct + 1}
+              {' '}
+              to
+              {' '}
+              {firstProduct + currentProducts.length}
+              ) of
+              {' '}
+              {totalProducts}
+            </span>
+            {' '}
+            Products
+          </div>
         </div>
     );
 };

@@ -7,14 +7,18 @@ import Modal from 'react-modal';
 
 const customStyles = {
   content: {
-      top: '40%',
-      bottom:'-15%',
+      top: '50%',
+      // bottom:'-10%',
       transform: 'translateY(-50%)',
       backgroundColor:"white",
-      border:'none'
+      minwidth:'100%',
+      minHeight:'100%',
+      border:'none',
+      height:'auto'
   },
   overlay: {
-      background: 'rgba(0,0,0,.5)',
+      // background: 'rgba(0,0,0,.5)',
+      backgroundColor:'white',
       zIndex: '10000'
   }
 };
@@ -29,7 +33,10 @@ const styles2={
   marginRight:'20%'
  
 }
-
+const imgstyle={
+  marginTop:'-100%',
+  paddingTop:'-70%',
+}
 Modal.setAppElement('#root')
 
 const ProductImage = ({ product }) => {
@@ -49,7 +56,7 @@ const ProductImage = ({ product }) => {
         src={currentImage ? currentImage : product.images && product.images.length ? product.images[0].url : ''}
         alt="image-details"
       />
-       {product.condition === 'Brand New' ?  <img style={styles} class="float-right" src="/images/warranty.png" alt="wnty" width="50" height="60" />: ''} &nbsp;
+       {product.condition === 'Brand New' ?  <img style={styles} class="float-right" src="/images/warranty3.png" alt="wnty" width="50" height="60" />: ''} &nbsp;
       </>
 
       
@@ -96,24 +103,25 @@ const ProductImage = ({ product }) => {
 
   return (
     <>
-      <Modal
+   <Modal
       
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        transparent={true}
-        contentLabel="Image Modal"
-      >
-        <button class="float-right" onClick={closeModal}>close</button>
+      isOpen={modalIsOpen}
+      onRequestClose={closeModal}
+      style={customStyles}
+      transparent={true}
+      contentLabel="Image Modal"
+    >
+      <button class="float-right" onClick={closeModal}>close</button>
 
-        <div>
-        <LazyLoadImage
-        class="responsive-img"
-        src={currentImage ? currentImage : product.images && product.images.length ? product.images[0].url : ''}
-        alt="image-details"
-        max-height="700"
-      />
-      <div class="thumbnail-container" style={{display:'flex', flexDirection:'row', justifyContent:'space-around', paddingTop:'10%'}}>
+      <div>
+      <LazyLoadImage
+      class="responsive-img"
+      src={currentImage ? currentImage : product.images && product.images.length ? product.images[0].url : ''}
+      alt="image-details"
+      max-height="auto"
+    />
+   
+      <div class="thumbnail-container" style={{display:'flex', flexDirection:'row', justifyContent:'space-around', paddingTop:'2%'}}>
             {product.images && product.images.length ? product.images.map((thumb, index) =>
               <Link to="#" key={thumb.id}
                 onClick={() =>
@@ -147,7 +155,7 @@ const ProductImage = ({ product }) => {
                     index === 0 ? product.images.url : thumb.url
                   )
                 }>
-                <div class="border p-1 rounded thumbnail-box" onClick={openModal}>
+                <div class="border p-1 rounded thumbnail-box">
                   <LazyLoadImage
                     class="thumbnail-img"
                     src={index === 0 ? product.images[0].url : thumb.url}
@@ -187,7 +195,7 @@ const ProductImage = ({ product }) => {
             {
               product.category && product.category.name === 'Mobile Phones' || product.category && product.category.name === 'Tablets' ?
                 <>
-                 {product.condition === 'Brand New' ?  <img style={styles2} class="float-right" src="/images/warranty.png" alt="wnty" width="60" height="70" />: ''} &nbsp;
+                 {product.condition === 'Brand New' ?  <img style={styles2} class="float-right" src="/images/warranty3.png" alt="wnty" width="60" height="70" />: ''} &nbsp;
      
                  <div className="img-box">
                 {renderImage()}

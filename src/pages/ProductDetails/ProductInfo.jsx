@@ -208,14 +208,14 @@ const ProductInfo = ({ product }) => {
     }
   }, [color]);
 
-    const mystyle = {
-      marginLeft:"80px",
-      backgroundColor: "DodgerBlue",
-    
-    };
+  const mystyle = {
+    marginLeft: "80px",
+    backgroundColor: "DodgerBlue",
+
+  };
 
   return (
-    <section id ='productinfo'>
+    <section id='productinfo'>
       <div class="text-left">
         {showAlert && (
           <SweetAlert
@@ -228,7 +228,7 @@ const ProductInfo = ({ product }) => {
         )}
         <BuyNowModal modalIsOpen={modalIsOpen} close={closeModal} />
         <h1 class="mb-2 fs-20 fw-600">
-          {product.title}
+          <strong>{product.title}</strong>
         </h1>
         <div class="row align-items-center">
           <div class="col-6">
@@ -237,8 +237,8 @@ const ProductInfo = ({ product }) => {
             </span>
             <span class="ml-1 opacity-50">(ratings)</span>
           </div>
-          <div class="col-6 text-right">
-        
+          <div class="col-6 text-left" style={{display:'flex',flexDirection:'row',justifyContent:'space-evenly'}}>
+          {/* <span class="badge badge-md badge-inline badge-pill badge-danger" style={{backgroundColor:'red'}}>Out of Stock</span> &nbsp; &nbsp; */}
             <span class="badge badge-md badge-inline badge-pill badge-success">{product.condition}</span>
           </div>
         </div>
@@ -271,7 +271,7 @@ const ProductInfo = ({ product }) => {
         </div>
         <div class="row no-gutters">
           <div class="col-sm-2">
-            <div class="opacity-50 my-2">Description:</div>
+            <div class="opacity my-2"><strong>Description:</strong></div>
           </div>
           <div className="col-sm-10">
             <div className="">
@@ -283,7 +283,7 @@ const ProductInfo = ({ product }) => {
         <form id="option-choice-form">
           {product.storageChecked ? <div class="row no-gutters">
             <div class="col-sm-2">
-              <div class="my-2">Storage Capacity: {storageSize}</div>
+              <div class="my-2"><strong>Storage Capacity: &nbsp;</strong>{storageSize}</div>
             </div>
             <div class="col-sm-10">
               <div class="aiz-radio-inline">
@@ -341,7 +341,7 @@ const ProductInfo = ({ product }) => {
 
           <div class="row no-gutters">
             <div class="col-sm-2">
-              {product.color && product.color.length > 1 ? <div class="my-2">Color: {colorName}</div> : ''}
+              {product.color && product.color.length > 1 ? <div class="my-2"><strong>Color:</strong> {colorName}</div> : ''}
             </div>
 
             <div class="col-sm-10">
@@ -361,7 +361,7 @@ const ProductInfo = ({ product }) => {
 
           <div className="row no-gutters">
             <div className="col-sm-2">
-              <div className="opacity-50 my-2">Quantity:</div>
+              <div className="opacity my-2"><strong>Quantity:</strong></div>
             </div>
             <div className="col-sm-10">
               <div className="product-quantity d-flex align-items-center">
@@ -385,7 +385,7 @@ const ProductInfo = ({ product }) => {
               position: "relative",
               transition: "all .35s ease",
             }}>
-              <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
+              <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600 fs-20" onClick={handleAddToCart}>
                 <span class="d-md-inline-block"> Add to cart</span>
               </button>
               <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
@@ -413,22 +413,22 @@ const ProductInfo = ({ product }) => {
             transition: "all .35s ease",
           }}>
             <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600 pl-0 ml-0 pr-0 mr-0" onClick={handleAddToCart}>
-              <i class="bi bi-cart-dash-fill" style={{paddingLeft:"0%",marginRight:"0%",marginLeft:"0%",paddingRight:"0%"}}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart-dash-fill" viewBox="0 0 16 16">
-  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1z"/>
-</svg></i>
+              <i class="bi bi-cart-dash-fill" style={{ paddingLeft: "0%", marginRight: "0%", marginLeft: "0%", paddingRight: "0%" }}><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-cart-dash-fill" viewBox="0 0 16 16">
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1z" />
+              </svg></i>
             </button>
-            
+
             <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>
               <span class="d-md-inline-block"> Buy Now</span>
             </button>
             <div class="shadow-lg ml-2 pr-2 pl-2 pt-2 pb-1 bg-white rounded">
-            <a href="tel:0709744874" >
-            <i class="las la-phone la-2x"></i>
-               
+              <a href="tel:0709744874" >
+                <i class="las la-phone la-2x"></i>
+
               </a>
             </div>
 
-            
+
           </div>
         </div>
 
