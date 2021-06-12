@@ -202,31 +202,34 @@ const BuyNow = ({ history }) => {
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-xxl-8 col-xl-10 mx-auto">
-
+                                    
 
                                             <p>
-                                                <input type="radio" id="test1" name="radio-group" checked />
-                                                <label for="test1" style={{ whiteSpace: 'nowrap' }}><span class="d-block" >
+                                                <input type="radio" id="test1" name="radio-group" checked style={{paddingTop:"-2%"}}/>
+                                                <label for="test1" style={{ whiteSpace: 'nowrap' }}>
                                                     <span class="d-block fw-600 fs-14">Cash on delivery &nbsp; &nbsp;&nbsp;
-                                                <img src="https://m.media-amazon.com/images/I/71VmVA1WhgL._SS500_.jpg" class="img-fluid mb-2" width="30" height='30' />
-                                                    </span>
+                                                 
                                                 </span></label>
+                                                <img src="https://www.glam-secret.com/wp-content/uploads/2021/02/Cash-On-Delivery-Logo.jpg" class="img-fluid mb-2" width="70" height='60' />
+                                                  
                                             </p>
                                             <p>
                                                 <input type="radio" id="test2" name="radio-group" />
                                                 <label for="test2"><span class="d-block">
                                                     <span class="d-block fw-600 fs-14">Airtel mobile money &nbsp; &nbsp;&nbsp;
-                                                <img src="images/Airtel.webp" class="img-fluid mb-2" width="30" height='30' />
                                                     </span>
                                                 </span></label>
+                                                <img src="images/Airtel.webp" class="img-fluid mb-2" width="30" height='30' />
+                                               
                                             </p>
                                             <p>
                                                 <input type="radio" id="test3" name="radio-group" />
                                                 <label for="test3"><span class="d-block">
                                                     <span class="d-block fw-600 fs-14">MTN mobile money &nbsp; &nbsp;&nbsp;
-                                                <img src="images/MTN.webp" class="img-fluid mb-2" width="30" height='30' />
                                                     </span>
                                                 </span></label>
+                                                <img src="images/MTN.webp" class="img-fluid mb-2" width="30" height='30' />
+                                                
                                             </p>
 
 

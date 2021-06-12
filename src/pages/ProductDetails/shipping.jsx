@@ -10,7 +10,7 @@ function Shipping() {
           <div className="col-xl-9 order-0 order-xl-1">
           <div className="bg-white mb-3 shadow-sm rounded">
       <div className="nav border-bottom aiz-nav-tabs">
-        <a href="#tab_default_1" data-toggle="tab" className="p-3 fs-16 fw-600 text-reset show active">Shipping & Delivery</a>
+        <a href="#tab_default_1" data-toggle="tab" className="p-3 fs-16 fw-600 text-reset show active"><strong>Shipping & Delivery</strong></a>
       </div>
             <div className="tab-content pt-0">
         <div className="tab-pane fade active show">

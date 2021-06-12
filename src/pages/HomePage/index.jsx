@@ -12,8 +12,10 @@ const HomePage = () => {
             <div class="d-none d-lg-block" style={{marginTop:"-3%"}}>
                 <Footer/>
                 <BottomFooter/>
-            
             </div>
+            <div class="d-sm-none pb-3 mb-5" style={{marginTop:"-13%"}}>
+                 <Footer/>
+                <BottomFooter/></div>
         </>
     )
 }

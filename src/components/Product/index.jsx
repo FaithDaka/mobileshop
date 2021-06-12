@@ -68,7 +68,7 @@ const Product = ({ product }) => {
           <div className="absolute-top-left pt-2 pl-2">
             {product.condition === 'Uk Used' ? <span className="badge badge-inline badge-danger">UK Used</span> : ''}
             {product.condition === 'Brand New' ? <><span className="badge badge-inline badge-success" style={{backgroundColor:"#c29b0c"}}>Brand New</span><br></br>
-              <img src="/images/warranty2.png" alt="wnty" width="50" height="60" /> </> : ''}
+              <img src="/images/warranty3.png" alt="wnty" width="50" height="60" /> </> : ''}
           </div>
 
         </div>
@@ -77,7 +77,9 @@ const Product = ({ product }) => {
           
           <div className="fs-15">
           
-            <div className="fw-600 ms-brand">{product.subs ? <span className="badge badge-inline badge-soft-secondary">{product.subs.name}</span> : ''}
+            <div className="fw-600 ms-brand">{product.subs ? <span className="badge badge-inline badge-soft-secondary">{product.subs.name}</span> : ''} &nbsp; &nbsp;&nbsp;&nbsp;
+            {/* <span class="badge badge-inline badge-success float-right" style={{backgroundColor:'red'}}>Out of Stock</span> */}
+
             </div>
     
             <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`}>
