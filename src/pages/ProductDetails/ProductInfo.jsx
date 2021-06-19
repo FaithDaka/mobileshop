@@ -237,8 +237,8 @@ const ProductInfo = ({ product }) => {
             </span>
             <span class="ml-1 opacity-50">(ratings)</span>
           </div>
-          <div class="col-6 text-left" style={{display:'flex',flexDirection:'row',justifyContent:'space-evenly'}}>
-          {/* <span class="badge badge-md badge-inline badge-pill badge-danger" style={{backgroundColor:'red'}}>Out of Stock</span> &nbsp; &nbsp; */}
+          <div class="col-6 text-left" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }}>
+            {/* <span class="badge badge-md badge-inline badge-pill badge-danger" style={{backgroundColor:'red'}}>Out of Stock</span> &nbsp; &nbsp; */}
             <span class="badge badge-md badge-inline badge-pill badge-success">{product.condition}</span>
           </div>
         </div>
@@ -280,13 +280,50 @@ const ProductInfo = ({ product }) => {
           </div>
         </div>
         <hr />
+        {/* ***** */}
         <form id="option-choice-form">
           {product.storageChecked ? <div class="row no-gutters">
             <div class="col-sm-2">
               <div class="my-2"><strong>Storage Capacity: &nbsp;</strong>{storageSize}</div>
             </div>
             <div class="col-sm-10">
-              <div class="aiz-radio-inline">
+              {product.storageprice.sixteen &&
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="16" name="storage" value="16GB" onChange={handleOptionChange} />
+                  <label class="form-check-label" for="16">16GB</label>
+                </div>
+              }
+              {product.storageprice.thirtytwo &&
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="32" name="storage" value="32GB" onChange={handleOptionChange} />
+                  <label class="form-check-label" for="32">32GB</label>
+                </div>
+              }
+              {product.storageprice.sixtyfour &&
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="64" name="storage" value="64GB" onChange={handleOptionChange} />
+                  <label class="form-check-label" for="64">64GB</label>
+                </div>
+              }
+              {product.storageprice.onetwentyeight &&
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="128" name="storage" value="128GB" onChange={handleOptionChange} />
+                  <label class="form-check-label" for="128">128GB</label>
+                </div>
+              }
+              {product.storageprice.twofiftysix &&
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="256" name="storage" value="256GB" onChange={handleOptionChange} />
+                  <label class="form-check-label" for="256">256GB</label>
+                </div>
+              }
+              {product.storageprice.fivetwelve &&
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="512" name="storage" value="512GB" onChange={handleOptionChange} />
+                  <label class="form-check-label" for="512">512GB</label>
+                </div>
+              }
+              {/* <div class="aiz-radio-inline">
                 <label class="aiz-megabox pl-0 mr-2">
                   {product.storageprice.sixteen && <><input type="radio" name="storage" value="16GB" onChange={handleOptionChange} />
                     <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
@@ -335,9 +372,12 @@ const ProductInfo = ({ product }) => {
                   </>
                   }
                 </label>
-              </div>
+              </div> */}
             </div>
           </div> : ''}
+
+
+          {/* ************ */}
 
           <div class="row no-gutters">
             <div class="col-sm-2">
@@ -431,7 +471,6 @@ const ProductInfo = ({ product }) => {
 
           </div>
         </div>
-
         {/* } */}
       </div>
 
