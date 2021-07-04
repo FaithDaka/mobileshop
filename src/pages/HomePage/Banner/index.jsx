@@ -10,9 +10,11 @@ const Banner = () => {
                 <div class="row gutters-10 position-relative">
                     <div class="col-lg-3 position-static d-none d-lg-block">
                         <Drawer/>
+                   
                     </div>
                     <div class=" col-lg-9 ">
                         <div class="mobile-img-auto-height">
+                 
 
                             <BannerSlidder />
                         </div>
