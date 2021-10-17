@@ -37,6 +37,7 @@ const ProductInfo = ({ product }) => {
     color: "#f90",
 
   }
+  const price = product.price
   let shareImage = product.images && product.images.length ? product.images[0].url : ''
 
   const urlToObject = async (url) => {
@@ -246,7 +247,7 @@ const ProductInfo = ({ product }) => {
         <hr />
         <div class="row no-gutters mt-2">
           <div class="col-sm-10">
-            <div class="">
+            <div class="d-flex justify-content-between">
               <strong class="h2 fw-700 text-primary">
                 {product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
                   value={product.discountprice * quantity}
@@ -258,13 +259,18 @@ const ProductInfo = ({ product }) => {
                   displayType="text"
                   thousandSeparator
                 /></strong>}
-                {storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                {storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX 
+                 <CurrencyFormat
                   value={storagePrice * quantity}
                   displayType="text"
                   thousandSeparator
                 /></strong>}
 
+
               </strong>
+                {
+              (price >=300000 )? <span class="badge badge-md badge-inline badge-info align-self-center">Eligible Free Shipping</span>:""
+              }
               <span class="opacity-70"></span>
             </div>
           </div>
@@ -425,7 +431,7 @@ const ProductInfo = ({ product }) => {
               position: "relative",
               transition: "all .35s ease",
             }}>
-              <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600 fs-20" onClick={handleAddToCart}>
+              <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600" onClick={handleAddToCart}>
                 <span class="d-md-inline-block"> Add to cart</span>
               </button>
               <button type="button" class="btn btn-primary buy-now fw-600" onClick={openModal}>

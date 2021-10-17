@@ -77,7 +77,7 @@ const ProductDetails = ({ match }) => {
                         </ul>
                     </div>
                   
-       
+    
                     <div class="bg-white shadow-sm rounded p-3">
                         <div class="row">
                             <div class="col-xl-5 col-lg-6 mb-3">
