@@ -8,7 +8,7 @@ import Pagination from '../Pagination';
 
 const Laptops = ({ products, loading }) => {
 
-  const [productsPerPage] = useState(20);
+  const [productsPerPage] = useState(50);
   const [currentpage, setCurrentPage] = useState(1);
 
   const lastProduct = currentpage * productsPerPage;

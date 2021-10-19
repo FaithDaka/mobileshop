@@ -42,8 +42,7 @@ function Shipping() {
                     <td>
                     Returns should be made to mainstore , within 48hrs and are covered with money Back guarantee
                     </td>
-                  </tr>
-                  
+                  </tr>                  
 
                 </tbody>
               </table>

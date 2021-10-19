@@ -8,7 +8,7 @@ import { getAccessories } from "../../functions/accessory";
 const Accessories = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [productsPerPage] = useState(20);
+  const [productsPerPage] = useState(50);
   const [currentpage, setCurrentPage] = useState(1);
 
   const lastProduct = currentpage * productsPerPage;

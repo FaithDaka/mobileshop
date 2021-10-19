@@ -95,7 +95,7 @@ const MiddleHeader = () => {
                             </div>
                         </div>
                         
-                        <div class="ml-3 mr-0 text-light">
+                        <div class="ml-3 mr-0 pt-1 text-light">
                             <div class="nav-cart-box dropdown h-100" id="cart_items">
                                 <Link to="/cart" class="d-flex align-items-center text-reset h-100" data-toggle="dropdown" data-display="static">
                                 <span class=" position-relative d-inline-block">
@@ -103,6 +103,7 @@ const MiddleHeader = () => {
                                         <span class="badge badge-circle badge-primary position-absolute absolute-top-right">{cartItems.length}</span>
                                     </span>
                                 </Link>
+                                <small style={{ fontSize: 12 + "px" }}>My Cart</small>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg p-0 dropdown-menu-animated stop-propagation">
                                     <div class="text-center p-3 bg-white">
                                     <Dropdown cart={cartItems}  />
@@ -110,21 +111,34 @@ const MiddleHeader = () => {
                                 </div>
                             </div>
                         </div>
-                        <div class="d-none d-lg-block ml-3 mr-0">
+                        <div class="d-none d-lg-block ml-4 mr-0" style={{marginTop:"-2%"}}>
                      
                             <div class="align-items-center d-flex dropdown">
-                        {!token ? <a class="dropdown-toggle no-arrow text-dark"
-                            onClick={openModal}><span>
-                                <span class="avatar avatar-sm mr-md-2">
-                                    <i class="las la-user" style={{ fontSize: '32px',color:"white"}}></i>
-                                </span>
-                            </span></a> : <a class="dropdown-toggle no-arrow text-dark" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
-                                <span class="text-white">
-                                    <span class="avatar avatar-sm mr-md-2">
-                                        <i class="las la-user la-2x opacity-80" style={{ fontSize: '32px', color:"white"}}></i>
+                        {!token ? 
+                        <a class="dropdown-toggle no-arrow text-dark position-relative"
+                            onClick={openModal}>
+                                <span class=" position-relative d-inline-block">
+                                <i class="las la-user" style={{ fontSize: '32px',color:"white"}}></i>
                                     </span>
-                                </span>
-                            </a>}
+                                
+                                <span>
+                               
+                               
+                            </span>
+                            <small className="position-absolute top-100 start-50 translate-middle pt-1 text-white" style={{ fontSize: 12 + "px" }}>Account</small>
+                            </a> 
+                             
+                            : <a class="dropdown-toggle no-arrow text-dark position-relative" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
+                                <span class=" position-relative d-inline-block">
+                                <i class="las la-user" style={{ fontSize: '32px',color:"white"}}></i>
+                                    </span>
+                                
+                                <span>
+                               
+                               
+                            </span>
+                            <small className="position-absolute top-100 start-50 translate-middle pt-1 text-white" style={{ fontSize: 12 + "px" }}>Account</small>
+                            </a> }
 
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-md">
                             {

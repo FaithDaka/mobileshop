@@ -3,3 +3,22 @@
     color: #f90;
 
 }
+.bslidder button{
+    background-color:#f90 !important;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+/* .bslidder:hover button{
+    background-color:red !important;
+      
+  }
+  
+
+  .bslidder:hover button::after{
+    content: ' \27A4' !important;
+    transition: .25s ease-in !important;
+  }
+ */
