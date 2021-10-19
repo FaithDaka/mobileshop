@@ -42,9 +42,7 @@ function Shipping() {
                     <td>
                     Returns should be made to mainstore , within 48hrs and are covered with money Back guarantee
                     </td>
-                  </tr>
-                  <h6 class="text-red" style={{whiteSpace:'nowrap',fontWeight:"bold"}}> Free shipping for all products above UGX 500,000.</h6>
-                  
+                  </tr>                  
 
                 </tbody>
               </table>

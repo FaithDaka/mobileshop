@@ -24,6 +24,13 @@ const Categories = ({ match }) => {
             setLoading(false);
         });
     }, [slug]);
+    useEffect(() => {
+        setLoading(true);
+        getProductBrands(slug).then((res) => {
+            setProducts(res.data);
+            setLoading(false);
+        });
+    }, [slug]);
 
     return (
         <section class="mb-4 pt-3">

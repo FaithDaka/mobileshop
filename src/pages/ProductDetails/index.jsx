@@ -39,6 +39,7 @@ const ProductDetails = ({ match }) => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
+        
     }, [])
 
     return (
@@ -66,13 +67,13 @@ const ProductDetails = ({ match }) => {
                                 <Link class="text-reset" to="/">Home  &gt;&gt;</Link>
                             </li>
                             <li class="text-dark fw-600 ">
-                                <Link class="text-reset" to="/">{product.category ? product.category.name : ''} &gt;&gt;</Link>
+                                <Link class="text-reset" to="#">{product.category ? product.category.name : ''} &gt;&gt;</Link>
                             </li>
                             <li class="text-dark fw-600 ">
-                                <Link class="text-reset" to="/">{product.subs ? product.subs.name : ''}&gt;&gt;</Link>
+                                <Link class="text-reset" to= {product.subs ? `/products/${product.subs.name}`: '#'}>{product.subs ? product.subs.name : ''}&gt;&gt;</Link>
                             </li>
                             <li class="text-dark fw-600 elipsis " >
-                                <Link class="text-reset" to="/">{product.title ? product.title : ''}</Link>
+                                <Link class="text-reset" to="#">{product.title ? product.title : ''}</Link>
                             </li>
                         </ul>
                     </div>

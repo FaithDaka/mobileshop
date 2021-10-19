@@ -19,6 +19,7 @@ const ProductInfo = ({ product }) => {
   const [colorName, setColorName] = useState('');
   const [storagePrice, setStoragePrice] = useState(product.storageprice && product.storageprice.sixtyfour);
   const [quantity, setQuantity] = useState(1);
+  const [currency ,setCurrency]=useState(false);
 
   const hideAlert = () => setShowAlert(false);
   const changeColor = (e) => setColor(e.target.value);
@@ -37,7 +38,7 @@ const ProductInfo = ({ product }) => {
     color: "#f90",
 
   }
-  const price = product.price
+  const shippingprice = product.price
   let shareImage = product.images && product.images.length ? product.images[0].url : ''
 
   const urlToObject = async (url) => {
@@ -215,6 +216,10 @@ const ProductInfo = ({ product }) => {
 
   };
 
+  const convertCurrency =() =>{
+    setCurrency(!currency)
+  };
+
   return (
     <section id='productinfo'>
       <div class="text-left">
@@ -245,21 +250,25 @@ const ProductInfo = ({ product }) => {
         </div>
 
         <hr />
-        <div class="row no-gutters mt-2">
+        <div class="row no-gutters mt-2 pb-2">
           <div class="col-sm-10">
-            <div class="d-flex justify-content-between">
+            <div class="">
+              {
+                !currency ?
+              
               <strong class="h2 fw-700 text-primary">
-                {product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                
+                {product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX <CurrencyFormat
                   value={product.discountprice * quantity}
                   displayType="text"
                   thousandSeparator
                 /></strong>}
-                {!product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX  <CurrencyFormat
+                {!product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX <CurrencyFormat
                   value={product.price * quantity}
                   displayType="text"
                   thousandSeparator
                 /></strong>}
-                {storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX 
+                {storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">UGX
                  <CurrencyFormat
                   value={storagePrice * quantity}
                   displayType="text"
@@ -267,11 +276,36 @@ const ProductInfo = ({ product }) => {
                 /></strong>}
 
 
-              </strong>
-                {
-              (price >=300000 )? <span class="badge badge-md badge-inline badge-info align-self-center">Eligible Free Shipping</span>:""
+              </strong> : 
+              <strong class="h2 fw-700 text-primary">
+                
+              {product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">USD  <CurrencyFormat
+                value={Math.round(product.discountprice * quantity *0.00028)}
+                displayType="text"
+                thousandSeparator
+              /></strong>}
+              {!product.discount && !storagePrice && <strong id="chosen_price" class="h4 fw-600 text-primary">USD  <CurrencyFormat
+                value={Math.round(product.price * quantity *0.00028)}
+                displayType="text"
+                thousandSeparator
+              /></strong>}
+              {storagePrice && product.storageChecked && <strong id="chosen_price" class="h4 fw-600 text-primary">USD 
+               <CurrencyFormat
+                value={Math.round(storagePrice * quantity *0.00028)}
+                displayType="text"
+                thousandSeparator
+              /></strong>}
+
+
+            </strong>
               }
+
+              <button class={currency ? "btn btn-soft-primary ml-5 usd" :" btn btn-soft-primary ml-5 ugx"} onClick={convertCurrency}></button>
+               
               <span class="opacity-70"></span>
+              {
+              (shippingprice >=300000 )? <><br></br><span class="align-self-center pb-2" style={{color:'red' ,fontWeight:"600"}}>Eligible Free Shipping</span></>:""
+              }
             </div>
           </div>
         </div>

@@ -26,7 +26,7 @@ const Product = ({ product }) => {
       </Link>
     </div>
   )
-  const price = product.price
+  const shippingprice = product.price
   const handleAddToCart = () => {
     const cat = {
       id: product._id,
@@ -79,14 +79,13 @@ const Product = ({ product }) => {
           
           <div className="fs-15">
           
-            <div className="fw-600 ms-brand">{product.subs ? <span className="badge badge-inline badge-soft-secondary">{product.subs.name}</span> : ''} &nbsp; &nbsp;
-            {
-             (price >=300000 )? <small style={{whiteSpace:"nowrap"}}>Free shipping</small>:''
-            }
+            <div className="fw-600 ms-brand">{product.subs ? <span className="badge badge-inline badge-soft-secondary">{product.subs.name}</span> : ''} &nbsp; &nbsp;<br></br>
            
-
+      
             {/* <span class="badge badge-inline badge-success float-right" style={{backgroundColor:'red'}}>Out of Stock</span> */}
-
+            {
+             (shippingprice >=300000 )? <small style={{whiteSpace:"nowrap", color:'red',fontWeight:"600"}}>Eligible Free Shipping</small>:<small></small>
+            }
             </div>
     
             <Link to={`${process.env.PUBLIC_URL}/product/${product._id}`}>
@@ -151,9 +150,9 @@ const Product = ({ product }) => {
             <button type="button" className="btn btn-product-cart" onClick={checkStorage}>
               <span className="btn-cart">Add Cart</span>
             </button>
-            <button type="button" className="btn btn-soft-primary btn-product-call d-xl-none d-lg-block">
+            <button type="button" className="btn btn-product-call d-xl-none d-lg-block" style={{backgroundColor:"#f90"}}>
               <a href="tel:0709744874">
-                <i class="las la-phone la-2x btn-call"></i>
+                <i class="las la-phone la-2x btn-call text-white"></i>
               </a>
             </button>
           </div>
