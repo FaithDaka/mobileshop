@@ -84,7 +84,7 @@ const Product = ({ product }) => {
       
             {/* <span class="badge badge-inline badge-success float-right" style={{backgroundColor:'red'}}>Out of Stock</span> */}
             {
-             (shippingprice >=300000 )? <small style={{whiteSpace:"nowrap", color:'red',fontWeight:"600"}}>Eligible Free Shipping</small>:<small></small>
+             (shippingprice >=300000 )? <small style={{whiteSpace:"nowrap", color:'red',fontWeight:"600"}}>Eligible Free Delivery</small>:<small></small>
             }
             </div>
     
@@ -100,7 +100,7 @@ const Product = ({ product }) => {
             {
               product.discountprice ?
                 <>
-                  <span className="fw-700 text-reset">
+                  <span className="fw-bold text-reset">
                     <CurrencyFormat
                       prefix={"UGX "}
                       value={product.discountprice}
@@ -150,9 +150,9 @@ const Product = ({ product }) => {
             <button type="button" className="btn btn-product-cart" onClick={checkStorage}>
               <span className="btn-cart">Add Cart</span>
             </button>
-            <button type="button" className="btn btn-product-call d-xl-none d-lg-block" style={{backgroundColor:"#f90"}}>
+            <button type="button" className="btn btn-product-call d-xl-none d-lg-block">
               <a href="tel:0709744874">
-                <i class="las la-phone la-2x btn-call text-white"></i>
+                <i class="las la-phone la-2x btn-call" style={{color:"#f90"}}></i>
               </a>
             </button>
           </div>
