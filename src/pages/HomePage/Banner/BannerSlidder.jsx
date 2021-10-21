@@ -15,30 +15,32 @@ const BannerSlidder = () => {
   };
 
   return (
-        <div className="slick-list draggable">
-          <Slider {...settings}>
-            <div className="slick-slide">
-              <div class="carousel-box" >
-                  <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/bnew1.jpg" alt="MobileShop Banner" height="320" />
-              </div>
-            </div>
-            <div className="slick-slide">
+    <section className="top-banner">
+      <div className="slick-list draggable">
+        <Slider {...settings}>
+          <div className="slick-slide">
             <div class="carousel-box" >
-                  <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/bnew2.jpg" alt="MobileShop Banner" height="320" />
-              </div>
+              <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/bnew1.jpg" alt="MobileShop Banner"  />
             </div>
-            <div className="slick-slide">
+          </div>
+          <div className="slick-slide">
             <div class="carousel-box" >
-                  <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/bnew3.jpg" alt="MobileShop Banner" height="320" />
-              </div>
+              <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/bnew2.jpg" alt="MobileShop Banner"  />
             </div>
-            <div className="slick-slide">
+          </div>
+          <div className="slick-slide">
             <div class="carousel-box" >
-                  <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/bnew4.jpg" alt="MobileShop Banner" height="320" />
-              </div>
+              <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/bnew3.jpg" alt="MobileShop Banner" />
             </div>
-          </Slider>
-        </div>
+          </div>
+          <div className="slick-slide">
+            <div class="carousel-box" >
+              <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/bnew4.jpg" alt="MobileShop Banner" />
+            </div>
+          </div>
+        </Slider>
+      </div>
+    </section>
   )
 };
 
