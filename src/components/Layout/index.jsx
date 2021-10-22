@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
   const toTop = () => {
     window.scrollTo(0, 0)
   };
-  const rotateIcon=()=>{
+  const rotateIcon = () => {
     setRotate(!rotate)
   }
 
@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
       <MobileHeader open={openDrawer} />
       {children}
       {showDrawer && (<MobileDrawer close={closeDrawer} />)}
-      <div class="fab-wrapper">
+      {/* <div class="fab-wrapper">
         <input id="fabCheckbox" type="checkbox" class="fab-checkbox" />
         <label class="fab text-center fw-bold" for="fabCheckbox">
         <i className={rotate ? "las la-plus la-3x fabIcon" : "las la-plus la-3x"} onClick={rotateIcon}></i>        </label>
@@ -59,8 +59,32 @@ const Layout = ({ children }) => {
 
         </div>
       </div>
-      
-      
+       */}
+      <div class="mainopShadow"></div>
+      <div class="fab">
+        <div class="mainop">
+          <i className={rotate ? "las la-plus la-3x fabIcon" : "las la-plus la-3x"} onClick={rotateIcon}></i>  </div>
+        <div className="fab-menu">
+          <div id="drawings" class="minifab op4 text-center">
+            <i class="las la-arrow-up la-2x text-white text-center"></i>
+            <div class="label-text">Go to Top</div> </div>
+          <div id=" position-relative slides" class="minifab op3 text-center">
+            <i class="las la-mobile-alt la-2x text-white text-center"></i>
+            <div class="label-text">Smartphones</div>
+          </div>
+
+          <div id="sheets" class="minifab op2">
+
+            <i class="las la-laptop la-2x text-white text-center"></i>
+            <div class="label-text">Laptops</div> </div>
+          <div id="docs" class="minifab op1">
+
+            <i class="las la-phone la-2x text-white text-center"></i>
+            <div class="label-text">Call us</div>
+          </div>
+        </div>
+      </div>
+
       <BottomMenu open={openDrawer} />
     </div>
   )

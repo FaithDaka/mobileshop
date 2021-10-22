@@ -15,38 +15,40 @@ const BottomSlidder = () => {
     };
 
     return (
-        <div className="slick-list draggable">
-            <Slider {...settings}>
-                <div className="slick-slide">
-                    <div class="carousel-box position-relative bslidder" >
-                        <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/bnew1.jpg" alt="MobileShop Banner" height="250" />
-                        <button class="position-absolute bottom-0 end-0 text-white fw-bold bbslidder" style={{ marginBottom: "5%", marginRight: "-70%" }}>Shop Now <span>&#x27A4;</span></button>
+        <section className="bottom-slider">
+            <div className="slick-list draggable" style={{ marginTop: "-3.5%" }}>
+                <Slider {...settings}>
+                    <div className="slick-slide">
+                        <div class="carousel-box position-relative bslidder" >
+                            <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/bnew1.jpg" alt="MobileShop Banner" />
+                            <button class="position-absolute bottom-0 end-0 text-white fw-bold bbslidder" style={{ marginBottom: "5%", marginRight: "-60%" }}>Shop Now <span>&#x27A4;</span></button>
 
+                        </div>
                     </div>
-                </div>
-                <div className="slick-slide">
-                    <div class="carousel-box position-relative bslidder" >
-                        <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/bnew2.jpg" alt="MobileShop Banner" height="250" />
-                        <button class="position-absolute bottom-0 end-0 text-white fw-bold bbslidder" style={{ marginBottom: "5%", marginRight: "-70%" }}>Shop Now <span>&#x27A4;</span></button>
+                    <div className="slick-slide">
+                        <div class="carousel-box position-relative bslidder" >
+                            <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/bnew2.jpg" alt="MobileShop Banner" />
+                            <button class="position-absolute bottom-0 end-0 text-white fw-bold bbslidder" style={{ marginBottom: "5%", marginRight: "-60%" }}>Shop Now <span>&#x27A4;</span></button>
 
+                        </div>
                     </div>
-                </div>
-                <div className="slick-slide">
-                    <div class="carousel-box position-relative bslidder" >
-                        <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/bnew3.jpg" alt="MobileShop Banner" height="250" />
-                        <button class="position-absolute bottom-0 end-0 text-white fw-bold bbslidder" style={{ marginBottom: "5%", marginRight: "-70%" }}>Shop Now <span>&#x27A4;</span></button>
+                    <div className="slick-slide">
+                        <div class="carousel-box position-relative bslidder" >
+                            <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/bnew3.jpg" alt="MobileShop Banner" />
+                            <button class="position-absolute bottom-0 end-0 text-white fw-bold bbslidder" style={{ marginBottom: "5%", marginRight: "-60%" }}>Shop Now <span>&#x27A4;</span></button>
 
+                        </div>
                     </div>
-                </div>
-                <div className="slick-slide">
-                    <div class="carousel-box position-relative bslidder" >
-                        <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/bnew4.jpg" alt="MobileShop Banner" height="250" />
-                        <button class="position-absolute bottom-0 end-0 text-white fw-bold bbslidder" style={{ marginBottom: "5%", marginRight: "-70%" }}>Shop Now <span>&#x27A4;</span></button>
+                    <div className="slick-slide">
+                        <div class="carousel-box position-relative bslidder" >
+                            <img class="d-block mw-100 img-fit rounded shadow-sm" src="/images/bnew4.jpg" alt="MobileShop Banner" />
+                            <button class="position-absolute bottom-0 end-0 text-white fw-bold bbslidder" style={{ marginBottom: "5%", marginRight: "-60%" }}>Shop Now <span>&#x27A4;</span></button>
 
+                        </div>
                     </div>
-                </div>
-            </Slider>
-        </div>
+                </Slider>
+            </div>
+        </section>
     )
 };
 

@@ -614,7 +614,7 @@ to {
 
 
    /* floating-button */
-   .fab-wrapper {
+   /* .fab-wrapper {
     position: fixed;
     bottom: 6rem;
     right: 3rem;
@@ -637,7 +637,7 @@ to {
     cursor: pointer;
   
   
-  }
+  } */
   
 
   /* .fab:hover {
@@ -646,7 +646,7 @@ to {
   }
    */
 
-
+/* 
   .fab-wheel {
     position: absolute;
     bottom: 0;
@@ -700,10 +700,155 @@ to {
 .fab .fabIcon{
   color:red !important;
   transform:rotate(45deg) !important;
-} 
+}  */
+
+
+.fab {
+  background-color: transparent;
+  height: 50px;
+  width: 50px;
+  border-radius: 32px;
+  transition: height 300ms;
+  transition-timing-function: ease;
+  position: fixed;
+  right: 20px;
+  bottom: 155px;
+  text-align: center;
+  /* overflow: hidden; */
+  overflow-clip-margin: 2px;
+}
+
+.fab:hover {
+  height: 244px;
+}
+
+.fab:hover .mainop {
+  transform: rotate(130deg);
+}
+
+
+.mainop {
+  margin: auto;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transition: transform 300ms;
+  background-color: #f44336;
+  border-radius: 32px;
+  z-index: 6;
+  padding: 4px 2px 2px 2px;
+}
+
+.mainopShadow {
+  height: 50px;
+  width: 50px;
+  border-radius: 32px;
+  position: fixed;
+  right: 20px;
+  bottom: 155px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.mainop i {
+  /* margin-top: 10px; */
+  /* font-size: 32px; */
+  color: #fff;
+}
+
+.minifab {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 24px;
+  z-index: 5;
+  float: left;
+  margin-bottom: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
+  background-color: blue;
+  transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  
+}
+
+.minifab:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.minifab{
+  padding:5px 2px 2px 1px;
+}
+
+
+.op1 {
+  background-color: #2f82fc;
+}
+
+.op2 {
+  background-color: #0f9d58;
+}
+
+.op3 {
+  background-color: #fb0;
+}
+
+.op4 {
+  background-color: #dd5145;
+}
+
+.op5 {
+  background-color: #673ab7;
+}
+
  .ugx::after{
    content:'Convert to USD'
  }
  .usd::after{
   content:'Convert to UGX'
+}
+.usd ,.ugx{
+  position: absolute;
+  background-color: rgba(230,46,4,0.15);
+  color:#f90;
+  border: none;
+  border-radius: 20px;
+  font-weight: 700;
+}
+.usd:hover ,.ugx:hover{
+  background-color: #f90;
+  color:white;
+ 
+}
+
+
+.fab-small{
+  z-index: 1000;
+  right: 60rem;
+  top:-10rem;
+}
+
+
+
+.label-text{
+	color:#FFF;
+	background:rgba(51,51,51,0.5);
+  float: left;
+	padding:5px;
+	border-radius:3px;
+  position: absolute;
+  right: 4rem;
+  top: -0.1rem;
+  white-space: nowrap;
+  z-index: 1;
+
+  
+  /* overflow: visible !important; */
+}
+.fab-menu{
+  visibility: hidden;
+}
+.fab:hover .fab-menu{
+  visibility: visible;
+  
 }

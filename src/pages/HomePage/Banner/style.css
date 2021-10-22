@@ -22,3 +22,18 @@
     transition: .25s ease-in !important;
   }
  */
+.bottom-slider img{
+  height: 250px;
+}
+.top-banner img{
+  height: 350px;
+}
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .bottom-slider img{
+    height: 144px;
+  }
+  .top-banner img{
+    height: 110px;
+  }
+}

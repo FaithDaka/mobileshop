@@ -80,9 +80,9 @@ const ProductGroup = () => {
 
   return (
 
-    <section className=" mb-3" >
+    <section className=" mb-0" >
       <div className=" container">
-        <div className="d-md-none shadow p-3 bg-white rounded">
+          <div className="d-md-none shadow p-3 pb-0 bg-white rounded">
           <div className="row">
             <div className="col-12 col-md-6 col-lg-6">
               <div className="row">

@@ -11,12 +11,12 @@ const HomePage = () => {
             <Banner />
             <ProductGroupping />
             <BottomSlidder/>
-            <div class="d-none d-lg-block" style={{marginTop:"1%"}}>
+            <div class="d-none d-lg-block">
                 
                 <Footer/>
                 <BottomFooter/>
             </div>
-            <div class="d-sm-none pb-3 mb-5" style={{marginTop:"1%"}}>
+            <div class="d-sm-none pb-3 mb-5">
                  <Footer/>
                 <BottomFooter/></div>
         </>

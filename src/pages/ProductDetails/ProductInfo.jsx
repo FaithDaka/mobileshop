@@ -300,11 +300,11 @@ const ProductInfo = ({ product }) => {
             </strong>
               }
 
-              <button class={currency ? "btn btn-soft-primary ml-5 usd" :" btn btn-soft-primary ml-5 ugx"} onClick={convertCurrency}></button>
+              <button class={currency ? "btn-primary-soft py-1 px-2 ml-5 usd" :"py-1 px-2 ml-5 ugx"} onClick={convertCurrency} style={{right:20 , top:10}}></button>
                
               <span class="opacity-70"></span>
               {
-              (shippingprice >=300000 )? <><br></br><span class="align-self-center pb-2" style={{color:'red' ,fontWeight:"600"}}>Eligible Free Shipping</span></>:""
+              (shippingprice >=300000 )? <><br></br><span class="align-self-center pb-2" style={{color:'red' ,fontWeight:"600"}}>Eligible Free Delivery</span></>:""
               }
             </div>
           </div>

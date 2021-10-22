@@ -122,7 +122,7 @@ const Product = ({ product }) => {
                     fontWeight: "600",
                   }}
                 >
-                  Eligible Free Shipping
+                  Eligible Free Delivery
                 </small>
               ) : (
                 <small></small>
@@ -152,7 +152,7 @@ const Product = ({ product }) => {
 
             {product.discountprice ? (
               <>
-                <span className="fw-700 text-reset">
+                <span className="fw-bold text-reset">
                   {product.discountprice ? (
                     <CurrencyFormat
                       prefix={"UGX "}
@@ -187,7 +187,7 @@ const Product = ({ product }) => {
                 </span>
                 <br></br>
                 {product.price ? (
-                  <span className="fw-700 text-reset">
+                  <span className="fw-bold text-reset">
                     <CurrencyFormat
                       prefix={"UGX "}
                       value={product.price}
@@ -229,10 +229,15 @@ const Product = ({ product }) => {
             <button
               type="button"
               className="btn btn-product-call d-xl-none d-lg-block"
-              style={{ backgroundColor: "#f90" }}
+              style={{ backgroundColor: "white" }}
             >
               <a href="tel:0709744874">
-                <i class="las la-phone la-2x btn-call text-white"></i>
+                {/* <i class="las la-phone la-2x btn-call" style={{color:"#f90"}}></i> */}
+                <i class="bi bi-telephone-fill" style={{color:"#f90"}}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+</svg>
+                </i>
               </a>
             </button>
           </div>
