@@ -187,7 +187,7 @@ const Product = ({ product }) => {
                 </span>
                 <br></br>
                 {product.price ? (
-                  <span className="fw-bold text-reset">
+                  <span className="fw-bold text-reset" style={{fontWeight:"bold"}}>
                     <CurrencyFormat
                       prefix={"UGX "}
                       value={product.price}

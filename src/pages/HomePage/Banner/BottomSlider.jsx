@@ -16,7 +16,7 @@ const BottomSlidder = () => {
 
     return (
         <section className="bottom-slider">
-            <div className="slick-list draggable" style={{ marginTop: "-3.5%" }}>
+            <div className="slick-list draggable">
                 <Slider {...settings}>
                     <div className="slick-slide">
                         <div class="carousel-box position-relative bslidder" >
