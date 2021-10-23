@@ -722,7 +722,7 @@ to {
   height: 244px;
 }
 
-.fab:hover .mainop {
+.fab:hover .fabIcon {
   transform: rotate(130deg);
 }
 
@@ -832,7 +832,7 @@ to {
 
 .label-text{
 	color:#FFF;
-	background:rgba(51,51,51,0.5);
+	background:rgba(51,51,51,1);
   float: left;
 	padding:5px;
 	border-radius:3px;
@@ -841,6 +841,7 @@ to {
   top: -0.1rem;
   white-space: nowrap;
   z-index: 1;
+  font-weight: 700;
 
   
   /* overflow: visible !important; */

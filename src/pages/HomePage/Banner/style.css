@@ -25,6 +25,9 @@
 .bottom-slider img{
   height: 250px;
 }
+.bottom-slider{
+  margin-top: -3%;
+}
 .top-banner img{
   height: 350px;
 }
@@ -35,5 +38,8 @@
   }
   .top-banner img{
     height: 110px;
+  }
+  .bottom-slider{
+    margin-top: -13%;
   }
 }

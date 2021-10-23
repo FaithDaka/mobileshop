@@ -63,16 +63,16 @@ const ProductDetails = ({ match }) => {
                     {loading && <LoadSpinner />}
                     <div class="col" id="pd-top-links">
                         <ul class="breadcrumb bg-transparent p-0 justify-content-lg-start">
-                            <li class="breadcrumb-item opacity-50">
-                                <Link class="text-reset" to="/">Home  &gt;&gt;</Link>
+                            <li class="breadcrumb-item" style={{color:"#f90"}}>
+                                <Link class="text-reset" to="/">Home  <span className="text-dark"> &gt;&gt;</span></Link>
                             </li>
-                            <li class="text-dark fw-600 ">
-                                <Link class="text-reset" to="#">{product.category ? product.category.name : ''} &gt;&gt;</Link>
+                            <li class="fw-600" style={{color:"#f90"}}>
+                                <Link class="text-reset" to="#">{product.category ? product.category.name : ''}<span className="text-dark"> &gt;&gt;</span></Link>
                             </li>
-                            <li class="text-dark fw-600 ">
-                                <Link class="text-reset" to= {product.subs ? `/products/${product.subs.name}`: '#'}>{product.subs ? product.subs.name : ''}&gt;&gt;</Link>
+                            <li class="fw-600 " style={{color:"#f90"}}>
+                                <Link class="text-reset" to= {product.subs ? `/products/${product.subs.name}`: '#'}>{product.subs ? product.subs.name : ''}<span className="text-dark"> &gt;&gt;</span></Link>
                             </li>
-                            <li class="text-dark fw-600 elipsis " >
+                            <li class="fw-600 elipsis " >
                                 <Link class="text-reset" to="#">{product.title ? product.title : ''}</Link>
                             </li>
                         </ul>
