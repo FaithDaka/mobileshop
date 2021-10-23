@@ -80,22 +80,30 @@ const Product = ({ product }) => {
             {
               product.discountprice ?
                 <>
-                  <span className="fw-700 text-reset">
+                  <span className="fw-bold text-reset">
+                  {product.discountprice ? (
                     <CurrencyFormat
                       prefix={"UGX "}
                       value={product.discountprice}
                       displayType="text"
                       thousandSeparator
                     />
-                  </span>
+                  ) : (
+                    ""
+                  )}
+                </span>
                   <div className="s-prc-w">
                     <del className="d-block fw-500 opacity-70">
+                    {product.price ? (
                       <CurrencyFormat
-                        // prefix={"UGX "}
+                        prefix={"UGX "}
                         value={product.price}
                         displayType="text"
                         thousandSeparator
                       />
+                    ) : (
+                      ""
+                    )}
                     </del>
                     <div class="tag _dsct _sm">-{product.discount}%</div>
                   </div>
@@ -103,13 +111,18 @@ const Product = ({ product }) => {
                 <><span className="fw-700 text-reset">
                 <a style={{display:"none"}}>none</a>
               </span><br></br>
-                <span className="fw-700 text-reset">
-                  <CurrencyFormat
-                    prefix={"UGX "}
-                    value={product.price}
-                    displayType="text"
-                    thousandSeparator
-                  /></span>
+              {product.price ? (
+                  <span className="fw-bold text-reset">
+                    <CurrencyFormat
+                      prefix={"UGX "}
+                      value={product.price}
+                      displayType="text"
+                      thousandSeparator
+                    />
+                  </span>
+                ) : (
+                  ""
+                )}
                   </>
             }
           </div>

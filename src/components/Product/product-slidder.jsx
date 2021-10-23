@@ -70,33 +70,48 @@ const Product = ({ product }) => {
               product.discountprice ?
                 <>
                   <span className="fw-600 text-reset">
-                   <strong><CurrencyFormat
+                  {product.discountprice ? (
+                    <CurrencyFormat
                       prefix={"UGX "}
                       value={product.discountprice}
                       displayType="text"
                       thousandSeparator
-                    /></strong> 
+                    />
+                  ) : (
+                    ""
+                  )}
                   </span>
                   <div className="s-prc-w">
                     <del className="d-block opacity-70">
+                    {product.price ? (
                       <CurrencyFormat
-                        // prefix={"UGX "}
+                        prefix={"UGX "}
                         value={product.price}
                         displayType="text"
                         thousandSeparator
                       />
+                    ) : (
+                      ""
+                    )}
                     </del>
                     <div class="tag _dsct _sm">-{product.discount}%</div>
                   </div>
                 </> :
 
                 <span className="fw-600 text-reset">
-                  <strong><CurrencyFormat
-                    prefix={"UGX "}
-                    value={product.price}
-                    displayType="text"
-                    thousandSeparator
-                  /></strong></span>
+                  <strong>
+                  {product.price ? (
+                  <span className="fw-bold text-reset">
+                    <CurrencyFormat
+                      prefix={"UGX "}
+                      value={product.price}
+                      displayType="text"
+                      thousandSeparator
+                    />
+                  </span>
+                ) : (
+                  ""
+                )}</strong></span>
             }
           </div>
           <div className="rating rating-sm mt-1">
