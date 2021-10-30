@@ -1,15 +1,19 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-script-url */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import LoginModal from "../../../components/Modal/login-modal";
+import AutoSearch from '../../AutoSearch';
+import { getAllProducts } from "../../../functions/products";
 
 import './search.css';
 
 const MobileHeader = ({ open }) => {
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const openModal = () => setIsOpen(true);
     const closeModal = () => setIsOpen(false);
@@ -44,6 +48,19 @@ const MobileHeader = ({ open }) => {
         e.preventDefault();
         history.push(`/search?${text}`);
     };
+
+    const fetchAllProducts = () => {
+        setLoading(true);
+        getAllProducts().then((res) => {
+            console.log("SUggestions Fetch ===>", res.data)
+          setProducts(res.data);
+          setLoading(false);
+        });
+      };
+    
+      useEffect(() => {
+        fetchAllProducts();
+      }, []);
 
     return (
         <>
@@ -148,19 +165,20 @@ const MobileHeader = ({ open }) => {
                 </div>
                 <div class="nav-searchbar-wrapper mt-2">
                     <form class="nav-searchbar search-big" accept-charset="utf-8">
-                        <div class="nav-fill">
+                        {/* <div class="nav-fill">
                             <div class="nav-search-field">
                                 <input type="text" class="nav-input nav-progressive-attribute" placeholder="Search mobilephones, TVs, laptops"
                                     value={text}
                                     onChange={handleChange} />
                             </div>
-                        </div>
-                        <div class="nav-right">
+                        </div> */}
+                        {/* <div class="nav-right">
                             <div class="nav-search-submit">
                                 <input type="submit" class="nav-input" onClick={handleSubmit} />
                                 <i class="nav-icon nav-sprite"></i>
                             </div>
-                        </div>
+                        </div> */}
+                        <AutoSearch products={products} handleChange={handleChange} handleSubmit={handleSubmit} />
                     </form>
                 </div>
             </div>

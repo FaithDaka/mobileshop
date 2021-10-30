@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -6,9 +6,13 @@ import { useHistory } from 'react-router-dom';
 import { removeFromCart } from '../../../store/actions/cartActions'
 import Dropdown from './dropdown'
 import LoginModal from "../../../components/Modal/login-modal";
+import AutoSearch from '../../AutoSearch';
+import { getAllProducts } from "../../../functions/products";
 
 const MiddleHeader = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const openModal = () => setIsOpen(true);
     const closeModal = () => setIsOpen(false);
@@ -55,6 +59,19 @@ const MiddleHeader = () => {
           dispatch(removeFromCart(id))
           toast.success("Product successfuly removed from cart");
       }
+
+      const fetchAllProducts = () => {
+        setLoading(true);
+        getAllProducts().then((res) => {
+            console.log("SUggestions Fetch ===>", res.data)
+          setProducts(res.data);
+          setLoading(false);
+        });
+      };
+    
+      useEffect(() => {
+        fetchAllProducts();
+      }, []);
     
     return (
         <>
@@ -80,7 +97,7 @@ const MiddleHeader = () => {
                                         <div class="d-lg-none" data-toggle="class-toggle" data-target=".front-header-search">
                                             <button class="btn px-2" type="button"><i class="la la-2x la-long-arrow-left"></i></button>
                                         </div>
-                                        <div class="input-group">
+                                        {/* <div class="input-group">
                                             <input type="text" class="border-0 border-lg form-control" id="search" name="q" placeholder="I am shopping for..." autocomplete="off" 
                                              value={text}
                                              onChange={handleChange}/>
@@ -89,6 +106,10 @@ const MiddleHeader = () => {
                                                     <i class="la la-search la-flip-horizontal fs-18"></i>
                                                 </button>
                                                         </div>
+                                        </div> */}
+                                        <div class="input-group">
+                                        {/* <Autocomplete suggestions={products} /> */}
+                                        <AutoSearch products={products} handleChange={handleChange} handleSubmit={handleSubmit} />
                                         </div>
                                     </div>
                                 </form>

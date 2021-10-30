@@ -136,8 +136,6 @@ const StorageModal = ({ modalIsOpen, close, product }) => {
         }
     }, [color]);
 
-    console.log("Product Colors ====>", product)
-
     return (
         <Modal
             isOpen={modalIsOpen}
