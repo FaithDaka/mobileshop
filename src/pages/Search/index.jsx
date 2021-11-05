@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import _ from "lodash";
 import { Helmet } from "react-helmet";
-import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import Product from '../../components/Product/product-search';
 import LoadSpinner from '../../components/Spinner';
@@ -12,7 +11,7 @@ import { fetchProductsByFilter } from "../../functions/products";
 import BottomFooter from '../../components/Layout/Footer/BottomFooter'
 import PreOrder from "./preorder";
 
-const SearchFilters = () => {
+const SearchFilters = ({location}) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -29,8 +28,9 @@ const SearchFilters = () => {
     const currentProducts = random.slice(firstProduct, lastProduct);
     const totalProducts = random.length;
 
-    let { search } = useSelector((state) => ({ ...state }));
-    const { text } = search;
+    const query = new URLSearchParams(location.search);
+    const text = query.get('q')
+    console.log("Query Filter===>", text)
 
     const fetchProducts = (arg) => {
         setLoading(true)

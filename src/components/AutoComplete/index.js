@@ -1,122 +1,66 @@
-import React, { Component } from "react";
-import './styles.css'
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { getAllProducts } from "../../functions/products";
+import "./styles.css";
 
-export class Autocomplete extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeSuggestion: 0,
-      filteredSuggestions: [],
-      showSuggestions: false,
-      userInput: "",
-    };
-  }
+const AutoComplete = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [term, setTerm] = useState();
+  const [suggestions, setSuggestions] = useState([]);
 
-  onChange = (e) => {
-    const { suggestions } = this.props;
-    const userInput = e.currentTarget.value;
+  const history = useHistory();
 
-    const filteredSuggestions = suggestions.filter(
-      (suggestion) =>
-        suggestion.title.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-    );
-
-    this.setState({
-      activeSuggestion: 0,
-      filteredSuggestions,
-      showSuggestions: true,
-      userInput: e.currentTarget.value,
-    });
-  };
-
-  onClick = (e) => {
-    this.setState({
-      activeSuggestion: 0,
-      filteredSuggestions: [],
-      showSuggestions: false,
-      userInput: e.currentTarget.innerText,
-    });
-  };
-
-  onKeyDown = (e) => {
-    const { activeSuggestion, filteredSuggestions } = this.state;
-
-    if (e.keyCode === 13) {
-      this.setState({
-        activeSuggestion: 0,
-        showSuggestions: false,
-        userInput: filteredSuggestions[activeSuggestion],
+  const onChangeHandler = (term) => {
+    let matches = [];
+    if (term.length > 0) {
+      matches = products.filter((product) => {
+        const regex = new RegExp(`${term}`, "gi");
+        return product.title.match(regex);
       });
-    } else if (e.keyCode === 38) {
-      if (activeSuggestion === 0) {
-        return;
-      }
-      this.setState({ activeSuggestion: activeSuggestion - 1 });
     }
-    // User pressed the down arrow, increment the index
-    else if (e.keyCode === 40) {
-      if (activeSuggestion - 1 === filteredSuggestions.length) {
-        return;
-      }
-      this.setState({ activeSuggestion: activeSuggestion + 1 });
-    }
+    setSuggestions(matches);
+    setTerm(term);
   };
 
-  render() {
-    const {
-      onChange,
-      onClick,
-      onKeyDown,
-      state: {
-        activeSuggestion,
-        filteredSuggestions,
-        showSuggestions,
-        userInput,
-      },
-    } = this;
+  const onSuggestHandler = (q) => {
+    setTerm(q);
+    setSuggestions([]);
+    // history.push(`/search?${q}`);
+    console.log("am inside this loop", q)
+  };
 
-    let suggestionsListComponent;
+  const fetchAllProducts = () => {
+    setLoading(true);
+    getAllProducts().then((res) => {
+      setProducts(res.data);
+      setLoading(false);
+    });
+  };
 
-    if (showSuggestions && userInput) {
-      if (filteredSuggestions.length) {
-        suggestionsListComponent = (
-          <ul class="suggestions">
-            {filteredSuggestions.map((suggestion, index) => {
-              let className;
+  useEffect(() => {
+    fetchAllProducts();
+  }, []);
 
-              // Flag the active suggestion with a class
-              if (index === activeSuggestion) {
-                className = "suggestion-active";
-              }
-              return (
-                <li className={className} key={suggestion} onClick={onClick}>
-                  {suggestion}
-                </li>
-              );
-            })}
-          </ul>
-        );
-      } else {
-        suggestionsListComponent = (
-          <div class="no-suggestions">
-            <em>No suggestions available.</em>
+  return (
+    <div className="container">
+      <input
+        type="text"
+        className="col-md-12 input"
+        onChange={(e) => onChangeHandler(e.target.value)}
+        value={term}
+        onBlur={() => setSuggestions([])}
+      />
+      {suggestions &&
+        suggestions.map((suggestion, i) => (
+          <div className="suggestion col-md-12 justify-content-md-center"
+            onClick={() => onSuggestHandler(suggestion.title)}
+          >
+            {suggestion.title}
           </div>
-        );
-      }
-    }
+        ))}
+    </div>
+  );
+};
 
-    return (
-      <div>
-        <input
-          type="text"
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          value={userInput}
-        />
-        {suggestionsListComponent}
-      </div>
-    );
-  }
-}
-
-export default Autocomplete;
+export default AutoComplete;

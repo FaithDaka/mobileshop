@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import LoginModal from "../../../components/Modal/login-modal";
-import AutoSearch from '../../AutoSearch';
+import AutoComplete from '../../AutoComplete/Complete';
 import { getAllProducts } from "../../../functions/products";
 
 import './search.css';
@@ -52,7 +52,7 @@ const MobileHeader = ({ open }) => {
     const fetchAllProducts = () => {
         setLoading(true);
         getAllProducts().then((res) => {
-            console.log("SUggestions Fetch ===>", res.data)
+            // console.log("SUggestions Fetch ===>", res.data)
           setProducts(res.data);
           setLoading(false);
         });
@@ -61,6 +61,8 @@ const MobileHeader = ({ open }) => {
       useEffect(() => {
         fetchAllProducts();
       }, []);
+
+      
 
     return (
         <>
@@ -171,14 +173,14 @@ const MobileHeader = ({ open }) => {
                                     value={text}
                                     onChange={handleChange} />
                             </div>
-                        </div> */}
-                        {/* <div class="nav-right">
+                        </div>
+                        <div class="nav-right">
                             <div class="nav-search-submit">
                                 <input type="submit" class="nav-input" onClick={handleSubmit} />
                                 <i class="nav-icon nav-sprite"></i>
                             </div>
                         </div> */}
-                        <AutoSearch products={products} handleChange={handleChange} handleSubmit={handleSubmit} />
+                        <AutoComplete options={products} />
                     </form>
                 </div>
             </div>
